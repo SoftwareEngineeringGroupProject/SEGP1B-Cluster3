@@ -1,0 +1,141 @@
+.left_part, .right_part {
+	padding:0;
+	margin:0;
+	width:14%;
+	}		
+
+#tabs, #cart {
+	padding:5px;
+	width:92%;
+	}
+
+#tabs a, #cart a {
+	width:125px;
+	padding:15px;
+	text-align: center;
+	clear:both;
+	}
+
+#container {
+	margin:auto;
+	width:70%;
+	padding: 10px;
+	background-color: white;
+	min-height: 350px;
+	border-radius: 4px;
+	}
+
+div.content {
+	margin-top: 8px;
+	}
+
+
+/******************************/
+
+#communication, #project_showing , #pick_to_communicate{
+	margin-bottom: 20px;
+	padding: 10px;
+	border-radius: 4px;
+	}
+
+#communication {
+	background-color: #424242;
+	width:98%;
+	height:180px;
+	}
+	
+#communication_extra {
+	margin-bottom: 20px;
+	padding: 10px;
+	border-radius: 4px;
+	background-color: #424242;
+	height:180px;
+	width:75%;
+}
+	
+#pick_to_communicate {
+	background-color: #424242;
+	width:20%;
+	height:180px;
+	}
+
+
+#project_showing {
+	background-color: #FAFAFA;
+	}
+
+/* ------- project_showing --------*/
+#search_date input {
+	width:100%;
+	}
+
+#search_date input {
+	border: none;
+	text-align: center;
+	height: 14px;
+	width:100px;
+	}
+
+#show_specification {
+	width:76%;
+	}
+
+
+#project_list {
+	width: 22%;
+	}
+
+#project_list select {
+	height: 250px;
+	width: 100%;
+	margin-top: 10px;
+	}
+
+/* -------------- communication --------------*/
+#pick_to_communicate select {
+	width: 100%;
+	margin-top: 10px;
+	}
+
+
+#action_to_message {
+	width: 14%;
+	padding: 5px;
+	}
+	
+#action_to_message a{
+	padding:11px;
+	width: 80px;
+	}
+
+#message_box {
+	width: 83%;
+	}
+
+#message_box textarea {
+	margin-top: 30px;
+	width: 96%;
+	max-width:96%;
+	min-width:96%;
+	height: 125px;
+	max-height:125px;
+	min-height:125px;
+	}
+
+#message_box input {
+	display: block;
+	background-color: #DFDFDF;
+	border-radius: 3px;
+	border: none;
+	width: 48%;
+	padding: 3px;
+	}
+
+
+/*----------------------- Process projects in cart ---------------*/
+#edit_specification {
+	width:100%;;
+	}
+#edit_specification textarea{
+	height:300px;
+	}

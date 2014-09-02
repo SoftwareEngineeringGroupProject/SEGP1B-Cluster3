@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" lang="EN" dir="ltr">
+<head>
+  <title>Industry Engagement</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="projects/DatePicker/jquery-ui.css">
+  <script src="projects/DatePicker/jquery-1.10.2.js"></script>
+  <script src="projects/DatePicker/jquery-ui.js"></script>
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+
+</head>
+
+<body>
+  <!--##############################################################-->
+   <div class="wrapper navigation">
+      <div id="navi" class="flex_height">
+        <div class="to_right">  
+          <form action="#" method="post" id="search">  
+            <input type="text" value="Search&hellip;" onfocus="this.value=(this.value=='Search&hellip;')? '' : this.value ;" />
+            <input type="image" id="go" src="images/search_r.gif" alt="Search" />
+          </form>
+        </div>
+
+        <div id="menu" class="button to_left">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="Process_Items_in_Cart.html">Process Cart</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  <!--##############################################################-->
+  <div class="wrapper content">
+    <!--********************-->  
+    <div class="left_part to_left">
+      <div id="tabs" class="to_right button">
+        <ul>
+          <li><a href="Process_Items_in_Cart.html">Add extra info</a></li>
+          <li><a href="assign_students.html">Assign students</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!--********************-->
+    <div id="container" class="to_left shadow">
+      <div class="flex_height">
+        <div id="action_to_project" class="to_right button">
+          <ul>
+            <li><a href="#">Add</a></li>
+            <li><a href="#">Remove</a></li>
+          </ul>
+        </div>
+		  </div>
+
+      <div id="project_showing" class="general_box flex_height shadow"> 
+        <div class="to_left" id="project_list">
+          <fieldset>
+            <legend>Students</legend>
+
+            <select  size="18">
+              <option value="a12322">a1232223 - Alex</option>
+              <option value="a123220">a123220 - Leo</option>
+              <option value="a123221">a123221</option>
+              <option value="a123222">a123222</option>
+              <option value="a123223">a123223</option>
+              <option value="a123224">a123224</option>
+              <option value="a123225">a123225</option>
+            </select>
+          </fieldset>
+        </div>
+
+        <div id="show_specification" class="to_right" >
+          <fieldset>
+            <legend>Student Details</legend>
+            <textarea rows="13">Student Details...</textarea>
+          </fieldset>
+        </div>
+
+      </div>  
+	<!--*********************************************-->
+	  <div id="pick_to_communicate" class="general_box flex_height shadow to_left"> 
+          <fieldset>
+            <legend>Assigned Students</legend>
+
+            <select  size="7">
+              <option value="student1">student1</option>
+              <option value="student2">student2</option>
+              <option value="student3">student3</option>
+              <option value="student4">student4</option>
+              <option value="student5">student5</option>
+              <option value="student6">student6</option>
+              <option value="student7">student7</option>
+              <option value="student8">student8</option>
+              <option value="student9">student9</option>
+              <option value="student10">student10</option>
+              <option value="student11">student11</option>
+              <option value="student12">student12</option>
+              <option value="student13">student13</option>
+              <option value="student14">student14</option>
+              <option value="student15">student15</option>
+            </select>
+          </fieldset>
+		</div>	
+      <!--*********************************************-->
+      <div id="communication_extra" id="general_box" class="shadow flex_height to_right">
+		    <div id="message_box" class="to_left">
+          <input class="to_left" type="text" placeholder="From: ">
+          <input class="to_right" type="text" placeholder="To: ">
+          <textarea id="industry_interaction" rows="13">Messages...</textarea>
+        </div>
+
+  		  <div id="action_to_message" class="to_right button">
+          <ul>
+            <li><a href="#">Discard</a></li>
+            <li><a href="#">Draft</a></li>
+            <li><a href="#">Send</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!--*********************-->
+    <div class="right_part to_left">
+      <div id="cart" class="to_left button">
+        <ul>
+          <li><a href="#">Project Cart</a></li>
+          <li><a href="#">Project 1</a></li>
+          <li><a href="#">Project 2</a></li>
+          <li><a href="#">Project 3</a></li>
+          <li><a href="#">Project 4</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>  
+    
+      
+</body>
+
+
+</html>

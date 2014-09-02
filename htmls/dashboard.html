@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" lang="EN" dir="ltr">
+<head>
+  <title>Industry Engagement</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="projects/DatePicker/jquery-ui.css">
+  <script src="projects/DatePicker/jquery-1.10.2.js"></script>
+  <script src="projects/DatePicker/jquery-ui.js"></script>
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+
+</head>
+
+<body>
+  <!--##############################################################-->
+   <div class="wrapper navigation">
+      <div id="navi" class="flex_height">
+        <div class="to_right">  
+          <form action="#" method="post" id="search">  
+            <input type="text" value="Search&hellip;" onfocus="this.value=(this.value=='Search&hellip;')? '' : this.value ;" />
+            <input type="image" id="go" src="images/search_r.gif" alt="Search" />
+          </form>
+        </div>
+
+        <div id="menu" class="button to_left">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="Process_Items_in_Cart.html">Process Cart</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  <!--##############################################################-->
+  <div class="wrapper content">
+    <!--********************-->  
+    <div class="left_part to_left">
+
+      <div id="tabs" class="to_right button">
+        <ul>
+          <li><a id="in_focus" href="dashboard.html">Newly submitted</a></li>
+          <li><a href="projects/Accepted.html">Accepted</a></li>
+          <li><a href="projects/Rejected.html">Rejected</a></li>
+          <li><a href="projects/Pending.html">Pending</a></li>
+          <li><a href="projects/Past_projects.html">Past projects</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!--********************-->
+    <div id="container" class="to_left shadow">
+
+      <div class="flex_height">
+        <div id="action_to_project" class="to_right button">
+          <ul>
+            <li><a href="#">Accept</a></li>
+            <li><a href="#">Reject</a></li>
+            <li><a href="#">Suspend</a></li>
+          </ul>
+        </div>
+		  </div>
+
+      <div id="project_showing" class="general_box flex_height shadow"> 
+        <div class="to_left" id="project_list">
+          <fieldset>
+            <legend>
+              <div id="search_date">      
+                <input class="to_left" type="text" id="datepicker" value="Filter by date">
+              </div>
+            </legend>
+
+            <select  size="18">
+              <option value="project1">project1</option>
+              <option value="project2">project2</option>
+              <option value="project3">project3</option>
+              <option value="project4">project4</option>
+              <option value="project5">project5</option>
+              <option value="project6">project6</option>
+              <option value="project7">project7</option>
+              <option value="project8">project8</option>
+              <option value="project9">project9</option>
+              <option value="project10">project10</option>
+              <option value="project11">project11</option>
+              <option value="project12">project12</option>
+              <option value="project13">project13</option>
+              <option value="project14">project14</option>
+              <option value="project15">project15</option>
+            </select>
+          </fieldset>
+        </div>
+
+        <div id="show_specification" class="to_right" >
+          <fieldset>
+            <legend>Project description</legend>
+            <textarea rows="13">There are some project specification....</textarea>
+          </fieldset>
+        </div>
+
+      </div>  
+		
+        
+	  
+	  
+      <!--*********************************************-->
+      <div id="communication" id="general_box" class="shadow flex_height to_right">
+		    <div id="message_box" class="to_left">
+          <input class="to_left" type="text" placeholder="From: ">
+          <input class="to_right" type="text" placeholder="To: ">
+          <textarea id="industry_interaction" rows="16">Messages...</textarea>
+        </div>
+
+  		  <div id="action_to_message" class="to_right button">
+          <ul>
+            <li><a href="#">Discard</a></li>
+            <li><a href="#">Draft</a></li>
+            <li><a href="#">Send</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!--*********************-->
+    <div class="right_part to_left">
+      <div id="cart" class="to_left button">
+        <ul>
+          <li><a href="#">Project Cart</a></li>
+          <li><a href="#">Project 1</a></li>
+          <li><a href="#">Project 2</a></li>
+          <li><a href="#">Project 3</a></li>
+          <li><a href="#">Project 4</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>  
+    
+      
+</body>
+
+
+</html>

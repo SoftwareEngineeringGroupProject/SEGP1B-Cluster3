@@ -1,0 +1,39 @@
+form{
+	margin:0;
+	padding:0;
+	border:none;
+	}
+
+input{
+	font-size:14px;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	}
+	
+/* ----------------------------------------------Search Form-------------------------------------*/
+
+#search{
+	float:right;
+	margin:0;
+	padding:0;
+	}
+
+#search input{
+	display:block;
+	float:left;
+	width:120px;
+	height:20px;
+	margin:0;
+	padding:5px 5px 5px 10px;
+	color:#C7CED6;
+	background:url("../images/search_l.gif") 0 0 no-repeat #2C2C2C;
+	border:none;
+	}
+
+#search input#go{
+	width:35px;
+	height:30px;
+	margin:0;
+	padding:0;	
+	cursor:pointer;
+	background:none;
+	}

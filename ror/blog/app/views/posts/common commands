@@ -1,0 +1,4 @@
+source ~/.rvm/scripts/rvm
+cd Workspace/ror/blog
+rails s
+

@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" lang="EN" dir="ltr">
+<head>
+  <title>Industry Engagement</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="dashboards/DatePicker/jquery-ui.css">
+  <script src="dashboards/DatePicker/jquery-1.10.2.js"></script>
+  <script src="dashboards/DatePicker/jquery-ui.js"></script>
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+
+</head>
+
+<body>
+  <!--##############################################################-->
+   <div class="wrapper navigation">
+      <div id="navi" class="flex_height">
+        <div class="to_right">  
+          <form action="#" method="post" id="search">  
+            <input type="text" value="Search&hellip;" onfocus="this.value=(this.value=='Search&hellip;')? '' : this.value ;" />
+            <input type="image" id="go" src="images/search_r.gif" alt="Search" />
+          </form>
+        </div>
+
+        <div id="menu" class="button to_left">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Projects</a></li>
+            <li><a href="#">Process Cart</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  <!--##############################################################-->
+  <div class="wrapper content">
+    <!--********************-->  
+    <div class="left_part to_left">
+
+      <div id="tabs" class="to_right button">
+        <ul>
+          <li><a href="Process_Items_in_Cart.html">Add extra info</a></li>
+          <li><a href="assign_students.html">Assign students</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!--********************-->
+    <div id="container" class="to_left shadow">
+
+      <div id="project_showing" class="general_box flex_height shadow"> 
+        <div id="edit_specification" class="to_right"  >
+          <fieldset>
+            <legend>Project description</legend>
+            <textarea rows="13">There are some project specification....</textarea>
+          </fieldset>
+        </div>
+      </div>  
+
+      <div class="flex_height">
+        <div id="action_to_project" class="to_right button">
+          <ul>
+            <li><a href="#">Reset</a></li>
+            <li><a href="#">Preview</a></li>
+            <li><a href="#">Save</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!--*********************-->
+    <div class="right_part to_left">
+      <div id="cart" class="to_left button">
+        <ul>
+          <li><a href="#">Project Cart</a></li>
+          <li><a href="#">Project 1</a></li>
+          <li><a href="#">Project 2</a></li>
+          <li><a href="#">Project 3</a></li>
+          <li><a href="#">Project 4</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>  
+    
+      
+</body>
+
+
+</html>

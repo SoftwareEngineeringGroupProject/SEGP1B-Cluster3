@@ -1,0 +1,40 @@
+#navi{
+	position:relative;
+	margin:0 auto 0;
+	display:block;
+	width:900px;
+	}	
+
+
+#menu{
+	float:left;
+	margin-top:21px;
+	font-size:155px;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	}
+
+#menu ul, #menu li{
+	margin:0;
+	padding:0;
+	list-style:none;
+	}
+
+#menu li{
+	float:right;
+	margin-right:30px;
+	}
+
+#menu li a:link, #menu li a:visited, #topnav li a:hover{
+	display:block;
+	margin:0;
+	padding:0;
+	color:#FFFFFF;
+	background-color:#202020;
+	text-transform:uppercase;
+	}
+
+#menu li a:hover, #menu li.active a{
+	color:#FBF8CD;
+	background-color:#202020;
+	}
+	
