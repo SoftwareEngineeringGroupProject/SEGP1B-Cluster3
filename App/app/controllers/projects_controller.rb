@@ -1,8 +1,8 @@
 class ProjectsController < ApplicationController
   before_action :get_admin , :only => [:check_auth, :new, :index]
-  before_action :authenticate_admin! , only: [:new]
   # before_action :index , :only => [:check_logged_in]
   after_action :check_logged_in, except: [:check_auth, :logout, :new]
+  
   def get_admin
     @admin = Admin.find(1)    
   end
