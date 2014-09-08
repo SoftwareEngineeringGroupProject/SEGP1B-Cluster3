@@ -1,0 +1,21 @@
+<h1>Home</h1>
+<h2><%= flash[:notice] %></h2>
+
+<p>	
+	<table>
+			<tr>
+		    <th>Project Name</th>
+		    <th>Group Name</th>
+		    <th>Summary</th>
+		    <th></th>
+		    <th></th>
+		  	</tr>
+		<% @projects.each do |project| %>
+		<tr>
+			<td><%= project.username %></td>
+			<td><%= project.password %></td>
+		</tr>
+		<% end %>
+	</table>
+
+</p>

@@ -1,0 +1,11 @@
+<h1>Submit a student's project</h1>
+<p text-align: center>
+<%= form_tag(action: :create, method: "get") do %>
+	Project name: <%= text_field_tag(:title)%></br>
+	Group name: <%= text_field_tag(:group)%></br>
+	Members: <%= text_field_tag(:members)%></br>
+	Summary: <%= text_area_tag(:summary) %></br>
+	Extra: <%= text_area_tag(:extra) %></br>
+	<%= button_to "Create", action: :create %></br>
+<% end %>
+</p>
