@@ -1,14 +1,90 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>App</title>
+  <title>SEGP Industry Placement</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+ <!--#######################################################-->
+  <div class="wrapper banner">
+    <div id="top_bar" class="flex_height">
+      <div class="to_left">
+        <!-- <a href="homepage.html"> -->
+          <%= link_to(root_path) do %>
+          <h1>University of Adelaide</h1>
+          <p>School of Computer Science </p>
+          
+          <% end %>
+        <!-- </a> -->
+      </div>
 
-<%= yield %>
+      <div class="button to_right">
+        <ul>
+          <li><%= link_to("Login", login_path) %></li>
+          <li><a href="register.html">Register<a/></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+ <!--#######################################################-->
+    <div class="wrapper navigation">
+      <div id="navi" class="flex_height">
+        <div class="to_left">
+          <h1>SEGP Showcase</h1>
+        </div>
+
+        <div class="to_right">  
+          <form action="#" method="post" id="search">  
+            <input type="text" value="Search&hellip;" onfocus="this.value=(this.value=='Search&hellip;')? '' : this.value ;" />
+            <input type="image" id="go" src="images/search_r.gif" alt="Search" />
+          </form>
+        </div>
+
+        <div id="menu" class="button to_left">
+          <ul>
+            <li><%= link_to("Home", root_path ) %></li>
+            <li><%= link_to("Projects", projects_path ) %></li>
+            <li><%= link_to("Course Info", info_path ) %></li>
+            <li><%= link_to("Contacts", '') %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <!--##############################################################-->
+<!--   <div class="wrapper gallery">
+    <div id="slides" class="shadow">
+      <img src="images/example.gif" alt="" />
+    </div>
+  </div>
+ -->
+  <!--##############################################################-->
+  <div class="wrapper content">
+    <div id="news" class="flex_height shadow">
+      <p class="justify">
+        <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+        <%= yield %>
+      </p>
+    </div>
+  </div>
+
+  <!--##############################################################-->
+  <div id="submit" class=button>
+  <%= link_to("Submit students project", new_project_path) %>
+  </div>
+
+   <!--##############################################################-->
+  <div class="wrapper footer">
+    <div class="flex_height">
+    </div>
+  </div> 
+
 
 </body>
 </html>

@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140901172936) do
+ActiveRecord::Schema.define(version: 20140908061443) do
+
+  create_table "admins", force: true do |t|
+    t.string   "username"
+    t.string   "password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "attacheds", force: true do |t|
     t.binary   "attached"
@@ -38,6 +45,15 @@ ActiveRecord::Schema.define(version: 20140901172936) do
     t.integer  "company_id"
     t.integer  "attched_id"
     t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "student_projects", force: true do |t|
+    t.string   "title"
+    t.string   "summary"
+    t.string   "group_name"
+    t.string   "members"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
