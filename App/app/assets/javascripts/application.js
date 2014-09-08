@@ -14,3 +14,42 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery.turbolinks
+
+    $( "body" ).delegate( '#idofpagethatusesbelmont', 'pageinit', function() {
+        $( 'select[name="state_choice"]' ).change( function() {
+            var thisState = $( this ).val();
+            var indexState = '#' + thisState;
+            $( '.state' ).hide();
+            $( indexState ).show();
+        });
+    })
+  
+  $(function() {
+    $('#reload').click(function() {
+      location.reload();
+    });
+  });
+
+  
+
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+
+  $(function() { 
+  
+    $("#demo").change(function(){
+    var chosen = $(this).find(":selected")
+    $("textarea#project_desc").val(chosen.data("desc"));
+    });
+  });
+
+
+
+
+
+ 
+ 
+
+  
