@@ -1,10 +1,20 @@
 Rails.application.routes.draw do
   resources :submissions
   resources :users
+
+  root  to: 'application#index'
+
+  get 'submit' => "submissions#new"
   get 'dashboards/view/:state' => "dashboards#view"
   get 'dashboards/view/' => "dashboards#view"
   post 'dashboards/view/:state' => 'dashboards#change_state', :as => :change_state
-  post 'dashboards/view/' => 'dashboards#change_state'
+  post 'dashboards/view/' => 'dashboards#change_state'  
+
+
+  get 'login' => "application#login"
+  get 'profile' => "application#profile", :as => :profile_path
+  post 'login/:username/:password' => 'application#login'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
