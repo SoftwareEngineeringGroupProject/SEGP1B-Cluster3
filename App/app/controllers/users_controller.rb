@@ -9,9 +9,13 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		@user = User.new(user_params)
- 
-  		if @user.save
+		#@user = User.new(user_params)
+		username = user_params[:username]
+		email = user_params[:email]
+		password = user_params[:hashed_password]
+
+  		@user=User.create_with_credentials(username, email, password)
+  		if @user != nil
   			redirect_to @user
   		else
   			render 'new'
@@ -45,7 +49,7 @@ class UsersController < ApplicationController
 	
 	private
   	def user_params
-    	params.require(:user).permit(:username, :email, :hashed_password, :salt)
+    	params.require(:user).permit(:username, :email, :hashed_password)
   	end
   
 end
