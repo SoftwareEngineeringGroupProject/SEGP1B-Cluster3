@@ -31,6 +31,9 @@ class SubmissionsController < ApplicationController
 
   end
 
+  def update 
+  end
+
   def show
     # Show what user has submited
     @project = Project.find(params[:id]);
