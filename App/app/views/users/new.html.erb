@@ -1,6 +1,5 @@
-<%= form_for :user, url: users_path do |f| %>
-
-<% if @user.errors.any? %>
+<%= form_tag '/users/signup' do |f| %>
+  <% if @user.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited
       this user from being created:</h2>
@@ -12,25 +11,29 @@
   </div>
   <% end %>
   
-  
   <p>
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
+    <%= label_tag 'username' %><br>
+    <%= text_field_tag 'username' %>
   </p>
  
    <p>
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= label_tag 'email' %><br>
+    <%= text_field_tag 'email' %>
   </p>
   
   <p>
-    <%= f.label :hashed_password %><br>
-    <%= f.text_field :hashed_password %>
+    <%= label_tag 'password' %><br>
+    <%= text_field_tag 'password' %>
+  </p>
+  
+  <p>
+    <%= label_tag 'confirm_password' %><br>
+    <%= text_field_tag 'confirm_password' %>
   </p>
  
   <p>
-    <%= f.submit %>
+    <%= submit_tag 'Create User' %>
   </p>
 <% end %>
 
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', :list_all_path %>

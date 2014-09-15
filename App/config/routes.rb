@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   resources :submissions
-  resources :users
-
+  
   root  to: 'application#index'
 
   get 'submit' => "submissions#new"
@@ -14,6 +13,15 @@ Rails.application.routes.draw do
   get 'login' => "application#login"
   get 'profile' => "application#profile", :as => :profile_path
   post 'login/:username/:password' => 'application#login'
+  
+  #Users/Login
+  get 'users/list' => "users#index", :as => :list_all_path
+  get 'users/show/:id' => "users#show", :as => :show_user_path
+  get 'users/edit/:id' => "users#edit", :as => :edit_user_path
+  get 'users/removeuser/:id' => "users#destroy", :as => :delete_user_path
+  get 'users/signup/' => "users#new", :as => :signup_path
+  post 'users/update/:id' => "users#update", :as => :update_user_path
+  post 'users/signup/' => "users#create", :as => :create_user_path
 
 
   # The priority is based upon order of creation: first created -> highest priority.

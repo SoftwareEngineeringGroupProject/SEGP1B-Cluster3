@@ -9,15 +9,19 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		#@user = User.new(user_params)
-		username = user_params[:username]
-		email = user_params[:email]
-		password = user_params[:hashed_password]
+		#Get submitted form data
+		username = params[:username]
+		email = params[:email]
+		password = params[:password]
+		passwordconf = params[:confirm_password]
 
-  		@user=User.create_with_credentials(username, email, password)
+		#try to create a user
+  		@user = User.create_with_credentials(username, email, password)
   		if @user != nil
-  			redirect_to @user
+  			#Successfully created, redirect
+  			redirect_to :list_all_path
   		else
+  			#Error in creation, display form again
   			render 'new'
   		end
 	end
@@ -42,14 +46,13 @@ class UsersController < ApplicationController
 	
 	def destroy
 		@user = User.find(params[:id])
-		@user.destroy
-		
-		redirect_to users_path
+		@user.delete
+		redirect_to :list_all_path
 	end
 	
 	private
   	def user_params
-    	params.require(:user).permit(:username, :email, :hashed_password)
+    	params.require(:user).permit(:username, :email, :password, :confirm_password)
   	end
   
 end
