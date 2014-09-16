@@ -20,35 +20,6 @@ ActiveRecord::Schema.define(version: 20140908061443) do
     t.datetime "updated_at"
   end
 
-  create_table "attacheds", force: true do |t|
-    t.binary   "attached"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "project_id"
-  end
-
-  create_table "companies", force: true do |t|
-    t.string   "name"
-    t.string   "username"
-    t.string   "address"
-    t.string   "phone"
-    t.string   "reference_code"
-    t.string   "email"
-    t.string   "website"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "projects", force: true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.integer  "company_id"
-    t.integer  "attched_id"
-    t.string   "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "student_projects", force: true do |t|
     t.string   "title"
     t.string   "summary"
