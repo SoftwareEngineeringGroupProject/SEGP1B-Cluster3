@@ -1,3 +1,6 @@
+  <% if flash[:notice] %>
+    <li><font color="black"><%= flash[:notice] %></font></li>
+  <% end %>
   <!--##############################################################-->
    <div class="wrapper navigation">
       <div id="navi" class="flex_height">
@@ -7,15 +10,19 @@
             <input type="image" id="go" src="/images/search_r.gif" alt="Search" />
           </form>
         </div>
-
+		
         <div id="menu" class="button to_left">
+        
           <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="#">Projects</a></li>
             <li><a href="Process_Items_in_Cart.html">Process Cart</a></li>
+            <li><a href="/logout">Logout</a></li>
           </ul>
+          
         </div>
       </div>
+      <h4><font color="white">Logged in as: <%=@current_user.username%></font></h4>
     </div>
 
   <!--##############################################################-->
