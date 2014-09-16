@@ -1,12 +1,36 @@
-<% @page_title = "UserAuth | Login" -%>
-<div class= "Sign_Form">
-  <h1>Log in</h1>
-  <% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
+<div class="wrapper banner">
+    <div id="top_bar" class="flex_height">
+      <div class="to_left">
+        <h1>University of Adelaide</h1>
+      </div>
+
+      <div class="button to_right">
+        <ul>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/register">Register<a/></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!--########################################################-->
+  <%= form_tag(:submitlogin, class: "forms", id: "login") do %>
+      <div class="titles">
+        <h3>Please Log in or Register to Continue</h3>
+        <!--message flash up-->
+        <% if flash[:notice] %>
+    		<div class="notice"><%= flash[:notice] %></div>
+  		<% end %>
+      </div>
+      <div class="inputs">
+        <input type="text" placeholder="Reference number" autofocus />
+        <div id="separator">or</div>
+        <p>Username or Email Address</p><%= text_field_tag :username_or_email %>
+        <p>Password</p><%= password_field_tag :login_password %>
+      </div>
+      <div class="submit" class="button">
+      	<%= submit_tag "Log In", class: "to_right" %>
+        <a class="to_left" href="index.html">BACK</a>
+      </div>
   <% end %>
-  <%= form_tag(:action => 'login_attempt') do %>
-    <p>Username or Email:</br> <%= text_field_tag(:username_or_email) %></p> 
-    <p>Password:</br> <%= password_field_tag :login_password %></p> 
-    <%= submit_tag("Log In") %>
-  <% end %>
-</div>
+    
+  

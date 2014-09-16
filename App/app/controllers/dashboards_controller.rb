@@ -1,9 +1,11 @@
 class DashboardsController < ApplicationController
 
   def view
+  	#authenticate user first
+  	
+  	authenticate_user
     # View projects based on project state
     @state = params[:state]
-
 
 
 

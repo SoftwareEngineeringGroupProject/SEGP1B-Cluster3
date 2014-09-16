@@ -1,21 +1,46 @@
-<% @page_title = "PPMS | Signup" %>
-<div class="Sign_Form">
-<h1>Create account</h1>
+  <!--#######################################################-->
+  <div class="wrapper banner">
+    <div id="top_bar" class="flex_height">
+      <div class="to_left">
+        <h1>University of Adelaide</h1>
+      </div>
 
-<% if @user.errors.any? %>
-    <ul class="Signup_Errors">
-    <% for message_error in @user.errors.full_messages %>
-      <li>* <%= message_error %></li>
+      <div class="button to_right">
+        <ul>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/register">Register<a/></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!--########################################################-->
+  <div id="ProfileSetting" class="forms flex_height">
+    <%= form_for :user, :url => {:controller => 'users', :action => 'create'}, :html => {:class => 'forms'} do |f| %>
+      <div class="titles">
+        <h3>Register A New Account</h3>
+      </div>
+      
+      <!-- Error display -->
+      <% if @user.errors.any? %>
+    	<ul class="Signup_Errors">
+    	<% for message_error in @user.errors.full_messages %>
+      	<li>* <%= message_error %></li>
+    	<% end %>
+    	</ul>
+  	  <% end %>
+  	  
+      <fieldset class="inputs">
+        <legend>User details</legend>       
+    	<p> Username:</br> <%= f.text_field :username%> </p>
+    	<p> Email:</br> <%= f.text_field :email%> </p>
+    	<p> Password:</br> <%= f.password_field :password%></p>
+    	<p> Password Confirmation:</br> <%= f.password_field :password_confirmation%> </p>
+      </fieldset>
+
+        <div class="submit" class="button" >
+        <%= f.submit :Signup, class: 'to_right' %>
+        <a class="to_left" href="index.html">BACK TO HOME PAGE</a>
+      </div>
     <% end %>
-    </ul>
-  <% end %>
     
-  <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
-    <p> Username:</br> <%= f.text_field :username%> </p>
-    <p> Email:</br> <%= f.text_field :email%> </p>
-    <p> Password:</br> <%= f.password_field :password%></p>
-    <p> Password Confirmation:</br> <%= f.password_field :password_confirmation%> </p>
-    <%= f.submit :Signup %>
-  <% end %>
-  
-</div>
+  </div>
