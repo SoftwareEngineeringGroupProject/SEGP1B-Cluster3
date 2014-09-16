@@ -4,27 +4,22 @@ class UsersController < ApplicationController
 		@users = User.all
 	end
 	
+	before_filter :save_login_state, :only => [:new, :create]
+
 	def new
-		@user = User.new
+		#Signup Form
+		@user = User.new     
 	end
 
 	def create
-		#Get submitted form data
-		username = params[:username]
-		email = params[:email]
-		password = params[:password]
-		passwordconf = params[:confirm_password]
-
-		#try to create a user
-  		@user = User.create_with_credentials(username, email, password)
-  		if @user != nil
-  			#Successfully created, redirect
-  			redirect_to :list_all_path
-  		else
-  			#Error in creation, display form again
-  			render 'new'
-  		end
-	end
+    	@user = User.new(user_params)
+    	if @user.save
+    		redirect_to :list_all_path
+      	else
+        	render "new"
+      	end
+      	
+    end
 	
 	def show
 		@user = User.find(params[:id])
@@ -38,7 +33,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
  
   		if @user.update(user_params)
-    		redirect_to @user
+    		redirect_to :list_all_path
   		else
     		render 'edit'
   		end
@@ -52,7 +47,7 @@ class UsersController < ApplicationController
 	
 	private
   	def user_params
-    	params.require(:user).permit(:username, :email, :password, :confirm_password)
+    	params.require(:user).permit(:username, :email, :password, :password_confirmation)
   	end
   
 end
