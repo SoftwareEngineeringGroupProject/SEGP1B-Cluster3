@@ -1,34 +1,33 @@
 class ProjectsController < ApplicationController
-  before_action :get_admin , :only => [:check_auth, :new, :index]
+  # before_action :get_admin , :only => [:check_auth, :new, :index]
   # before_action :index , :only => [:check_logged_in]
   after_action :check_logged_in, except: [:check_auth, :logout, :new]
   
-  def get_admin
-    @admin = Admin.find(1)    
-  end
+ 
 
   def check_logged_in
-    
+
   end
 
-  def check_auth
-    if ( params[:username] == @admin.username && params[:password] == @admin.password )   
-      session[:username] = @admin.username
-      redirect_to root_path ,:notice => "Welcome " + @admin.username
+  # def check_auth
+  #   if ( params[:username] == @admin.username && params[:password] == @admin.password )   
+  #     session[:username] = @admin.username
+  #     redirect_to root_path ,:notice => "Welcome " + @admin.username
 
-    else
-      flash[:notice] = "Incorrect username/password"
-      redirect_to root_path
+  #   else
+  #     flash[:notice] = "Incorrect username/password"
+  #     redirect_to root_path
       
-    end
-  end
+  #   end
+  # end
 
 
   def index
-    @projects = Admin.all
-if session[:username] == @admin.username
-      render layout: "loggedin"
-    end
+    # @projects = Admin.all
+    @projects = StudentProject.all
+    # if session[:username] == @admin.username
+    #   render layout: "loggedin"
+    # end
   end
 
   def logout
@@ -40,20 +39,23 @@ if session[:username] == @admin.username
     # if session[:username] != @admin.email
     #   redirect_to root_path ,:notice => "Only admins are allowed to submit projects"
     # end
-
-
+   
 
   end
 
   def create
-    @project = Project.new
-    @project.title = params[:title]
-    @project.group = params[:group]
-    @project.summary = params[:summary]
-    @project.members = params[:members]
-    @project.extra = params[:extra]
+    @project = StudentProject.new(user_params)
+    # @project.title = params[:title]
+    # @project.group = params[:group]
+    # @project.summary = params[:summary]
+    # @project.members = params[:members]
+    # @project.extra = params[:extra]
     @project.save
+  end
 
+  def user_params
+    params.require(:StudentProject).permit(:title, :group, :summary, :members, :extra, :image)
+    
   end
 
   def show

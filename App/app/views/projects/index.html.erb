@@ -12,10 +12,15 @@
 		  	</tr>
 		<% @projects.each do |project| %>
 		<tr>
-			<td><%= project.username %></td>
-			<td><%= project.password %></td>
+			<td><%= project.title %></td>
+			<td><%= project.group %></td>
 		</tr>
 		<% end %>
 	</table>
+	
 
+	<% @projects.each do |project| %>
+		Hello
+		<%= image_tag @projects.image_url(:thumb) if @projects.image? %>
+	<% end %>
 </p>
