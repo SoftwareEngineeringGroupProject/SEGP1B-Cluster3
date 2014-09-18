@@ -29,3 +29,20 @@
   </p>
   <p><%= f.submit %></p>
 <% end %>
+
+
+  <% @projects.each do |project| %>
+    Hello
+    <%= image_tag @projects.image_url(:thumb) if @projects.image? %>
+  <% end %>
+
+
+   <%= form_tag({action: :create}, :html => {:multipart => true}) do %>
+  Project name: <%= text_field_tag(:title)%></br>
+  Group name: <%= text_field_tag(:group)%></br> 
+  Members: <%= text_field_tag(:members)%></br> 
+  Summary: <%= text_area_tag(:summary) %></br> 
+  Extra: <%= text_area_tag(:extra) %></br>
+  Picture: <%= file_field_tag(:image) %>
+  <%= button_to "Create", action: :create %></br> 
+ <% end %>

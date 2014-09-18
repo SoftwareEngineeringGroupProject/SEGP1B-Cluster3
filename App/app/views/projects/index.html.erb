@@ -1,26 +1,8 @@
 <h1>Home</h1>
 <h2><%= flash[:notice] %></h2>
 
-<p>	
-	<table>
-			<tr>
-		    <th>Project Name</th>
-		    <th>Group Name</th>
-		    <th>Summary</th>
-		    <th></th>
-		    <th></th>
-		  	</tr>
-		<% @projects.each do |project| %>
-		<tr>
-			<td><%= project.title %></td>
-			<td><%= project.group %></td>
-		</tr>
-		<% end %>
-	</table>
-	
-
-	<% @projects.each do |project| %>
-		Hello
-		<%= image_tag @projects.image_url(:thumb) if @projects.image? %>
-	<% end %>
-</p>
+<% for project in @projects %>
+	<%= image_tag project.image_url(:thumb) %>
+	Title: <%= project.title %></br>
+	Group: <%= project.group %>
+<% end %>

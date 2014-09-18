@@ -13,7 +13,15 @@
 
 ActiveRecord::Schema.define(version: 20140917130020) do
 
-# Could not dump table "student_projects" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "student_projects", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.string   "group"
+    t.string   "members"
+    t.string   "summary"
+    t.string   "extra"
+    t.string   "image"
+  end
 
 end
