@@ -1,7 +1,7 @@
 class SubmissionsController < ApplicationController
-  
-  def index 
-    
+
+  def index
+
   end
 
   def new
@@ -18,20 +18,21 @@ class SubmissionsController < ApplicationController
     @project = @company.projects.build(project_params)
     @attached =@project.build_attached(attached_params)
 
-    # Set state for newly submitted project 
+    # Set state for newly submitted project
     @project.status = "new"
 
     # If submission is done successfully, redirect to show page
     if @project.save && @company.save && @attached.save
+      UserMailer.welcome_email(@company).deliver
       redirect_to submission_path(@project)
     else
-    # Else, render the submission page  
+    # Else, render the submission page
       render :new
-    end 
+    end
 
   end
 
-  def update 
+  def update
   end
 
   def show
@@ -46,13 +47,13 @@ class SubmissionsController < ApplicationController
   private
     def project_params
       params.require(:project).permit(:title, :body)
-    end 
+    end
 
     def company_params
       params.require(:company).permit(:name, :address, :phone, :email, :website)
-    end 
+    end
 
     def attached_params
       params.require(:attached).permit(:attached, :project_id)
-    end   
+    end
 end

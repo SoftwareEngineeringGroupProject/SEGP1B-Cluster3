@@ -18,7 +18,7 @@ label{
 fieldset {
 	padding: 12px;
 	border: none;
-	box-shadow: 0px 0px 2px 3px rgba(122,153,26, 0.1);
+	box-shadow: 0px 0px 4px 5px rgba(122,153,26, 0.1);
 }
 
 select {
@@ -34,7 +34,7 @@ legend {
 	box-shadow: 0px 0px 2px 4px rgba(122,153,26, 0.1);
 	}
 
-textarea {	
+textarea {
 	margin:auto;
 	display:block;
 }
@@ -43,8 +43,8 @@ textarea {
 	margin: 21px auto;
 	background: #fff;
 	padding: 20px 30px;
-	box-shadow: 
-        0px 0px 0px 4px rgba(255,255,255,0.5 ), 
+	box-shadow:
+        0px 0px 0px 4px rgba(255,255,255,0.5 ),
         0px 4px 20px rgba( 0,0,0,0.4 );
   	border-radius: 3px;
 }
@@ -68,8 +68,8 @@ textarea {
 	padding: 5px;
 	}
 
-.inputs input[type=text], input[type=password],textarea{
-	width: 93%;
+.inputs input[type=text], input[type=password], textarea{
+		width: 93%;
     background: #f6f6f6;
     color: #555555;
     padding: 12px 12px;
@@ -84,7 +84,7 @@ textarea {
 
 .inputs input[type=text]:focus, input[type=password]:focus, textarea:focus  {
     background: #fff;
-    box-shadow: 0px 0px 1px 3px rgba(122,153,26, 0.4);
+    box-shadow: 0px 0px 4px 1px rgba(124,153,26, 0.3);
 	}
 
 input[type="file"] {
@@ -92,34 +92,6 @@ input[type="file"] {
 	box-shadow: 0px 0px 2px 4px rgba(122,153,26, 0.1);
 	outline:none;
 	}
-
-.submit {
-	width: 100%;
-	margin-top: 20px;
-	margin-bottom: 50px;
-	}	
-
-.submit a:link, a:visited {
-	width: 45%;
-	padding: 5px;
-	display: block;
-	float: left;
-	margin-right: 4px;
-	color: #B0ABAB;
-    background-color: #333333;
-    text-align: center;
-    border-radius: 3px;
-    text-decoration: none;
-	}
-
-.submit a:hover {
-	background-color: #7A991A;	
-	color:#333333;
-	}
-	
-.submit a:active {
-	background-color: #ABDA0F;
-	}	
 
 /* ----------------------------------------------Search Form-------------------------------------*/
 
@@ -137,7 +109,7 @@ input[type="file"] {
 	margin:0;
 	padding:5px 5px 5px 10px;
 	color:#C7CED6;
-	background:url("../images/search_l.gif") 0 0 no-repeat #2C2C2C;
+	background:url("/images/search_l.gif") 0 0 no-repeat #2C2C2C;
 	border:none;
 	}
 
@@ -145,7 +117,7 @@ input[type="file"] {
 	width:35px;
 	height:30px;
 	margin:0;
-	padding:0;	
+	padding:0;
 	cursor:pointer;
 	background:none;
 	}
@@ -160,18 +132,33 @@ input[type="file"] {
 #companyDetails {
 	width: 40%;
 	margin: auto;
-}
+	}
 
 #projectDetails {
 	width: 40%;
 	margin: auto;
-}
+	}
 
 /* ---------------------------------------------- Login form------------------------------------*/
 #login {
 	width:300px;
 	}
 
+#login	input[type="submit"], #login .button a {
+	margin: 35px 4px 4px 4px;
+	padding: 4px;
+	width: 138px;
+	border-radius: 4px;
+}
+
+#login_buttons a{
+	margin: 1px 4px;
+	padding: 4px;
+	width: 120px;
+	border-radius: 1px;
+}
+
+/* ------------------------------------- Submission -------------------------------------*/
 #subPro {
 	width: 65%;
 	height: 482px;
@@ -181,25 +168,17 @@ input[type="file"] {
 .leftPart{
 	width:40%;
 	height:330px;
-	}	
+	}
 
 .rightPart{
 	width:50%;
 	height:330px;
 	}
 
-.sep {
-	padding:10px;
-	width:100%;
-	clear:both;
-	}
-#subBtn {
-	width: 50%;
-	}
-
-#subBtn a {
-	width: 200px;
-	border-radius: 3px;
-	}
-
-
+#subBtn input[type="submit"], #subBtn a {
+	font-size: 14px;
+	margin: 35px 4px 4px 4px;
+	padding: 4px;
+	width: 138px;
+	border-radius: 4px;
+}

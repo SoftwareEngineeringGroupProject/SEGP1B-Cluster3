@@ -1,49 +1,30 @@
-.left_part, .right_part {
-	padding:0;
-	margin:0;
-	width:14%;
-	}		
-
-#tabs, #cart {
-	padding:5px;
-	width:92%;
-	}
-
-#tabs a, #cart a {
-	width:125px;
-	padding:15px;
-	text-align: center;
-	clear:both;
-	}
+/*-------------- General layout ------------*/
 
 #container {
-	margin:auto;
+	margin: 8px auto;
 	width:70%;
-	padding: 10px;
-	background-color: white;
+	padding: 4px 10px 10px 10px;
+	background:none;
 	min-height: 350px;
-	border-radius: 4px;
 	}
 
-div.content {
+di.content {
 	margin-top: 8px;
 	}
 
-
-/******************************/
-
-#communication, #project_showing , #pick_to_communicate{
+#communication, #board_showing , #pick_to_communicate{
 	margin-bottom: 20px;
 	padding: 10px;
 	border-radius: 4px;
+	width:98%;
 	}
 
 #communication {
 	background-color: #424242;
 	width:98%;
-	height:180px;
+	height:165px;
 	}
-	
+
 #communication_extra {
 	margin-bottom: 20px;
 	padding: 10px;
@@ -51,29 +32,67 @@ div.content {
 	background-color: #424242;
 	height:180px;
 	width:75%;
-}
-	
+	}
+
 #pick_to_communicate {
 	background-color: #424242;
 	width:20%;
 	height:180px;
 	}
 
-
-#project_showing {
+#board_showing {
 	background-color: #FAFAFA;
 	}
 
-/* ------- project_showing --------*/
-#search_date input {
-	width:100%;
+
+/*------------------- Top bar --------------------- */
+#navi_tabs li {
+	margin-right: 8px;
+	width: 120px;
+}
+
+/*------------------- Tabs aside ------------------*/
+.aside_cols {
+	padding:0;
+	margin: 5px 0 0 0;
+	border:0;
+	width:14%;
 	}
 
+#tabs, #cart {
+	border-radius: 6px;
+	background-color: #333333;
+	width: 95%;
+	margin: 4px 0px;
+}
+
+#tabs {
+	padding: 4px 0px 4px 4px;
+}
+
+#cart {
+	padding: 4px 4px 4px 0px;
+}
+
+#tabs a, #cart a {
+	padding: 15px;
+}
+
+#tabs li, #cart li {
+	border-top: 1px solid black;
+}
+
+/*---------- Project showing --------*/
+#action_to_showing_board input {
+	margin-left: 4px;
+	width: 100px;
+	border-radius: 4px;
+}
+
 #search_date input {
+	display:inline;
 	border: none;
 	text-align: center;
-	height: 14px;
-	width:100px;
 	}
 
 #show_specification {
@@ -81,56 +100,63 @@ div.content {
 	}
 
 
-#project_list {
+#showing_list {
 	width: 22%;
 	}
 
-#project_list select {
+#showing_list select {
 	height: 250px;
 	width: 100%;
 	margin-top: 10px;
 	}
 
-/* -------------- communication --------------*/
-#pick_to_communicate select {
-	width: 100%;
-	margin-top: 10px;
-	}
-
-
-#action_to_message {
+/*--------------- Mailing box ------------------*/
+#action_to_message{
 	width: 14%;
 	padding: 5px;
 	}
-	
-#action_to_message a{
-	padding:11px;
-	width: 80px;
+
+
+#action_to_message li {
+	margin: 4px auto;
+	width: 80%;
+	}
+
+#action_to_message a {
+	padding:13px;
+	}
+
+#action_to_message input {
+	padding:13px;
+	width: 100%;
 	}
 
 #message_box {
 	width: 83%;
+	padding: 0;
+	margin: 0 6px;
 	}
 
 #message_box textarea {
-	margin-top: 30px;
-	width: 96%;
-	max-width:96%;
-	min-width:96%;
+	margin-top: 35px;
 	height: 125px;
-	max-height:125px;
-	min-height:125px;
+	width: 100%;
+	padding: 0px;
 	}
 
 #message_box input {
 	display: block;
 	background-color: #DFDFDF;
 	border-radius: 3px;
-	border: none;
 	width: 48%;
-	padding: 3px;
+	padding: 4px;
+	margin: 0;
 	}
 
+#pick_to_communicate select {
+	width: 100%;
+	margin-top: 10px;
+	}
 
 /*----------------------- Process projects in cart ---------------*/
 #edit_specification {
