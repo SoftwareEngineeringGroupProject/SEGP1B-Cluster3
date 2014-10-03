@@ -1,57 +1,90 @@
 @import url(forms.css);
 @import url(dashboard.css);
+
 /*------------------------------------------------- Initial setup---------------------------------*/
-body{margin:0; padding:0; font-size:13px; color: black; font-family:Georgia, "Times New Roman", Times, serif; background-color: #E6E6E6; }
-a { outline:none; text-decoration:none;}
+body{margin:0; padding:0; font-size:13px; color: #333; font-family:Georgia, "Times New Roman", Times, serif; background-color: #E6E6E6; }
+a { outline: none none; text-decoration:none;}
 img {margin:0; padding:0; border:none; width:100%; height:100%;}
 
 /*------------------------------------------------- Conmon styles---------------------------------*/
+
 .flex_height:after{content:" "; display:block; height:0; clear:both; visibility:hidden; line-height:0;}
 .justify {text-align: justify;}
 .to_left{float:left;}
 .to_right{float:right;}
 
-.shadow{ box-shadow: 0px 0px 10px 3px #888888; background-color:white;}
-.button {
+.shadow { box-shadow: 0px 0px 4px 4px #888888; background-color:white;}
+.field_with_errors input[type="text"], .field_with_errors textarea {
+	box-shadow: inset 0px 0px 1px 2px #7A991A;
+	border-radius: 2px;
+}
+
+.horizontal_list, .vertical_list {
 	margin: 0;
+	padding: 0;
 	display: block;
 	}
-	
-.button ul {
+
+.horizontal_list ul {
 	list-style-type: none;
+	width: 100%;
+	display: block;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	}
+}
 
-.button li {
+.horizontal_list li {
+	display: block;
 	float: left;
-	padding: 2px;
-}	
-.button a:link, a:visited {
+	padding: 0;
+}
+
+.vertical_list ul {
+	display: block;
+	list-style-type: none;
+	width: 100%;
+	margin: 0;
+  padding: 0;
+}
+
+.vertical_list li {
+	display: block;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+
+.button a:link, a:visited, .button input {
     display: block;
-    width: 100px;
     font-weight: bold;
-    color: white;
+    color: #C7CED6;
     background-color: #333333;
     text-align: center;
-    padding: 4px;
-    text-decoration: none;
-	}
-.button a:hover{
-    background-color: #ABDA0F;
-    color:#000;
-	}
-.button a:active {
-    background-color: #7A991A;
-    }
+		margin: 0;
+		border: 0;
+		padding: 5px;
+		transition: background-color 0.2s;
+}
 
-div.wrapper h1 {	
+.button a:hover, .button input:hover {
+    background-color: #ABDA0F;
+		color: black;
+		cursor: pointer;
+}
+
+.button a:active, .button input:focus {
+    background-color: #7A991A;
+}
+
+div.wrapper h1 {
 	margin:0;
 	padding:0;
 	font-size:25px;
 	font-weight:normal;
 	}
+
 .general_box {
 	margin:auto;
 	padding: 20px;
@@ -68,13 +101,13 @@ div.wrapper h1 {
 
 /* -------------------------------------------Specific Wrappers-------------------------------------*/
 .banner{
-	color:#F2EEEE; 
-	background-color:#191919; 
+	color:#F2EEEE;
+	background-color:#191919;
 	border-top:8px solid #7A991A;
 	}
 
 .navigation{
-	background:#202020;/*linear-gradient(#56585D, #2F3034) repeat scroll 0% 0% transparent;*/
+	background:#202020;
 	color:#F2EEEE;
 	}
 
@@ -83,7 +116,7 @@ div.wrapper h1 {
 	}
 
 .content{
-	color:#F2EEEE; 
+	color:#F2EEEE;
 	background-color:none;
 	}
 
@@ -95,7 +128,7 @@ div.wrapper h1 {
 /* ----------------------------------------------General-------------------------------------*/
 #top_bar, #navi, #slides, #news {
 	margin: auto;
-	width:70%;	
+	width:70%;
 	}
 
 #top_bar, #navi {
@@ -110,7 +143,7 @@ div.wrapper h1 {
 /* ------------------------------------ Slides ----------------------------------------------*/
 #slides {
 	margin-top: 12px;
-	}		
+	}
 
 /* ------------------------------------ Content ----------------------------------------------*/
 #news {

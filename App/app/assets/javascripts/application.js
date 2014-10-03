@@ -24,32 +24,24 @@
             $( indexState ).show();
         });
     })
-  
+
   $(function() {
     $('#reload').click(function() {
       location.reload();
     });
   });
 
-  
+
 
   $(function() {
     $( "#datepicker" ).datepicker();
   });
 
-  $(function() { 
-  
+  $(function() {
+
     $("#demo").change(function(){
     var chosen = $(this).find(":selected")
     $("textarea#project_desc").val(chosen.data("desc"));
+    $("input#mail_address").val(chosen.data("mail"));
     });
   });
-
-
-
-
-
- 
- 
-
-  

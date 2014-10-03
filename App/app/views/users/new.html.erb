@@ -5,21 +5,21 @@
         <h1>University of Adelaide</h1>
       </div>
 
-      <div class="button to_right">
+      <div id="login_buttons" class="button horizontal_list to_right">
         <ul>
-          <li><a href="/login">Login</a></li>
-          <li><a href="/register">Register<a/></li>
+          <li><%= link_to "Login", login_path %></li>
+          <li><%= link_to "Register", signup_path %></li>
         </ul>
       </div>
     </div>
   </div>
   <!--########################################################-->
-  <div id="ProfileSetting" class="forms flex_height">
-    <%= form_for :user, :url => {:controller => 'users', :action => 'create'}, :html => {:class => 'forms'} do |f| %>
+  <div id="ProfileSetting" class=" forms flex_height">
+    <%= form_for :user, :url => {:controller => 'users', :action => 'create'}  do |f| %>
       <div class="titles">
         <h3>Register A New Account</h3>
       </div>
-      
+
       <!-- Error display -->
       <% if @user.errors.any? %>
     	<ul class="Signup_Errors">
@@ -28,19 +28,21 @@
     	<% end %>
     	</ul>
   	  <% end %>
-  	  
+
       <fieldset class="inputs">
-        <legend>User details</legend>       
-    	<p> Username:</br> <%= f.text_field :username%> </p>
-    	<p> Email:</br> <%= f.text_field :email%> </p>
-    	<p> Password:</br> <%= f.password_field :password%></p>
-    	<p> Password Confirmation:</br> <%= f.password_field :password_confirmation%> </p>
+        <legend>User details</legend>
+    	  <%= f.text_field :username, "placeholder" => "Username" %>
+    	  <%= f.text_field :email, "placeholder" => "Email" %> </p>
+    	  <%= f.password_field :password, "placeholder" => "Password" %></p>
+    	  <%= f.password_field :password_confirmation, "placeholder" => "Password Confirmation"  %> </p>
       </fieldset>
 
-        <div class="submit" class="button" >
-        <%= f.submit :Signup, class: 'to_right' %>
-        <a class="to_left" href="index.html">BACK TO HOME PAGE</a>
+      <div id="subBtn" class="button horizontal_list to_right" >
+        <ul>
+          <li><%= f.submit "SIGN UP" %></li>
+          <li><%= link_to "BACK TO HOME", root_path %></li>
+        </ul>
       </div>
     <% end %>
-    
+
   </div>

@@ -1,133 +1,143 @@
-  <% if flash[:notice] %>
-    <li><font color="black"><%= flash[:notice] %></font></li>
-  <% end %>
-  <!--##############################################################-->
-   <div class="wrapper navigation">
-      <div id="navi" class="flex_height">
-        <div class="to_right">  
-          <form action="#" method="post" id="search">  
-            <input type="text" value="Search&hellip;" onfocus="this.value=(this.value=='Search&hellip;')? '' : this.value ;" />
-            <input type="image" id="go" src="/images/search_r.gif" alt="Search" />
-          </form>
-        </div>
-		
-        <div id="menu" class="button to_left">
-        
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="Process_Items_in_Cart.html">Process Cart</a></li>
-            <li><a href="/logout">Logout</a></li>
-          </ul>
-          
-        </div>
-      </div>
-      <h4><font color="white">Logged in as: <%=@current_user.username%></font></h4>
+
+<!--########################## BANNER ####################################-->
+<% if flash[:notice] %>
+  <li><font color="black"><%= flash[:notice] %></font></li>
+<% end %>
+<div class="wrapper navigation">
+
+  <div id="logged" class='to_right'>
+    <p><font color="white">Logged in as: <%=@current_user.username%></font></p>
+  </div>
+
+  <div id="navi" class="flex_height">
+
+    <!-- Search bar -->
+    <div class="to_right">
+      <form action="#" method="post" id="search">
+        <input type="text" value="Search&hellip;" onfocus="this.value=(this.value=='Search&hellip;')? '' : this.value ;" />
+        <input type="image" id="go" src="/images/search_r.gif" alt="Search" />
+      </form>
     </div>
 
-  <!--##############################################################-->
-  <div class="wrapper content">
-    <!--********************-->  
-    <div class="left_part to_left">
-      <div id="tabs" class="to_right button">
-        <ul>
-          <li><%=link_to "Newly submitted", state: "new" %></li>
-          <li><%=link_to "Accepted", state: "accepted"  %></li>
-          <li><%=link_to "Rejected", state: "rejected" %></li>
-          <li><%=link_to "Pending", state: "pending" %></li>
-          <li><a href="projects/Past_projects.html">Past projects</a></li>
-        </ul>
-      </div>
+    <!-- Menu bar -->
+    <div id = "navi_tabs" class="button horizontal_list to_left">
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Projects", admin_dashboard_path %></li>
+        <li><%=link_to "Process cart", edit_desc_path %></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
     </div>
 
-    <!--********************-->
-    
-    <div id="container" class="to_left shadow">
+  </div>
+
+</div>
+
+<!--############################## MAIN BODY ################################-->
+<div class="wrapper content">
+
+  <!-- Left navigation -->
+  <div class="aside_cols to_left">
+    <div id="tabs" class="to_right vertical_list button">
+      <ul>
+        <li><%=link_to "Newly submitted", state: "new" %></li>
+        <li><%=link_to "Accepted", state: "accepted"  %></li>
+        <li><%=link_to "Rejected", state: "rejected" %></li>
+        <li><%=link_to "Pending", state: "pending" %></li>
+        <li><a href="projects/Past_projects.html">Past projects</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Middle board -->
+  <div id="container" class="to_left">
     <%= form_tag %>
-      <div class="flex_height">
-        <div id="action_to_project" class="to_right button">
-          <ul>  
-          <% if @state == "new" %>
-            <li><%= submit_tag 'accepted' %></li>
-            <li><%= submit_tag 'rejected' %></li>
-            <li><%= submit_tag 'pending' %></li>
-          <% end%>
+      <!-- Viewing Project Board -->
+      <div id="board_showing" class="general_box flex_height shadow">
+        <div class="flex_height">
+          <div id="action_to_showing_board" class="to_right horizontal_list button">
+            <ul>
+            <% if @state == "new" %>
+              <li><%= submit_tag 'Accept' %></li>
+              <li><%= submit_tag 'Reject' %></li>
+              <li><%= submit_tag 'Suspend' %></li>
+            <% end%>
 
-          <% if @state == "accepted" %>
-            <li><%= submit_tag 'pending' %></li>
-            <li><%= submit_tag 'add to cart' %></li>
-          <% end%>
+            <% if @state == "accepted" %>
+              <li><%= submit_tag 'Suspend' %></li>
+              <li><%= submit_tag 'Add To Cart' %></li>
+            <% end%>
 
-          <% if @state == "rejected" || @state == nil %>
-            <li><%= submit_tag 'remove' %></li>
-            <li><%= submit_tag 'pending' %></li>
-          <% end%>
+            <% if @state == "rejected" || @state == nil %>
+              <li><%= submit_tag 'Remove' %></li>
+              <li><%= submit_tag 'Suspend' %></li>
+            <% end%>
 
-          <% if @state == "pending" %>
-            <li><%= submit_tag 'accepted' %></li>
-            <li><%= submit_tag 'rejected' %></li>
-          <% end%>
+            <% if @state == "pending" %>
+              <li><%= submit_tag 'Accept' %></li>
+              <li><%= submit_tag 'Reject' %></li>
+            <% end%>
 
-          </ul>
+            </ul>
+          </div>
         </div>
-		  </div>
 
-
-      <div id="project_showing" class="general_box flex_height shadow"> 
-        <div class="to_left" id="project_list">
+        <!-- Project list-->
+        <div class="to_left" id="showing_list">
           <fieldset>
             <legend>
-              <div id="search_date">      
-                <input class="to_left" type="text" id="datepicker" value="Filter by date">
+              <div id="search_date" class ="horizontal_list">
+                <ul>
+                  <li><input class="to_left" type="text" id="datepicker" value="Filter by date" name = "date"></li>
+                  <li><%= submit_tag '' %></li>
+                </ul>
               </div>
             </legend>
-            <%= select_tag(:project_id, options_for_select(@projects.collect{|project| [project.title,project.id, {'data-desc'=>project.body}]}), "size" => "12", "id" => "demo") %>
-
+            <%= select_tag(:project_id, options_for_select(@projects.collect{|project| [project.title,project.id, {'data-desc'=>project.body, 'data-mail' => @emails[project.company_id]}]}), "size" => "12", "id" => "demo") %>
           </fieldset>
         </div>
 
+        <!-- Project description-->
         <div id="show_specification" class="to_right" >
           <fieldset>
             <legend>Project description</legend>
-            <textarea id="project_desc", rows="13">There are some project specification....</textarea>
+            <textarea id="project_desc" class ="inputs", rows="14">There are some project specification....</textarea>
           </fieldset>
         </div>
+      </div>
 
-      </div>  
-	 
-	  
-	  
-      <!--*********************************************-->
-      <div id="communication" id="general_box" class="shadow flex_height to_right">
+      <!-- Mailing panel-->
+      <div id="communication" id="general_box" class="flex_height to_right shadow">
+
+        <!-- Message box -->
 		    <div id="message_box" class="to_left">
-          <input class="to_left" type="text" placeholder="From: ">
-          <input class="to_right" type="text" placeholder="To: ">
-          <textarea id="industry_interaction" rows="16">Messages...</textarea>
+          <input class="to_left" type="text" placeholder="Subject:", name ="subject" >
+          <input class="to_right" id="mail_address" type="text" placeholder="To: ">
+          <%= text_area_tag 'email' %>
         </div>
 
-  		  <div id="action_to_message" class="to_right button">
+        <!-- Buttons to apply operations on message -->
+  		  <div id="action_to_message" class="to_right vertical_list button">
           <ul>
             <li><a href="#">Discard</a></li>
             <li><a href="#">Draft</a></li>
-            <li><a href="#">Send</a></li>
+            <li><%= submit_tag 'Send' %></li>
           </ul>
         </div>
+
       </div>
+  </div>
 
+  <!-- Cart bar -->
+  <div class="aside_cols to_left">
+    <div id="cart" class="to_left vertical_list button">
+      <ul>
+        <% if @cart != nil && @cart.length > 0 %>
+          <% @cart.each do |project| %>
+          <li><%=link_to project.title, edit_desc_path(:id => project.id) %></li>
+          <% end %>
+        <% end %>
+      </ul>
     </div>
-
-    <!--*********************-->
-    <div class="right_part to_left">
-      <div id="cart" class="to_left button">
-        <ul>
-          <li><a href="#">Project Cart</a></li>
-          <li><a href="#">Project 1</a></li>
-          <li><a href="#">Project 2</a></li>
-          <li><a href="#">Project 3</a></li>
-          <li><a href="#">Project 4</a></li>
-        </ul>
-      </div>
-
-    </div>
-
-  </div> 
+  </div>
+</div>
