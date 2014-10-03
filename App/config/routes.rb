@@ -1,15 +1,24 @@
 Rails.application.routes.draw do
+  resources :muas
+
   resources :submissions
   resources :users
 
-  root  to: 'application#index'
+  root  to: 'application#index', :as => :index
+
 
   get 'submit' => "submissions#new"
-  get 'dashboards/view/:state' => "dashboards#view"
-  get 'dashboards/view/' => "dashboards#view"
-  post 'dashboards/view/:state' => 'dashboards#change_state', :as => :change_state
-  post 'dashboards/view/' => 'dashboards#change_state'  
 
+  get 'dashboards/view/:state' => "dashboards#view"
+  get 'dashboards/view' => "dashboards#view", :as => :view
+  post 'dashboards/view/:state' => 'dashboards#action_handler', :as => :action_handler
+  post 'dashboards/view' => 'dashboards#action_handler'
+
+  get 'dashboards/edit_desc' => "dashboards#edit_desc", :as => :edit_desc
+  post 'dashboards/edit_desc' =>"dashboards#action_handler"
+
+  get 'dashboards/assign_students' => "dashboards#assign_students", :as => :assign_students
+  post 'dashboards/assgin_students' => "dashboards#action_handler"
 
   get 'login' => "application#login"
   get 'profile' => "application#profile", :as => :profile_path

@@ -1,31 +1,35 @@
-  <!--#######################################################-->
- <div class="wrapper banner">
-    <div id="top_bar" class="flex_height">
-      <div class="to_left">
-        <h1>University of Adelaide</h1>
-      </div>
+<!--#######################################################-->
+<div class="wrapper banner">
+  <div id="top_bar" class="flex_height">
+    <div class="to_left">
+      <h1>University of Adelaide</h1>
+    </div>
 
-      <div class="button to_right">
-        <ul>
-          <li><a href="login.html">Login</a></li>
-          <li><a href="register.html">Register<a/></li>
-        </ul>
-      </div>
+    <div id="login_buttons" class="horizontal_list button to_right">
+      <ul>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Register</a></li>
+      </ul>
     </div>
   </div>
-  <!--########################################################-->
-    <form id="login" class="forms">
-      <div class="titles">
-        <h3>Log in</h3>
-      </div>
-      <div class="inputs">
-        <input type="text" placeholder="Reference number"autofocus />
-        <div id="separator">or</div>
-        <input type="text" placeholder="Username/E-mail", name ="username" autofocus />
-        <input type="password" placeholder="Password" name ="password" autofucus/>
-      </div>
-      <div class="submit" class="button">    
-        <input type="submit" value="LOGIN" autofocus />
-        <a class="to_left" href="index.html">BACK</a>
-      </div>
-    </form>
+</div>
+
+<!--########################################################-->
+  <form id="login" class="forms">
+    <div class="titles">
+      <h3>Log in</h3>
+    </div>
+    <div class="inputs">
+      <input type="text" placeholder="Reference number"autofocus />
+      <div id="separator">or</div>
+      <input type="text" placeholder="Username/E-mail", name ="username" autofocus />
+      <input type="password" placeholder="Password" name ="password" autofucus/>
+      <a href="#">Forgot password?</a>
+    </div>
+    <div class="button horizontal_list">
+      <ul>
+        <li><input type="submit" value="LOGIN"/></li>
+        <li><%=link_to 'BACK', index_path, :class=>'to_left' %></li>
+      </ul>
+    </div>
+  </form>
