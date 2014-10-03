@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
+	before_filter :save_login_state, :only => [:new, :create]
 
 	def index
 		@users = User.all
 	end
-
-	before_filter :save_login_state, :only => [:new, :create]
 
 	def new
 		#Signup Form
@@ -12,13 +11,13 @@ class UsersController < ApplicationController
 	end
 
 	def create
-    	@user = User.new(user_params)
-    	if @user.save
-    		redirect_to :login_path
-      	else
-        	render "new"
-      	end
+  	@user = User.new(user_params)
+    if @user.save
+    	redirect_to :login
+    else
+      render "new"
     end
+  end
 
 	def show
 		@user = User.find(params[:id])

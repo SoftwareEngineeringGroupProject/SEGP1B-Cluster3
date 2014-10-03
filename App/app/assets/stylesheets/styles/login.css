@@ -11,8 +11,8 @@
 	width:100%;
 	background: #fff;
 	padding: 20px 30px;
-	box-shadow: 
-        0px 0px 0px 4px rgba(255,255,255,0.5 ), 
+	box-shadow:
+        0px 0px 0px 4px rgba(255,255,255,0.5 ),
         0px 4px 20px rgba( 0,0,0,0.4 );
   	border-radius: 3px;
 	}
@@ -51,7 +51,7 @@
 	width: 100%;
 	margin-top: 20px;
 	margin-bottom: 50px;
-	}	
+	}
 
 #sign_in .submit a:link, a:visited {
 	width: 45%;
@@ -66,15 +66,16 @@
     text-decoration: none;
 	}
 
-#sign_in .submit a:hover {
-	background-color: #7A991A;	
+#sign_in  .submit > a:hover >{
+	background-color: #7A991A;
 	color:#333333;
 	}
-	
-#sign_in .submit a:active {
+
+#sign_in .submit a:active, input:active {
 	background-color: #ABDA0F;
-	}	
+	}
 
-
-
-
+#logged {
+  margin-right: 20px;
+  font-weight: bold;
+  }

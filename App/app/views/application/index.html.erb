@@ -1,12 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" lang="EN" dir="ltr">
-<head>
-  <title>Industry Engagement</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-  <link rel="stylesheet" href="styles/layout.css" type="text/css" />
-</head>
-
-<body>
   <!--#######################################################-->
   <div class="wrapper banner">
     <div id="top_bar" class="flex_height">
@@ -15,7 +6,7 @@
         <p>School of Computer Science </p>
       </div>
 
-      <div class="button to_right">
+      <div id="login_buttons" class="button horizontal_list to_right">
         <ul>
           <li><%= link_to "Login", login_path %></li>
           <li><%= link_to "Register", signup_path %></li>
@@ -37,7 +28,7 @@
           </form>
         </div>
 
-        <div id="menu" class="button to_left">
+        <div id="navi_tabs" class="button horizontal_list to_right">
           <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="#">Projects</a></li>
@@ -72,5 +63,3 @@
     <div class="flex_height">
     </div>
   </div>
-</body>
-</html>

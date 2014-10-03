@@ -1,18 +1,18 @@
- <!--#######################################################-->
-  <div class="wrapper banner">
-    <div id="top_bar" class="flex_height">
-      <div class="to_left">
-        <h1>University of Adelaide</h1>
-      </div>
+<!--#######################################################-->
+<div class="wrapper banner">
+  <div id="top_bar" class="flex_height">
+    <div class="to_left">
+      <h1>University of Adelaide</h1>
+    </div>
 
-      <div class="button to_right">
-        <ul>
-          <li><a href="login.html">Login</a></li>
-          <li><a href="register.html">Register<a/></li>
-        </ul>
-      </div>
+    <div id="login_buttons" class="horizontal_list button to_right">
+      <ul>
+        <li><a href="login.html">Login</a></li>
+        <li><%= link_to "Register", signup_path%></li>
+      </ul>
     </div>
   </div>
+</div>
   <!--########################################################-->
   <div id="subPro" class="forms flex_height">
     <%= form_for @project, url: {action: "create"} do |f| %>
@@ -24,7 +24,7 @@
         <%=fields_for @company do |c| %>
           <%=c.text_field :name, "placeholder" => "Company name" %>
           <%=c.text_field :address, "placeholder" => "Address" %>
-          <%=c.text_field :phone, "placeholder" => "Phone contacts" %>  
+          <%=c.text_field :phone, "placeholder" => "Phone contacts" %>
           <%=c.text_field :email, "placeholder" => "Email" %>
           <%=c.text_field :website, "placeholder" => "Website" %>
         <% end %>
@@ -36,16 +36,16 @@
         <%=f.text_area :body, "placeholder" => "Project description", "rows"=>"10" %>
         <%= fields_for @attached do |a| %>
           <%= a.file_field :attached %>
-        <% end %>  
-      </fieldset>   
+        <% end %>
+      </fieldset>
     <div class="sep"></div>
     <div class="to_left">
       <%= "Some fields were missing!" if @project.errors.any? || @company.errors.any? %>
     </div>
-    <div id="subBtn" class="button to_right"> 
+    <div id="subBtn" class="button horizontal_list to_right">
       <ul>
-        <li><%= f.submit %></li>
-        <li><a href="index.html">CANCEL</a></li>
+        <li><%= f.submit "SUBMIT" %></li>
+        <li><%= link_to "CANCEL", root_path %></li>
       </ul>
     </div>
     <% end %>

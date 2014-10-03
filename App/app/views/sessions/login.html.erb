@@ -1,10 +1,10 @@
-<div class="wrapper banner">
+    <div class="wrapper banner">
     <div id="top_bar" class="flex_height">
       <div class="to_left">
         <h1>University of Adelaide</h1>
       </div>
 
-      <div class="button to_right">
+      <div id="login_buttons" class="button horizontal_list to_right">
         <ul>
           <li><%= link_to "Login", login_path %></li>
           <li><%= link_to "Register", signup_path %></li>
@@ -12,10 +12,11 @@
       </div>
     </div>
   </div>
+
   <!--########################################################-->
-  <%= form_tag(:login, class: "forms", id: "login") do %>
+  <%= form_tag(:login, class: "forms flex_height", id: "login") do %>
       <div class="titles">
-        <h3>Please Log in or Register to Continue</h3>
+        <h3>Login</h3>
         <!--message flash up-->
         <% if flash[:notice] %>
     		<div class="notice"><%= flash[:notice] %></div>
@@ -24,11 +25,13 @@
       <div class="inputs">
         <input type="text" placeholder="Reference number" autofocus />
         <div id="separator">or</div>
-        <p>Username or Email Address</p><%= text_field_tag :username_or_email %>
-        <p>Password</p><%= password_field_tag :login_password %>
+        <%= text_field_tag :username_or_email,params[:username_or_email],"placeholder" => "Username/Email" %>
+        <%= password_field_tag :login_password,params[:login_password], "placeholder" => "Password" %>
       </div>
-      <div class="submit" class="button">
-      	<%= submit_tag "Log In", class: "to_right" %>
-        <%= link_to "BACK", root_path %>
+      <div id="subBtn" class="button horizontal_list to_right">
+        <ul>
+          <li><%= submit_tag "LOG IN" %></li>
+          <li><%= link_to "BACK", root_path %></li>
+        </ul>
       </div>
   <% end %>
