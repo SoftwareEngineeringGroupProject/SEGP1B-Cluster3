@@ -1,25 +1,27 @@
 Rails.application.routes.draw do
   resources :submissions
-  
-  root  to: 'application#index'
+
+  root  to: 'application#index', :as => :root
 
   get 'submit' => "submissions#new"
   get 'dashboards/view/:state' => "dashboards#view"
-  get 'dashboards/view/' => "dashboards#view"
+  get 'dashboards/view/' => "dashboards#view", :as => :admin_dashboard
   post 'dashboards/view/:state' => 'dashboards#change_state', :as => :change_state
-  post 'dashboards/view/' => 'dashboards#change_state'  
+  post 'dashboards/view/' => 'dashboards#change_state'
 
 
-  get 'login' => "application#login"
   get 'profile' => "application#profile", :as => :profile_path
   post 'login/:username/:password' => 'application#login'
-  
+
+  get 'login' => 'sessions#login', :as => :login
+  post 'login' => 'sessions#login_attempt'
+
   #Users/Login
   get 'users/list' => "users#index", :as => :list_all_path
   get 'users/show/:id' => "users#show", :as => :show_user_path
   get 'users/edit/:id' => "users#edit", :as => :edit_user_path
   get 'users/removeuser/:id' => "users#destroy", :as => :delete_user_path
-  get 'users/signup/' => "users#new", :as => :signup_path
+  get 'users/signup/' => "users#new", :as => :signup
   post 'users/update/:id' => "users#update", :as => :update_user_path
   post 'users/signup/' => "users#create", :as => :create_user_path
 

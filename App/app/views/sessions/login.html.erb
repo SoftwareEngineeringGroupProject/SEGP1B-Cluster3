@@ -6,14 +6,14 @@
 
       <div class="button to_right">
         <ul>
-          <li><a href="/login">Login</a></li>
-          <li><a href="/register">Register<a/></li>
+          <li><%= link_to "Login", login_path %></li>
+          <li><%= link_to "Register", signup_path %></li>
         </ul>
       </div>
     </div>
   </div>
   <!--########################################################-->
-  <%= form_tag(:submitlogin, class: "forms", id: "login") do %>
+  <%= form_tag(:login, class: "forms", id: "login") do %>
       <div class="titles">
         <h3>Please Log in or Register to Continue</h3>
         <!--message flash up-->
@@ -29,8 +29,6 @@
       </div>
       <div class="submit" class="button">
       	<%= submit_tag "Log In", class: "to_right" %>
-        <a class="to_left" href="index.html">BACK</a>
+        <%= link_to "BACK", root_path %>
       </div>
   <% end %>
-    
-  

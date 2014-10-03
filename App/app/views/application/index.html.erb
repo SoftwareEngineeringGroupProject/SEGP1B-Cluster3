@@ -17,8 +17,8 @@
 
       <div class="button to_right">
         <ul>
-          <li><a href="login.html">Login</a></li>
-          <li><a href="register.html">Register<a/></li>
+          <li><%= link_to "Login", login_path %></li>
+          <li><%= link_to "Register", signup_path %></li>
         </ul>
       </div>
     </div>
@@ -30,8 +30,8 @@
           <h1>Industry Engagement</h1>
         </div>
 
-        <div class="to_right">  
-          <form action="#" method="post" id="search">  
+        <div class="to_right">
+          <form action="#" method="post" id="search">
             <input type="text" value="Search&hellip;" onfocus="this.value=(this.value=='Search&hellip;')? '' : this.value ;" />
             <input type="image" id="go" src="images/search_r.gif" alt="Search" />
           </form>
@@ -64,13 +64,13 @@
 
   <!--##############################################################-->
   <div id="submit" class=button>
-    <a  href="submit.html">Submit a Project</a>    
+    <a  href="submit.html">Submit a Project</a>
   </div>
 
    <!--##############################################################-->
   <div class="wrapper footer">
     <div class="flex_height">
     </div>
-  </div>  
+  </div>
 </body>
 </html>
