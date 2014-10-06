@@ -1,7 +1,6 @@
-
 <!--########################## BANNER ####################################-->
 <% if flash[:notice] %>
-  <li><font color="black"><%= flash[:notice] %></font></li>
+  <font color="black"><%= flash[:notice] %></font>
 <% end %>
 <div class="wrapper navigation">
 
@@ -119,8 +118,8 @@
         <!-- Buttons to apply operations on message -->
   		  <div id="action_to_message" class="to_right vertical_list button">
           <ul>
-            <li><a href="#">Discard</a></li>
-            <li><a href="#">Draft</a></li>
+            <li><a href="#">...</a></li>
+            <li><a href="#">...</a></li>
             <li><%= submit_tag 'Send' %></li>
           </ul>
         </div>

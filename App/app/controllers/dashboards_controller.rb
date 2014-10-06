@@ -68,7 +68,11 @@ class DashboardsController < ApplicationController
         delete
       elsif ( params[:commit]=='Send')
         # Send a message to the selected project
-        send_message
+        if (params[:subject] == "" || params[:email]=="")
+          flash[:notice] = 'Subject or message fields are missing!'
+        else
+          send_message
+        end
       elsif ( params[:commit]=='Add To Cart' )
         @project.update_attributes(:in_cart => true)
       elsif ( params[:commit] == 'Save')
@@ -77,6 +81,8 @@ class DashboardsController < ApplicationController
         return
       end
 
+    else
+      flash[:notice] = 'Please select a project first!'
     end
 
     # Anyway, just render the same page
@@ -94,6 +100,7 @@ class DashboardsController < ApplicationController
       # Send the message to the company's email
       UserMailer.send_a_message(params[:email], company, params[:subject]).deliver
 
+      flash[:notice] = "Message has been delivered to #{company.name} <#{company.email}>"
     end
 
     # Change state of a project
