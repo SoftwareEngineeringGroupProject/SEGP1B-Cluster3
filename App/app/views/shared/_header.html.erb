@@ -1,0 +1,26 @@
+  <!--#######################################################-->
+  <div class="wrapper banner">
+    <div id="top_bar" class="flex_height">
+      <div class="to_left">
+        <h1><a href="/">University of Adelaide</a></h1>
+        <p>School of Computer Science</p>
+      </div>
+
+      <div id="login_buttons" class="button horizontal_list to_right">
+        <ul>
+        	<% if session[:user_id] != nil %>
+        		<% @user = User.find(session[:user_id]) %>
+        		<% if @user.acctype == "industry" %>
+        			<li><%= link_to "Industry Projects", :root %></li>
+          		<% elsif @user.acctype == "coordinator" %>
+          			<li><%= link_to "Admin Dashboard", :admin_dashboard %></li>
+          		<% end %>
+          		<li><%= link_to "Logout", :logout %></li>
+        	<% else %>
+        		<li><%= link_to "Login", :login %></li>
+          		<li><%= link_to "Register", :signup %></li>
+        	<% end %>
+        </ul>
+      </div>
+    </div>
+  </div>

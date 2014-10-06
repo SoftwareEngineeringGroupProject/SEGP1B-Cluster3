@@ -1,0 +1,8 @@
+<%= render "shared/header" %>
+
+<% if flash[:notice] %>
+	<h2>Forbidden</h2>
+   	<p>You are not authorized to access this page:</p>
+   	<%= flash[:notice] %>
+   	<p>Please <a href="/login">Login</a> as an authorized user</p>
+<% end %>
