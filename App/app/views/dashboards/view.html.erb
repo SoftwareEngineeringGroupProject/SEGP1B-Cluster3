@@ -50,7 +50,7 @@
 
   <!-- Middle board -->
   <div id="container" class="to_left">
-    <%= form_tag %>
+    <%= form_tag "", :multipart => true %>
       <!-- Viewing Project Board -->
       <div id="board_showing" class="general_box flex_height shadow">
         <div class="flex_height">
@@ -119,7 +119,7 @@
   		  <div id="action_to_message" class="to_right vertical_list button">
           <ul>
             <li><a href="#">...</a></li>
-            <li><a href="#">...</a></li>
+            <li><a id="uploadFile" href="#">Attach</a><%=file_field_tag 'attachment', {"id" => "uploadBtn"} %></li>
             <li><%= submit_tag 'Send' %></li>
           </ul>
         </div>
