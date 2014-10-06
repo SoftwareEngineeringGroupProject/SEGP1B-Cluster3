@@ -17,7 +17,7 @@ class SubmissionsController < ApplicationController
   		flash[:notice] = "Please Login to Submit a Project"
   		redirect_to :login
   	end
-  	
+
   end
 
   def create
@@ -32,7 +32,6 @@ class SubmissionsController < ApplicationController
 
     # If submission is done successfully, redirect to show page
     if @project.save && @company.save && @attached.save
-      UserMailer.welcome_email(@company).deliver
       redirect_to submission_path(@project)
     else
     # Else, render the submission page
