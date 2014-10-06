@@ -135,6 +135,8 @@
           <% @cart.each do |project| %>
           <li><%=link_to project.title, edit_desc_path(:id => project.id) %></li>
           <% end %>
+        <% else %>
+          <li><a href="#">Current Processing Set</a></li>
         <% end %>
       </ul>
     </div>
