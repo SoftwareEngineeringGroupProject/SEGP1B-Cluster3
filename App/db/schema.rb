@@ -11,11 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141003063901) do
+ActiveRecord::Schema.define(version: 20141006034745) do
 
   create_table "attacheds", force: true do |t|
     t.integer  "project_id"
     t.binary   "attached"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "client_companies", force: true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "website"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -32,6 +41,19 @@ ActiveRecord::Schema.define(version: 20141003063901) do
     t.datetime "updated_at"
   end
 
+  create_table "industryusers", force: true do |t|
+    t.string   "username"
+    t.string   "email"
+    t.string   "company"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "website"
+    t.string   "encrypted_password"
+    t.string   "salt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "projects", force: true do |t|
     t.string   "title"
     t.text     "body"
@@ -44,10 +66,17 @@ ActiveRecord::Schema.define(version: 20141003063901) do
   end
 
   create_table "users", force: true do |t|
+    t.string   "acctype"
     t.string   "username"
     t.string   "hashed_password"
     t.string   "email"
     t.string   "salt"
+    t.string   "fname"
+    t.string   "lname"
+    t.string   "companyname"
+    t.text     "address"
+    t.string   "phone"
+    t.string   "website"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

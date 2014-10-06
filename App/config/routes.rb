@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :muas
 
   resources :submissions
@@ -35,6 +36,8 @@ Rails.application.routes.draw do
   post 'users/update/:id' => "users#update", :as => :update_user_path
   post 'users/signup/' => "users#create", :as => :create_user_path
 
+  get 'admin/signup/' => "users#newadmin", :as => :admin_signup_path
+  get 'unauthorized/' => "sessions#unauthorized", :as => :unauthorized
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

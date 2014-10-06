@@ -5,10 +5,19 @@ class SubmissionsController < ApplicationController
   end
 
   def new
-    # Create a submission
-    @project = Project.new
-    @company = Company.new
-    @attached = Attached.new
+  	if session[:user_id] != nil
+  		@current_user = User.find(session[:user_id])
+  	end
+  	if @current_user != nil
+  		# Create a submission
+    	@project = Project.new
+   		@company = Company.new
+    	@attached = Attached.new
+    else
+  		flash[:notice] = "Please Login to Submit a Project"
+  		redirect_to :login
+  	end
+  	
   end
 
   def create
