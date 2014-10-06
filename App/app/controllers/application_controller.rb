@@ -7,14 +7,14 @@ class ApplicationController < ActionController::Base
   end
 
  def profile
- 	@user = User.find(params[:usename])
+ 	@user = User.find(params[:username])
   	if session[:signed_in] == true
   	  if @user.username == "Admin"
   	  	redirect_to "dashboards/view"
   	  end
   	else
   	   session[:signed_in] == false
-  	   redirect_to '/login.html'
+  	   redirect_to '/login'
   	end
   end
 
@@ -56,7 +56,7 @@ class ApplicationController < ActionController::Base
 
 	def save_login_state
 		if session[:user_id]
-			redirect_to :admin_dashboard
+			redirect_to :root
     		return false
   		else
     		return true

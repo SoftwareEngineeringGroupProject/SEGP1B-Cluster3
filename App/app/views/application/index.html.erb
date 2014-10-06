@@ -1,43 +1,6 @@
-  <!--#######################################################-->
-  <div class="wrapper banner">
-    <div id="top_bar" class="flex_height">
-      <div class="to_left">
-        <h1>University of Adelaide</h1>
-        <p>School of Computer Science </p>
-      </div>
-
-      <div id="login_buttons" class="button horizontal_list to_right">
-        <ul>
-          <li><%= link_to "Login", login_path %></li>
-          <li><%= link_to "Register", signup_path %></li>
-        </ul>
-      </div>
-    </div>
-  </div>
- <!--#######################################################-->
-    <div class="wrapper navigation">
-      <div id="navi" class="flex_height">
-        <div class="to_left">
-          <h1>Industry Engagement</h1>
-        </div>
-
-        <div class="to_right">
-          <form action="#" method="post" id="search">
-            <input type="text" value="Search&hellip;" onfocus="this.value=(this.value=='Search&hellip;')? '' : this.value ;" />
-            <input type="image" id="go" src="images/search_r.gif" alt="Search" />
-          </form>
-        </div>
-
-        <div id="navi_tabs" class="button horizontal_list to_right">
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="support.html">Support</a></li>
-            <li><a href="about.html">About</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<%= render "shared/header" %>
+<%= render "shared/linkbar" %>
+ 
   <!--##############################################################-->
   <div class="wrapper gallery">
     <div id="slides" class="shadow">
@@ -55,11 +18,10 @@
 
   <!--##############################################################-->
   <div id="submit" class=button>
-    <a  href="submit.html">Submit a Project</a>
+    <a  href="submit/">Submit a Project</a>
+    <br />
+    <a  href="admin/signup/">Create Co-ordinator Account</a>
   </div>
 
-   <!--##############################################################-->
-  <div class="wrapper footer">
-    <div class="flex_height">
-    </div>
-  </div>
+<%= render "shared/footer" %>
+

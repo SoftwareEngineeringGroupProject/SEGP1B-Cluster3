@@ -14,13 +14,25 @@ class SessionsController < ApplicationController
 
   def setting
   end
+  
+  def unauthorized
+  	render "unauthorized"
+  end
 
   def login_attempt
   	authorized_user = User.authenticate(params[:username_or_email], params[:login_password])
   	if authorized_user
 	  session[:user_id] = authorized_user.id
-      flash[:notice] = "Successfully Logged in as #{authorized_user.username}"
-      redirect_to admin_dashboard_path
+	  if authorized_user.acctype == "industry"
+      	#flash[:notice] = "Indursty Partner: #{authorized_user.username} Logged In"
+      	redirect_to root_path
+      elsif authorized_user.acctype == "coordinator"
+      	#flash[:notice] = "Coordinator: #{authorized_user.username} Logged In"
+      	redirect_to root_path
+      else
+      	#flash[:notice] = "Unknown Account Type"
+      	redirect_to root_path
+      end
     else
       flash[:notice] = "Sorry... Invalid Username or Password"
       flash[:color]= "invalid"
@@ -30,7 +42,7 @@ class SessionsController < ApplicationController
 
   def logout
   	session[:user_id] = nil
-  	redirect_to login_path
+  	redirect_to root_path
   end
 
 end
