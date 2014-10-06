@@ -96,7 +96,7 @@ class DashboardsController < ApplicationController
     def send_message
       # Identify the company that owns the project
       company = (Company.all.select{|c| c.projects.include? @project }.first)
-
+      @message = params[:email]
       # Send the message to the company's email
       UserMailer.send_a_message(params[:email], company, params[:subject]).deliver
 
