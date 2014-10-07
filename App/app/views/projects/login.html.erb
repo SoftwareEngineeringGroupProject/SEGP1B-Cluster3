@@ -1,0 +1,8 @@
+<h1>Login</h1>
+<p>
+<%= form_tag(action: :check_auth, method: "get") do %>
+	Username: <%= text_field_tag(:username)%>
+	Password: <%= password_field_tag(:password)%>
+	<%= button_to "Login", action: :check_auth %>
+<% end %>
+</p>

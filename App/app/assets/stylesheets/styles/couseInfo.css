@@ -1,0 +1,28 @@
+.courseContent
+{
+	margin-left:100px;
+	margin-right:100px;
+	margin-top:20px;
+	font-size:medium;
+	text-align:left;
+	color: #456;
+}
+
+.course-title{
+		font-family: Georgia,Times,serif;
+		color: #b38807;
+    	font-size: 2.28em;
+    	font-weight: normal;
+}
+
+.course-title-subheading{
+		margin-left:70px;
+		margin-top:70px;
+		font-size:1.5em;
+		font-family: Georgia,Times,serif;
+		color: blue;
+    	font-weight: normal;
+}
+
+
+
