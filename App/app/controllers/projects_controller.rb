@@ -44,15 +44,15 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    # @project = StudentProject.new(user_params)
-    @projects = StudentProject.new
-    @projects.title = params[:title]
-    @projects.group = params[:group]
-    @projects.summary = params[:summary]
-    @projects.members = params[:members]
-    @projects.extra = params[:extra]
-    @projects.image = params[:image]
-    @projects.save
+    @project = StudentProject.new(user_params)
+    # @projects = StudentProject.new
+    # @projects.title = params[:title]
+    # @projects.group = params[:group]
+    # @projects.summary = params[:summary]
+    # @projects.members = params[:members]
+    # @projects.extra = params[:extra]
+    # @projects.image = params[:image]
+    @project.save
   end
 
   def user_params

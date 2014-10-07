@@ -93,6 +93,16 @@ div.wrapper h1 {
 	background-color:#191919;
 	}
 
+.img {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #0000ff;
+    height: auto;
+    width: auto;
+    float: left;
+    text-align: center;
+}
+
 /* ----------------------------------------------General-------------------------------------*/
 #top_bar, #navi, #slides, #news {
 	margin: auto;
