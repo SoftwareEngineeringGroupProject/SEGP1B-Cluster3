@@ -1,0 +1,78 @@
+// Place all the styles related to the projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.project-title{
+    font-family: Georgia,Times,serif;
+    color: #b38807;
+      font-size: 2.28em;
+      font-weight: normal;
+}
+
+.project-container{
+   font-family: Georgia,Times,serif;
+    color: black;
+      font-size: 1.5em;
+      font-weight: normal;
+      margin:50px;
+}
+
+
+
+.portfolio{
+      position:relative;
+      float:left;
+      width: 150px; 
+      height: 25px;
+      align:left;
+}
+
+.search-bar{
+      float:right;
+      width:300px;
+      height:50px;
+}
+
+.project-show{
+      margin:100px;
+      margin-top:50px;
+}
+
+.project-filter{
+      margin:50px;
+}
+
+.project-apply{
+      margin-left:300px;
+}
+
+
+.projects-image{
+  margin:5px;
+   margin-top:50px;
+   margin-bottom:40px;
+}
+
+.project-container-line1{
+ 
+     margin-left: 50px; 
+     margin-right: 50px;
+    width:700px;
+    height:50px;  
+}
+
+.project-container-line2{
+ 
+    width:600px;
+    height:50px;  
+}
+
+
+
+.project-pagefoot{
+    margin:200px;
+}
+
+
+
+

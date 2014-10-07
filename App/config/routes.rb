@@ -8,6 +8,15 @@ Rails.application.routes.draw do
   root  to: 'application#index', :as => :root
 
   get 'submit' => "submissions#new"
+  
+# resources :projects
+
+  get 'projects/info' => 'projects#info', as: 'info'
+  get 'projects/' => 'projects#index', as: 'index'
+  match 'projects/new' => 'projects#create', via: [:get, :post]
+  get 'projects/contact' => 'projects#contact', as: 'contact'
+
+	
 
   # Dashboards
   get 'dashboards/view/:state' => "dashboards#view"

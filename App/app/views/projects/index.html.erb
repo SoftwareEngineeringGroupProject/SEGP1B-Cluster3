@@ -1,0 +1,17 @@
+<%= render "shared/header" %>
+<%= render "shared/linkbar" %>
+<div class="wrapper content">
+<h1>Home</h1>
+<h2><%= flash[:notice] %></h2>
+<% for project in @projects %>
+ <div id="news" class="flex_height shadow">
+     
+<div class="img">
+
+	<%= image_tag project.image_url(:thumb)  %>
+	Title: <%= project.title %></br>
+	Group: <%= project.group %>
+	</div>
+<% end %>
+</div> 
+</div>

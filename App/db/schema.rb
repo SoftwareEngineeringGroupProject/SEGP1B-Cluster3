@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 20141003063901) do
     t.boolean  "in_cart"
   end
 
+  create_table "student_projects", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.string   "group"
+    t.string   "members"
+    t.string   "summary"
+    t.string   "extra"
+    t.string   "image"
+  end
+
   create_table "users", force: true do |t|
     t.string   "acctype"
     t.string   "username"
