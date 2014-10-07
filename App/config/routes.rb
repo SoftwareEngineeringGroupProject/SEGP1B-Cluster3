@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'projects/login' => 'projects#login', as: 'login'
   # get 'projects/logout' => 'projects#logout', as: 'logout'
   # match 'projects/check_auth' => 'projects#check_auth', as: 'check_auth' , via: [:get, :post]
+  match 'projects/new' => 'projects#create', via: [:get, :post]
 
   root 'projects#index'
   # The priority is based upon order of creation: first created -> highest priority.
