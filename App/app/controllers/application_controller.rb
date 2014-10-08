@@ -52,7 +52,20 @@ class ApplicationController < ActionController::Base
     	redirect_to(:controller => 'sessions', :action => 'login')
     	return false
   	end
-	end
+  end
+  
+  def user_logged_in?
+  	if session[:user_id] != nil
+  		@current_user = User.find(session[:user_id])
+  		if @current_user != nil
+  			return true
+  		else
+  			return false
+  		end
+  	else
+  		return false
+  	end
+  end
 
 	def save_login_state
 		if session[:user_id]

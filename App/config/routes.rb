@@ -32,10 +32,6 @@ Rails.application.routes.draw do
   get 'profile' => "application#profile", :as => :profile_path
   post 'login/:username/:password' => 'application#login'
 
-  get 'login' => 'sessions#login', :as => :login
-  get 'logout' => 'sessions#logout', :as => :logout
-  post 'login' => 'sessions#login_attempt'
-
   #Users/Login
   get 'users/list' => "users#index", :as => :list_all_path
   get 'users/show/:id' => "users#show", :as => :show_user_path
@@ -44,9 +40,15 @@ Rails.application.routes.draw do
   get 'users/signup/' => "users#new", :as => :signup
   post 'users/update/:id' => "users#update", :as => :update_user_path
   post 'users/signup/' => "users#create", :as => :create_user_path
+  
+  get 'login' => 'sessions#login', :as => :login
+  get 'logout' => 'sessions#logout', :as => :logout
+  post 'login' => 'sessions#login_attempt'
 
   get 'admin/signup/' => "users#newadmin", :as => :admin_signup_path
   get 'unauthorized/' => "sessions#unauthorized", :as => :unauthorized
+  
+  get 'users/profile' => "users#profile", :as => :profile
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
