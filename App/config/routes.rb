@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
   get 'projects/info' => 'projects#info', as: 'info'
   get 'projects/' => 'projects#index', as: 'index'
-  match 'projects/new' => 'projects#create', via: [:get, :post]
+  get 'projects/new' => 'projects#new', as: 'new'
+  post 'projects/new' => 'projects#create'
+  # match 'projects/new' => 'projects#create', via: [:get, :post]
   get 'projects/contact' => 'projects#contact', as: 'contact'
 
 	
