@@ -37,6 +37,13 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 	end
 	
+	def profile
+		if user_logged_in?
+			render "profile"
+		else
+			redirect_to :root
+		end
+	end
 
 	def edit
 		@user = User.find(params[:id])
