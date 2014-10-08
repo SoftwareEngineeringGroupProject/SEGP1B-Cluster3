@@ -1,36 +1,44 @@
   <%= render "shared/header" %>
+  <%= render "shared/linkbar" %>
+  <div class="wrapper content">
+    <div id="news" class="flex_height shadow">
+      <p class="justify">
+      <h1>Submit a student's project</h1>
+      <p text-align: left>
+      <%= form_for :StudentProject, :html => {:multipart => true} do |f| %>
+        <p>
+          <%= f.label :title %>
+          <%= f.text_field :title %>
+        </p>
+        <p>
+          <%= f.label :group %>
+          <%= f.text_field :group %>
+        </p>
+        <p>
+          <%= f.label :members %>
+          <%= f.text_field :members %>
+        </p>
+        <p>
+          <%= f.label :summary %>
+          <%= f.text_area :summary %>
+        </p>
+        <p>
+          <%= f.label :extra %>
+          <%= f.text_area :extra %>
+        </p>
+        <p>
+          <%= f.file_field :image %>
+        </p>
+        <p>
+          <%= f.label :remote_image_url, "or image URL" %>
+          <%= f.text_field :remote_image_url %>
+        </p>
+        <p><%= f.submit %></p>
+      <% end %>
 
-<h1>Submit a student's project</h1>
-<p text-align: left>
-<%= form_for :StudentProject, :html => {:multipart => true} do |f| %>
-  <p>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :group %>
-    <%= f.text_field :group %>
-  </p>
-  <p>
-    <%= f.label :members %>
-    <%= f.text_field :members %>
-  </p>
-  <p>
-    <%= f.label :summary %>
-    <%= f.text_area :summary %>
-  </p>
-  <p>
-    <%= f.label :extra %>
-    <%= f.text_area :extra %>
-  </p>
-  <p>
-    <%= f.file_field :image %>
-  </p>
-  <p>
-    <%= f.label :remote_image_url, "or image URL" %>
-    <%= f.text_field :remote_image_url %>
-  </p>
-  <p><%= f.submit %></p>
-<% end %>
+      </p>
+      </p>
+    </div>
+  </div>
 
-</p>
+

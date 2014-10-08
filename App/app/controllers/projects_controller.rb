@@ -39,8 +39,6 @@ class ProjectsController < ApplicationController
     # if session[:username] != @admin.email
     #   redirect_to root_path ,:notice => "Only admins are allowed to submit projects"
     # end
-   
-
   end
 
   def create
