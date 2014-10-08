@@ -5,7 +5,7 @@ class DashboardsController < ApplicationController
 
   	# Authenticate user first
   	authenticate_user
-  	if @current_user.acctype != "coordinator"
+  	if (@current_user == nil) || (@current_user.acctype != "coordinator")
   		flash[:notice] = "You have an Industry Partner Account, NOT a Coordinator account."
   		redirect_to :unauthorized
   	end
