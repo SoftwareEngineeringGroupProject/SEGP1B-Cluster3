@@ -39,7 +39,11 @@ class UsersController < ApplicationController
 	
 	def profile
 		if user_logged_in?
-			render "profile"
+			if user_type == "industry"
+				render "profile"
+			else
+				redirect_to :root
+			end
 		else
 			redirect_to :root
 		end

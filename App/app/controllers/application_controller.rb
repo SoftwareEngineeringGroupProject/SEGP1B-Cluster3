@@ -66,6 +66,19 @@ class ApplicationController < ActionController::Base
   		return false
   	end
   end
+  
+    def user_type
+  	if session[:user_id] != nil
+  		@current_user = User.find(session[:user_id])
+  		if @current_user != nil
+  			return @current_user.acctype
+  		else
+  			return false
+  		end
+  	else
+  		return false
+  	end
+  end
 
 	def save_login_state
 		if session[:user_id]
