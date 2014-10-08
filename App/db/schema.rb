@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141003063901) do
+ActiveRecord::Schema.define(version: 20141008014747) do
 
   create_table "attacheds", force: true do |t|
     t.integer  "project_id"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 20141003063901) do
     t.string   "reference_code"
     t.string   "email"
     t.string   "website"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.string   "groupID"
+    t.integer  "numOfMembers"
+    t.integer  "StudentProject_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -52,6 +61,16 @@ ActiveRecord::Schema.define(version: 20141003063901) do
     t.string   "summary"
     t.string   "extra"
     t.string   "image"
+  end
+
+  create_table "students", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "studentID"
+    t.integer  "phone"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
