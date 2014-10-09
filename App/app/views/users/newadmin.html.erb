@@ -1,9 +1,11 @@
 <%= render "shared/header" %>
+<%= render "shared/linkbar" %>
+<%= render "shared/profilesidebar" %>
 
   <div id="ProfileSetting" class=" forms flex_height">
-    <%= form_for :user, :url => {:controller => 'users', :action => 'create'}  do |f| %>
+    <%= form_for :create_admin  do |f| %>
       <div class="titles">
-        <h3>Course Co-Ordinator Signup</h3>
+        <h3>Create New Course Co-Ordinator Account</h3>
       </div>
 
 	  <% if flash[:notice] %>

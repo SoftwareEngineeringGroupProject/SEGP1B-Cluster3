@@ -13,29 +13,46 @@ class UsersController < ApplicationController
 	end
 	
 	def newadmin
-		#Signup Form
-		@user = User.new
-		render "newadmin"
+		if user_logged_in?
+			#Signup Form
+			@newadminuser = User.new
+			render "newadmin"
+		else
+			redirect_to :login
+		end
 	end
 
 	def create
-  	@user = User.new(user_params)
-    if @user.save
-    	flash[:notice] = "Account Successfuly Created. Please Log In to Continue"
-    	redirect_to :login
-    else
-    	if @user.acctype == "industry"
+  		@user = User.new(user_params)
+    	if @user.save
+    		flash[:notice] = "Account Successfuly Created. Please Log In to Continue"
+    		redirect_to :login
+    	else
       		render "new"
-      	elsif @user.acctype == "coordinator"
-      		render "newadmin"
-      	else
-      		render "new"
-      	end
-    end
-  end
+    	end
+  	end
+  
+  	def createadmin
+  		if user_logged_in?
+  			@newadminuser = User.new(user_params)
+    		if @newadminuseruser.save
+    			flash[:notice] = "Account Successfuly Created. Please Log In to Continue"
+    			render :admin_signup_path
+   			else
+    			flash[:notice] = "Unable to Create new Coordinator Account"
+      			render "newadmin"
+    		end
+    	else
+    		redirect_to :login
+    	end
+  	end
 
 	def show
-		@user = User.find(params[:id])
+		if user_logged_in?
+			@user = User.find(params[:id])
+		else
+			redirect_to :login
+		end
 	end
 	
 	def profile
@@ -43,10 +60,10 @@ class UsersController < ApplicationController
 			if user_type == "industry"
 				render "profile"
 			else
-				redirect_to :root
+				render "profile"
 			end
 		else
-			redirect_to :root
+			redirect_to :login
 		end
 	end
 	
@@ -55,10 +72,10 @@ class UsersController < ApplicationController
 			if user_type == "industry"
 				render "changepw"
 			else
-				redirect_to :root
+				render "changepw"
 			end
 		else
-			redirect_to :root
+			redirect_to :login
 		end
 	end
 	

@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   post 'signup/' => "users#create", :as => :create_user_path
   get 'signup/' => "users#new", :as => :signup
   get 'admin/signup/' => "users#newadmin", :as => :admin_signup_path
+  post 'admin/signup/' => "users#newadmin", :as => :create_admin
   
   #Login/Logout
   get 'login' => 'sessions#login', :as => :login
