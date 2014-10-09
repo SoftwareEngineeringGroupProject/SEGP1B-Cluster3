@@ -45,3 +45,12 @@
     $("input#mail_address").val(chosen.data("mail"));
     });
   });
+
+  $(function() {
+
+    $("#uploadBtn").change(function() {
+      var fileName = $( this ).val();
+      $("#uploadFile").html("File: " + fileName);
+    });
+
+  });
