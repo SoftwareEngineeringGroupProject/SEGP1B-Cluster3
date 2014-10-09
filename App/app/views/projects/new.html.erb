@@ -5,7 +5,7 @@
       <p class="justify">
       <h1>Submit a student's project</h1>
       <p text-align: left>
-      <%= form_for :StudentProject, :html => {:multipart => true} do |f| %>
+      <%= form_for @project, :html => {:multipart => true} do |f| %>
         <p>
           <%= f.label :title %>
           <%= f.text_field :title %>
@@ -13,6 +13,11 @@
         <p>
           <%= f.label :group %>
           <%= f.text_field :group %>
+          <%= fields_for :group do |builder| %>
+            <%= builder.label "Name" %></br>
+            <%= builder.text_field :name %></br>
+          <% end %>
+
         </p>
         <p>
           <%= f.label :members %>
