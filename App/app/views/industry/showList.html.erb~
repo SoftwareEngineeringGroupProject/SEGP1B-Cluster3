@@ -44,9 +44,9 @@
         <div class="flex_height">
           <div id="action_to_showing_board" class="to_right horizontal_list button">
             <ul>
-              <li><%= submit_tag 'Submit New' %></li>
               <li><%= submit_tag 'Edit' %></li>
               <li><%= submit_tag 'Delete' %></li>
+              <li><%= submit_tag 'Submit New' %></li>
             </ul>
           </div>
         </div>

@@ -1,4 +1,4 @@
-<%= render "shared/header" %>
+
 
   <div id="subPro" class="forms flex_height">
     <%= form_for @project, url: {action: "update"} do |f| %>
