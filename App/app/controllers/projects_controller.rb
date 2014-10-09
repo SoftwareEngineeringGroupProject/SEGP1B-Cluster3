@@ -43,7 +43,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = StudentProject.new(user_params)
-    @group = @project.group.build(group_params)
+    @group = @project.build_group(group_params)
     # @projects = StudentProject.new
     # @projects.title = params[:title]
     # @projects.group = params[:group]
@@ -51,7 +51,7 @@ class ProjectsController < ApplicationController
     # @projects.members = params[:members]
     # @projects.extra = params[:extra]
     # @projects.image = params[:image]
-    if @project.save
+    if @project.save && @group.save
       redirect_to :index, :notice => "Project created"
     else
       render :new
