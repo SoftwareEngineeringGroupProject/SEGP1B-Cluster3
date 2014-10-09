@@ -19,7 +19,7 @@ class IndustryController < ApplicationController
 		end
 
 		if ( params[:commit]=='Submit New' )
-			redirect_to :submit_new_project
+			remove
 		end
 	end
 

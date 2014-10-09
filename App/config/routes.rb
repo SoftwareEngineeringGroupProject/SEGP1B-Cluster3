@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   root  to: 'application#index', :as => :root
 
-  get 'submit' => "submissions#new"
+  get 'submit' => "submissions#new", :as => :submit_new_project
   
 # resources :projects
 
@@ -52,9 +52,11 @@ Rails.application.routes.draw do
 
 
   #Industry actions
-  get 'industry/showList/:id' => "industry#showList", :as => :show_all_submissions_path
-  get 'industry/edit/:id' => "industry#edit", :as => :edit_submission_path 
-  post 'industry/remove/:id' => "industry#remove", :as => :remove_submission_path
+  get 'industry/showList/:id' => "industry#showList", :as => :show_all_industry_project
+  get 'industry/edit/:id' => "industry#edit", :as => :edit_industry_project
+  patch 'industry/edit/:id' => "industry#update", :as => :update_industry_project
+  post 'industry/showList/:id' => "industry#action_to_project", :as => :action_to_industry_project
+  post 'industry/remove/:id' => "industry#remove", :as => :remove_industry_project
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
