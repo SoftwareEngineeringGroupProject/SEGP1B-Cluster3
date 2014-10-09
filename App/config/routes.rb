@@ -29,26 +29,34 @@ Rails.application.routes.draw do
   get 'dashboards/assign_students' => "dashboards#assign_students", :as => :assign_students
   post 'dashboards/assgin_students' => "dashboards#action_handler"
 
-  get 'profile' => "application#profile", :as => :profile_path
-  post 'login/:username/:password' => 'application#login'
+  #get 'profile' => "application#profile", :as => :profile_path
+  #post 'login/:username/:password' => 'application#login'
 
-  #Users/Login
+#Users/Login
+  #User Management
   get 'users/list' => "users#index", :as => :list_all_path
   get 'users/show/:id' => "users#show", :as => :show_user_path
   get 'users/edit/:id' => "users#edit", :as => :edit_user_path
   get 'users/removeuser/:id' => "users#destroy", :as => :delete_user_path
-  get 'users/signup/' => "users#new", :as => :signup
   post 'users/update/:id' => "users#update", :as => :update_user_path
-  post 'users/signup/' => "users#create", :as => :create_user_path
   
+  #registration
+  post 'signup/' => "users#create", :as => :create_user_path
+  get 'signup/' => "users#new", :as => :signup
+  get 'admin/signup/' => "users#newadmin", :as => :admin_signup_path
+  
+  #Login/Logout
   get 'login' => 'sessions#login', :as => :login
   get 'logout' => 'sessions#logout', :as => :logout
   post 'login' => 'sessions#login_attempt'
 
-  get 'admin/signup/' => "users#newadmin", :as => :admin_signup_path
+  #Authorization
   get 'unauthorized/' => "sessions#unauthorized", :as => :unauthorized
   
-  get 'users/profile' => "users#profile", :as => :profile
+  #User Profile
+  get 'profile' => "users#profile", :as => :profile
+  get 'profile/changepw' => "users#changepw", :as => :change_pw
+  post 'profile/changepw' => "users#performreset", :as => :perform_reset
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
