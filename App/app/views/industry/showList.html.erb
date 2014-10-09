@@ -1,0 +1,89 @@
+  <!--modifying>
+<!--##############################################################-->
+   <div class="wrapper navigation">
+      <div id="navi" class="flex_height">
+        <div class="to_right">  
+          <form action="#" method="post" id="search">  
+            <input type="text" value="Search&hellip;" onfocus="this.value=(this.value=='Search&hellip;')? '' : this.value ;" />
+            <input type="image" id="go" src="/images/search_r.gif" alt="Search" />
+          </form>
+        </div>
+		
+        <div id="menu" class="button to_left">
+        
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="Process_Items_in_Cart.html">Process Cart</a></li>
+            <li><a href="/logout">Logout</a></li>
+          </ul>
+          
+        </div>
+      </div>
+      <h4><font color="white">Logged in as: <%=@current_user.username%></font></h4>
+    </div>
+
+  <!--##############################################################-->
+  <div class="wrapper content">
+
+    <!--********************-->
+    
+    <div id="container" class="to_left shadow">
+    <%= form_tag %>
+      <div class="flex_height">
+        <div id="action_to_project" class="to_right button">
+          <ul>  
+            <li><%= submit_tag 'edit' %></li>
+            <li><%= submit_tag 'delete' %></li>
+          </ul>
+        </div>
+		  </div>
+
+
+      <div id="project_showing" class="general_box flex_height shadow"> 
+        <div class="to_left" id="project_list">
+          <fieldset>
+            <legend>
+              <div id="search_date">      
+                <input class="to_left" type="text" id="datepicker" value="Filter by date">
+              </div>
+            </legend>
+            <%= select_tag(:project_id, options_for_select(@projects.collect{|project| [project.title,project.id, {'data-desc'=>project.body}]}), "size" => "12", "id" => "demo") %>
+
+          </fieldset>
+        </div>
+
+        <div id="show_specification" class="to_right" >
+          <fieldset>
+            <legend>Project description</legend>
+            <textarea id="project_desc", rows="13">There are some project specification....</textarea>
+          </fieldset>
+        </div>
+
+      </div>  
+	 
+	  
+	  
+      <!--*********************************************-->
+      <div id="communication" id="general_box" class="shadow flex_height to_right">
+		    <div id="message_box" class="to_left">
+          <input class="to_left" type="text" placeholder="From: ">
+          <input class="to_right" type="text" placeholder="To: ">
+          <textarea id="industry_interaction" rows="16">Messages...</textarea>
+        </div>
+
+  		  <div id="action_to_message" class="to_right button">
+          <ul>
+            <li><a href="#">Discard</a></li>
+            <li><a href="#">Draft</a></li>
+            <li><a href="#">Send</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    
+
+  </div> 
+  
