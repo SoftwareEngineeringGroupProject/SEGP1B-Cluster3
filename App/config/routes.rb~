@@ -50,12 +50,6 @@ Rails.application.routes.draw do
   get 'admin/signup/' => "users#newadmin", :as => :admin_signup_path
   get 'unauthorized/' => "sessions#unauthorized", :as => :unauthorized
 
-
-  #Industry actions
-  get 'industry/showList/:id' => "industry#showList", :as => :show_all_submissions_path
-  get 'industry/edit/:id' => "industry#edit", :as => :edit_submission_path 
-  post 'industry/remove/:id' => "industry#remove", :as => :remove_submission_path
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
