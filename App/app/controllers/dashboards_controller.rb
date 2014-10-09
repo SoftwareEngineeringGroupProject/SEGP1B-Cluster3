@@ -96,9 +96,10 @@ class DashboardsController < ApplicationController
     def send_message
       # Identify the company that owns the project
       company = (Company.all.select{|c| c.projects.include? @project }.first)
-
+      @message = params[:email]
+      file = params[:attachment]
       # Send the message to the company's email
-      UserMailer.send_a_message(params[:email], company, params[:subject]).deliver
+      UserMailer.send_a_message(params[:email], company, params[:subject], file).deliver
 
       flash[:notice] = "Message has been delivered to #{company.name} <#{company.email}>"
     end

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 		@user = User.new
 		render "new"
 	end
-	
+
 	def newadmin
 		#Signup Form
 		@user = User.new
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   	@user = User.new(user_params)
     if @user.save
     	flash[:notice] = "Account Successfuly Created. Please Log In to Continue"
+			UserMailer.welcome_email(@user)
     	redirect_to :login
     else
     	if @user.acctype == "industry"
@@ -36,7 +37,7 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 	end
-	
+
 
 	def edit
 		@user = User.find(params[:id])
@@ -62,6 +63,6 @@ class UsersController < ApplicationController
   	def user_params
     	params.require(:user).permit(:username, :email, :password, :password_confirmation, :fname, :lname, :companyname, :address, :phone, :website, :acctype)
   	end
-  
+
 
 end

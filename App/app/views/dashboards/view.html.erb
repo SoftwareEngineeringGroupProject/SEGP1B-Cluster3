@@ -50,7 +50,7 @@
 
   <!-- Middle board -->
   <div id="container" class="to_left">
-    <%= form_tag %>
+    <%= form_tag "", :multipart => true %>
       <!-- Viewing Project Board -->
       <div id="board_showing" class="general_box flex_height shadow">
         <div class="flex_height">
@@ -88,7 +88,7 @@
               <div id="search_date" class ="horizontal_list">
                 <ul>
                   <li><input class="to_left" type="text" id="datepicker" value="Filter by date" name = "date"></li>
-                  <li><%= submit_tag '' %></li>
+                  <li><%= image_submit_tag "/images/icon_search.gif" %></li>
                 </ul>
               </div>
             </legend>
@@ -119,7 +119,7 @@
   		  <div id="action_to_message" class="to_right vertical_list button">
           <ul>
             <li><a href="#">...</a></li>
-            <li><a href="#">...</a></li>
+            <li><a id="uploadFile" href="#">Attach</a><%=file_field_tag 'attachment', {"id" => "uploadBtn"} %></li>
             <li><%= submit_tag 'Send' %></li>
           </ul>
         </div>
@@ -135,6 +135,8 @@
           <% @cart.each do |project| %>
           <li><%=link_to project.title, edit_desc_path(:id => project.id) %></li>
           <% end %>
+        <% else %>
+          <li><a href="#">Current Processing Set</a></li>
         <% end %>
       </ul>
     </div>
