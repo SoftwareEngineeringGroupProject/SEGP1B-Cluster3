@@ -55,6 +55,8 @@ Rails.application.routes.draw do
   
   #User Profile
   get 'profile' => "users#profile", :as => :profile
+  
+  #Password Reset/Change
   get 'profile/changepw' => "users#changepw", :as => :change_pw
   post 'profile/changepw' => "users#performreset", :as => :perform_reset
   get 'forgottenpassword' => "users#forgot_password", :as => :forgot_password
