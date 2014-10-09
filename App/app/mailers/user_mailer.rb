@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: 'PPMS@gmail.com'
+  default from: 'UofAPPMS@gmail.com'
 
   def welcome_email(user)
   	@user = user
@@ -11,6 +11,10 @@ class UserMailer < ActionMailer::Base
     @receipient = receipient
     @subject = subject
     mail(:to => "#{receipient.name} <#{receipient.email}>", :subject => subject)
+  end
+  
+  def email_new_password(text)
+  	mail(to: "sam.g.reid@gmail.com", subject: "Your password has been reset")
   end
 
 end

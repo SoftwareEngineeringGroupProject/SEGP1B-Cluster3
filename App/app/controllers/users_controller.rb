@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\z/i
 	before_filter :save_login_state, :only => [:new, :create]
 
 	def index
@@ -70,8 +71,10 @@ class UsersController < ApplicationController
 						new_hashed_password = BCrypt::Engine.hash_secret(params[:new_password], newsalt)
 						@current_user.update_attribute("salt", newsalt)
 						@current_user.update_attribute("hashed_password", new_hashed_password)
+						@current_user.update_attribute("passwordvalid",0)
 						if @current_user.save
 							flash[:notice] = "Password Successfully Updated"
+							UserMailer.email_new_password("moo")
 							redirect_to :change_pw
 						else
 							flash[:notice] = "Unable to Update Password"
@@ -93,6 +96,38 @@ class UsersController < ApplicationController
 			flash[:notice] = "You muct be logged in to change your password!"
 			redirect_to :login
 		end
+	end
+	
+	def forgot_password
+		render "forgottenpassword"
+	end
+	
+	def email_new_password
+		username_or_email = params[:username_or_email]
+		if  EMAIL_REGEX.match(username_or_email)
+			@user = User.find_by_email(username_or_email)
+		else
+			@user = User.find_by_username(username_or_email)
+    	end
+    	if @user != nil
+    		#generate random password
+    		randompw = (0...8).map { (65 + rand(26)).chr }.join
+    		newsalt = BCrypt::Engine.generate_salt
+    		new_hashed_password = BCrypt::Engine.hash_secret(randompw, newsalt)
+    		@user.update_attribute("salt", newsalt)
+    		@user.update_attribute("hashed_password", new_hashed_password)
+    		@user.update_attribute("passwordvalid", -1)
+    		if @user.save
+    			flash[:notice] = "New Password #{randompw} sent to #{@user.email}"
+				UserMailer.email_new_password(randompw)
+				redirect_to :login
+    		else
+    			flash[:notice] = "Unable to reset users password. Unknown error. Please try again later"
+    		end
+    	else
+    		flash[:notice] = "User not found!"
+    		render "forgottenpassword"
+    	end
 	end
 
 	def edit
@@ -123,6 +158,5 @@ class UsersController < ApplicationController
   	def match_password(login_password="")
   		hashed_password == BCrypt::Engine.hash_secret(login_password, salt)
 	end
-  
 
 end

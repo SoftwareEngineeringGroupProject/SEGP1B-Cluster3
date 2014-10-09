@@ -57,6 +57,8 @@ Rails.application.routes.draw do
   get 'profile' => "users#profile", :as => :profile
   get 'profile/changepw' => "users#changepw", :as => :change_pw
   post 'profile/changepw' => "users#performreset", :as => :perform_reset
+  get 'forgottenpassword' => "users#forgot_password", :as => :forgot_password
+  post 'forgottenpassword' => "users#email_new_password", :as => :email_new_password
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
