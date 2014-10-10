@@ -1,40 +1,36 @@
 <%= render "shared/header" %>
 
   <div id="subPro" class="forms flex_height">
-    <%= form_for @project, url: {action: "create"} do |f| %>
+
+    <%= form_for @project, url: {action: "create"}, :html => { :multipart => true} do |f| %>
       <div class="titles">
         <h3>Submit a Project</h3>
       </div>
-        
-        <%=fields_for @company do |c| %>
-        <% if session[:user_id] != nil %>
-        	<% @current_user = User.find(session[:user_id]) %>
-        <% end %>
-          <%=c.hidden_field :name, :value => @current_user.companyname %>
-          <%=c.hidden_field :address, :value => @current_user.address %>
-          <%=c.hidden_field :phone, :value => @current_user.phone %>
-          <%=c.hidden_field :email, :value => @current_user.email %>
-          <%=c.hidden_field :website, :value => @current_user.website %>
-        <% end %>
 
       <fieldset class="leftPart inputs to_left">
         <legend>Project details</legend>
         <%=f.text_field :title, "placeholder" => "Title" %>
         <%=f.text_area :body, "placeholder" => "Project description", "rows"=>"10" %>
-        <%= fields_for @attached do |a| %>
-          <%= a.file_field :attached %>
-        <% end %>
+        <%=f.file_field :attachment %>
       </fieldset>
-    <div class="sep"></div>
-    <div class="to_left">
-      <%= "Some fields were missing!" if @project.errors.any? || @company.errors.any? %>
-    </div>
-    <div id="subBtn" class="button horizontal_list to_right">
-      <ul>
-        <li><%= f.submit "SUBMIT" %></li>
-        <li><%= link_to "CANCEL", root_path %></li>
-      </ul>
-    </div>
+
+      <div class="sep"></div>
+      <div class="to_left">
+
+      <% if @project.errors.any? %>
+        <ul class="Signup_Errors">
+        <% for message_error in @project.errors.full_messages %>
+        <li>* <%= message_error %></li>
+        <% end %>
+      <% end %>
+
+      </div>
+      <div id="subBtn" class="button horizontal_list to_right">
+        <ul>
+          <li><%= f.submit "SUBMIT" %></li>
+          <li><%= link_to "CANCEL", root_path %></li>
+        </ul>
+      </div>
     <% end %>
 
   </div>
