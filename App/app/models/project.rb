@@ -8,5 +8,6 @@ class Project < ActiveRecord::Base
 					"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
 					"application/msword",
 					"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-					"text/plain"], :size => { :in => 0..5.megabytes }, :message => "Acceptable types: PDF, EXCEL, WORD or TEXT files. Size-max:5mB"
+					"text/plain"],:message => "Acceptable types: PDF, EXCEL, WORD or TEXT files."
+	validates_attachment_size :attachment, :less_than => 5.megabytes, :message => "File cannot exceeeds 5megabytes"
 end
