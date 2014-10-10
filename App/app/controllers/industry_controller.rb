@@ -15,7 +15,7 @@ class IndustryController < ApplicationController
 		end
 
 		if ( params[:commit]=='Delete' )
-			remove
+			redirect_to delete_industry_project_path
 		end
 
 		if ( params[:commit]=='Submit New' )
@@ -38,7 +38,7 @@ class IndustryController < ApplicationController
 		@attached = @project.attached    
 
 		#redirect to show project page if success
-		if @project.update(project_params) && @attached.update(attached_params)
+		if @project.update(project_params) 
 		  redirect_to :show_all_industry_project
 		else
 		#otherwise, stay in edit page
@@ -46,15 +46,30 @@ class IndustryController < ApplicationController
 		end 
 	end
 	
-	def remove
-	    	@project = Project.find(params[:id]);
-		@attached = @project.attached  
+	def delete	
+		@message = Message.new
+		@message.subject = ""
+		@message.body = ""
+	    	if (params[:id] != nil)
+		    	@project = Project.find(params[:id]);
+			
+		end 
+
 		
-		#remove both
-		@project.destroy
-		@attached.destroy
+	end
+
+	def pending
+	    	if (params[:id] != nil)
+		    	@project = Project.find(params[:id]);
+		end 
 		
-		redirect_to :show_all_industry_project
+		@message = @project.messages.build(message_params)
+		if (@message.save)
+		  redirect_to :show_all_industry_project
+		else
+		#otherwise, stay in edit page
+		  render :pending
+		end 
 	end
 	
 	private
@@ -65,6 +80,10 @@ class IndustryController < ApplicationController
 	    def company_params
 	      params.require(:company).permit(:name, :address, :phone, :email, :website)
 	    end 
+
+	    def message_params
+		params.require(:message).permit(:subject, :body)
+	    end
 
 	    def attached_params
 	      params.require(:attached).permit(:attached, :project_id)

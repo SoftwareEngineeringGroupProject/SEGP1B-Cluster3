@@ -10,9 +10,6 @@
         <legend>Project details</legend>
         <%=f.text_field :title %>
         <%=f.text_area :body, "rows"=>"10" %>
-        <%= fields_for @attached do |a| %>
-          <%= a.file_field :attached %>
-        <% end %>
       </fieldset>
     <div class="sep"></div>
     <div class="to_left">
@@ -21,7 +18,7 @@
     <div id="subBtn" class="button horizontal_list to_right">
       <ul>
         <li><%= f.submit "SUBMIT" %></li>
-        <li><%= link_to "CANCEL", root_path %></li>
+        <li><%= link_to "CANCEL", show_all_industry_project_path %></li>
       </ul>
     </div>
     <% end %>

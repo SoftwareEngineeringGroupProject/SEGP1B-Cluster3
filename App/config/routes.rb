@@ -57,6 +57,8 @@ Rails.application.routes.draw do
   patch 'industry/edit/:id' => "industry#update", :as => :update_industry_project
   post 'industry/showList/:id' => "industry#action_to_project", :as => :action_to_industry_project
   post 'industry/remove/:id' => "industry#remove", :as => :remove_industry_project
+  get 'industry/delete/:id' => "industry#delete", :as => :delete_industry_project
+  post 'industry/delete/:id' => "industry#pending", :as => :delete_pending_project
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
