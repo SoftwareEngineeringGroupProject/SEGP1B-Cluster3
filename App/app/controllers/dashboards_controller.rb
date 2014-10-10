@@ -21,8 +21,13 @@ class DashboardsController < ApplicationController
     # Create a hash containing emails of all company, this is then used in view
     # to show the corresponding email of a project  when we select that project
     @emails = {}
-    Company.all.each do |company|
-      @emails[company.id] = "To: #{company.name} <#{company.email}>"
+    User.all.each do |user|
+
+      if user.acctype == "industry"
+        company = Company.find_by_user_id(user.id)
+        @emails[company.id] = "To: #{user.lname} <#{user.email}>"
+      end
+
     end
   end
 
@@ -96,12 +101,14 @@ class DashboardsController < ApplicationController
     def send_message
       # Identify the company that owns the project
       company = (Company.all.select{|c| c.projects.include? @project }.first)
+      recipient = User.find(company.user_id)
+
       @message = params[:email]
       file = params[:attachment]
       # Send the message to the company's email
-      UserMailer.send_a_message(params[:email], company, params[:subject], file).deliver
+      UserMailer.send_a_message(params[:email], recipient, params[:subject], file).deliver
 
-      flash[:notice] = "Message has been delivered to #{company.name} <#{company.email}>"
+      flash[:notice] = "Message has been delivered to #{recipient.lname} <#{recipient.email}>"
     end
 
     # Change state of a project

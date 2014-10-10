@@ -11,13 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141008014747) do
+ActiveRecord::Schema.define(version: 20141010100923) do
 
   create_table "attacheds", force: true do |t|
     t.integer  "project_id"
     t.binary   "attached"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "attachments", force: true do |t|
+    t.integer  "project_id"
+    t.binary   "attached"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "filename"
+    t.string   "content_type"
   end
 
   create_table "companies", force: true do |t|
@@ -30,6 +39,7 @@ ActiveRecord::Schema.define(version: 20141008014747) do
     t.string   "website"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "groups", force: true do |t|
@@ -50,6 +60,11 @@ ActiveRecord::Schema.define(version: 20141008014747) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "in_cart"
+    t.integer  "attachment_id"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
   end
 
   create_table "student_projects", force: true do |t|
