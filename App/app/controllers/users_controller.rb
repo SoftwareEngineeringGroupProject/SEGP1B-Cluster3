@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 
 	def create
   		@user = User.new(user_params)
+  		@user.acctype = "industry"
     	if @user.save
     		flash[:notice] = "Account Successfuly Created. Please Log In to Continue"
     		redirect_to :login
@@ -35,6 +36,7 @@ class UsersController < ApplicationController
   	def createadmin
   		if user_logged_in?
   			@newadminuser = User.new(admin_params)
+  			@newadminuser.acctype = "coordinator"
     		if @newadminuser.save
     			flash[:notice] = "Account Successfuly Created for Other Admin."
     			redirect_to :admin_signup_path
@@ -169,11 +171,11 @@ class UsersController < ApplicationController
 
 	private
   	def user_params
-    	params.require(:user).permit(:username, :email, :password, :password_confirmation, :fname, :lname, :companyname, :address, :phone, :website, :acctype)
+    	params.require(:user).permit(:username, :email, :password, :password_confirmation, :fname, :lname, :companyname, :address, :phone, :website)
   	end
   
   	def admin_params
-    	params.require(:admin_user).permit(:username, :email, :password, :password_confirmation, :fname, :lname, :companyname, :address, :phone, :website, :acctype)
+    	params.require(:admin_user).permit(:username, :email, :password, :password_confirmation, :fname, :lname, :companyname, :address, :phone, :website)
   	end
   	
   	def match_password(login_password="")
