@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009140938) do
+ActiveRecord::Schema.define(version: 20141010013555) do
 
   create_table "attacheds", force: true do |t|
     t.integer  "project_id"
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 20141009140938) do
     t.datetime "updated_at"
     t.string   "title"
     t.string   "group"
-    t.string   "members"
     t.string   "summary"
     t.string   "extra"
     t.string   "image"

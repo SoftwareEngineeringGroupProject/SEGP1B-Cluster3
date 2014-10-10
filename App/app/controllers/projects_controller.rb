@@ -59,7 +59,7 @@ class ProjectsController < ApplicationController
   end
 
   def user_params
-    params.require(:StudentProject).permit(:title, :summary, :members, :extra, :image)
+    params.require(:StudentProject).permit(:title, :summary, :extra, :image)
   end
 
   def group_params
