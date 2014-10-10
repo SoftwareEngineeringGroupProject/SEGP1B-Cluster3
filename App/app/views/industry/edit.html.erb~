@@ -1,4 +1,4 @@
-
+<%= render "shared/header" %>
 
   <div id="subPro" class="forms flex_height">
     <%= form_for @project, url: {action: "update"} do |f| %>
@@ -21,7 +21,7 @@
     <div id="subBtn" class="button horizontal_list to_right">
       <ul>
         <li><%= f.submit "SUBMIT" %></li>
-        <li><%= link_to "CANCEL", root_path %></li>
+        <li><%= link_to "CANCEL", show_all_industry_project_path %></li>
       </ul>
     </div>
     <% end %>
