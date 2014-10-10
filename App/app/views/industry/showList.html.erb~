@@ -44,9 +44,9 @@
         <div class="flex_height">
           <div id="action_to_showing_board" class="to_right horizontal_list button">
             <ul>
+              <li><%= submit_tag 'Submit New' %></li>
               <li><%= submit_tag 'Edit' %></li>
               <li><%= submit_tag 'Delete' %></li>
-              <li><%= submit_tag 'Submit New' %></li>
             </ul>
           </div>
         </div>
@@ -62,9 +62,10 @@
                 </ul>
               </div>
             </legend>
-            <%= select_tag(:project_id, options_for_select(@projects.collect{|project| [project.title,project.id, {'data-desc'=>project.body}]}), "size" => "12", "id" => "demo") %>
+            <%= select_tag(:project_id, options_for_select(@projects.collect{|project| [project.status+"-"+project.title,project.id, {'data-desc'=>project.body}]}), "size" => "11", "id" => "demo") %>
           </fieldset>
         </div>
+
 
         <!-- Project description-->
         <div id="show_specification" class="to_right" >

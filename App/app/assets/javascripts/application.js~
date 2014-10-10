@@ -43,6 +43,5 @@
     var chosen = $(this).find(":selected")
     $("textarea#project_desc").val(chosen.data("desc"));
     $("input#mail_address").val(chosen.data("mail"));
-    $("p#project_state").val(chosen.data("state"));
     });
   });

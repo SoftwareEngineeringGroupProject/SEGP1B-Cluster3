@@ -62,9 +62,10 @@
                 </ul>
               </div>
             </legend>
-            <%= select_tag(:project_id, options_for_select(@projects.collect{|project| [project.title,project.id, {'data-desc'=>project.body}]}), "size" => "12", "id" => "demo") %>
+            <%= select_tag(:project_id, options_for_select(@projects.collect{|project| [project.status+" - "+project.title,project.id, {'data-desc'=>project.body}]}), "size" => "11", "id" => "demo") %>
           </fieldset>
         </div>
+
 
         <!-- Project description-->
         <div id="show_specification" class="to_right" >
