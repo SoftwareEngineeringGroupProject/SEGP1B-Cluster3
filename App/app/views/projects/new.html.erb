@@ -6,33 +6,23 @@
       <h1>Submit a student's project</h1>
       <p text-align: left>
       <%= form_for :StudentProject, :html => {:multipart => true} do |f| %>
-        <p>
           <%= f.label :title %>
-          <%= f.text_field :title %>
-        </p>
-        <p>
-          <%= f.label :group %>
-          <%= f.text_field :group %>
-        </p>
-        <p>
-          <%= f.label :members %>
-          <%= f.text_field :members %>
-        </p>
-        <p>
+          <%= f.text_field :title %></br>
+          <%= fields_for :group do |builder| %>
+            <%= builder.label "Group name" %>
+            <%= builder.text_field :name %></br>
+            <%= builder.label "Number of Members" %>
+            <%= builder.text_field :numOfMembers %></br>
+          <% end %>
+
           <%= f.label :summary %>
-          <%= f.text_area :summary %>
-        </p>
-        <p>
+          <%= f.text_area :summary %></br>
           <%= f.label :extra %>
-          <%= f.text_area :extra %>
-        </p>
-        <p>
-          <%= f.file_field :image %>
-        </p>
-        <p>
+          <%= f.text_area :extra %></br>
+          <%= f.label :image %>
+          <%= f.file_field :image %></br>
           <%= f.label :remote_image_url, "or image URL" %>
-          <%= f.text_field :remote_image_url %>
-        </p>
+          <%= f.text_field :remote_image_url %></br>
         <p><%= f.submit %></p>
       <% end %>
 
