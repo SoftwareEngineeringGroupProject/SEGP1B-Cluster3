@@ -35,7 +35,9 @@ class ProjectsController < ApplicationController
 
   def new
     @project = StudentProject.new
-    @group = Group.new
+    3.times do
+      students = @project.students.build
+    end
     # if session[:username] != @admin.email
     #   redirect_to root_path ,:notice => "Only admins are allowed to submit projects"
     # end
@@ -43,7 +45,6 @@ class ProjectsController < ApplicationController
 
   def create
     @project = StudentProject.new(user_params)
-    @group = @project.build_group(group_params)
     # @projects = StudentProject.new
     # @projects.title = params[:title]
     # @projects.group = params[:group]
@@ -51,7 +52,7 @@ class ProjectsController < ApplicationController
     # @projects.members = params[:members]
     # @projects.extra = params[:extra]
     # @projects.image = params[:image]
-    if @project.save && @group.save
+    if @project.save
       redirect_to :index, :notice => "Project created"
     else
       render :new

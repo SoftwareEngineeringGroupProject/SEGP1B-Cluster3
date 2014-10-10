@@ -5,20 +5,25 @@
       <p class="justify">
       <h1>Submit a student's project</h1>
       <p text-align: left>
-      <%= form_for :StudentProject, :html => {:multipart => true} do |f| %>
+      <%= form_for @project, :html => {:multipart => true} do |f| %>
           <%= f.label :title %>
           <%= f.text_field :title %></br>
-          <%= fields_for :group do |builder| %>
-            <%= builder.label "Group name" %>
+          <%= f.label :year %>
+          <%= f.text_field :year %></br>
+
+          <% if false %>
+          <%= fields_for :students do |builder| %>
+            <%= builder.label "Student name" %>
             <%= builder.text_field :name %></br>
             <%= builder.label "Number of Members" %>
             <%= builder.text_field :numOfMembers %></br>
           <% end %>
+          <% end %>
 
+          <%= f.label :client %>
+          <%= f.text_field :client %></br>
           <%= f.label :summary %>
           <%= f.text_area :summary %></br>
-          <%= f.label :extra %>
-          <%= f.text_area :extra %></br>
           <%= f.label :image %>
           <%= f.file_field :image %></br>
           <%= f.label :remote_image_url, "or image URL" %>

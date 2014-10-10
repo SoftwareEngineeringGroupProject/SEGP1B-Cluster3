@@ -1,6 +1,6 @@
 class StudentProject < ActiveRecord::Base
-	validates_presence_of :title, :group, :summary, :extra, :image
-	has_one :group	
+	validates_presence_of :title, :summary, :image, :client
+	has_many :students	
 	mount_uploader :image, ImageUploader
-	accepts_nested_attributes_for :group
+	accepts_nested_attributes_for :students
 end
