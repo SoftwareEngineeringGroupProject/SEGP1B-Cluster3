@@ -41,10 +41,10 @@ Rails.application.routes.draw do
   post 'users/update/:id' => "users#update", :as => :update_user_path
   
   #registration
-  post 'signup/' => "users#create", :as => :create_user_path
   get 'signup/' => "users#new", :as => :signup
+  post 'signup/' => "users#create", :as => :create_user_path
   get 'admin/signup/' => "users#newadmin", :as => :admin_signup_path
-  post 'admin/signup/' => "users#newadmin", :as => :create_admin
+  post 'admin/signup/' => "users#createadmin", :as => :create_admin
   
   #Login/Logout
   get 'login' => 'sessions#login', :as => :login

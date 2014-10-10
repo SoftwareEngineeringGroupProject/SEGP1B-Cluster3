@@ -34,10 +34,10 @@ class UsersController < ApplicationController
   
   	def createadmin
   		if user_logged_in?
-  			@newadminuser = User.new(user_params)
-    		if @newadminuseruser.save
-    			flash[:notice] = "Account Successfuly Created. Please Log In to Continue"
-    			render :admin_signup_path
+  			@newadminuser = User.new(admin_params)
+    		if @newadminuser.save
+    			flash[:notice] = "Account Successfuly Created for Other Admin."
+    			redirect_to :admin_signup_path
    			else
     			flash[:notice] = "Unable to Create new Coordinator Account"
       			render "newadmin"
@@ -170,6 +170,10 @@ class UsersController < ApplicationController
 	private
   	def user_params
     	params.require(:user).permit(:username, :email, :password, :password_confirmation, :fname, :lname, :companyname, :address, :phone, :website, :acctype)
+  	end
+  
+  	def admin_params
+    	params.require(:admin_user).permit(:username, :email, :password, :password_confirmation, :fname, :lname, :companyname, :address, :phone, :website, :acctype)
   	end
   	
   	def match_password(login_password="")
