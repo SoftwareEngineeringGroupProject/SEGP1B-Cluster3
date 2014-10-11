@@ -10,6 +10,9 @@ class DashboardsController < ApplicationController
   		redirect_to :unauthorized
   	end
 
+    # Define how to display the dashboad, either display description or message log
+    @des = !@log
+
     # View projects based on project state
     @state = params[:state]
     @cart = Project.all.select{|p| p.in_cart == true}
@@ -84,8 +87,15 @@ class DashboardsController < ApplicationController
         @project.update_attributes(:body => params[:project_content])
         redirect_to edit_desc_path
         return
+      elsif (params[:commit] == 'Project Description')
+        @des = true
+        @log = false
+      elsif (params[:commit] == 'Message Log')
+        #@industry = User.find(Company.find(@project.company_id).user_id)
+        @message_log = @project.messages#.collect {|message| message.recipient_id == @current_user.id || message.sender_id ==  @sender.id}
+        @des = false
+        @log = true
       end
-
     else
       flash[:notice] = 'Please select a project first!'
     end
@@ -102,13 +112,20 @@ class DashboardsController < ApplicationController
       # Identify the company that owns the project
       company = (Company.all.select{|c| c.projects.include? @project }.first)
       recipient = User.find(company.user_id)
+      #:title => params[:subject], :text => params[:email], :recipient_id =>recipient.id,:sender_id => @current_user.id
+      @current_user = User.find(session[:user_id])
 
-      @message = params[:email]
+      @message = Message.new(:sender_id=> @current_user.id, :project_id => @project.id, :title => params[:subject], :text => params[:email], :recipient_id =>recipient.id)
+
+      if !@message.save
+        return
+      end
+
       file = params[:attachment]
       # Send the message to the company's email
       UserMailer.send_a_message(params[:email], recipient, params[:subject], file).deliver
-
       flash[:notice] = "Message has been delivered to #{recipient.lname} <#{recipient.email}>"
+
     end
 
     # Change state of a project

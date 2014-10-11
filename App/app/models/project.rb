@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
 	has_one :attachment
+	has_many :messages
 	belongs_to :company
 	has_attached_file :attachment
 	validates_presence_of :title, :body
