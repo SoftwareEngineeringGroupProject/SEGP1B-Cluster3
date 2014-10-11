@@ -18,5 +18,13 @@ class UserMailer < ActionMailer::Base
   	@newpass = newpass
   	mail(:to => "#{user.fname} #{user.lname} <#{user.email}>", :subject => 'Your PPMS Password has been Reset')
   end
+  
+  def email_signup_password(user, newpass)
+  	@user = user
+  	@newpass = newpass
+  	@username = user.username
+  	@fullname = "#{user.fname} #{user.lname}"
+  	mail(:to => "#{user.fname} #{user.lname} <#{user.email}>", :subject => 'PPMS Account Created')
+  end
 
 end
