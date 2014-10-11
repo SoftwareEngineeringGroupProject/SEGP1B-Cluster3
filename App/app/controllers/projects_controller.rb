@@ -1,27 +1,5 @@
 class ProjectsController < ApplicationController
-  # before_action :get_admin , :only => [:check_auth, :new, :index]
-  # before_action :index , :only => [:check_logged_in]
-  after_action :check_logged_in, except: [:check_auth, :logout, :new]
   
- 
-
-  def check_logged_in
-
-  end
-
-  # def check_auth
-  #   if ( params[:username] == @admin.username && params[:password] == @admin.password )   
-  #     session[:username] = @admin.username
-  #     redirect_to root_path ,:notice => "Welcome " + @admin.username
-
-  #   else
-  #     flash[:notice] = "Incorrect username/password"
-  #     redirect_to root_path
-      
-  #   end
-  # end
-
-
   def index
     @projects = StudentProject.all
     # @groups = Group.all
@@ -42,7 +20,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:StudentProject).permit(:title, :summary, :extra, :image, :students)
+    params.require(:StudentProject).permit(:title, :summary, :image, :client, students_attributes: [:name, :email])
   end
 
   def show

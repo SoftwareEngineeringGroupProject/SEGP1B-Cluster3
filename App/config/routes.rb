@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   # Past Project Routes
   ###############################################
 
-  resources :projects
-  resources :student_projects
+  # resources :projects
+  # resources :student_projects
 
   root  to: 'application#index', :as => :root
 
@@ -19,9 +19,9 @@ Rails.application.routes.draw do
     get 'projects/' => 'projects#index', as: 'index'
   get 'projects/new' => 'projects#new', as: 'new'
   post 'projects/new' => 'projects#create'
-  post 'student_projects' => 'projects#create'
+  # post '/student_projects' => 'projects#create'
   # match 'projects/new' => 'projects#create', via: [:get, :post]
-  match 'student_projects' => 'projects#create', via: [:get, :post]
+  match '/student_projects' => 'projects#create', via: [:get, :post]
   get 'projects/contact' => 'projects#contact', as: 'contact'
 
   
