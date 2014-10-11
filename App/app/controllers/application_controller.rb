@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def index
+  		if session[:user_id] != nil
+        	@user = User.find_by_id(session[:user_id])
+        	if @user == nil
+        		session[:user_id] = nil
+        	end
+        end
   end
 
  def profile
@@ -56,7 +62,7 @@ class ApplicationController < ActionController::Base
   
   def user_logged_in?
   	if session[:user_id] != nil
-  		@current_user = User.find(session[:user_id])
+  		@current_user = User.find_by_id(session[:user_id])
   		if @current_user != nil
   			return true
   		else

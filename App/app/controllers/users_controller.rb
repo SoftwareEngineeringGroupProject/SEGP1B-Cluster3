@@ -3,7 +3,13 @@ class UsersController < ApplicationController
 	before_filter :save_login_state, :only => [:new, :create]
 
 	def index
-		@users = User.all
+		if user_logged_in?
+			@users = User.all
+			render "listaccounts"
+		else
+			flash[:notice] = "Account Successfuly Created. Please Log In to Continue"
+			redirect_to :unauthorized
+		end
 	end
 
 	def new
@@ -35,10 +41,14 @@ class UsersController < ApplicationController
   
   	def createadmin
   		if user_logged_in?
-  			@newadminuser = User.new(admin_params)
-  			@newadminuser.acctype = "coordinator"
-  			@newadminuser.passwordvalid = -1
-    		if @newadminuser.save
+  			@user = User.new(admin_params)
+  			@user.acctype = "coordinator"
+  			@user.passwordvalid = -1
+  			randompw = (0...8).map { (65 + rand(26)).chr }.join
+  			@user.password = randompw
+  			@user.password_confirmation = randompw
+    		if @user.save
+    			UserMailer.email_signup_password(@user, randompw).deliver
     			flash[:notice] = "Account Successfuly Created for Other Admin."
     			redirect_to :admin_signup_path
    			else
@@ -199,7 +209,7 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
-		@user = User.find(params[:id])
+		@user = User.find_by_id(params[:id])
 		@user.delete
 		redirect_to :list_all_path
 	end
@@ -214,7 +224,7 @@ class UsersController < ApplicationController
   	end
   
   	def admin_params
-    	params.require(:admin_user).permit(:username, :email, :password, :password_confirmation, :fname, :lname, :companyname, :address, :phone, :website)
+    	params.require(:admin_user).permit(:username, :email, :fname, :lname)
   	end
   	
   	def match_password(login_password="")

@@ -1,12 +1,18 @@
-<h1>View User Details for: <%= @user.username %></h1>
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
- 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<%= render "shared/header" %>
+<%= render "shared/linkbar" %>
+<%= render "shared/profilesidebar" %>
 
-<%= link_to 'Back', :list_all_path %>
+<div id="container" class="to_left shadow">
+	<h1><%= @user.username %> user details</h1>
+	<p>
+  		<strong>Username:</strong>
+  		<%= @user.username %>
+	</p>
+ 
+	<p>
+ 		<strong>Email:</strong>
+  		<%= @user.email %>
+	</p>
+
+	<%= link_to 'Back', :list_all_path %>
+</div>

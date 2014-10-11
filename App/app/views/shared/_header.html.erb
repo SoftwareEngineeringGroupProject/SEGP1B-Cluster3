@@ -8,8 +8,8 @@
 
       <div id="login_buttons" class="button horizontal_list to_right">
         <ul>
-        	<% if session[:user_id] != nil %>
-        		<% @user = User.find(session[:user_id]) %>
+        	<% @user = User.find_by_id(session[:user_id]) %>
+        	<% if @user != nil %>
         		<% if @user.acctype == "industry" %>
         			<li><%= link_to "Industry Projects", :root %></li>
           		<% elsif @user.acctype == "coordinator" %>
