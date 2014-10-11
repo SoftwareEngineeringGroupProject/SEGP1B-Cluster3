@@ -4,21 +4,30 @@ Rails.application.routes.draw do
 
   resources :submissions
 
+  ###############################################
+  # Past Project Routes
+  ###############################################
+
+  resources :projects
+  resources :student_projects
 
   root  to: 'application#index', :as => :root
 
   get 'submit' => "submissions#new"
   
-# resources :projects
-
   get 'projects/info' => 'projects#info', as: 'info'
-  get 'projects/' => 'projects#index', as: 'index'
+    get 'projects/' => 'projects#index', as: 'index'
   get 'projects/new' => 'projects#new', as: 'new'
   post 'projects/new' => 'projects#create'
+  post 'student_projects' => 'projects#create'
   # match 'projects/new' => 'projects#create', via: [:get, :post]
+  match 'student_projects' => 'projects#create', via: [:get, :post]
   get 'projects/contact' => 'projects#contact', as: 'contact'
 
-	
+  
+  ###############################################
+  # Industry Project and Admin Routes
+  ###############################################
 
   # Dashboards
   get 'dashboards/view/:state' => "dashboards#view"

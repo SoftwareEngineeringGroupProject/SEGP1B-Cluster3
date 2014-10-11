@@ -23,35 +23,17 @@ class ProjectsController < ApplicationController
 
 
   def index
-    # @projects = Admin.all
     @projects = StudentProject.all
     # @groups = Group.all
   end
 
-  def logout
-    session[:username] = nil
-    redirect_to root_path ,:notice => "Successfully logged out"
-  end
-
   def new
     @project = StudentProject.new
-    3.times do
-      students = @project.students.build
-    end
-    # if session[:username] != @admin.email
-    #   redirect_to root_path ,:notice => "Only admins are allowed to submit projects"
-    # end
+    3.times { @project.students.build }
   end
 
   def create
-    @project = StudentProject.new(user_params)
-    # @projects = StudentProject.new
-    # @projects.title = params[:title]
-    # @projects.group = params[:group]
-    # @projects.summary = params[:summary]
-    # @projects.members = params[:members]
-    # @projects.extra = params[:extra]
-    # @projects.image = params[:image]
+    @project = StudentProject.new(project_params)
     if @project.save
       redirect_to :index, :notice => "Project created"
     else
@@ -59,12 +41,8 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def user_params
-    params.require(:StudentProject).permit(:title, :summary, :extra, :image)
-  end
-
-  def group_params
-    params.require(:group).permit(:name, :numOfMembers)
+  def project_params
+    params.require(:StudentProject).permit(:title, :summary, :extra, :image, :students)
   end
 
   def show
