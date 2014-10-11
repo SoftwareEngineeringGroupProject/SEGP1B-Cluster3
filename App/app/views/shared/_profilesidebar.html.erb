@@ -1,0 +1,14 @@
+<!-- Profile Sidebar navigation -->
+<div class="aside_cols to_left">
+<div id="tabs" class="to_right vertical_list button">
+	<ul>
+	<li><%=link_to "My Profile", :profile %></li>
+    <li><%=link_to "Update My Details", :profile %></li>
+    <li><%=link_to "Change Password", :change_pw %></li>
+        <% if @current_user.acctype == "coordinator" %>
+    <li><%=link_to "User Admin", :list_all_path %></li>
+    <li><%=link_to "Create Coordinator Account", :admin_signup_path %></li>
+    <% end %>
+    </ul>
+</div>
+</div>
