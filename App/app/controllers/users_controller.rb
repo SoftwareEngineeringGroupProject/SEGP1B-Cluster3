@@ -37,6 +37,7 @@ class UsersController < ApplicationController
   		if user_logged_in?
   			@newadminuser = User.new(admin_params)
   			@newadminuser.acctype = "coordinator"
+  			@newadminuser.passwordvalid = -1
     		if @newadminuser.save
     			flash[:notice] = "Account Successfuly Created for Other Admin."
     			redirect_to :admin_signup_path
@@ -63,6 +64,41 @@ class UsersController < ApplicationController
 				render "profile"
 			else
 				render "profile"
+			end
+		else
+			redirect_to :login
+		end
+	end
+	
+	def editprofile
+		if user_logged_in?
+			@user = @current_user
+			if user_type == "industry"
+				render "editprofile"
+			else
+				render "editprofile"
+			end
+		else
+			redirect_to :login
+		end
+	end
+	
+	
+	def submitprofileedits
+		if user_logged_in?
+			@user = @current_user
+			if @user.update(edit_user_params)
+				flash[:notice] = "Your Details have been updated"
+				redirect_to :profile
+			else
+				if EMAIL_REGEX.match(params[:email])
+					#don't know why it failed
+					flash[:notice] = "Unable to edit your details"
+				render 'editprofile'
+				else
+					flash[:notice] = "Email Address is Invalid"
+					render 'editprofile'
+				end
 			end
 		else
 			redirect_to :login
@@ -171,6 +207,10 @@ class UsersController < ApplicationController
 	private
   	def user_params
     	params.require(:user).permit(:username, :email, :password, :password_confirmation, :fname, :lname, :companyname, :address, :phone, :website)
+  	end
+  	
+  	def edit_user_params
+    	params.require(:user).permit(:email, :fname, :lname, :phone)
   	end
   
   	def admin_params

@@ -56,6 +56,8 @@ Rails.application.routes.draw do
   
   #User Profile
   get 'profile' => "users#profile", :as => :profile
+  get 'profile/edit' => "users#editprofile", :as => :edit_profile
+  post 'profile/edit' => "users#submitprofileedits", :as => :edit_profile_submit
   
   #Password Reset/Change
   get 'profile/changepw' => "users#changepw", :as => :change_pw
