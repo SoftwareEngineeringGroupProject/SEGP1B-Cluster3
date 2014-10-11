@@ -2,8 +2,12 @@
 
     <%= f.label :title %>
     <%= f.text_field :title %></br>
+    <% if false %>
     <%= f.label :year %>
     <%= f.text_field :year %></br>
+    <% end %>
+    <%= f.label :year %>
+    <%= f.select :year , (2000 .. Date.today.year) %></br>
     <%= f.label :client %>
     <%= f.text_field :client %></br></br>
 
