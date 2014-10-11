@@ -6,21 +6,22 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project = StudentProject.new
-    3.times { @project.students.build }
+    @student_project = StudentProject.new
+    3.times { @student_project.students.build }
   end
 
   def create
-    @project = StudentProject.new(project_params)
-    if @project.save
+    @student_project = StudentProject.new(project_params)
+    if @student_project.save
       redirect_to :index, :notice => "Project created"
     else
       render :new
     end
+    # StudentProject.create(project_params)
   end
 
   def project_params
-    params.require(:StudentProject).permit(:title, :summary, :image, :client, students_attributes: [:name, :email])
+    params.require(:student_project).permit(:title, :summary, :image, :client, :year, students_attributes: [:name, :email])
   end
 
   def show
