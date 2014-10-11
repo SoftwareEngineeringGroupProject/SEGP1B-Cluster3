@@ -93,7 +93,6 @@ class UsersController < ApplicationController
 						@current_user.update_attribute("passwordvalid",0)
 						if @current_user.save
 							flash[:notice] = "Password Successfully Updated"
-							UserMailer.email_new_password("moo")
 							redirect_to :change_pw
 						else
 							flash[:notice] = "Unable to Update Password"
@@ -137,8 +136,8 @@ class UsersController < ApplicationController
     		@user.update_attribute("hashed_password", new_hashed_password)
     		@user.update_attribute("passwordvalid", -1)
     		if @user.save
-    			flash[:notice] = "New Password #{randompw} sent to #{@user.email}"
-				UserMailer.email_new_password(randompw)
+    			flash[:notice] = "New Password sent to #{@user.email}"
+    			UserMailer.email_new_password(@user, randompw).deliver
 				redirect_to :login
     		else
     			flash[:notice] = "Unable to reset users password. Unknown error. Please try again later"

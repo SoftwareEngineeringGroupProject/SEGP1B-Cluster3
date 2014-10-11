@@ -13,8 +13,10 @@ class UserMailer < ActionMailer::Base
     mail(:to => "#{receipient.name} <#{receipient.email}>", :subject => subject)
   end
   
-  def email_new_password(text)
-  	mail(to: "sam.g.reid@gmail.com", subject: "Your password has been reset")
+  def email_new_password(user, newpass)
+  	@user = user
+  	@newpass = newpass
+  	mail(:to => "#{user.fname} #{user.lname} <#{user.email}>", :subject => 'Your PPMS Password has been Reset')
   end
 
 end
