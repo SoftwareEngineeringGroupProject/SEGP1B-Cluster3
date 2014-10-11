@@ -1,16 +1,21 @@
 <%= form_for @student_project, :html => {:multipart => true} do |f| %>
+
     <%= f.label :title %>
     <%= f.text_field :title %></br>
     <%= f.label :year %>
     <%= f.text_field :year %></br>
     <%= f.label :client %>
-    <%= f.text_field :client %></br>
+    <%= f.text_field :client %></br></br>
 
     <%= f.fields_for :students do |builder| %>
       <%= builder.label "Student name" %>
       <%= builder.text_field :name %></br>
       <%= builder.label "Student email" %>
       <%= builder.text_field :email %></br>
+      <%= builder.label "Student ID" %>
+      <%= builder.text_field :studentID %></br>
+      <%= builder.label "Student Course" %>
+      <%= builder.text_field :course %></br></br>
     <% end %>
 
     <%= f.label :summary %>

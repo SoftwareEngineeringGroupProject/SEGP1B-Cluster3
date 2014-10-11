@@ -15,13 +15,13 @@ class ProjectsController < ApplicationController
     if @student_project.save
       redirect_to :index, :notice => "Project created"
     else
-      render :new
+      redirect_to :new
     end
     # StudentProject.create(project_params)
   end
 
   def project_params
-    params.require(:student_project).permit(:title, :summary, :image, :client, :year, students_attributes: [:name, :email])
+    params.require(:student_project).permit(:title, :summary, :image, :client, :year, students_attributes: [:name, :email, :studentID, :course])
   end
 
   def show
