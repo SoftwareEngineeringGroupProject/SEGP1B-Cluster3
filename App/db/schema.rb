@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141010013555) do
+ActiveRecord::Schema.define(version: 20141011024851) do
 
   create_table "attacheds", force: true do |t|
     t.integer  "project_id"
@@ -32,15 +32,6 @@ ActiveRecord::Schema.define(version: 20141010013555) do
     t.datetime "updated_at"
   end
 
-  create_table "groups", force: true do |t|
-    t.string   "name"
-    t.integer  "numOfMembers"
-    t.integer  "StudentProject_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "student_project_id"
-  end
-
   create_table "projects", force: true do |t|
     t.string   "title"
     t.text     "body"
@@ -56,20 +47,20 @@ ActiveRecord::Schema.define(version: 20141010013555) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
-    t.string   "group"
     t.string   "summary"
-    t.string   "extra"
     t.string   "image"
+    t.integer  "year"
+    t.string   "client"
   end
 
   create_table "students", force: true do |t|
     t.string   "name"
     t.string   "email"
     t.string   "studentID"
-    t.integer  "phone"
-    t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "course"
+    t.integer  "student_project_id"
   end
 
   create_table "users", force: true do |t|

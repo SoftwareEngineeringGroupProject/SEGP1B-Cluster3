@@ -1,0 +1,28 @@
+<%= form_for @student_project, :html => {:multipart => true} do |f| %>
+
+    <%= f.label :title %>
+    <%= f.text_field :title %></br>
+    <%= f.label :year %>
+    <%= f.select :year , (2000 .. Date.today.year) %></br>
+    <%= f.label :client %>
+    <%= f.text_field :client %></br></br>
+
+    <%= f.fields_for :students do |builder| %>
+      <%= builder.label "Student name" %>
+      <%= builder.text_field :name %></br>
+      <%= builder.label "Student email" %>
+      <%= builder.text_field :email %></br>
+      <%= builder.label "Student ID" %>
+      <%= builder.text_field :studentID %></br>
+      <%= builder.label :course %>
+      <%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s %></br>
+    <% end %>
+
+    <%= f.label :summary %>
+    <%= f.text_area :summary %></br>
+    <%= f.label :image %>
+    <%= f.file_field :image %></br>
+    <%= f.label :remote_image_url, "or image URL" %>
+    <%= f.text_field :remote_image_url %></br>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

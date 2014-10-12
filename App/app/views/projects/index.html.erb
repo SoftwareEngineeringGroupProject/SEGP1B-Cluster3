@@ -15,9 +15,12 @@
   	<% for project in @projects %>
   		
   		<div class="img">
+        <%= link_to project.title do %>
   			<%= image_tag project.image_url(:thumb)  %>
+          
+        <% end %>
   			Title: <%= project.title %></br>
-        Group: <%= project.group.nil? ? "No group name stated" : project.group.name %></br>
+        Client: <%= project.client %>
   		</div>
   		<% end %>
   	</div> 
