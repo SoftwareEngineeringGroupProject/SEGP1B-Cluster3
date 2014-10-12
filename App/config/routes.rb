@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root  to: 'application#index', :as => :root
 
   get 'submit' => "submissions#new"
-  
+
 # resources :projects
 
   get 'projects/info' => 'projects#info', as: 'info'
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   # match 'projects/new' => 'projects#create', via: [:get, :post]
   get 'projects/contact' => 'projects#contact', as: 'contact'
 
-	
+
 
   # Dashboards
   get 'dashboards/view/:state' => "dashboards#view"
@@ -41,13 +41,13 @@ Rails.application.routes.draw do
   get 'users/edit/:id' => "users#edit", :as => :edit_user_path
   get 'users/removeuser/:id' => "users#destroy", :as => :delete_user_path
   post 'users/update/:id' => "users#update", :as => :update_user_path
-  
+
   #registration
   get 'signup/' => "users#new", :as => :signup
   post 'signup/' => "users#create", :as => :create_user_path
   get 'admin/signup/' => "users#newadmin", :as => :admin_signup_path
   post 'admin/signup/' => "users#createadmin", :as => :create_admin
-  
+
   #Login/Logout
   get 'login' => 'sessions#login', :as => :login
   get 'logout' => 'sessions#logout', :as => :logout
@@ -55,12 +55,12 @@ Rails.application.routes.draw do
 
   #Authorization
   get 'unauthorized/' => "sessions#unauthorized", :as => :unauthorized
-  
+
   #User Profile
   get 'profile' => "users#profile", :as => :profile
   get 'profile/edit' => "users#editprofile", :as => :edit_profile
   post 'profile/edit' => "users#submitprofileedits", :as => :edit_profile_submit
-  
+
   #Password Reset/Change
   get 'profile/changepw' => "users#changepw", :as => :change_pw
   post 'profile/changepw' => "users#performreset", :as => :perform_reset

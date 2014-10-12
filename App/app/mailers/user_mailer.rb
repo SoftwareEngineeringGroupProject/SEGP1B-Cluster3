@@ -20,7 +20,7 @@ class UserMailer < ActionMailer::Base
     # Assign attachment from user's attached file
     attachments[file.original_filename] = file.read unless file == nil
 
-    mail(:to => "#{receipient.name} <#{receipient.email}>", :subject => subject)
+    mail(:to => "#{receipient.lname} <#{receipient.email}>", :subject => subject)
   end
   
   def email_new_password(user, newpass)
