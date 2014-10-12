@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def index
+  		if session[:user_id] != nil
+        	@user = User.find_by_id(session[:user_id])
+        	if @user == nil
+        		session[:user_id] = nil
+        	end
+        end
   end
 
  def profile
@@ -52,7 +58,33 @@ class ApplicationController < ActionController::Base
     	redirect_to(:controller => 'sessions', :action => 'login')
     	return false
   	end
-	end
+  end
+  
+  def user_logged_in?
+  	if session[:user_id] != nil
+  		@current_user = User.find_by_id(session[:user_id])
+  		if @current_user != nil
+  			return true
+  		else
+  			return false
+  		end
+  	else
+  		return false
+  	end
+  end
+  
+    def user_type
+  	if session[:user_id] != nil
+  		@current_user = User.find(session[:user_id])
+  		if @current_user != nil
+  			return @current_user.acctype
+  		else
+  			return false
+  		end
+  	else
+  		return false
+  	end
+  end
 
 	def save_login_state
 		if session[:user_id]

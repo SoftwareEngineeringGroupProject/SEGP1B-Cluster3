@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141010013555) do
+ActiveRecord::Schema.define(version: 20141009132035) do
 
   create_table "attacheds", force: true do |t|
     t.integer  "project_id"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20141010013555) do
     t.string   "website"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "passwordvalid"
   end
 
 end

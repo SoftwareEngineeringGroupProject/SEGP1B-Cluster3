@@ -1,0 +1,41 @@
+<%= render "shared/header" %>
+<%= render "shared/linkbar" %>
+<%= render "shared/profilesidebar" %>
+
+  <div id="ProfileSetting" class=" forms flex_height">
+    <%= form_for :user  do |f| %>
+      <div class="titles">
+        <h3>Edit Your Details: <%= @current_user.username %></h3>
+      </div>
+
+	  <% if flash[:notice] %>
+  		<li><font color="black"><%= flash[:notice] %></font></li>
+  		<br />
+	  <% end %>
+	  
+      <!-- Error display -->
+      <% if @user.errors.any? %>
+    	<ul class="Signup_Errors">
+    	<% for message_error in @user.errors.full_messages %>
+      	<li><%= message_error %></li>
+    	<% end %>
+    	</ul>
+  	  <% end %>
+
+      <fieldset class="inputs">
+        <legend>User details</legend>
+    	  First Name: <%= f.text_field :fname, "placeholder" => "First Name" %>
+    	  Last Name: <%= f.text_field :lname, "placeholder" => "Last Name" %>
+    	  Email Address: <%= f.text_field :email, "placeholder" => "Email" %>
+    	  Phone Number: <%= f.text_field :phone, "placeholder" => "Contact Phone Number" %>
+      </fieldset>
+      
+      <div id="subBtn" class="button horizontal_list to_right" >
+        <ul>
+          <li><%= link_to "Cancel", :profile %></li>
+          <li><%= f.submit "Update Details" %></li>
+        </ul>
+      </div>
+    <% end %>
+
+  </div>

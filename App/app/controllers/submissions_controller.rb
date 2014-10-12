@@ -25,7 +25,7 @@ class SubmissionsController < ApplicationController
     # Create association between new objects
     @company = Company.new(company_params)
     @project = @company.projects.build(project_params)
-    @attached =@project.build_attached(attached_params)
+    @attached = @project.build_attached(attached_params)
 
     # Set state for newly submitted project
     @project.status = "new"
