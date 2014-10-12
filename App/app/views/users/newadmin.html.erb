@@ -1,34 +1,35 @@
 <%= render "shared/header" %>
+<%= render "shared/linkbar" %>
+<%= render "shared/profilesidebar" %>
 
-  <div id="ProfileSetting" class=" forms flex_height">
-    <%= form_for :user, :url => {:controller => 'users', :action => 'create'}  do |f| %>
+  <div id="CreateAdminDiv" class=" forms flex_height">
+    <%= form_for :admin_user  do |f| %>
       <div class="titles">
-        <h3>Course Co-Ordinator Signup</h3>
+        <h3>Create New Course Co-Ordinator Account</h3>
       </div>
 
 	  <% if flash[:notice] %>
-  		<li><font color="black"><%= flash[:notice] %></font></li>
+  		<li><font color="black"><%= flash[:notice] %></font></li
+  		<br />
 	  <% end %>
 	  
       <!-- Error display -->
       <% if @user.errors.any? %>
     	<ul class="Signup_Errors">
     	<% for message_error in @user.errors.full_messages %>
-      	<li>* <%= message_error %></li>
+      	<li><%= message_error %></li>
     	<% end %>
     	</ul>
   	  <% end %>
 
       <fieldset class="inputs">
         <legend>User details</legend>
-          <%= f.hidden_field :acctype, :value => "coordinator" %>
     	  <%= f.text_field :username, "placeholder" => "Username" %>
-    	  <%= f.password_field :password, "placeholder" => "Password" %>
-    	  <%= f.password_field :password_confirmation, "placeholder" => "Password Confirmation"  %>
+
     	  <%= f.text_field :fname, "placeholder" => "First Name" %>
     	  <%= f.text_field :lname, "placeholder" => "Last Name" %>
     	  <%= f.text_field :email, "placeholder" => "Email" %>
-    	  <%= f.text_field :phone, "placeholder" => "Contact Phone Number" %>
+    	  <%= f.hidden_field :phone, :value => "" %>
     	  <%= f.hidden_field :companyname, :value => "University of Adelaide" %>
     	  <%= f.hidden_field :address, :value => "North Terrace Adelaide 5000" %>
     	  <%= f.hidden_field :website, "placeholder" => "www.cs.adelaide.edu.au"  %>
@@ -36,7 +37,7 @@
       
       <div id="subBtn" class="button horizontal_list to_right" >
         <ul>
-          <li><%= link_to "Cancel", root_path %></li>
+          <li><%= link_to "Cancel", :profile %></li>
           <li><%= f.submit "Continue" %></li>
         </ul>
       </div>

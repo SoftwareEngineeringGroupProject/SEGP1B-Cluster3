@@ -1,0 +1,16 @@
+<%= render "shared/header" %>
+<%= render "shared/linkbar" %>
+<%= render "shared/profilesidebar" %>
+    
+<div id="container" class="to_left shadow">
+<h2>Welcome Back <%= @current_user.fname %> <%= @current_user.lname %>!</h2>
+<h3>Your Details:</h3>
+<p><strong>Username: <%= @current_user.username %></strong></p> 
+<p><strong>Email: <%= @current_user.email %></strong></p>
+<br />
+<p><strong>Organisation: <%= @current_user.companyname %></strong></p>
+<p><strong>Address: <%= @current_user.address %></strong></p>
+<p><strong>Phone: <%= @current_user.phone %></strong></p> 
+<p><strong>Website: <a href="http://<%= @current_user.website %>"><%= @current_user.website %></a></strong></p>
+
+</div>
