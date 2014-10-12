@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   end
 
   def new
+    # @students = Student.all
     @student_project = StudentProject.new
     3.times { @student_project.students.build }
   end

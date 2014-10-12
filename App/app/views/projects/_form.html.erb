@@ -2,10 +2,6 @@
 
     <%= f.label :title %>
     <%= f.text_field :title %></br>
-    <% if false %>
-    <%= f.label :year %>
-    <%= f.text_field :year %></br>
-    <% end %>
     <%= f.label :year %>
     <%= f.select :year , (2000 .. Date.today.year) %></br>
     <%= f.label :client %>
@@ -18,8 +14,8 @@
       <%= builder.text_field :email %></br>
       <%= builder.label "Student ID" %>
       <%= builder.text_field :studentID %></br>
-      <%= builder.label "Student Course" %>
-      <%= builder.text_field :course %></br></br>
+      <%= builder.label :course %>
+      <%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s %></br>
     <% end %>
 
     <%= f.label :summary %>
