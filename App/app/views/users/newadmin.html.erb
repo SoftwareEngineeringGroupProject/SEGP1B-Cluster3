@@ -12,11 +12,11 @@
   		<li><font color="black"><%= flash[:notice] %></font></li
   		<br />
 	  <% end %>
-	  
+
       <!-- Error display -->
-      <% if @user.errors.any? %>
+      <% if @newadminuser.errors.any? %>
     	<ul class="Signup_Errors">
-    	<% for message_error in @user.errors.full_messages %>
+    	<% for message_error in @newadminuser.errors.full_messages %>
       	<li><%= message_error %></li>
     	<% end %>
     	</ul>
@@ -34,7 +34,7 @@
     	  <%= f.hidden_field :address, :value => "North Terrace Adelaide 5000" %>
     	  <%= f.hidden_field :website, "placeholder" => "www.cs.adelaide.edu.au"  %>
       </fieldset>
-      
+
       <div id="subBtn" class="button horizontal_list to_right" >
         <ul>
           <li><%= link_to "Cancel", :profile %></li>

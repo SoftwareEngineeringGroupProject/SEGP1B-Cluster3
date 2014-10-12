@@ -44,3 +44,4 @@ gem 'spring',        group: :development
 gem 'rmagick'
 gem 'mini_magick'
 gem 'carrierwave'
+gem 'paperclip', github: 'thoughtbot/paperclip'

@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
 	def new
 		#Signup Form
-		@user = User.new
+		@industryuser = User.new
 		render "new"
 	end
 
@@ -29,9 +29,9 @@ class UsersController < ApplicationController
 	end
 
 	def create
-  		@user = User.new(user_params)
-  		@user.acctype = "industry"
-    	if @user.save
+  		@industryuser = User.new(user_params)
+  		@industryuser.acctype = "industry"
+    	if @industryuser.save
     		flash[:notice] = "Account Successfuly Created. Please Log In to Continue"
     		#UserMailer.welcome_email(@user)
     		redirect_to :login
@@ -39,17 +39,17 @@ class UsersController < ApplicationController
       		render "new"
     	end
   	end
-  
+
   	def createadmin
   		if user_logged_in?
-  			@user = User.new(admin_params)
-  			@user.acctype = "coordinator"
-  			@user.passwordvalid = -1
+  			@newadminuser = User.new(admin_params)
+  			@newadminuser.acctype = "coordinator"
+  			@newadminuser.passwordvalid = -1
   			randompw = (0...8).map { (65 + rand(26)).chr }.join
-  			@user.password = randompw
-  			@user.password_confirmation = randompw
-    		if @user.save
-    			UserMailer.email_signup_password(@user, randompw).deliver
+  			@newadminuser.password = randompw
+  			@newadminuser.password_confirmation = randompw
+    		if @newadminuser.save
+    			UserMailer.email_signup_password(@newadminuser, randompw).deliver
     			flash[:notice] = "Account Successfuly Created for Other Admin."
     			redirect_to :admin_signup_path
    			else
@@ -68,7 +68,7 @@ class UsersController < ApplicationController
 			redirect_to :login
 		end
 	end
-	
+
 	def profile
 		if user_logged_in?
 			if user_type == "industry"
@@ -80,7 +80,7 @@ class UsersController < ApplicationController
 			redirect_to :login
 		end
 	end
-	
+
 	def editprofile
 		if user_logged_in?
 			@user = @current_user
@@ -93,8 +93,8 @@ class UsersController < ApplicationController
 			redirect_to :login
 		end
 	end
-	
-	
+
+
 	def submitprofileedits
 		if user_logged_in?
 			@user = @current_user
@@ -115,7 +115,7 @@ class UsersController < ApplicationController
 			redirect_to :login
 		end
 	end
-	
+
 	def changepw
 		if user_logged_in?
 			if user_type == "industry"
@@ -127,7 +127,7 @@ class UsersController < ApplicationController
 			redirect_to :login
 		end
 	end
-	
+
 	def performreset
 		if user_logged_in?
 			if BCrypt::Engine.hash_secret(params[:login_password], @current_user.salt) == @current_user.hashed_password
@@ -156,17 +156,17 @@ class UsersController < ApplicationController
 			else
 				flash[:notice] = "Current Password is incorrect!"
 				redirect_to :change_pw
-			end	
+			end
 		else
 			flash[:notice] = "You muct be logged in to change your password!"
 			redirect_to :login
 		end
 	end
-	
+
 	def forgot_password
 		render "forgottenpassword"
 	end
-	
+
 	def email_new_password
 		username_or_email = params[:username_or_email]
 		if  EMAIL_REGEX.match(username_or_email)
@@ -219,18 +219,16 @@ class UsersController < ApplicationController
   	def user_params
     	params.require(:user).permit(:username, :email, :password, :password_confirmation, :fname, :lname, :companyname, :address, :phone, :website)
   	end
-  	
+
   	def edit_user_params
     	params.require(:user).permit(:email, :fname, :lname, :phone)
   	end
 
-  
   	def admin_params
     	params.require(:admin_user).permit(:username, :email, :fname, :lname)
   	end
-  	
+
   	def match_password(login_password="")
   		hashed_password == BCrypt::Engine.hash_secret(login_password, salt)
 	end
-
 end
