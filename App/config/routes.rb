@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   get 'users/show/:id' => "users#show", :as => :show_user_path
   get 'users/edit/:id' => "users#edit", :as => :edit_user_path
   get 'users/removeuser/:id' => "users#destroy", :as => :delete_user_path
-  post 'users/update/:id' => "users#update", :as => :update_user_path
+  patch 'users/update/:id' => "users#update", :as => :update_user_path
 
   #registration
   get 'signup/' => "users#new", :as => :signup
