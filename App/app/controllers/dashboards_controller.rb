@@ -10,7 +10,7 @@ class DashboardsController < ApplicationController
   		redirect_to :unauthorized
   	end
 
-    # Define how to display the dashboad, either display description or message log
+    # Define how to display the white board, either display description or message log
     @des = !@log
 
     # View projects based on project state
