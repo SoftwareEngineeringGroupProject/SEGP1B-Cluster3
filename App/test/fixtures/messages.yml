@@ -3,11 +3,13 @@
 one:
   title: MyString
   text: MyText
-  project_id: 1
   recipient_id: 1
+  sender_id: 1
+  project_id: 1
 
 two:
   title: MyString
   text: MyText
-  project_id: 1
   recipient_id: 1
+  sender_id: 1
+  project_id: 1

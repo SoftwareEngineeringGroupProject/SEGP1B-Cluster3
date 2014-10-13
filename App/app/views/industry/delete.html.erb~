@@ -1,0 +1,38 @@
+<%= render "shared/header" %>
+
+  <div id="subPro" class="forms flex_height">
+      <div class="titles">
+        <h3>Delete a Project</h3>
+      </div>
+	
+      <fieldset class="inputs ">
+        <legend>Project details</legend>
+	TITLE:
+        <%=@project.title %>
+	<br/>
+	DESCRIPTION:
+        <%=@project.body %>
+      </fieldset>
+
+    <div class="sep"></div>
+    <div class="to_left">
+      <%= "Some fields were missing!" if @message.errors.any? || @message.errors.any? %>
+    </div>
+
+	
+    <%= form_for @message, url: {action: "update"} do |f| %>
+
+      <h4>Please leave some reasons for deletion here. Delete pending until confirmation by admins... <h4>	
+	<%= f.text_area :subject, "placeholder" => "Subject here..." %>
+	<%= f.text_area :body , "rows"=>"5", "placeholder" => "Specification here..."%>
+
+
+    <div id="subBtn" class="button horizontal_list to_right">
+      <ul>
+        <li><%= f.submit "CONFIRM" %></li>
+        <li><%= link_to "CANCEL", show_all_industry_project_path %></li>
+      </ul>
+    </div>
+    <% end %>
+
+  </div>

@@ -1,0 +1,102 @@
+<!--########################## BANNER ####################################-->
+<% if flash[:notice] %>
+  <font color="black"><%= flash[:notice] %></font>
+<% end %>
+<div class="wrapper navigation">
+
+  <div id="logged" class='to_right'>
+    <p><font color="white">Logged in as: <%=@company.name%></font></p>
+  </div>
+
+  <div id="navi" class="flex_height">
+
+    <!-- Search bar -->
+    <div class="to_right">
+      <form action="#" method="post" id="search">
+        <input type="text" value="Search&hellip;" onfocus="this.value=(this.value=='Search&hellip;')? '' : this.value ;" />
+        <input type="image" id="go" src="/images/search_r.gif" alt="Search" />
+      </form>
+    </div>
+
+    <!-- Menu bar -->
+    <div id = "navi_tabs" class="button horizontal_list to_left">
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Projects", admin_dashboard_path %></li>
+        <li><%=link_to "Process cart", edit_desc_path %></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+
+<!--############################## MAIN BODY ################################-->
+<div class="wrapper content">
+
+
+  <!-- Middle board -->
+  <div id="container" >
+    <%= form_tag %>
+      <!-- Viewing Project Board -->
+      <div id="board_showing" class="general_box flex_height shadow">
+        <div class="flex_height">
+          <div id="action_to_showing_board" class="to_right horizontal_list button">
+            <ul>
+              <li><%= submit_tag 'Submit New' %></li>
+              <li><%= submit_tag 'Edit' %></li>
+              <li><%= submit_tag 'Delete' %></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Project list-->
+        <div class="to_left" id="showing_list">
+          <fieldset>
+            <legend>
+              <div id="search_date" class ="horizontal_list">
+                <ul>
+                  <li><input class="to_left" type="text" id="datepicker" value="Filter by date" name = "date"></li>
+                  <li><%= submit_tag '' %></li>
+                </ul>
+              </div>
+            </legend>
+            <%= select_tag(:project_id, options_for_select(@projects.collect{|project| [project.status+"-"+project.title,project.id, {'data-desc'=>project.body}]}), "size" => "11", "id" => "demo") %>
+          </fieldset>
+        </div>
+
+
+        <!-- Project description-->
+        <div id="show_specification" class="to_right" >
+          <fieldset>
+            <legend>Project description</legend>
+            <textarea id="project_desc" class ="inputs", rows="14">There are some project specification....</textarea>
+          </fieldset>
+        </div>
+      </div>
+
+      <!-- Mailing panel-->
+      <div id="communication" id="general_box" class="flex_height to_right shadow">
+
+        <!-- Message box -->
+		    <div id="message_box" class="to_left">
+          <input class="to_left" type="text" placeholder="Subject:", name ="subject" >
+          <input class="to_right" id="mail_address" type="text" placeholder="To: ">
+          <%= text_area_tag 'email' %>
+        </div>
+
+        <!-- Buttons to apply operations on message -->
+  		  <div id="action_to_message" class="to_right vertical_list button">
+          <ul>
+            <li><a href="#">...</a></li>
+            <li><a href="#">...</a></li>
+            <li><%= submit_tag 'Send' %></li>
+          </ul>
+        </div>
+
+      </div>
+  </div>
+
+
+</div>
