@@ -1,0 +1,65 @@
+/* ---------------------------------------- Profile -------------------------------- */
+#CreateAdminDiv {
+	width: 700px;
+}
+
+.profileleftPart{
+	width:40%;
+	height:330px;
+	}
+
+.profilerightPart{
+	width:50%;
+	height:330px;
+	}
+
+.profilemain {
+	width: 90%;
+	height: 482px;
+	clear:both;
+
+}
+
+.editprofile {
+	width: 90%;
+	height: 550px;
+	clear:both;
+
+}
+.centerHead {
+	text-align: center;
+}
+
+.buttonlist {
+	
+}
+
+#listuserstable {
+	width: 100%;
+	text-align: left;
+	font-size: 15px;
+}
+
+#listusersdiv {
+	height: 85%;
+	overflow: auto;
+}
+
+#editusersdiv {
+	height: 85%;
+	width: 60%;
+	margin: auto;
+}
+
+.navibutton {
+	width: 50px;
+    display: block;
+    font-weight: bold;
+    color: #C7CED6;
+    background-color: #333333;
+    text-align: center;
+		margin: 0;
+		border: 0;
+		padding: 5px;
+		transition: background-color 0.2s;
+}

@@ -1,36 +1,40 @@
-<h1>Edit User Details for: <%= @user.username %></h1>
- 
-<%= form_for :user, url: :update_user_path, method: :patch do |f| %>
-	<% if @user.errors.any? %>
-		<div id="error_explanation">
-		<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being modified:</h2>
-    	<ul>
-    		<% @user.errors.full_messages.each do |msg| %>
-				<li><%= msg %></li>
-			<% end %>
-    	</ul>
-		</div>
-	<% end %>
+<%= render "shared/header" %>
+<%= render "shared/linkbar" %>
+<%= render "shared/profilesidebar" %>
 
-	<p>
-	<%= f.label :username %><%= f.text_field :username %>
-	</p>
- 
-	<p>
-    	<%= f.label :email %><%= f.text_field :email %>
-	</p>
-  
-	<p>
-		<%= f.label "Set New Password" %><%= f.password_field :password %>
-	</p>
-  
-	<p>
-    <%= f.label "Confirm New Password" %><%= f.password_field :password_confirmation %>
-	</p>
- 
-	<p>
-	<%= f.submit %>
-	</p>
-<% end %>
- 
-<%= link_to 'Back', :list_all_path %>
+<div id="container" class="to_left shadow">
+	<div class="editprofile forms flex_height">
+      <div class="titles">
+      	<%= link_to 'Back', :list_all_path, :class => "navibutton" %>
+        <h1 class="centerHead">Edit User Details for: <%= @useredit.username %></h1>
+      </div>
+      
+    <div id="editusersdiv">
+    
+   		<%= form_for :useredit, url: :update_user_path, method: :patch do |f| %>
+			
+			<% if @user.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being modified:</h2>
+    			<ul>
+    				<% @user.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+					<% end %>
+    			</ul>
+			</div>
+			<% end %>
+
+		    <fieldset class="inputs">
+        		<legend>User details</legend>
+        			Username: <%= f.text_field :username, "placeholder" => "Username" %><br />
+    	  			First Name: <%= f.text_field :fname, "placeholder" => "First Name" %><br />
+    	  			Last Name: <%= f.text_field :lname, "placeholder" => "Last Name" %><br />
+    	  			Email Address: <%= f.text_field :email, "placeholder" => "Email" %><br />
+    	  			Phone Number: <%= f.text_field :phone, "placeholder" => "Contact Phone Number" %><br />
+      		</fieldset>
+      		
+			<p><%= f.submit %></p>
+		<% end %>
+	</div>
+  </div>
+</div>

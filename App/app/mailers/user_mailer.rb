@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: 'UofAPPMS@gmail.com'
+  default from: 'UofA PPMS'
 
 
   def welcome_email(user)
@@ -32,6 +32,13 @@ class UserMailer < ActionMailer::Base
   def email_signup_password(user, newpass)
   	@user = user
   	@newpass = newpass
+  	@username = user.username
+  	@fullname = "#{user.fname} #{user.lname}"
+  	mail(:to => "#{user.fname} #{user.lname} <#{user.email}>", :subject => 'PPMS Admin Account Created')
+  end
+  
+  def email_signup_password_industry(user)
+  	@user = user
   	@username = user.username
   	@fullname = "#{user.fname} #{user.lname}"
   	mail(:to => "#{user.fname} #{user.lname} <#{user.email}>", :subject => 'PPMS Account Created')
