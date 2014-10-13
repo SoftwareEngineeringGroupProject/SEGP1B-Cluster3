@@ -7,16 +7,18 @@ Rails.application.routes.draw do
 
   root  to: 'application#index', :as => :root
 
-  get 'submit' => "submissions#new"
+  get 'submit' => "submissions#new", :as => :submit_new_project
+  
+# resources :projects
 
-  # resources :projects
   get 'projects/info' => 'projects#info', as: 'info'
   get 'projects/' => 'projects#index', as: 'index'
   get 'projects/new' => 'projects#new', as: 'new'
   post 'projects/new' => 'projects#create'
+  # match 'projects/new' => 'projects#create', via: [:get, :post]
   get 'projects/contact' => 'projects#contact', as: 'contact'
 
-
+	
 
   # Dashboards
   get 'dashboards/view/:state' => "dashboards#view"
@@ -29,65 +31,34 @@ Rails.application.routes.draw do
   get 'dashboards/assign_students' => "dashboards#assign_students", :as => :assign_students
   post 'dashboards/assgin_students' => "dashboards#action_handler"
 
-  #get 'profile' => "application#profile", :as => :profile_path
-  #post 'login/:username/:password' => 'application#login'
+  get 'profile' => "application#profile", :as => :profile_path
+  post 'login/:username/:password' => 'application#login'
 
-#Users/Login
-  #User Management
-  get 'users/list' => "users#index", :as => :list_all_path
-  get 'users/show/:id' => "users#show", :as => :show_user_path
-  get 'users/edit/:id' => "users#edit", :as => :edit_user_path
-  get 'users/removeuser/:id' => "users#destroy", :as => :delete_user_path
-  post 'users/update/:id' => "users#update", :as => :update_user_path
-
-  #registration
-  get 'signup/' => "users#new", :as => :signup
-  post 'signup/' => "users#create", :as => :create_user_path
-  get 'admin/signup/' => "users#newadmin", :as => :admin_signup_path
-  post 'admin/signup/' => "users#createadmin", :as => :create_admin
-
-  #Login/Logout
   get 'login' => 'sessions#login', :as => :login
   get 'logout' => 'sessions#logout', :as => :logout
   post 'login' => 'sessions#login_attempt'
 
-  #Authorization
+  #Users/Login
+  get 'users/list' => "users#index", :as => :list_all_path
+  get 'users/show/:id' => "users#show", :as => :show_user_path
+  get 'users/edit/:id' => "users#edit", :as => :edit_user_path
+  get 'users/removeuser/:id' => "users#destroy", :as => :delete_user_path
+  get 'users/signup/' => "users#new", :as => :signup
+  post 'users/update/:id' => "users#update", :as => :update_user_path
+  post 'users/signup/' => "users#create", :as => :create_user_path
+
+  get 'admin/signup/' => "users#newadmin", :as => :admin_signup_path
   get 'unauthorized/' => "sessions#unauthorized", :as => :unauthorized
 
 
-  #User Profile
-  get 'profile' => "users#profile", :as => :profile
-  get 'profile/edit' => "users#editprofile", :as => :edit_profile
-  post 'profile/edit' => "users#submitprofileedits", :as => :edit_profile_submit
-
-  # Password Reset/Change
-  get 'profile/changepw' => "users#changepw", :as => :change_pw
-  post 'profile/changepw' => "users#performreset", :as => :perform_reset
-  get 'forgottenpassword' => "users#forgot_password", :as => :forgot_password
-  post 'forgottenpassword' => "users#email_new_password", :as => :email_new_password
-
-
-  # Industry actions
-  get 'industry/showList' => "industry#showList", :as => :industry_dashboard
+  #Industry actions
   get 'industry/showList/:id' => "industry#showList", :as => :show_all_industry_project
-
-  get 'industry/edit' => "industry#edit"
   get 'industry/edit/:id' => "industry#edit", :as => :edit_industry_project
-
-  get 'industry/update/' => "industry#update"
-
-  post 'industry/update/' => "industry#showList"
-
-  patch 'industry/update' => "industry#update", :as => :update_industry_project
-
-  post 'industry/showList' => "industry#action_to_project"
+  patch 'industry/edit/:id' => "industry#update", :as => :update_industry_project
   post 'industry/showList/:id' => "industry#action_to_project", :as => :action_to_industry_project
-
-
   post 'industry/remove/:id' => "industry#remove", :as => :remove_industry_project
-  get 'industry/delete' => "industry#delete", :as => :delete_industry_project
-  post 'industry/delete' => "industry#pending", :as => :delete_pending_project
-
+  get 'industry/delete/:id' => "industry#delete", :as => :delete_industry_project
+  post 'industry/delete/' => "industry#pending", :as => :delete_pending_project
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

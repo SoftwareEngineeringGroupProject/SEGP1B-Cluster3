@@ -1,0 +1,26 @@
+<%= render "shared/header" %>
+  <!--########################################################-->
+    <form id="subPro" class="forms flex_height">
+      <div class="titles">
+        <h3>Thank You Very Much</h3>
+      </div>
+
+       <div class="thanksSentences" id="separator">below is your project review</div>
+      <fieldset class="inputs">
+        <legend>Project details</legend>
+	TITLE:
+        <%=@project.title %>
+	<br/>
+	DESCRIPTION:
+        <%=@project.body %>
+      </fieldset>
+
+	<div id="subBtn" class="button horizontal_list to_right">
+        <ul>
+          <li><%= link_to "SUBMIT NEW", new_submission_path %></li>
+          <li><%= link_to "BACK HOME", root_path %></li>
+        </ul>
+       </div>
+      </div>
+    </form>
+
