@@ -27,59 +27,59 @@ class IndustryController < ApplicationController
     		if (params[:id] != nil)
 		    	@project = Project.find(params[:id]);
 			@company = @project.company
-			@attached = @project.attached   
-		end 	
+			@attached = @project.attached
+		end
     	end
-	
+
 	def update
 		#update the new information for project
 	    	@project = Project.find(params[:id]);
 		@company = @project.company
-		@attached = @project.attached    
+		@attached = @project.attached
 
 		#redirect to show project page if success
-		if @project.update(project_params) 
+		if @project.update(project_params)
 		  redirect_to :show_all_industry_project
 		else
 		#otherwise, stay in edit page
 		  render edit
-		end 
+		end
 	end
-	
-	def delete	
+
+	def delete
 		@message = Message.new
 		@message.subject = ""
 		@message.body = ""
 	    	if (params[:id] != nil)
 		    	@project = Project.find(params[:id]);
-			
-		end 
 
-		
+		end
+
+
 	end
 
 	def pending
 	    	if (params[:id] != nil)
 		    	@project = Project.find(params[:id]);
-		end 
-		
+		end
+
 		@message = @project.messages.build(message_params)
 		if (@message.save)
 		  redirect_to :show_all_industry_project
 		else
 		#otherwise, stay in edit page
 		  render :pending
-		end 
+		end
 	end
-	
+
 	private
 	    def project_params
 	      params.require(:project).permit(:title, :body)
-	    end 
+	    end
 
 	    def company_params
 	      params.require(:company).permit(:name, :address, :phone, :email, :website)
-	    end 
+	    end
 
 	    def message_params
 		params.require(:message).permit(:subject, :body)
@@ -87,6 +87,6 @@ class IndustryController < ApplicationController
 
 	    def attached_params
 	      params.require(:attached).permit(:attached, :project_id)
-	    end   
-  
+	    end
+
 end
