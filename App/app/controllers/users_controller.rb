@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   		@industryuser.acctype = "industry"
     	if @industryuser.save
     		flash[:notice] = "Account Successfuly Created. Please Log In to Continue"
-    		#UserMailer.welcome_email(@user)
+    		UserMailer.email_signup_password_industry(@industryuser).deliver
     		redirect_to :login
     	else
       		render "new"
@@ -63,7 +63,11 @@ class UsersController < ApplicationController
 
 	def show
 		if user_logged_in?
-			@user = User.find(params[:id])
+			if user_type == "coordinator"
+				@showuser = User.find(params[:id])
+			else
+				redirect_to "unauthorized"
+			end
 		else
 			redirect_to :login
 		end
@@ -196,23 +200,47 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		@user = User.find(params[:id])
+		if user_logged_in?
+			if user_type == "coordinator"
+				@useredit = User.find(params[:id])
+				render "edit"
+			else
+				redirect_to "unauthorized"
+			end
+		else
+			redirect_to :login
+		end
 	end
 
 	def update
-		@user = User.find(params[:id])
-
-  		if @user.update(user_params)
-    		redirect_to :list_all_path
+		if user_logged_in?
+			if user_type == "coordinator"
+				@useredit = User.find(params[:id])
+  				if @useredit.update(update_user_params)
+    				redirect_to :list_all_path
+  				else
+    				render 'edit'
+  				end
+  			else
+  				redirect_to "unauthorized"
+  			end
   		else
-    		render 'edit'
+  			redirect_to :login
   		end
 	end
 
 	def destroy
-		@user = User.find_by_id(params[:id])
-		@user.delete
-		redirect_to :list_all_path
+		if user_logged_in?
+			if user_type == "coordinator"
+				@userdelete = User.find_by_id(params[:id])
+				@userdelete.delete
+				redirect_to :list_all_path
+			else
+				redirect_to "unauthorized"
+			end
+		else
+			redirect_to :login
+		end
 	end
 
 	private
@@ -222,6 +250,10 @@ class UsersController < ApplicationController
 
   	def edit_user_params
     	params.require(:user).permit(:email, :fname, :lname, :phone)
+  	end
+  	
+  	def update_user_params
+    	params.require(:useredit).permit(:username, :email, :fname, :lname, :phone)
   	end
 
   	def admin_params
