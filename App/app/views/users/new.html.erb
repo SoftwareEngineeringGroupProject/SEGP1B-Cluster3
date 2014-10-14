@@ -1,43 +1,44 @@
 <%= render "shared/header" %>
+<%= render "shared/linkbar" %>
 
   <div id="ProfileSetting" class=" forms flex_height">
     <%= form_for :user, :url => {:controller => 'users', :action => 'create'}  do |f| %>
       <div class="titles">
         <h3>Industry Partner Signup</h3>
       </div>
-      
+
       <% if flash[:notice] %>
   		<li><font color="black"><%= flash[:notice] %></font></li>
-	  <% end %>
+	    <% end %>
 
       <!-- Error display -->
-      <% if @user.errors.any? %>
-    	<ul class="Signup_Errors">
-    	<% for message_error in @user.errors.full_messages %>
-      	<li>* <%= message_error %></li>
-    	<% end %>
-    	</ul>
-  	  <% end %>
+
+      <% if @industryuser.errors.any? %>
+      <ul class="Signup_Errors">
+      <% for message_error in @industryuser.errors.full_messages %>
+        <li><%= message_error %></li>
+      <% end %>
+      </ul>
+      <% end %>
 
       <fieldset class="inputs">
         <legend>User details</legend>
-          <%= f.hidden_field :acctype, :value => "industry" %>
     	  <%= f.text_field :username, "placeholder" => "Username" %>
     	  <%= f.text_field :fname, "placeholder" => "First Name" %>
     	  <%= f.text_field :lname, "placeholder" => "Last Name" %> </p>
     	  <%= f.text_field :email, "placeholder" => "Email" %> </p>
+    	  <%= f.text_field :phone, "placeholder" => "Contact Phone Number" %></p>
     	  <%= f.password_field :password, "placeholder" => "Password" %></p>
     	  <%= f.password_field :password_confirmation, "placeholder" => "Password Confirmation"  %> </p>
       </fieldset>
-		<br />
+
 	  <fieldset class="inputs">
         <legend>Company details</legend>
     	  <%= f.text_field :companyname, "placeholder" => "Company Name" %>
     	  <%= f.text_field :address, "placeholder" => "Company Address" %> </p>
-    	  <%= f.text_field :phone, "placeholder" => "Contact Phone Number" %></p>
     	  <%= f.text_field :website, "placeholder" => "Company Website"  %> </p>
-      </fieldset>
-      
+    </fieldset>
+
       <div id="subBtn" class="button horizontal_list to_right" >
         <ul>
           <li><%= link_to "Cancel", root_path %></li>

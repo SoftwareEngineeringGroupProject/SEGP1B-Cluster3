@@ -1,37 +1,5 @@
-<!--########################## BANNER ####################################-->
-<% if flash[:notice] %>
-  <font color="black"><%= flash[:notice] %></font>
-<% end %>
-<div class="wrapper navigation">
-
-  <div id="logged" class='to_right'>
-    <p><font color="white">Logged in as: <%=@current_user.username%></font></p>
-  </div>
-
-  <div id="navi" class="flex_height">
-
-    <!-- Search bar -->
-    <div class="to_right">
-      <form action="#" method="post" id="search">
-        <input type="text" value="Search&hellip;" onfocus="this.value=(this.value=='Search&hellip;')? '' : this.value ;" />
-        <input type="image" id="go" src="/images/search_r.gif" alt="Search" />
-      </form>
-    </div>
-
-    <!-- Menu bar -->
-    <div id = "navi_tabs" class="button horizontal_list to_left">
-      <ul>
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Projects", admin_dashboard_path %></li>
-        <li><%=link_to "Process cart", edit_desc_path %></li>
-        <li><a href="/logout">Logout</a></li>
-      </ul>
-    </div>
-
-  </div>
-
-</div>
-
+<%= render "shared/header" %>
+<%= render "shared/dashheader" %>
 <!--############################## MAIN BODY ################################-->
 <div class="wrapper content">
 
@@ -43,7 +11,7 @@
         <li><%=link_to "Accepted", state: "accepted"  %></li>
         <li><%=link_to "Rejected", state: "rejected" %></li>
         <li><%=link_to "Pending", state: "pending" %></li>
-        <li><a href="projects/Past_projects.html">Past projects</a></li>
+        <li><%=link_to "Past projects", state: "past_projects" %></li>
       </ul>
     </div>
   </div>
@@ -76,6 +44,12 @@
               <li><%= submit_tag 'Accept' %></li>
               <li><%= submit_tag 'Reject' %></li>
             <% end%>
+            
+              <% if @state == "past_projects" %>
+              <li><%= submit_tag 'Accept' %></li>
+              <li><%= submit_tag 'Reject' %></li>
+            <% end%>
+
 
             </ul>
           </div>
@@ -92,15 +66,44 @@
                 </ul>
               </div>
             </legend>
-            <%= select_tag(:project_id, options_for_select(@projects.collect{|project| [project.title,project.id, {'data-desc'=>project.body, 'data-mail' => @emails[project.company_id]}]}), "size" => "12", "id" => "demo") %>
+            <%= select_tag(:project_id, options_for_select(@projects.collect{|project| [project.title,project.id, {'data-desc'=>project.body, 'data-mail' => @emails[project.user_id]}]}), "size" => "12", "id" => "demo") %>
           </fieldset>
         </div>
 
         <!-- Project description-->
-        <div id="show_specification" class="to_right" >
+        <div id="show_specification" class="to_right">
           <fieldset>
-            <legend>Project description</legend>
-            <textarea id="project_desc" class ="inputs", rows="14">There are some project specification....</textarea>
+            <legend>
+              <div class="horizontal_list switchButton">
+                <ul>
+                  <li><%= submit_tag "Project Description" %></li>
+                  <li><%= submit_tag "Message Log" %></li>
+                </ul>
+              </div>
+            </legend>
+            <% if @des %>
+            <textarea id="project_desc" class ="inputs", rows="14", readonly >There are some project specification....</textarea>
+            <% end %>
+
+            <% if @log %>
+            <div style="height:250px; overflow: auto;">
+              <% if !@message_log.blank? %>
+                <% @message_log.each do |m| %>
+
+                <div class="user_message inset_shadow">
+                <% sender = User.find(m.sender_id) %>
+                <strong>&nbsp&nbsp&nbspSender:&nbsp<%= sender.lname %>&nbsp-&nbspTitle:&nbsp<%=m.title %></strong>
+                <textarea rows="2" readonly><%=m.text %></textarea>
+                </div>
+                <% end %>
+              <% else %>
+                <div class="user_message inset_shadow">
+                <strong>&nbsp&nbsp&nbsp No messages currently.</strong>
+                </div>
+              <% end %>
+            </div>
+            <% end %>
+
           </fieldset>
         </div>
       </div>

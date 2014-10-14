@@ -1,5 +1,6 @@
 class UserMailer < ActionMailer::Base
-  default from: 'khanh.hb111@gmail.com'
+  default from: 'UofA PPMS'
+
 
   def welcome_email(user)
   	@user = user
@@ -19,7 +20,28 @@ class UserMailer < ActionMailer::Base
     # Assign attachment from user's attached file
     attachments[file.original_filename] = file.read unless file == nil
 
-    mail(:to => "#{receipient.name} <#{receipient.email}>", :subject => subject)
+    mail(:to => "#{receipient.lname} <#{receipient.email}>", :subject => subject)
+  end
+  
+  def email_new_password(user, newpass)
+  	@user = user
+  	@newpass = newpass
+  	mail(:to => "#{user.fname} #{user.lname} <#{user.email}>", :subject => 'Your PPMS Password has been Reset')
+  end
+  
+  def email_signup_password(user, newpass)
+  	@user = user
+  	@newpass = newpass
+  	@username = user.username
+  	@fullname = "#{user.fname} #{user.lname}"
+  	mail(:to => "#{user.fname} #{user.lname} <#{user.email}>", :subject => 'PPMS Admin Account Created')
+  end
+  
+  def email_signup_password_industry(user)
+  	@user = user
+  	@username = user.username
+  	@fullname = "#{user.fname} #{user.lname}"
+  	mail(:to => "#{user.fname} #{user.lname} <#{user.email}>", :subject => 'PPMS Account Created')
   end
 
 end

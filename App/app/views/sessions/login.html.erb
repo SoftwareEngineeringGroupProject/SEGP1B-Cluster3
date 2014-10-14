@@ -11,6 +11,7 @@
       <div class="inputs">
         <%= text_field_tag :username_or_email,params[:username_or_email],"placeholder" => "Username/Email" %>
         <%= password_field_tag :login_password,params[:login_password], "placeholder" => "Password" %>
+        <%= link_to "Forgot Password?", :forgot_password %>
       </div>
       <div id="subBtn" class="button horizontal_list to_right">
         <ul>

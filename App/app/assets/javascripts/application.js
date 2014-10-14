@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery.turbolinks
+//= require bootstrap-sprockets
 
     $( "body" ).delegate( '#idofpagethatusesbelmont', 'pageinit', function() {
         $( 'select[name="state_choice"]' ).change( function() {
@@ -43,6 +44,7 @@
     var chosen = $(this).find(":selected")
     $("textarea#project_desc").val(chosen.data("desc"));
     $("input#mail_address").val(chosen.data("mail"));
+    $("p#project_state").val(chosen.data("state"));
     });
   });
 

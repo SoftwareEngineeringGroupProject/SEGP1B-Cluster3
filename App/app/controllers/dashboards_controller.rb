@@ -1,5 +1,4 @@
 class DashboardsController < ApplicationController
-
   # View projects based on project state
   def view
 
@@ -9,6 +8,9 @@ class DashboardsController < ApplicationController
   		flash[:notice] = "You have an Industry Partner Account, NOT a Coordinator account."
   		redirect_to :unauthorized
   	end
+
+    # Define how to display the white board, either display description or message log
+    @des = !@log
 
     # View projects based on project state
     @state = params[:state]
@@ -21,8 +23,12 @@ class DashboardsController < ApplicationController
     # Create a hash containing emails of all company, this is then used in view
     # to show the corresponding email of a project  when we select that project
     @emails = {}
-    Company.all.each do |company|
-      @emails[company.id] = "To: #{company.name} <#{company.email}>"
+    User.all.each do |user|
+
+      if user.acctype == "industry"
+        @emails[user.id] = "To: #{user.lname} <#{user.email}>"
+      end
+
     end
   end
 
@@ -79,8 +85,14 @@ class DashboardsController < ApplicationController
         @project.update_attributes(:body => params[:project_content])
         redirect_to edit_desc_path
         return
+      elsif (params[:commit] == 'Project Description')
+        @des = true
+        @log = false
+      elsif (params[:commit] == 'Message Log')
+        @message_log = @project.messages
+        @des = false
+        @log = true
       end
-
     else
       flash[:notice] = 'Please select a project first!'
     end
@@ -94,14 +106,22 @@ class DashboardsController < ApplicationController
   private
 
     def send_message
-      # Identify the company that owns the project
-      company = (Company.all.select{|c| c.projects.include? @project }.first)
-      @message = params[:email]
-      file = params[:attachment]
-      # Send the message to the company's email
-      UserMailer.send_a_message(params[:email], company, params[:subject], file).deliver
+      # Identify the user that owns the project
+      recipient = User.find(@project.user_id)
 
-      flash[:notice] = "Message has been delivered to #{company.name} <#{company.email}>"
+      @current_user = User.find(session[:user_id])
+
+      @message = Message.new(:sender_id=> @current_user.id, :project_id => @project.id, :title => params[:subject], :text => params[:email], :recipient_id =>recipient.id)
+
+      if !@message.save
+        return
+      end
+
+      file = params[:attachment]
+      # Send the message to the user's email
+      UserMailer.send_a_message(params[:email], recipient, params[:subject], file).deliver
+      flash[:notice] = "Message has been delivered to #{recipient.lname} <#{recipient.email}>"
+
     end
 
     # Change state of a project

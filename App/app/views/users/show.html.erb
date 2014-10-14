@@ -1,12 +1,30 @@
-<h1>View User Details for: <%= @user.username %></h1>
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
- 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<%= render "shared/header" %>
+<%= render "shared/linkbar" %>
+<%= render "shared/profilesidebar" %>
 
-<%= link_to 'Back', :list_all_path %>
+<div id="container" class="to_left shadow">
+	<div class="profilemain forms flex_height">
+      <div class="titles">
+        <%= link_to 'Back', :list_all_path, :class => "navibutton" %>
+        <h1 class="centerHead"><%= @showuser.username %> user details</h1>
+      </div>
+      
+      <fieldset class="profileleftPart to_left">
+        <legend>User details</legend>
+		<p><strong>Username:  </strong><%= @showuser.username %></p>
+		<p><strong>Account Type:  </strong><%= @showuser.acctype %></p>
+		<p><strong>Name:  </strong><%= @showuser.fname %> <%= @showuser.lname %></p>
+		<p><strong>Email:  </strong><%= @showuser.email %></p>
+
+      </fieldset>
+      
+      <fieldset class="profilerightPart to_right">
+        <legend>Company details</legend>
+        <p><strong>Company Name:  </strong><%= @showuser.companyname %></p>
+		<p><strong>Address:  </strong><%= @showuser.address %></p>
+		<p><strong>Phone Number:  </strong><%= @showuser.phone %></p>
+		<p><strong>Website:  </strong><a href="<%= @user.website %>"><%= @showuser.website %></a></p>
+      </fieldset>
+    
+  </div>
+</div>

@@ -11,13 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141010013555) do
+
+ActiveRecord::Schema.define(version: 20141013132537) do
 
   create_table "attacheds", force: true do |t|
     t.integer  "project_id"
     t.binary   "attached"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "attachments", force: true do |t|
+    t.integer  "project_id"
+    t.binary   "attached"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "filename"
+    t.string   "content_type"
   end
 
   create_table "companies", force: true do |t|
@@ -30,6 +40,7 @@ ActiveRecord::Schema.define(version: 20141010013555) do
     t.string   "website"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "groups", force: true do |t|
@@ -41,6 +52,17 @@ ActiveRecord::Schema.define(version: 20141010013555) do
     t.string   "student_project_id"
   end
 
+  create_table "messages", force: true do |t|
+    t.string   "title"
+    t.text     "text"
+    t.integer  "recipient_id"
+    t.integer  "sender_id"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
   create_table "projects", force: true do |t|
     t.string   "title"
     t.text     "body"
@@ -50,26 +72,35 @@ ActiveRecord::Schema.define(version: 20141010013555) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "in_cart"
+    t.integer  "attachment_id"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.integer  "user_id"
   end
 
   create_table "student_projects", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
-    t.string   "group"
     t.string   "summary"
-    t.string   "extra"
     t.string   "image"
+    t.string   "company"
+    t.integer  "year"
+    t.string   "client"
+    t.string   "client_image"
+    t.string   "category"
   end
 
   create_table "students", force: true do |t|
     t.string   "name"
     t.string   "email"
     t.string   "studentID"
-    t.integer  "phone"
-    t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "course"
+    t.integer  "student_project_id"
   end
 
   create_table "users", force: true do |t|
@@ -86,6 +117,7 @@ ActiveRecord::Schema.define(version: 20141010013555) do
     t.string   "website"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "passwordvalid"
   end
 
 end
