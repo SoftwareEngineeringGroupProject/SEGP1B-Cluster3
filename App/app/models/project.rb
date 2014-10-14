@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
 	belongs_to :user
 	has_attached_file :attachment
 	validates_presence_of :title, :body
+	
 
 	validates_attachment_content_type :attachment, :content_type => ["application/pdf","application/vnd.ms-excel",
 					"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
