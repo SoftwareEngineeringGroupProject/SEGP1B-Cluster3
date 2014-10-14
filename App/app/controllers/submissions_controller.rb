@@ -5,7 +5,6 @@ class SubmissionsController < ApplicationController
   end
 
   def new
-
   	if session[:user_id] != nil
   		@current_user = User.find(session[:user_id])
   	end

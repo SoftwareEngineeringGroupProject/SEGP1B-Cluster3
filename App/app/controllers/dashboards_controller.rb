@@ -1,5 +1,4 @@
 class DashboardsController < ApplicationController
-
   # View projects based on project state
   def view
 

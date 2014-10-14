@@ -1,0 +1,13 @@
+<h1>Projects found</h1>
+<%= button_to "Back To Past Project Show", index_path(), :method => :get%>
+
+<% @searchVariable.each do |s| %>
+<p>
+		<%= s.title %>,  
+		<%= s.created_at %>, 
+		<%= s.category%>, 
+		<%= s.client%>, 
+		<%= s.summary%>, 
+</p>
+<br/><br/>
+<% end %>

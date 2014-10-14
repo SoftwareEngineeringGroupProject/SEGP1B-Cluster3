@@ -1,2 +1,94 @@
-<h1>Projects#show</h1>
-<p>Find me in app/views/projects/show.html.erb</p>
+<%= render "shared/header" %>
+<%= render "shared/linkbar" %>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<%= render "shared/banner" %>
+
+<div class="wrapper content">
+		<div id="news" class="flex_height shadow">
+
+				<div class="project-maintitle">
+						<h1 ><strong>SEGP Showcase</strong></h1>
+				</div>
+
+				<!-- admin seesion check, if login, then add a edit button to dashboard
+				editsection-->
+
+				<div class="button horizontal_list to_right" id="login_buttons">
+						<ul>
+								<li>
+										<%= link_to "Edit", edit_path(@theProject.id)%>
+								</li>
+								<li>
+										<%= link_to "Delete", destroy_path(@theProject.id)%>
+								</li>
+						</ul>
+				</div>
+
+				<div class="project-image">
+						<%= image_tag @theProject.image%>
+				</div>
+
+				<div class="project-container">
+
+						<div  class="project-title">
+								<h2><%= @theProject.title%></h2>
+						</div>
+
+						<div  class="project-title-subheading">
+								Year: <%= @theProject.created_at.strftime("%B  %Y")%>
+						</div>
+
+						<div  class="project-title-subheading">
+								Category:  <%= @theProject.category%>
+						</div>
+
+						<div  class="project-title-subheading">
+								Project Summary
+						</div>
+
+						<div class="project-content-summary">
+								<p>
+										<%= @theProject.summary%>
+								</p>
+						</div>
+
+						<div  class="project-title-subheading">
+								Industry Partner:
+						</div>
+
+						<div class="project-content">
+								<p>
+										<%= @theProject.client%>
+								</p>
+						</div>
+
+						<div  class="project-title-subheading">
+								Client Image:
+						</div>
+
+						<div class="project-client-image">
+										<%= image_tag @theProject.client_image%>
+						</div>
+
+						<div  class="project-title-subheading">
+								Group members:
+						</div>
+
+						<div class="project-content">
+								<p>
+
+										<% @students.each do |student| %>
+										<tr>
+												<td><%= student.name %></td>
+												<td><%= student.studentID %></td>
+												<td><%= student.course%></td>
+												<td><%= student.email %></td>
+										</tr>
+										<br/>
+										<% end %>
+								</p>
+						</div>
+				</div>
+		</div>
+</div>
+<%= render "shared/footer" %>

@@ -11,7 +11,7 @@
         <li><%=link_to "Accepted", state: "accepted"  %></li>
         <li><%=link_to "Rejected", state: "rejected" %></li>
         <li><%=link_to "Pending", state: "pending" %></li>
-        <li><a href="projects/Past_projects.html">Past projects</a></li>
+        <li><%=link_to "Past projects", state: "past_projects" %></li>
       </ul>
     </div>
   </div>
@@ -44,6 +44,12 @@
               <li><%= submit_tag 'Accept' %></li>
               <li><%= submit_tag 'Reject' %></li>
             <% end%>
+            
+              <% if @state == "past_projects" %>
+              <li><%= submit_tag 'Accept' %></li>
+              <li><%= submit_tag 'Reject' %></li>
+            <% end%>
+
 
             </ul>
           </div>
