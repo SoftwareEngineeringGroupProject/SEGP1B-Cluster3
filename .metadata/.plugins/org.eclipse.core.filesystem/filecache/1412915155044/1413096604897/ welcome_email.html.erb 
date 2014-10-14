@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to our website <%= @user.lname %></h1>
+    <p>
+      You have signed up to PPMS.com, your username is: <%= @user.lname %>.<br>
+    </p>
+    <p>
+      To activate your account, just follow the link below: ....<br>
+    </p>
+    <p>Thanks for joining and have a great day!<br></p>
+    <p>Industry Engagement Team!</p>
+  </body>
+</html>

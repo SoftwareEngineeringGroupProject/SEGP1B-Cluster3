@@ -1,7 +1,6 @@
 .tab1 {
 	margin-left: 100px;
 	color: blue;
-	
 }
 
 .tab2 {
@@ -9,12 +8,13 @@
 }
 
 .ContactInfo {
-	color:#4700ff;
+	color: #4700ff;
 }
 
-.contact-title{
-	font-family: Georgia,Times,serif;
-		color: #b38807;
-    	font-size: 2.28em;
-    	font-weight: normal;
+.contact-title {
+	font-family: Georgia, Times, serif;
+	color: #b38807;
+	font-size: 2.28em;
+	font-weight: normal;
+	margin-left: 10px;
 }

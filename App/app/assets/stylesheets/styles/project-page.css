@@ -1,78 +1,178 @@
-// Place all the styles related to the projects controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-.project-title{
-    font-family: Georgia,Times,serif;
-    color: #b38807;
-      font-size: 2.28em;
-      font-weight: normal;
+.project-maintitle {
+	font-family: Georgia, Times, serif;
+	color: #b38807;
+	font-size: 2.28em;
+	font-weight: normal;
+	margin-left: 10px;
 }
 
-.project-container{
-   font-family: Georgia,Times,serif;
-    color: black;
-      font-size: 1.5em;
-      font-weight: normal;
-      margin:50px;
+.project-title-subheading {
+	margin-left: 70px;
+	margin-top: 20px;
+	font-size: 1em;
+	font-family: Georgia, Times, serif;
+	color: blue;
+	font-weight: normal;
 }
 
-
-
-.portfolio{
-      position:relative;
-      float:left;
-      width: 150px; 
-      height: 25px;
-      align:left;
+.project-title-subheading:active {
+	background: white;
 }
 
-.search-bar{
-      float:right;
-      width:300px;
-      height:50px;
+.project-title {
+	margin-left: 70px;
+	margin-top: 10px;
+	font-size: 1.5em;
+	font-family: Georgia, Times, serif;
+	color: blue;
+	font-weight: normal;
 }
 
-.project-show{
-      margin:100px;
-      margin-top:50px;
+.project-image {
+	margin: 30px 0px 20px 5px;
+	width: 935px;
+	height: 200px;
 }
 
-.project-filter{
-      margin:50px;
+.project-index-image {
+	-webkit-box-shadow: 3px 3px 3px #7C7C7C;
+	margin: 30px 50px;
+	width: 200px;
+	height: 200px;
+	float: left;
 }
 
-.project-apply{
-      margin-left:300px;
+.project-index-image:hover {
+	color: blue;
+	opacity: 0.4;
+	box-shadow: 3px 3px 3px #7C7C7C;
 }
 
-
-.projects-image{
-  margin:5px;
-   margin-top:50px;
-   margin-bottom:40px;
+.project-content {
+	margin-left: 80px;
+	margin-right: 20px;
+	width: 800px;
+	height: 100px;
+	font-size: medium;
+	text-align: left;
+	color: #456;
+	word-wrap: break-word;
 }
 
-.project-container-line1{
- 
-     margin-left: 50px; 
-     margin-right: 50px;
-    width:700px;
-    height:50px;  
+.project-content-edit {
+	margin-left: 80px;
+	margin-right: 20px;
+	width: 800px;
+	height: 100px;
+	font-size: medium;
+	text-align: left;
+	color: #456;
+	word-wrap: break-word;
+	float: right;
 }
 
-.project-container-line2{
- 
-    width:600px;
-    height:50px;  
+.project-content-summary {
+	margin-left: 80px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	width: 800px;
+	height: 200px;
+	font-size: medium;
+	text-align: left;
+	color: #456;
+	word-wrap: break-word;
 }
 
-
-
-.project-pagefoot{
-    margin:200px;
+.project-container {
+	font-family: Georgia, Times, serif;
+	font-size: 1.5em;
+	font-weight: normal;
+	margin: 50px;
 }
 
+.portfolio {
+	position: relative;
+	float: left;
+	width: 150px;
+	height: 25px;
+	align: left;
+}
 
+.search-bar {
+	width: 300px;
+	height: 50px;
+	display:inline-block;
+}
 
+.project-show {
+	margin: 100px;
+	margin-top: 50px;
+}
+
+.project-filter {
+	margin: 50px;
+}
+
+.project-apply {
+	margin-left: 300px;
+}
+
+.projects-image {
+	margin: 5px;
+	margin-top: 50px;
+	margin-bottom: 10px;
+}
+
+.project-client-image {
+	margin: 200px;
+	margin-top: 50px;
+	margin-bottom: 10px;
+	height: 50px;
+	width: 100px;
+}
+
+.project-container-line1 {
+
+	margin-left: 50px;
+	margin-right: 50px;
+	width: 700px;
+	height: 50px;
+}
+
+.project-container-line2 {
+
+	width: 600px;
+	height: 50px;
+}
+
+.project-pagefoot {
+	margin: 200px;
+}
+
+label {
+	display: block;
+	width: 300px;
+}
+.projectTableCol {
+	width: 100px;
+}
+.projectTableCol-long {
+	width: 300px;
+}
+.Project-text_field-ID {
+	width: 80px;
+}
+.Project-text_field-NAME {
+	width: 100px;
+}
+.Project-text_field-EMAIL {
+	width: 300px;
+}
+.Project-text_field-COURSE {
+	width: 80px;
+}
+
+.Project-to_center {
+	text-align: center;
+}
 
