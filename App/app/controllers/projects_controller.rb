@@ -66,12 +66,26 @@ class ProjectsController < ApplicationController
       @theProject=@Projects.find(@ProjectID)
       #get all students worked in this project
       @students=@theProject.students.all
+      
+          # the function is used to create a new student record if a Student project does not have one student ,
+    #which helps form input to show an empty input line in edit page                                                                                           
+             
     end
 
   def update
                                                           
     #get the updated project ID
     if params[:id] !=nil
+                                                                                                                                                                                                            
+      #check if a student is deleted or created
+      if params[:commit]=='-'
+              #remove one student out                                                                                                                                                                                                
+              @updateProject.students.delete(params[:students])
+      elsif  params[:commit]=='+' 
+           #add the new student in and redirect                                                                                                                                                                                                                                                                                   
+         @updateProject.students.create(params[:students])
+         render :unchanged
+      end  
                                                                                                                                                                           
       @updateProject=StudentProject.find(params[:id])
       #get all students worked in this project
@@ -79,24 +93,16 @@ class ProjectsController < ApplicationController
       #update the attributes without save to DB yet
       @updateProject.attributes= params[:student_project].permit(:title, :summary, :image, :client, :client_image, :category, :year, 
       students_attributes: [:name, :email, :studentID, :course])
-
-      #check the project is updated or not, if not, redirect to unchanged page
-      @a= @updateProject.changed?
-      if  @a !=true                                                                                                                                         
-                        redirect_to  action:'unchanged'                                                   
-      end
+      
       #save to DB here
       @updateProject.updated_at=Time.now
        @updateProject.save    
 
-      #check if a student is deleted
-      if params[:commit]=='-'
-              @c=params[:students]                                                                                    
-      end           
+                
     end                                                                                                                                                                                                        
   end
 
-def unchaned
+def unchanged
 end
 
      #def destroy

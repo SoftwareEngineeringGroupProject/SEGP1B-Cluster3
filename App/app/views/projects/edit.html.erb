@@ -3,104 +3,116 @@
 <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
 <div class="wrapper gallery">
-		<div id="slides" class="shadow">
-				<img src="images/example.gif" alt="" />
-		</div>
+	<div id="slides" class="shadow">
+		<img src="images/example.gif" alt="" />
+	</div>
 </div>
 
 <div class="wrapper content">
-		<div id="news" class="flex_height shadow">
+	<div id="news" class="flex_height shadow">
 
-				<div class="project-maintitle">
-						<h1 ><strong>SEGP Showcase</strong></h1>
-				</div>
+		<div class="project-maintitle">
+			<h1 ><strong>SEGP Showcase</strong></h1>
+		</div>
 
-				<div class="project-container">
+		<div class="project-container">
 
+			<fieldset>
+				<legend>
+					Edit Project
+				</legend>
+
+				<fieldset>
+
+					<%=form_for @theProject, :url => { :action => "update" }, :method=>:POST do |f| %>
+					<div  class="project-title-subheading">
+						<%= f.label :title %>
+						<%= f.text_field :title %>
+					</div>
+					<div  class="project-title-subheading">
+						<span class="to_left"> <%= f.label :finished_year%> </span>
+
+						<%= date_select(:StudentProject, :created_at, start_year: 2000, end_year: Time.now.year, discard_day: true, discard_month: true)%>
+					</div>
+
+					<div  class="project-title-subheading">
+						<%= f.label :category %>
+						<%= f.text_field :category %>
+					</div>
+					<div  class="project-title-subheading">
+
+						<%= f.label :client %>
+						<%= f.text_field :client %>
+					</div>
+
+					<div  class="project-title-subheading">
+						<%= f.label :summary %>
+						<%= f.text_area :summary%>
+					</div>
+
+					<div  class="project-title-subheading">
 						<fieldset>
-								<legend>
-										Edit Project
-								</legend>
+							<legend>
+								Group Edit:
+							</legend>
 
-								<fieldset>
+							<table>
+								<tr>
+									<th class="Project-to_center">ID </th>
+									<th class="Project-to_center">NAME </th>
+									<th class="Project-to_center">EMAIL </th>
+									<th class="Project-to_center">COURSE </th>
+									<th class="Project-to_center"></th>
+								</tr>
+								<!--modify students record here-->
+								<%= f.fields_for :students do |student| %>
+								<tr>
+									<td><%=student.text_field :studentID, class: "Project-text_field-ID"%></td>
+									<td><%=student.text_field :name, class: "Project-text_field-NAME"%></td>
+									<td><%= student.text_field :email, class: "Project-text_field-EMAIL"%></td>
+									<td><%=student.text_field :course, class: "Project-text_field-COURSE"%></td>
+									<td><%= submit_tag "-", data: { confirm: "Are you sure to delete this student '"+student.object.name.to_s+"' ?" }%></td>
+								</tr>
+								<%end%>
 
-										<%=form_for @theProject, :url => { :action => "update" }, :method=>:POST do |f| %>
-										<div  class="project-title-subheading">
-												<%= f.label :title %>
-												<%= f.text_field :title %>
-										</div>
-										<div  class="project-title-subheading">
-												<span class="to_left"> <%= f.label :finished_year%> </span>
+								<!--add an input student line-->
+								<% 1.times { @theProject.students.build }%>
+								<%= f.fields_for :students do |student| %>
+								<tr>
+									<!--add an empty student input line here-->
+									<td><%=student.text_field :studentID, class: "Project-text_field-ID"%></td>
+									<td><%=student.text_field :name, class: "Project-text_field-NAME"%></td>
+									<td><%= student.text_field :email, class: "Project-text_field-EMAIL"%></td>
+									<td><%=student.text_field :course, class: "Project-text_field-COURSE"%></td>
+									<td><%= submit_tag "+" %></td>
+								</tr>
+								<%end%>
+							</table>
 
-												<%= date_select(:StudentProject, :created_at, start_year: 2000, end_year: Time.now.year, discard_day: true, discard_month: true)%>
-										</div>
-
-										<div  class="project-title-subheading">
-												<%= f.label :category %>
-												<%= f.text_field :category %>
-										</div>
-										<div  class="project-title-subheading">
-
-												<%= f.label :client %>
-												<%= f.text_field :client %>
-										</div>
-
-										<div  class="project-title-subheading">
-												<%= f.label :summary %>
-												<%= f.text_area :summary%>
-										</div>
-
-										<div  class="project-title-subheading">
-												<fieldset>
-														<legend>
-																Group Edit:
-														</legend>
-														<table>
-																<tr>
-																		<th class="Project-to_center">ID </th>
-																		<th class="Project-to_center">NAME </th>
-																		<th class="Project-to_center">EMAIL </th>
-																		<th class="Project-to_center">COURSE </th>
-																		<th class="Project-to_center"></th>
-																</tr>
-																<!--modify students record here-->
-																<%= f.fields_for :students do |student| %>
-																<tr>
-																		<td><%=student.text_field :studentID, class: "Project-text_field-ID"%></td>
-																		<td><%=student.text_field :name, class: "Project-text_field-NAME"%></td>
-																		<td><%= student.text_field :email, class: "Project-text_field-EMAIL"%></td>
-																		<td><%=student.text_field :course, class: "Project-text_field-COURSE"%></td>
-																		<!--<td> <%= button_to "-", student_delete_path(student.object.id), :method => :post%></td>-->
-																		<td><%=submit_tag "-", data: { confirm: "Are you sure to delete student '"+student.object.name.to_s+"' ?" }%></td>
-																</tr>
-																<%end%>
-																
-
-														</table>
-												</fieldset>
-										</div>
-
-										<div  class="project-title-subheading">
-												<span class="to_left"> <%= f.label :image, "Upload a related project image" %> </span>
-												<span  class="to_left"> <%= f.file_field :image%></span>
-										</div>
-
-										<div  class="project-title-subheading">
-												<span class="to_left"> <%= f.label :client_image, "Upload a related client image" %> </span>
-												<span  class="to_left"> <%= f.file_field :client_image%></span>
-										</div>
-										<div  class="project-title-subheading button to_left">
-												<%= f.submit "CONFIRM UPDATE"%>
-										</div>
-										<div  class="project-title-subheading button to_left">
-												<%= link_to "CANCEL", project_path(@theProject.id) %>
-										</div>
-										<%end%>
-								</fieldset>
 						</fieldset>
+					</div>
 
-				</div>
+					<div  class="project-title-subheading">
+						<span class="to_left"> <%= f.label :image, "Upload a related project image" %> </span>
+						<span  class="to_left"> <%= f.file_field :image%></span>
+					</div>
+
+					<div  class="project-title-subheading">
+						<span class="to_left"> <%= f.label :client_image, "Upload a related client image" %> </span>
+						<span  class="to_left"> <%= f.file_field :client_image%></span>
+					</div>
+					<div  class="project-title-subheading button to_left">
+						<%= f.submit "CONFIRM UPDATE"%>
+					</div>
+					<div  class="project-title-subheading button to_left">
+						<%= link_to "CANCEL", project_path(@theProject.id) %>
+					</div>
+					<%end%>
+				</fieldset>
+			</fieldset>
 
 		</div>
+
+	</div>
 </div>
 <%= render "shared/footer" %>
