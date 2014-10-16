@@ -16,9 +16,14 @@ class StudentsController < ApplicationController
   end                                                                                                                                                                                        
                                                                                                                                                                                                         
            def delete
-                             if params[:id] !=nil                                                                                                                                                                                     
+                             if params[:id] !=nil
+                                      #get the project id before destory                                                                                                                                                                                                                                                                                                                                                                                    
+                                     @projectID= Student.find(params[:id]).student_project_id
+                                     
                                      Student.find(params[:id]).destroy
-                             end                                                            
+                                     
+                                     redirect_to edit_path(@projectID)
+                              end                                                            
            end
            
            

@@ -77,7 +77,7 @@
 									<td><%=student.text_field :course, class: "Project-text_field-COURSE"%></td>
 									<% @theStudent=student.object%>
 									<td class="project-table-td"><%= link_to "Edit", student_edit_path(student.object.id, :pastproject=>@theProject.id),  data: { confirm: "Are you sure to update this student '"+student.object.name.to_s+"' ?" }%></td>
-									<td class="project-table-td"><%= link_to "Remove", student_delete_path(student.object.id, ), data: { confirm: "Are you sure to delete this student '"+student.object.name.to_s+"' ?" }%></td>
+									<td class="project-table-td"><%= link_to "Remove", student_delete_path(student.object.id), data: { confirm: "Are you sure to delete this student '"+student.object.name.to_s+"' ?" }%></td>
 								</tr>
 								<%end%>
 								<%end%>

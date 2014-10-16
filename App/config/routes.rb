@@ -37,7 +37,7 @@ Rails.application.routes.draw do
      patch 'students/update/:id' => 'students#update', as: 'student_update'
      
      get 'projects/:id/students/new' => 'students#new', as: 'student_new'
-      post 'projects/:id/addstudent' => 'students#create', as: 'student_create'
+     post 'projects/:id/addstudent' => 'students#create', as: 'student_create'
      get 'projects/:id/addstudent' => 'projects#addstudent', as: 'student_created_to_project'
      post 'projects/:id/addstudent' => 'projects#addstudent_create'
 
