@@ -13,7 +13,7 @@ Rails.application.routes.draw do
      # Past Project Routes
      ###############################################
      get 'projects/info' => 'projects#info', as: 'info'
-     get 'projects/' => 'projects#index', as: 'index'
+     get 'projects' => 'projects#index', as: 'index'
      get 'projects/new' => 'projects#new', as: 'new'
      post 'projects/new' => 'projects#create'
      # post '/student_projects' => 'projects#create'

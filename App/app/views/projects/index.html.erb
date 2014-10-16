@@ -39,7 +39,7 @@
 
 			<!-------------------execute filting here------------------>
 
-			<%if (@year!="") && (@category!="") %>
+			<%if (@year!="") && (@category!="") && (@year!=nil) && (@category!=nil)%>
 			<% @filteredProjects=StudentProject.where("year=? and category=?", @year, @category)%>
 			<% for project in @filteredProjects %>
 
@@ -51,7 +51,7 @@
 			</div>
 			<% end %>
 
-			<%elsif @year!=""%>
+			<%elsif (@year!="") && (@year!=nil)%>
 			<% @filteredProjects=StudentProject.where("year=?", @year)%>
 			<% for project in @filteredProjects %>
 
@@ -63,7 +63,7 @@
 			</div>
 			<% end %>
 
-			<%elsif @category!=""%>
+			<%elsif (@category!="") && (@category!=nil)%>
 			<%@filteredProjects=StudentProject.where("category=?", @category)%>
 			<% for project in @filteredProjects %>
 
