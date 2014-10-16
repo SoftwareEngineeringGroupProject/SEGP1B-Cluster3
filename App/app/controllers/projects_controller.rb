@@ -84,19 +84,13 @@ class ProjectsController < ApplicationController
       
             #check if a student is deleted or created
 
-            #update the attributes without save to DB yet
-      @updateProject.attributes= params[:student_project].permit(:title, :summary, :image, :client, :client_image, :category, :year, 
-      students_attributes: [:name, :email, :studentID, :course])
+       #update the attributes without save to DB yet
+      @updateProject.attributes= project_params
       
       #save to DB here
       @updateProject.updated_at=Time.now
        @updateProject.save    
-
-       if params[:commit]=='-'
-              #remove one student out                                                                                                                                                                                                
-      elsif  params[:commit]=='+' 
-           #add the new student in and redirect      
-       end   
+        
     end                                                                                                                                                                                                        
   end
 
@@ -163,8 +157,8 @@ def search
        else    
 
        #fetch the searhed results here                                                                                                                                                                                                
-      @searchVariable = StudentProject.search(params[:classify], params[:search], params[:date]["year"])
-      @a=params[:date]["year"]
+      @searchVariable = StudentProject.search(params[:classify], params[:search], params[:date]["year"].to_i)
+      @a=params[:date]["year"].to_i
       #handle empty search
       if @searchVariable.empty?
                  redirect_to  action:'notfound'                                                                                           

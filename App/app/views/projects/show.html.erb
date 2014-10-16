@@ -12,6 +12,9 @@
 
 				<!-- admin seesion check, if login, then add a edit button to dashboard
 				editsection-->
+				<% if session[:user_id] != nil %>
+				<% @user = User.find(session[:user_id]) %>
+				<% if @user.acctype == "coordinator" %>
 
 				<div class="button horizontal_list to_right" id="login_buttons">
 						<ul>
@@ -23,7 +26,8 @@
 								</li>
 						</ul>
 				</div>
-
+                   <%end%>
+                    <%end%>
 				<div class="project-image">
 						<%= image_tag @theProject.image%>
 				</div>
@@ -35,7 +39,7 @@
 						</div>
 
 						<div  class="project-title-subheading">
-								Year: <%= @theProject.created_at.strftime("%Y")%>
+								Year: <%= @theProject.year%>
 						</div>
 
 						<div  class="project-title-subheading">

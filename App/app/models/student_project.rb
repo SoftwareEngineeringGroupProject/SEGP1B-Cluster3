@@ -1,5 +1,5 @@
 class StudentProject < ActiveRecord::Base
-     validates_presence_of :title, :summary, :client, :category
+     validates_presence_of :title, :summary, :client, :category, :year
      has_many :students
      mount_uploader :image, ImageUploader
      mount_uploader :client_image, ImageUploader
@@ -12,16 +12,17 @@ class StudentProject < ActiveRecord::Base
    
    #find project by related attributes here
    if classify.downcase=="title"
-     where("title = ? and strftime('%Y', created_at) = ?", search,dateChoose )
+     where("title = ? and year = ?", search,dateChoose )
      elsif classify.downcase=="id"
-            where("id = ? and strftime('%Y', created_at) = ?", search,dateChoose) 
+            where("id = ? and year = ?", search,dateChoose) 
      elsif classify.downcase=="category" 
-             where("category = ? and strftime('%Y', created_at) = ?", search,dateChoose)
+             where("category = ? and year= ?", search,dateChoose)
          elsif classify.downcase=="client name" 
-             where("client = ? and strftime('%Y', created_at) = ?", search,dateChoose)
+             where("client = ? and year = ?", search,dateChoose)
          elsif search =="" 
             #output results with selected year if input empty                                                                                                                                                                                                     
-              where("strftime('%Y', created_at) = ?", dateChoose)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+              where("year=?", dateChoose)
+              #where("strftime('%Y', created_at) = ?", dateChoose)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
    end
  end
 

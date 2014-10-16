@@ -31,8 +31,9 @@
 					</div>
 					<div  class="project-title-subheading">
 						<span class="to_left"> <%= f.label :finished_year%> </span>
+						<%= f.select :year, (2000) .. (Date.today.year) %>
 
-						<%= date_select(:StudentProject, :created_at, start_year: 2000, end_year: Time.now.year, discard_day: true, discard_month: true)%>
+						<!--<%= date_select(:StudentProject, :year, start_year: 2000, end_year: Time.now.year, discard_day: true, discard_month: true)%>-->
 					</div>
 
 					<div  class="project-title-subheading">

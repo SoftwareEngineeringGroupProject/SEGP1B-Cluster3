@@ -1,4 +1,4 @@
 <h1>Projects updated</h1>
- <%= button_to "Back To Past Project Show", index_path(), :method => :get%>
- 
+ <%= button_to "Back To Project "+params[:id]+" edit Page", edit_path(params[:id]), :method => :get%>
+ <%= button_to "Back To Past Project Show", index_path(), :method => :get%> 
 <%=@c.inspect%>

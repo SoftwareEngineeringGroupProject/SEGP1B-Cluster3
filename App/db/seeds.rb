@@ -23,7 +23,7 @@ User.create(username: "administrator", email: "admin@admin.com", password: "clus
       of Adelaide and the University of South Australia.", :image=>seed_image("p1.jpeg"), :client_image=>seed_image("p2.jpeg"), :category=>"web application", 
      :students_attributes=>[{:name=>"Scott Lamacraft", :email=>"a1607969@student.adelaide.edu.au", :studentID=>"a1607969", :course=>"BEng(Software)"}, 
 {:name=>"Sergei Fadeev", :email=>" a1608693@student.adelaide.edu.au", :studentID=>" a1608693", :course=>"BEng(Software)"},
-{:name=>"Samuel Wong", :email=>" a1607031@student.adelaide.edu.au", :studentID=>" a1607031", :course=>"BEng(Software)"}])
+{:name=>"Samuel Wong", :email=>" a1607031@student.adelaide.edu.au", :studentID=>" a1607031", :course=>"BEng(Software)"}], :year=>2014)
 
      StudentProject.create(:title=> "A mobile e-learning platform for Medical Students", :client=> "The Adelaide Simulation Centre",
      :summary=> "The motivation behind Respond is to ensure that medical students have the skills required to deal with emergency situations
@@ -33,21 +33,21 @@ User.create(username: "administrator", email: "admin@admin.com", password: "clus
          data into a set of forms, which will be used to generate the scenario package and store in the system for later use.",:image=>seed_image("p1.jpeg"), :client_image=>seed_image("p2.jpeg"),  
          :category=>"Mobile application",   :students_attributes=>[{:name=>"Scott", :email=>"a1607969@student.adelaide.edu.au", :studentID=>"a16069", :course=>"BEng(Software)"}, 
 {:name=>"Sergei ", :email=>" a1608@student.adelaide.edu.au", :studentID=>" a16093", :course=>"BEng(Software)"},
-{:name=>"Samuel ", :email=>" a1601@student.adelaide.edu.au", :studentID=>" a16031", :course=>"BEng(Software)"}])
+{:name=>"Samuel ", :email=>" a1601@student.adelaide.edu.au", :studentID=>" a16031", :course=>"BEng(Software)"}],:year=>2014)
 
      StudentProject.create(:title=> "Radiometri Correction of Image Sets Using Genetic Programming", :client=> "Maptek",
      :summary=> "The project aims to normalise the radiometric characteristics of sets of interrelated photos.
       Application of this project will remove the impact of changing lighting conditions during extended image capture.
      The potos are produced for Maptek by an overhead drone. After radiometric smoothing and other quality improving procedures,
      the photos are used to create a 3D model of the space, as well as large composite image. These products are extremely accurate and
-     have a cariety of uses.",:image=>seed_image("p1.jpeg"), :client_image=>seed_image("p2.jpeg"), :category=>"Mobile application")
+     have a cariety of uses.",:image=>seed_image("p1.jpeg"), :client_image=>seed_image("p2.jpeg"), :category=>"Mobile application", :year=>2012)
 
      StudentProject.create(:title=> "Deconvolution of Aerial Photography", :client=> " Maptek",
      :summary=> "Photography taken from a moving aerial vehicle will inherently have minor amounts of blurring due to motion.
      To use the photographs in mapping, feature-matching is employed to calculate how they overlap. Even a small blue amount can
-     significantly affect the results of these calculations.", :image=>seed_image("p1.jpeg"), :client_image=>seed_image("p2.jpeg"), :category=>"Mobile application")
+     significantly affect the results of these calculations.", :image=>seed_image("p1.jpeg"), :client_image=>seed_image("p2.jpeg"), :category=>"Mobile application", :year=>2014)
 
      StudentProject.create(:title=> "Breadcrumbs", :client=> "Airborne Research Australia",
      :summary=> "ARA uses light aircraft to perform aerial mappings. They do this by flying in parallel lines across the area.
      During these flights it's possible for spots to be missed, and this will not be known until the data is processed post-flight.
-     ARA needs a tool to indicate spots that have been missed while they are in-flight.", :image=>seed_image("p1.jpeg"), :client_image=>seed_image("p2.jpeg"), :category=>"Mobile application")
+     ARA needs a tool to indicate spots that have been missed while they are in-flight.", :image=>seed_image("p1.jpeg"), :client_image=>seed_image("p2.jpeg"), :category=>"Mobile application", :year=>2012)

@@ -9,22 +9,32 @@
 		</div>
 
 		<h2><%= flash[:notice] %></h2>
-		
+
+		<!--filter bar here-->
+		<div class="filter-bar to_left">
+			<!--add some ground options here<%=form_tag index_path, :method => 'get' do %>
+			<span class="to_left"> <%= select_tag "year", options_from_collection_for_select(@projects,"id", "created_at")%> </span>
+			<span class="to_left"> <%= select_tag "category", options_from_collection_for_select(@projects,"id", "category")%> </span>
+			<span class="to_right"><%= submit_tag "Filter"%></span>
+			<%end%>->		
+		</div>
+		<!----------filter bar end---------->
+
 		<!--search bar here-->
 		<div class="search-bar to_right">
-			
+
 			<!--add some ground options here-->
-			<%grouped_options = {'PastProject' => ['ID', 'Title', 'Category', 'Client Name'],'Student' => ['Name', ['ID', 'Student ID'], ['Degree', 'Course'], 'Email']}
-			@options=grouped_options_for_select(grouped_options, 'Title')%>
+			<% grouped_options = {'PastProject' => ['ID', 'Title', 'Category', 'Client Name'],'Student' => ['Name', ['ID', 'Student ID'], ['Degree', 'Course'], 'Email']}
+             @options=grouped_options_for_select(grouped_options, 'Title')%>
 			<%=form_tag search_path, :method => 'get' do %>
 			<span class="to_left"> <%= select_tag "classify", options_for_select(@options )%> </span>
-			<span class="to_left"><%=select_year(Time.now.year,start_year: 2000, end_year:Time.now.year, :locale=>"a", prompt: 'Choose Year') %> </span>
+			<span class="to_left"><%= select_year(Time.now.year,start_year: 2000, end_year:Time.now.year, prompt: 'Choose Year') %> </span>
 			<span class="to_left"><%= text_field_tag :search, params[:search], placeholder: "Search..."%></span>
 			<span class="to_right"><%= submit_tag "Search"%></span>
 			<%end%>
 		</div>
 		<!----------search bar end---------->
-		
+
 		<div class="project-container">
 			<% for project in @projects %>
 
