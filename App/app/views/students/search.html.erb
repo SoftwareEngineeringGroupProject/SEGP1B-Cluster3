@@ -1,0 +1,13 @@
+<%= render "shared/header" %>
+<%= render "shared/linkbar" %>
+
+
+<%if @classify!= "course"%>
+<%= @searchedProject.inspect%>
+<%elsif @classify=="course"%>
+
+<!---go through all students with same course, and output their pastProjects-->
+<%@finds.all.each do |s| %>
+	<%= @StundentProjects.find(s.student_project_id).inspect%>
+<%end%>
+<%end%>

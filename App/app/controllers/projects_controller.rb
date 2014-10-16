@@ -156,12 +156,20 @@ end
 def contact
 end
 
-def search
-      @searchVariable = StudentProject.search(params[:classify], params[:search])
-      
+def search                                                                                                                                                                                                
+         #redirect to student's search funtion  if related classify is selected
+        if (params[:classify].downcase=="name" )|| (params[:classify].downcase=="student id" ) || (params[:classify].downcase=="course" ) || (params[:classify].downcase=="email" )
+                 redirect_to  student_search_path(:classify=>params[:classify], :search=>params[:search])                                                                                                                                                                                              
+       else    
+
+       #fetch the searhed results here                                                                                                                                                                                                
+      @searchVariable = StudentProject.search(params[:classify], params[:search], params[:date]["year"])
+      @a=params[:date]["year"]
+      #handle empty search
       if @searchVariable.empty?
                  redirect_to  action:'notfound'                                                                                           
-      end
+      end  
+      end         
 end         
  
 def notfound 

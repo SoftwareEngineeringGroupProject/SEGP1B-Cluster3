@@ -6,24 +6,22 @@ class StudentProject < ActiveRecord::Base
      accepts_nested_attributes_for :students, allow_destroy: true
      validates_uniqueness_of :id, :title
      
-
- def self.search(classify, search)
+#the search funtion used in search bar of index page
+ def self.search(classify, search, dateChoose)
   #"title","production year", "id", "category", "summary", "client name", "studentName","studentID"]
-
-   if classify=="title"
-     where("title = ?", search)
-   elsif classify=="production year"
-         where("created_at = ?", search) 
-            elsif classify=="id"
-         where("id = ?", search) 
-     elsif classify=="category" 
-         where("category = ?", search)
-           elsif classify=="summary" 
-         where("summary = ?", search)
-           elsif classify=="client name" 
-         where("client = ?", search)
-         else                                                                                              
-     find(:all)
+   
+   #find project by related attributes here
+   if classify.downcase=="title"
+     where("title = ? and strftime('%Y', created_at) = ?", search,dateChoose )
+     elsif classify.downcase=="id"
+            where("id = ? and strftime('%Y', created_at) = ?", search,dateChoose) 
+     elsif classify.downcase=="category" 
+             where("category = ? and strftime('%Y', created_at) = ?", search,dateChoose)
+         elsif classify.downcase=="client name" 
+             where("client = ? and strftime('%Y', created_at) = ?", search,dateChoose)
+         elsif search =="" 
+            #output results with selected year if input empty                                                                                                                                                                                                     
+              where("strftime('%Y', created_at) = ?", dateChoose)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
    end
  end
 

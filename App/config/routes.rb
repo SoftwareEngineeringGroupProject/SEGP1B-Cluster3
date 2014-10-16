@@ -35,7 +35,8 @@ Rails.application.routes.draw do
      get 'students/delete/:id' => 'students#delete', as: 'student_delete'
      get 'students/edit/:id' => 'students#edit', as: 'student_edit'
      patch 'students/update/:id' => 'students#update', as: 'student_update'
-     
+     get 'students/search' => 'students#search', as: 'student_search'
+ 
      get 'projects/:id/students/new' => 'students#new', as: 'student_new'
      post 'projects/:id/addstudent' => 'students#create', as: 'student_create'
      get 'projects/:id/addstudent' => 'projects#addstudent', as: 'student_created_to_project'

@@ -35,7 +35,7 @@ User.create(username: "administrator", email: "admin@admin.com", password: "clus
 {:name=>"Sergei ", :email=>" a1608@student.adelaide.edu.au", :studentID=>" a16093", :course=>"BEng(Software)"},
 {:name=>"Samuel ", :email=>" a1601@student.adelaide.edu.au", :studentID=>" a16031", :course=>"BEng(Software)"}])
 
-     StudentProject.create(:title=> "Radiometri Correction of Image Sets Using Genetic Programming", :client=> " Maptek",
+     StudentProject.create(:title=> "Radiometri Correction of Image Sets Using Genetic Programming", :client=> "Maptek",
      :summary=> "The project aims to normalise the radiometric characteristics of sets of interrelated photos.
       Application of this project will remove the impact of changing lighting conditions during extended image capture.
      The potos are produced for Maptek by an overhead drone. After radiometric smoothing and other quality improving procedures,

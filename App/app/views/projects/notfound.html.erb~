@@ -1,4 +1,4 @@
 <h1>Projects not found</h1>
  <%= button_to "Back To Past Project Show", index_path(), :method => :get%>
  
-<%=@searchVariable.inspect%>
+<%=@a.inspect%>
