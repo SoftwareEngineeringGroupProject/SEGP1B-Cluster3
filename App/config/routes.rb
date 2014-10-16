@@ -27,9 +27,19 @@ Rails.application.routes.draw do
      get 'projects/:id/destroy' => 'projects#destroy', as: 'destroy'
      patch 'projects/:id/destroy' => 'projects#delete', as: 'delete'
      get 'projects/search' => 'projects#search', as: 'search'
-          get 'projects/notfound' => 'projects#notfound', as: 'notfound'
+      get 'projects/notfound' => 'projects#notfound', as: 'notfound'
 
-     post 'students/:id/delete' => 'students#delete', as: 'student_delete'
+     ###############################################
+     # Past Project Students Routes
+     ###############################################
+     get 'students/delete/:id' => 'students#delete', as: 'student_delete'
+     get 'students/edit/:id' => 'students#edit', as: 'student_edit'
+     patch 'students/update/:id' => 'students#update', as: 'student_update'
+     
+     get 'projects/:id/students/new' => 'students#new', as: 'student_new'
+      post 'projects/:id/addstudent' => 'students#create', as: 'student_create'
+     get 'projects/:id/addstudent' => 'projects#addstudent', as: 'student_created_to_project'
+     post 'projects/:id/addstudent' => 'projects#addstudent_create'
 
 
 

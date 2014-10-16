@@ -77,20 +77,14 @@ class ProjectsController < ApplicationController
     #get the updated project ID
     if params[:id] !=nil
                                                                                                                                                                                                             
-      #check if a student is deleted or created
-      if params[:commit]=='-'
-              #remove one student out                                                                                                                                                                                                
-              @updateProject.students.delete(params[:students])
-      elsif  params[:commit]=='+' 
-           #add the new student in and redirect                                                                                                                                                                                                                                                                                   
-         @updateProject.students.create(params[:students])
-         render :unchanged
-      end  
                                                                                                                                                                           
       @updateProject=StudentProject.find(params[:id])
       #get all students worked in this project
       @students=@updateProject.students.all
-      #update the attributes without save to DB yet
+      
+            #check if a student is deleted or created
+
+            #update the attributes without save to DB yet
       @updateProject.attributes= params[:student_project].permit(:title, :summary, :image, :client, :client_image, :category, :year, 
       students_attributes: [:name, :email, :studentID, :course])
       
@@ -98,7 +92,11 @@ class ProjectsController < ApplicationController
       @updateProject.updated_at=Time.now
        @updateProject.save    
 
-                
+       if params[:commit]=='-'
+              #remove one student out                                                                                                                                                                                                
+      elsif  params[:commit]=='+' 
+           #add the new student in and redirect      
+       end   
     end                                                                                                                                                                                                        
   end
 
@@ -133,6 +131,24 @@ def delete
      StudentProject.destroy(params[:id])
   end
 end
+
+def addstudent
+        if params[:id] != nil
+                  @theStudent = Student.new
+                  @theProject= StudentProject.find(params[:id]) 
+         end                                                                                                                                                                                              
+end
+                                                                                                                                                                                                      
+
+
+  def addstudent_create
+     @student = Student.new(student_params)
+    if @student.save == false
+      flash[:notice] = "Invalid Input"
+      redirect_to student_new_path
+
+       end
+   end
 
 def info
 end

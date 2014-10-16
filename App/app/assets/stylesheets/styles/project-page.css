@@ -176,3 +176,8 @@ label {
 	text-align: center;
 }
 
+.project-table-td{
+	margin-left:50px;
+	display: inline-block;
+}
+

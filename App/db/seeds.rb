@@ -30,7 +30,10 @@ User.create(username: "administrator", email: "admin@admin.com", password: "clus
       that will arise during their career. The Adelaide Simulation centre has students perform these kinds of scenarios but Respond is being developed
        to allow the students some time outside of the Centre to improve their skills on the iOS platform.Scenario Engine is a web-based system that helps
         users to build the medical scenarios for the Respond. Scenario Engine provide a platform for medical staff to build the scenario by filling in the medical
-         data into a set of forms, which will be used to generate the scenario package and store in the system for later use.",:image=>seed_image("p1.jpeg"), :client_image=>seed_image("p2.jpeg"),  :category=>"Mobile application")
+         data into a set of forms, which will be used to generate the scenario package and store in the system for later use.",:image=>seed_image("p1.jpeg"), :client_image=>seed_image("p2.jpeg"),  
+         :category=>"Mobile application",   :students_attributes=>[{:name=>"Scott", :email=>"a1607969@student.adelaide.edu.au", :studentID=>"a16069", :course=>"BEng(Software)"}, 
+{:name=>"Sergei ", :email=>" a1608@student.adelaide.edu.au", :studentID=>" a16093", :course=>"BEng(Software)"},
+{:name=>"Samuel ", :email=>" a1601@student.adelaide.edu.au", :studentID=>" a16031", :course=>"BEng(Software)"}])
 
      StudentProject.create(:title=> "Radiometri Correction of Image Sets Using Genetic Programming", :client=> " Maptek",
      :summary=> "The project aims to normalise the radiometric characteristics of sets of interrelated photos.

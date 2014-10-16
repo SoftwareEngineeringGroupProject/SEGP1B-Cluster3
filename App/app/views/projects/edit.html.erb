@@ -55,14 +55,18 @@
 							<legend>
 								Group Edit:
 							</legend>
-
+							<!--output all students in details here-->
 							<table>
 								<tr>
 									<th class="Project-to_center">ID </th>
 									<th class="Project-to_center">NAME </th>
 									<th class="Project-to_center">EMAIL </th>
 									<th class="Project-to_center">COURSE </th>
+									<th class="project-table-td"><%= link_to "Add", student_new_path(@theProject.id),
+									data: { confirm: "Are you sure to add a new student ?" }%></th>
 									<th class="Project-to_center"></th>
+
+							     	<%if @theProject.students.empty? == false%>
 								</tr>
 								<!--modify students record here-->
 								<%= f.fields_for :students do |student| %>
@@ -71,24 +75,13 @@
 									<td><%=student.text_field :name, class: "Project-text_field-NAME"%></td>
 									<td><%= student.text_field :email, class: "Project-text_field-EMAIL"%></td>
 									<td><%=student.text_field :course, class: "Project-text_field-COURSE"%></td>
-									<td><%= submit_tag "-", data: { confirm: "Are you sure to delete this student '"+student.object.name.to_s+"' ?" }%></td>
+									<% @theStudent=student.object%>
+									<td class="project-table-td"><%= link_to "Edit", student_edit_path(student.object.id, :pastproject=>@theProject.id),  data: { confirm: "Are you sure to update this student '"+student.object.name.to_s+"' ?" }%></td>
+									<td class="project-table-td"><%= link_to "Remove", student_delete_path(student.object.id, ), data: { confirm: "Are you sure to delete this student '"+student.object.name.to_s+"' ?" }%></td>
 								</tr>
 								<%end%>
-
-								<!--add an input student line-->
-								<% 1.times { @theProject.students.build }%>
-								<%= f.fields_for :students do |student| %>
-								<tr>
-									<!--add an empty student input line here-->
-									<td><%=student.text_field :studentID, class: "Project-text_field-ID"%></td>
-									<td><%=student.text_field :name, class: "Project-text_field-NAME"%></td>
-									<td><%= student.text_field :email, class: "Project-text_field-EMAIL"%></td>
-									<td><%=student.text_field :course, class: "Project-text_field-COURSE"%></td>
-									<td><%= submit_tag "+" %></td>
-								</tr>
 								<%end%>
 							</table>
-
 						</fieldset>
 					</div>
 
@@ -110,7 +103,6 @@
 					<%end%>
 				</fieldset>
 			</fieldset>
-
 		</div>
 
 	</div>

@@ -1,0 +1,23 @@
+<%= render "shared/header" %>
+<%= render "shared/linkbar" %>
+
+<%= form_for @theStudent, :url => { :action => "update" } do |builder| %>
+<% @theStudent.errors.full_messages.each do |msg| %>
+<p>
+		<%= msg %>
+</p>
+<% end %>
+
+<%= builder.label "Student name" %>
+<%= builder.text_field :name %></br>
+<%= builder.label "Student email" %>
+<%= builder.text_field :email %></br>
+<%= builder.label "Student ID" %>
+<%= builder.text_field :studentID %></br>
+<%= builder.label :course %>
+
+<%= builder.submit "Submit" %>
+
+
+<% end %>
+<%= render "shared/footer" %>
