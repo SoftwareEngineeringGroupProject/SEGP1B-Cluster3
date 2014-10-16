@@ -157,8 +157,7 @@ def search
        else    
 
        #fetch the searhed results here                                                                                                                                                                                                
-      @searchVariable = StudentProject.search(params[:classify], params[:search], params[:date]["year"].to_i)
-      @a=params[:date]["year"].to_i
+      @searchVariable = StudentProject.search(params[:classify], params[:search])
       #handle empty search
       if @searchVariable.empty?
                  redirect_to  action:'notfound'                                                                                           

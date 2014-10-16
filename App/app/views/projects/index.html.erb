@@ -24,11 +24,10 @@
 		<div class="search-bar to_right">
 
 			<!--add some ground options here-->
-			<% grouped_options = {'PastProject' => ['ID', 'Title', 'Category', 'Client Name'],'Student' => ['Name', ['ID', 'Student ID'], ['Degree', 'Course'], 'Email']}
+			<% grouped_options = {'PastProject' => ['ID', 'Title', 'Year', 'Category', 'Client Name'],'Student' => ['Name', ['ID', 'Student ID'], ['Degree', 'Course'], 'Email']}
              @options=grouped_options_for_select(grouped_options, 'Title')%>
 			<%=form_tag search_path, :method => 'get' do %>
 			<span class="to_left"> <%= select_tag "classify", options_for_select(@options )%> </span>
-			<span class="to_left"><%= select_year(Time.now.year,start_year: 2000, end_year:Time.now.year, prompt: 'Choose Year') %> </span>
 			<span class="to_left"><%= text_field_tag :search, params[:search], placeholder: "Search..."%></span>
 			<span class="to_right"><%= submit_tag "Search"%></span>
 			<%end%>

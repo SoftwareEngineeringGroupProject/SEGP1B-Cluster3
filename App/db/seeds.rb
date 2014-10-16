@@ -31,9 +31,9 @@ User.create(username: "administrator", email: "admin@admin.com", password: "clus
        to allow the students some time outside of the Centre to improve their skills on the iOS platform.Scenario Engine is a web-based system that helps
         users to build the medical scenarios for the Respond. Scenario Engine provide a platform for medical staff to build the scenario by filling in the medical
          data into a set of forms, which will be used to generate the scenario package and store in the system for later use.",:image=>seed_image("p1.jpeg"), :client_image=>seed_image("p2.jpeg"),  
-         :category=>"Mobile application",   :students_attributes=>[{:name=>"Scott", :email=>"a1607969@student.adelaide.edu.au", :studentID=>"a16069", :course=>"BEng(Software)"}, 
-{:name=>"Sergei ", :email=>" a1608@student.adelaide.edu.au", :studentID=>" a16093", :course=>"BEng(Software)"},
-{:name=>"Samuel ", :email=>" a1601@student.adelaide.edu.au", :studentID=>" a16031", :course=>"BEng(Software)"}],:year=>2014)
+         :category=>"Mobile application", :students_attributes=>[{:name=>"Scott", :email=>"a1607969@student.adelaide.edu.au", :studentID=>"a160", :course=>"BEng(Software)"}, 
+{:name=>"Sergei", :email=>" a163@student.adelaide.edu.au", :studentID=>" a1603", :course=>"BEng(Software)"},
+{:name=>"Samuel", :email=>" a1631@student.adelaide.edu.au", :studentID=>" a1631", :course=>"BEng(Software)"}], :year=>2011)
 
      StudentProject.create(:title=> "Radiometri Correction of Image Sets Using Genetic Programming", :client=> "Maptek",
      :summary=> "The project aims to normalise the radiometric characteristics of sets of interrelated photos.
@@ -50,4 +50,4 @@ User.create(username: "administrator", email: "admin@admin.com", password: "clus
      StudentProject.create(:title=> "Breadcrumbs", :client=> "Airborne Research Australia",
      :summary=> "ARA uses light aircraft to perform aerial mappings. They do this by flying in parallel lines across the area.
      During these flights it's possible for spots to be missed, and this will not be known until the data is processed post-flight.
-     ARA needs a tool to indicate spots that have been missed while they are in-flight.", :image=>seed_image("p1.jpeg"), :client_image=>seed_image("p2.jpeg"), :category=>"Mobile application", :year=>2012)
+     ARA needs a tool to indicate spots that have been missed while they are in-flight.", :image=>seed_image("p1.jpeg"), :client_image=>seed_image("p2.jpeg"), :category=>"Mech application", :year=>2012)
