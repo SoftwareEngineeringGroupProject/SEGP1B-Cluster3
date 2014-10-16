@@ -3,6 +3,7 @@
 @import url(couseInfo.css);
 @import url(contacts.css);
 @import url(project-page.css);
+@import url(carousel.css);
 
 /*------------------------------------------------- Initial setup---------------------------------*/
 body{margin:0; padding:0; font-size:13px; color: #333; font-family:Georgia, "Times New Roman", Times, serif; background-color: #E6E6E6; }
