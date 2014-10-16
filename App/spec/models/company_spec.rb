@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Company do
   
+  # VALID TESTING
   before do
     @comp = Company.new(name: "andrew inc", username: "andrewInc", address: "4 frome street north adelaide", 
     	phone: "0412345678", reference_code: "test", email: "andrewinc@andrew.com", website: "andrewinc.com", user_id: "12321")
@@ -17,6 +18,8 @@ describe Company do
   it { should respond_to(:email) }
   it { should respond_to(:website) }
   it { should respond_to(:user_id) }
+
+  it { should be_valid }
 
 
 end
