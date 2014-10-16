@@ -3,7 +3,10 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = StudentProject.all
-    # @groups = Group.all
+    
+    #get the filter year and category data
+    @year=params[:year]
+    @category=params[:category]
   end
 
   def new
