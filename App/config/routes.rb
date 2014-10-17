@@ -41,6 +41,7 @@ Rails.application.routes.draw do
      post 'projects/:id/addstudent' => 'students#create', as: 'student_create'
      get 'projects/:id/addstudent' => 'projects#addstudent', as: 'student_created_to_project'
      post 'projects/:id/addstudent' => 'projects#addstudent_create'
+       get 'students/notfound' => 'students#notfound', as: 'student_notfound'
 
 
 

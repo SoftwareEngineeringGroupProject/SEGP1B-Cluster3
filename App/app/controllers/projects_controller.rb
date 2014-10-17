@@ -162,7 +162,7 @@ def search
        #fetch the searhed results here                                                                                                                                                                                                
       @searchVariable = StudentProject.search(params[:classify], params[:search])
       #handle empty search
-      if @searchVariable.empty?
+      if @searchVariable.blank?
                  redirect_to  action:'notfound'                                                                                           
       end  
       end         

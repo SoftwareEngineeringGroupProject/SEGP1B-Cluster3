@@ -12,18 +12,20 @@ class StudentProject < ActiveRecord::Base
    
    #find project by related attributes here
    if classify.downcase=="title"
-     where("title = ?", search )
+     where("title like ?", "%#{search}%" )
      elsif classify.downcase=="id"
             where("id = ?", search) 
      elsif classify.downcase=="category" 
-             where("category = ?", search)
+             where("category like ?", "%#{search}%" )
          elsif classify.downcase=="client name" 
-             where("client = ?", search)
+             where("client like ?", "%#{search}%" )
          elsif classify.downcase=="year" 
-             where("year = ?", search.to_i)             
-         elsif search ==""                                                                                                                                                                                                                  
+             where("year = ?", search.to_i)   
+         #vague search else              
+         else                                                                                                                                                                                                                  
             #output results with selected year if input empty                                                                                                                                                                                                     
-              #where("strftime('%Y', created_at) = ?", dateChoose)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+              #where("strftime('%Y', created_at) = ?", dateChoose)  
+               where("title like ? or id = ? or category like ? or client like ? or year = ?", "%#{search}%", search, "%#{search}%", "%#{search}%", search.to_i)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
    end
  end
 
