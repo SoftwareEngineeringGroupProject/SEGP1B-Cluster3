@@ -64,3 +64,11 @@
 .long_input {
 	width: 100%;
 }
+
+#messageview {
+	color: black;
+}
+
+.black {
+	color: black;
+}	

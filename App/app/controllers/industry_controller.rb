@@ -68,6 +68,7 @@ class IndustryController < ApplicationController
 			@project = Project.find_by_id(params[:id])
 			if @project != nil
 				if @project.user_id == @current_user.id
+					@proj_messages = Message.where("project_id = #{@project.id}")
 					render "showmessages"
 				else
 					#Not your project!
@@ -79,6 +80,10 @@ class IndustryController < ApplicationController
 		else
 			redirect_to :login
 		end
+	end
+	
+	def sendmes
+		render plain: params[:mes].inspect
 	end
 
 	# View projects and its states
