@@ -24,7 +24,6 @@ class DashboardsController < ApplicationController
     # to show the corresponding email of a project  when we select that project
     @emails = {}
     User.all.each do |user|
-
       if user.acctype == "industry"
         @emails[user.id] = "To: #{user.lname} <#{user.email}>"
       end
@@ -119,7 +118,7 @@ class DashboardsController < ApplicationController
 
       file = params[:attachment]
       # Send the message to the user's email
-      UserMailer.send_a_message(params[:email], recipient, params[:subject], file).deliver
+      UserMailer.email_a_message(params[:email], recipient, params[:subject], file).deliver
       flash[:notice] = "Message has been delivered to #{recipient.lname} <#{recipient.email}>"
 
     end

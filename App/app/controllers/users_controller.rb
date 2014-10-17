@@ -251,7 +251,7 @@ class UsersController < ApplicationController
   	def edit_user_params
     	params.require(:user).permit(:email, :fname, :lname, :phone)
   	end
-  	
+
   	def update_user_params
     	params.require(:useredit).permit(:username, :email, :fname, :lname, :phone)
   	end

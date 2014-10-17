@@ -62,19 +62,19 @@ class ProjectProcessingsController < ApplicationController
     end
 
     @cart= Project.all.select{|p| p.in_cart == true}
-    @assigned_students = Student.all.select { |s| s.project_id != nil }
+    @assigned_students = Student.all.select { |s| s.project_id == @project.id && @project != nil }
     @students = Student.all.select {|s| s.is_new == true && s.project_id == nil}
+
+    @email = "To: "
+    Student.all.each do |student|
+      if student.project_id == @project.id && student.project_id != nil
+        @email += "<#{student.email}>"
+      end
+    end
 
   end
 
   def post_from_assigning_student
-
-    if (params[:student_id].blank?)
-      flash[:notice] = "Select a student"
-      assign_student
-      render :assign_student
-      return
-    end
 
     if (params[:project_id].blank? )
       flash[:notice] = "Specify the project that you want to work with first!"
@@ -82,9 +82,29 @@ class ProjectProcessingsController < ApplicationController
       render :assign_student
       return
     end
-
-    @student = Student.find(params[:student_id])
     @project = Project.find(params[:project_id])
+
+    if (params[:commit] == "Send")
+
+      # Send a message to the selected project
+      if (params[:subject] == "" || params[:email]=="")
+        flash[:notice] = 'Subject or message fields are missing!'
+      else
+        send_emails_to_project_team
+      end
+
+      assign_student
+      render :assign_student
+      return
+    end
+
+    if (params[:student_id].blank?)
+      flash[:notice] = "Select a student"
+      assign_student
+      render :assign_student
+      return
+    end
+    @student = Student.find(params[:student_id])
 
     if ( params[:commit] == "Add" )
       @student.update_attributes(:project_id => @project.id)
@@ -94,14 +114,20 @@ class ProjectProcessingsController < ApplicationController
 
     assign_student
     render :assign_student
-  end
-
-  def add_to_project
 
   end
 
-  def send_emails_to_project_teams
+  private
 
-  end
+    def send_emails_to_project_team
+
+      recipients = Student.all.map{|student| student.email unless student.project_id != @project.id}
+      @current_user = User.find(session[:user_id])
+      file = params[:attachment]
+
+      # Send the message to the user's email
+      UserMailer.email_message_to_multi_recipients(params[:email], recipients, params[:subject], file).deliver
+      flash[:notice] = "Message has been delivered to all of the assigned students"
+    end
 
 end
