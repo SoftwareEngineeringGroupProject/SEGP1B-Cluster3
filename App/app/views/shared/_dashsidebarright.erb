@@ -1,0 +1,10 @@
+<!-- Profile Sidebar navigation -->
+<div class="aside_cols to_right">
+<div id="functionmenu" class="to_right vertical_list button">
+	<ul>
+	<li><%=link_to "Edit Details", :edit_industry_project, :id => @project.id %></li>
+	<li><%=link_to "Message Log", :project_messages, :id => @project.id %></li>
+	<li><%=link_to "Delete Project", :submit_project %></li>
+    </ul>
+</div>
+</div>

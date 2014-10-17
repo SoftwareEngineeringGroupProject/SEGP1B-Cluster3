@@ -1,0 +1,66 @@
+/* ---------------------------------------- Industry Dashboard -------------------------------- */
+#listprojectsdiv {
+	height: 85%;
+	overflow: auto;
+	margin: auto;
+}
+
+#projectcontainer {
+	margin: 8px auto;
+	width:70%;
+	padding: 4px 10px 10px 10px;
+	background:none;
+	min-height: 350px;
+}
+
+.projectrow {
+	margin: auto;
+	width: 90%;
+	min-height: 100px;
+	border: 4px solid;
+	border-radius: 25px;
+	border-color: gray;
+}
+
+.projname {
+	font-size: 35px;
+	font-style: bold;
+	color: blue;
+	left: 20px;
+	text-align: left;
+}
+
+.projdesc {
+	font-size: 15px;
+	color: black;
+	text-align: right;
+}
+
+.vspacer {
+	margin: auto;
+	height: 15px;
+}
+
+#functionmenu {
+	border-radius: 6px;
+	background-color: #333333;
+	width: 95%;
+	margin: 4px 0px;
+	padding: 4px 4px 4px 0px;
+}
+
+#functionmenu a {
+	padding: 15px;
+}
+
+#functionmenu li {
+	border-top: 1px solid black;
+}
+
+#industrydisplayproject {
+	color: black;
+}
+
+.long_input {
+	width: 100%;
+}

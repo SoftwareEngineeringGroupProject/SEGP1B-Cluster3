@@ -1,37 +1,15 @@
 <%= render "shared/header" %>
 <%= render "shared/dashheader" %>
 
-<!--############################## MAIN BODY ################################-->
 <div class="wrapper content">
+<%= render "shared/dashsidebar" %>
+<%= render "shared/dashsidebarright" %>
+
   <!-- Middle board -->
   <div id="container" >
     <%= form_tag %>
       <!-- Viewing Project Board -->
       <div id="board_showing" class="general_box flex_height shadow">
-        <div class="flex_height">
-          <div id="action_to_showing_board" class="to_right horizontal_list button">
-            <ul>
-              <li><%= submit_tag 'Submit New' %></li>
-              <li><%= submit_tag 'Edit' %></li>
-              <li><%= submit_tag 'Delete' %></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Project list-->
-        <div class="to_left" id="showing_list">
-          <fieldset>
-            <legend>
-              <div id="search_date" class ="horizontal_list">
-                <ul>
-                  <li><input class="to_left" type="text" id="datepicker" value="Filter by date" name = "date"></li>
-                  <li><%= image_submit_tag "/images/icon_search.gif", :name => "Filter" %></li>
-                </ul>
-              </div>
-            </legend>
-            <%= select_tag(:project_id, options_for_select(@projects.collect{|project| [project.status+" - "+project.title,project.id, {'data-desc'=>project.body}]}), "size" => "11", "id" => "demo") %>
-          </fieldset>
-        </div>
 
         <!-- Project description-->
         <div id="show_specification" class="to_right" >
@@ -76,7 +54,7 @@
       <div id="communication" id="general_box" class="flex_height to_right shadow">
 
         <!-- Message box -->
-		    <div id="message_box" class="to_left">
+		<div id="message_box" class="to_left">
           <input class="to_left" type="text" placeholder="Subject:", name ="subject" >
           <input class="to_right" id="mail_address" type="text" placeholder="To: Project Coordinators" readonly>
           <%= text_area_tag 'email' %>
@@ -93,6 +71,7 @@
 
       </div>
   </div>
+
 
 
 </div>

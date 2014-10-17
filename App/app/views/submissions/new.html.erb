@@ -1,36 +1,43 @@
 <%= render "shared/header" %>
+<%= render "shared/dashheader" %>
 
-  <div id="subPro" class="forms flex_height">
+<div class="wrapper content">
+  <%= render "shared/dashsidebar" %>
 
-    <%= form_for @project, url: {action: "create"}, :html => { :multipart => true} do |f| %>
-      <div class="titles">
-        <h3>Submit a Project</h3>
+  <div id="container" >
+  
+      <div id="board_showing" class="general_box flex_height shadow">
+        <div id="industrydisplayproject">
+    		<%= form_for @project, url: {action: "create"}, :html => { :multipart => true} do |f| %>
+      			<div class="titles">
+       				 <h3>Submit a Project</h3>
+      			</div>
+
+      			<fieldset class="leftPart inputs to_left">
+        			<legend>Project details</legend>
+        			<%=f.text_field :title, "placeholder" => "Title" %>
+        			<%=f.text_area :body, "placeholder" => "Project description", "rows"=>"10" %>
+        			<%=f.file_field :attachment %>
+      			</fieldset>
+
+      			<div class="sep"></div>
+      			<div class="to_left">
+
+     				<% if @project.errors.any? %>
+        				<ul class="Signup_Errors">
+        				<% for message_error in @project.errors.full_messages %>
+        				<li><%= message_error %></li>
+        				<% end %>
+      				<% end %>
+      			</div>
+      			<div id="subBtn" class="button horizontal_list to_right">
+        			<ul>
+          				<li><%= f.submit "SUBMIT" %></li>
+         				<li><%= link_to "CANCEL", :my_projects %></li>
+        			</ul>
+      			</div>
+    		<% end %>
+        </div>
       </div>
-
-      <fieldset class="leftPart inputs to_left">
-        <legend>Project details</legend>
-        <%=f.text_field :title, "placeholder" => "Title" %>
-        <%=f.text_area :body, "placeholder" => "Project description", "rows"=>"10" %>
-        <%=f.file_field :attachment %>
-      </fieldset>
-
-      <div class="sep"></div>
-      <div class="to_left">
-
-      <% if @project.errors.any? %>
-        <ul class="Signup_Errors">
-        <% for message_error in @project.errors.full_messages %>
-        <li>* <%= message_error %></li>
-        <% end %>
-      <% end %>
-
-      </div>
-      <div id="subBtn" class="button horizontal_list to_right">
-        <ul>
-          <li><%= f.submit "SUBMIT" %></li>
-          <li><%= link_to "CANCEL", root_path %></li>
-        </ul>
-      </div>
-    <% end %>
-
   </div>
+</div>
