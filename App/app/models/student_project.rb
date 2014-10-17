@@ -1,5 +1,5 @@
 class StudentProject < ActiveRecord::Base
-     validates_presence_of :title, :summary, :client, :category
+     validates_presence_of :title, :summary, :client, :category, :year
      has_many :students
      mount_uploader :image, ImageUploader
      mount_uploader :client_image, ImageUploader

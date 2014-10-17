@@ -69,7 +69,7 @@ textarea {
 	}
 
 .inputs input[type=text], input[type=password], textarea{
-		width: 93%;
+	width: 93%;
     background: #f6f6f6;
     color: #555555;
     padding: 12px 12px;
@@ -194,15 +194,17 @@ input[type="file"] {
 
 /* ---------------------------------------- Submit Form For Student Project -------------------------------- */
 .studentProjectForm {
-	float: left;
-	margin-left: 100px ;
-	width: 90%;
+	margin-left: 20% ;
+/*	margin-right: 50%;
+	padding-right: 10%;
+*/	width: 50%;
 }
 
 .studentProjectForm label{
 	text-align: left;
 	font-size: 12pt;
 	float: left;
+	width: 40%;
 	/*display: inline;*/
 }
 
@@ -212,11 +214,12 @@ input[type="file"] {
     padding: 12px 12px;
     border-radius: 3px;
    	box-shadow: inset 0px 2px 2px rgba( 0,0,0,0.1 );
-	   	margin-bottom: 10px;
+   	margin-bottom: 10px;
    	outline:0;
     border:0;
     clear:both;
     /*display: inline;*/	
+    /*float:right;*/
 	
 }
 
@@ -226,4 +229,8 @@ input[type="file"] {
 
 .studentProjectForm select{
 	float:left;
+}
+
+#courseTextField {
+	background: #FFFFFF;
 }

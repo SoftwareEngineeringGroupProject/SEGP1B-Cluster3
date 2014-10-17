@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
     if @student_project.save
       redirect_to :index, :notice => "Project created"
     else
-      redirect_to :new
+      render :new
     end
   end
 

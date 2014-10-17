@@ -1,15 +1,17 @@
 <%= javascript_include_tag 'studentprojectform', 'data-turbolinks-track' => true %>
 
 <%= form_for @student_project,:html => { :multipart => true} do |f| %>
+<div style = "color:red">
 <% @student_project.errors.full_messages.each do |msg| %>
-<p>
-		<%= msg %>
-</p>
+		<%= msg %></br>
 <% end %>
+</div>
+
+
 <%= f.label :title %>
 <%= f.text_field :title, "placeholder" => "Title" %></br>
 <%= f.label :year %>
-<%= f.select :year , (2000) .. (Date.today.year) %></br></br>
+<%= f.select :year , (2000 .. Date.today.year) %></br></br>
 <% if false %>
 <%= f.select :year ,{:start_year => Time.now.year, :end_year => Time.now.year-10} %></br>
 <%= date_select(@student_project, :year, start_year: Time.now.year, end_year: 2000, discard_day: true, discard_month: true)%>
@@ -31,8 +33,8 @@
 		<%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %>
 </div>
 <% end %>
-<%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %></br>	
-<%= builder.text_field :course, "placeholder" => "Course" %>
+<%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %></br></br>
+<%= builder.text_field :course, "style" => "float:right display:inline" ,"placeholder" => "Course" %>
 </br>
 <% end %>
 <%= f.label :summary %>

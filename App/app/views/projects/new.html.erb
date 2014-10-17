@@ -1,9 +1,17 @@
-  <%= render "shared/header" %>
-  <%= render "shared/linkbar" %>
+<%= render "shared/header" %>
+<%= render "shared/linkbar" %>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+<div class="wrapper gallery">
+<div id="slides" class="shadow">
+  <img src="images/example.gif" alt="" />
+</div>
+</div>
   <div class="wrapper content">
     <div id="news" class="flex_height shadow">
-      <p class="justify">
-      <h1>Submit a student's project</h1>
+      <p class="justify" style="margin-left:10%, margin-top:10%">
+      <h1 class="contact-title"><strong>Submit a student's project</strong></h1>
+
       <p text-align: left>
         <div class = "studentProjectForm">
         <%= render :partial => "form" %>
