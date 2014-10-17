@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  get 'project_processings/edit_project' => 'project_processings#edit_project', as: 'admin_edit_project'
+  post 'project_processings/edit_project' => 'project_processings#post_from_editing_project'
+  get 'project_processings/assign_student'=> 'project_processings#assign_student', as: 'admin_assign_student'
+  post 'project_processings/assign_student'=> 'project_processings#post_from_assigning_student'
+
   resources :muas
 
   resources :submissions

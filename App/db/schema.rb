@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20141013132537) do
+ActiveRecord::Schema.define(version: 20141017000559) do
 
   create_table "attacheds", force: true do |t|
     t.integer  "project_id"
@@ -41,15 +40,6 @@ ActiveRecord::Schema.define(version: 20141013132537) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-  end
-
-  create_table "groups", force: true do |t|
-    t.string   "name"
-    t.integer  "numOfMembers"
-    t.integer  "StudentProject_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "student_project_id"
   end
 
   create_table "messages", force: true do |t|
@@ -101,6 +91,12 @@ ActiveRecord::Schema.define(version: 20141013132537) do
     t.datetime "updated_at"
     t.string   "course"
     t.integer  "student_project_id"
+    t.boolean  "is_new"
+    t.integer  "project_id"
+    t.text     "programming_skils"
+    t.text     "courseworks_completed"
+    t.text     "concepts"
+    t.string   "GPA"
   end
 
   create_table "users", force: true do |t|
