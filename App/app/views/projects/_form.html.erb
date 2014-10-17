@@ -1,7 +1,7 @@
 <%= javascript_include_tag 'studentprojectform', 'data-turbolinks-track' => true %>
 
 <%= form_for @student_project,:html => { :multipart => true} do |f| %>
-<div style = "color:red">
+<div style = "color:red;font-weight:bold;font-size:15px">
 <% @student_project.errors.full_messages.each do |msg| %>
 		<%= msg %></br>
 <% end %>
