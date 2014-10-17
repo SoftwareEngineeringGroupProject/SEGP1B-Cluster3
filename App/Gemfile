@@ -56,3 +56,7 @@ gem 'autoprefixer-rails'
 group :development, :test do
   gem 'rspec-rails'
 end
+
+#email form
+gem 'mail_form'
+gem 'simple_form'

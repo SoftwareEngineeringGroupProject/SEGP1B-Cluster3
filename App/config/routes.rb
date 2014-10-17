@@ -19,7 +19,7 @@ Rails.application.routes.draw do
      # post '/student_projects' => 'projects#create'
      # match 'projects/new' => 'projects#create', via: [:get, :post]
      match '/student_projects' => 'projects#create', via: [:get, :post]
-     get 'projects/contact' => 'projects#contact', as: 'contact'
+     # get 'projects/contact' => 'projects#contact', as: 'contact'
      get 'projects/:id/show' => 'projects#show', as: 'project'
      get 'projects/:id/edit' => 'projects#edit', as: 'edit'
      post 'projects/:id/update' => 'projects#update', as: 'update'
@@ -32,6 +32,9 @@ Rails.application.routes.draw do
      post 'students/:id/delete' => 'students#delete', as: 'student_delete'
 
 
+     # EMAIL FORM
+     match '/contacts',     to: 'contacts#new',             via: 'get', as: "contact"
+      resources "contacts", only: [:new, :create]
 
   # Dashboards
   get 'dashboards/view/:state' => "dashboards#view"
