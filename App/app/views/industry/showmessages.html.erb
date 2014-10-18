@@ -13,8 +13,12 @@
             <div id="messageview" style="height:400px; overflow: auto;">
               <% if !@proj_messages.blank? %>
                 <% @proj_messages.each do |m| %>
-
-                <div class="user_message inset_shadow">
+				
+				<% if m.sender_id == @current_user.id %>
+                	<div class="industry_message inset_shadow">
+                <% else %>
+                	<div class="admin_message inset_shadow">
+                <% end %>
                 <% sender = User.find(m.sender_id) %>
                 <strong>&nbsp&nbsp&nbspSender:&nbsp<%= sender.lname %>&nbsp-&nbspTitle:&nbsp<%=m.title %></strong>
                 <textarea rows="2" readonly><%=m.text %></textarea>
@@ -31,7 +35,7 @@
       <div id="communication" id="general_box" class="flex_height to_right shadow">
 
         <!-- Message box -->
-        <%= form_for :mes, url: {action: "sendmes"} do |f| %>
+        <%= form_for :newmessage, url: {action: "sendmes"} do |f| %>
 		<div id="message_box" class="to_left">
           <!--<input class="to_left long_input" type="text" placeholder="Subject:" name ="subject">-->
           <%= f.hidden_field 'user_id', :value => @current_user.id %>
@@ -51,3 +55,9 @@
 	
   </div>
 </div>
+
+<script>
+$(document).ready(function(){  
+	$("#messageview").animate({ scrollTop: $('#messageview')[0].scrollHeight}, 2000);
+});
+</script>

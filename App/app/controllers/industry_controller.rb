@@ -83,7 +83,31 @@ class IndustryController < ApplicationController
 	end
 	
 	def sendmes
-		render plain: params[:mes].inspect
+		if user_logged_in?
+			@project = Project.find_by_id(params[:id])
+			if @project != nil
+				if @project.user_id == @current_user.id
+					@newmessage = Message.new()
+					@newmessage.sender_id = @current_user.id
+					@newmessage.project_id = @project.id
+					@newmessage.title = params[:newmessage][:subject]
+					@newmessage.text = params[:newmessage][:email]
+					if @newmessage.save
+						flash[:notice] = "Message has been delivered to project coordinators."
+					else
+						flash[:notice] = "Subject and Message must be not blank!"
+					end
+					redirect_to :project_messages
+				else
+					#Not your project!
+					render "unauthorized"
+				end
+			else
+				redirect_to :my_projects
+			end
+		else
+			redirect_to :login
+		end
 	end
 
 	# View projects and its states
@@ -167,10 +191,21 @@ class IndustryController < ApplicationController
 
 
 	def delete
-		@message = Message.new
-		@project = Project.find(params[:project_id])
-	  if ( @project == nil )
-			redirect_to industry_dashboard_path
+		if user_logged_in?
+			@project = Project.find_by_id(params[:id])
+			if @project != nil
+				if @project.user_id == @current_user.id
+					@message = Message.new
+					render "delete"
+				else
+					#Not your project!
+					render "unauthorized"
+				end
+			else
+				redirect_to :my_projects
+			end
+		else
+			redirect_to :login
 		end
 	end
 
