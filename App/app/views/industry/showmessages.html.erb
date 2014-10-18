@@ -20,7 +20,7 @@
                 	<div class="admin_message inset_shadow">
                 <% end %>
                 <% sender = User.find(m.sender_id) %>
-                <strong>&nbsp&nbsp&nbspSender:&nbsp<%= sender.lname %>&nbsp-&nbspTitle:&nbsp<%=m.title %></strong>
+                <strong>&nbsp&nbsp&nbsp<%= sender.fname %> <%= sender.lname %>:&nbsp-&nbspSubject: &nbsp<%=m.title %></strong>
                 <textarea rows="2" readonly><%=m.text %></textarea>
                 </div>
                 <% end %>

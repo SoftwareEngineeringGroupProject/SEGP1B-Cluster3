@@ -84,9 +84,11 @@ Rails.application.routes.draw do
   get 'display/:id' => "industry#display", :as => :display_project
   get 'modify/:id' => "industry#edit", :as => :edit_industry_project
   post 'modify/:id' => "industry#update", :as => :update_industry_project
+  get 'delete/:id' => "industry#delete", :as => :delete_industry_project
   
   #Messaging
   get 'messagelog/:id' => "industry#showmessages", :as => :project_messages
+  post 'messagelog/:id' => "industry#sendmes", :as => :send_mes
   
   #Other
   get 'industry/showList' => "industry#showList", :as => :industry_dashboard
@@ -106,7 +108,7 @@ Rails.application.routes.draw do
 
 
   post 'industry/remove/:id' => "industry#remove", :as => :remove_industry_project
-  get 'industry/delete' => "industry#delete", :as => :delete_industry_project
+  #get 'industry/delete' => "industry#delete", :as => :delete_industry_project
   post 'industry/delete' => "industry#pending", :as => :delete_pending_project
 
 
