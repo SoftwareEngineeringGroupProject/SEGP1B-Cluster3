@@ -25,12 +25,14 @@ class SubmissionsController < ApplicationController
 
     # Set state for newly submitted project
     @project.status = "new"
+    @spec = @project.build_spec(:spec_name => @project.title, :spec_name => @project.body)
 
     # If submission is done successfully, redirect to show page
-    if @project.save
+    if @project.save && @spec.save
       redirect_to submission_path(@project)
     else
       # Else, render the submission page
+      @spec.delete
       @project.delete
       render :new
     end

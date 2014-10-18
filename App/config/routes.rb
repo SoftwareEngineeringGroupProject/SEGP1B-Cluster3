@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  mount Mercury::Engine => '/'
+
+  resources :project_spec_gens do
+    member { put :mercury_update }
+  end
+
   get 'project_processings/edit_project' => 'project_processings#edit_project', as: 'admin_edit_project'
   post 'project_processings/edit_project' => 'project_processings#post_from_editing_project'
   get 'project_processings/assign_student'=> 'project_processings#assign_student', as: 'admin_assign_student'

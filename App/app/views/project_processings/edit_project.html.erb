@@ -16,15 +16,15 @@
 
   <!--********************-->
   <%= form_tag %>
+  <%= hidden_field_tag "spec_url", @spec_link, :id => "spec_link" %>
   <div id="container" class="to_left">
     <div id="board_showing" class="general_box flex_height shadow">
 
       <div class="flex_height">
         <div id="action_to_showing_board" class="to_right horizontal_list button">
           <ul>
-            <li><%= submit_tag 'Reset' %></li>
+            <li><%= submit_tag 'Edit' %></li>
             <li><%= submit_tag 'Preview' %></li>
-            <li><%= submit_tag 'Save' %></li>
           </ul>
         </div>
       </div>
@@ -32,7 +32,7 @@
       <div id="edit_specification" class="to_right"  >
         <fieldset>
           <legend>Project description</legend>
-          <%= text_area_tag 'project_content', @project.body %>
+          <div id="siteloader"></div>
           <%= hidden_field_tag 'project_id', @project.id %>
         </fieldset>
       </div>

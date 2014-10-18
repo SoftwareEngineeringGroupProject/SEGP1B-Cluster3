@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/jejacks0n/mercury.git
+  revision: 1cc637b0bccea19085f824d2881c6513ed5ee8ae
+  specs:
+    mercury-rails (0.9.0)
+      coffee-rails (>= 3.2.2)
+      railties (>= 3.0)
+
+GIT
   remote: git://github.com/thoughtbot/paperclip.git
   revision: 3ec2599d13c1c4d6ab7c5bd291b8ff31e625915e
   specs:
@@ -154,6 +162,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
+  mercury-rails!
   mini_magick
   paperclip!
   rails (= 4.1.5)

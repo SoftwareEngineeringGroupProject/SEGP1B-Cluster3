@@ -201,11 +201,12 @@ di.content {
 /*----------------------- Process projects in cart ---------------*/
 #edit_specification {
 	width:100%;;
+	min_height: 400px;
 	}
-#edit_specification textarea{
-	height:300px;
+#edit_specification object {
+    width: 100%;
+    min-height: 400px;
 	}
-
 
 /* -------------------------- Message log ------------------------ */
 .user_message {

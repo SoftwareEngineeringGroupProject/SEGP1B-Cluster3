@@ -16,8 +16,9 @@ class ProjectProcessingsController < ApplicationController
     @cart = Project.all.select{|p| p.in_cart == true}
 
     # This needs a project to edit, otherwise redirect_to admin_dashboard
-    if ( params[:project_id] != nil )
+    if ( !params[:project_id].blank? )
       @project = Project.find(params[:project_id])
+      @spec_link = '"http://localhost:3000/project_spec_gens/' + (@project.id).to_s + '"'
     else
       @project = Project.new
     end
@@ -25,16 +26,22 @@ class ProjectProcessingsController < ApplicationController
   end
 
   def post_from_editing_project
-    if params[:project_id] == nil
+    if params[:project_id].blank?
+      flash[:notice] = "Select a project to edit!"
+      edit_project
       render :edit_project
       return
     end
 
     @project = Project.find((params[:project_id]))
-    if ( params[:commit] == "Save" )
-      @project.update_attributes(:body => params[:project_content])
-    else
-      @project.update_attributes(:body => @project.body)
+
+    if ( params[:commit] == "Edit" )
+      @spec = Spec.find_by_project_id(params[:project_id])
+      redirect_to "/editor/project_spec_gens/" + params[:project_id]
+      return
+    elsif ( params[:commit] == "Preview")
+      redirect_to "/project_spec_gens/" + params[:project_id]
+      return
     end
     edit_project
     render :edit_project
