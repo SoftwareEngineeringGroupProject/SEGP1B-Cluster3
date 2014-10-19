@@ -233,7 +233,9 @@ class UsersController < ApplicationController
 		if user_logged_in?
 			if user_type == "coordinator"
 				@userdelete = User.find_by_id(params[:id])
-				@userdelete.delete
+				if params[:id] != @current_user.id
+					@userdelete.delete
+				end
 				redirect_to :list_all_path
 			else
 				redirect_to "unauthorized"
