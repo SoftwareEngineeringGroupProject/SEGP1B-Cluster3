@@ -1,4 +1,3 @@
-include ActionView::Helpers::AssetTagHelper
 class ProjectsController < ApplicationController
 
   def index
@@ -26,8 +25,16 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:student_project).permit(:title, :summary, :image, :client, :client_image, :category, :year, students_attributes: [:name, :email, :studentID, :course])
+    params.require(:student_project).permit(:title, :summary, :image, :client, :client_image, :category, :year, students_attributes: [:id,:name, :email, :studentID, :course])
   end
+  
+  def project_edit_params
+    params.require(:student_project).permit(:title, :summary, :image, :client, :client_image, :category, :year)
+  end
+  
+    def student_edit_params
+	params.require(:student).permit(:name, :email, :studentID, :course)
+    end
 
   def show
     #get the project's ID here
@@ -44,23 +51,11 @@ class ProjectsController < ApplicationController
         redirect_to "/404"
   end
 
-  # def edit
-
-  #  if session[:user_id] != nil
-         #get the project's ID here
-     #    @ProjectID = params[:id]
-        # @Projects = StudentProject.all
-
-         #get the specifc project
-         #@theProject=@Projects.find(@ProjectID)
-    #else
-       #  flash[:notice] = "Please Login to edit a past project"
-         #redirect_to :login
-    #end
-
-  #end
      
     def edit
+       if session[:user_id] != nil
+          @user = User.find(session[:user_id]) 
+        if @user.acctype == "coordinator" 
       #get the project's ID here
       @ProjectID = params[:id]
       @Projects = StudentProject.all
@@ -69,58 +64,62 @@ class ProjectsController < ApplicationController
       @theProject=@Projects.find(@ProjectID)
       #get all students worked in this project
       @students=@theProject.students.all
-      
-          # the function is used to create a new student record if a Student project does not have one student ,
-    #which helps form input to show an empty input line in edit page                                                                                           
-             
+      else
+          flash[:notice] = "Please Login as a coordinator to edit a past project"
+         redirect_to :login
+      end
+         else
+       flash[:notice] = "Please Login to edit a past project"
+         redirect_to :login
+       end                                                                                   
     end
 
   def update
                                                           
-    #get the updated project ID
-    if params[:id] !=nil
-                                                                                                                                                                                                            
-                                                                                                                                                                          
-      @updateProject=StudentProject.find(params[:id])
-      #get all students worked in this project
-      @students=@updateProject.students.all
+    	#get the updated project ID
+    	if params[:id] !=nil
+                                                                                                                                                                                                                                                                                                                                                                                  
+      		@updateProject=StudentProject.find(params[:id])
+     		 #get all students worked in this project
+      		@students=@updateProject.students.all
       
-            #check if a student is deleted or created
-
-       #update the attributes without save to DB yet
-      @updateProject.attributes= project_params
-      
-      #save to DB here
-      @updateProject.updated_at=Time.now
-       @updateProject.save    
-        
-    end                                                                                                                                                                                                        
+     		 #update the attributes without save to DB yet
+      		@updateProject.attributes=project_params
+      	
+      		#check if there any change
+      		if @updateProject.changed? ==false
+      			 flash[:notice] ="There is no any change, please edit again"
+         		redirect_to :edit
+      		else
+			#save to DB      	
+      	   		@updateProject.save
+      		end      
+    	end                                                                                                                                                                                                        
   end
 
 def unchanged
 end
 
-     #def destroy
-
-        #  if session[:user_id] != nil
-           #    #get the project's ID here
-              # @ProjectID = params[:id]
-              # @Projects = StudentProject.all
-
-               #get the specifc project
-              # @theProject=@Projects.find(@ProjectID)
-          ##  flash[:notice] = "Please Login to edit a past project"
-             #  redirect_to :login
-          #end
-    # end
 def destroy
+    if session[:user_id] != nil
+          @user = User.find(session[:user_id]) 
+        if @user.acctype == "coordinator" 
+         	 #get the project's ID here
+ 	 	@ProjectID = params[:id]
+      	@Projects = StudentProject.all
 
-  #get the project's ID here
-  @ProjectID = params[:id]
-  @Projects = StudentProject.all
-
-  #get the specifc project
-  @theProject=@Projects.find(@ProjectID)
+  		#get the specifc project
+  		@theProject=@Projects.find(@ProjectID)
+  
+        else
+          	flash[:notice] = "Please Login as a coordinator to edit a past project"
+        	 redirect_to :login
+      	end
+     else
+       flash[:notice] = "Please Login to edit a past project"
+         redirect_to :login
+     end    
+  
 end
 
 def delete
@@ -143,7 +142,6 @@ end
     if @student.save == false
       flash[:notice] = "Invalid Input"
       redirect_to student_new_path
-
        end
    end
 

@@ -2,7 +2,7 @@
 <%= render "shared/linkbar" %>
 
 <%= form_for @theStudent, :url => { :action => "create" } do |builder| %>
-<% @theStudent.errors.full_messages.each do |msg| %>
+<%@theStudent.errors.full_messages.each do |msg| %>
 <p>
 		<%= msg %>
 </p>

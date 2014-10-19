@@ -2,9 +2,16 @@
 <%= render "shared/linkbar" %>
 
 <%= form_for @theStudent, :url => { :action => "create" } do |builder| %>
-<% @theStudent.errors.full_messages.each do |msg| %>
+
+<% if flash[:notice] %>
+<div class="notice">
+	<%= flash[:notice] %>
+</div>
+<% end %>
+
+<%@theStudent.errors.full_messages.each do |msg| %>
 <p>
-		<%= msg %>
+	<%= msg %>
 </p>
 <% end %>
 
@@ -16,9 +23,9 @@
 <%= builder.text_field :studentID %></br>
 <%= builder.label :course %>
 <%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %>
+<%= builder.text_field :course, "placeholder" => "Course" %>
 
 <%= builder.submit "Submit" %>
-
 
 <% end %>
 <%= render "shared/footer" %>

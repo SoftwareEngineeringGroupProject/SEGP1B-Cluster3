@@ -16,7 +16,11 @@
 		</div>
 
 		<div class="project-container">
-
+			<% if flash[:notice] %>
+			<div class="notice">
+				<%= flash[:notice] %>
+			</div>
+			<% end %>
 			<fieldset>
 				<legend>
 					Edit Project
@@ -67,7 +71,7 @@
 									data: { confirm: "Are you sure to add a new student ?" }%></th>
 									<th class="Project-to_center"></th>
 
-							     	<%if @theProject.students.empty? == false%>
+									<%if @theProject.students.empty? == false%>
 								</tr>
 								<!--modify students record here-->
 								<%= f.fields_for :students do |student| %>

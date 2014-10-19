@@ -4,8 +4,14 @@
 <%= form_for @theStudent, :url => { :action => "update" } do |builder| %>
 <% @theStudent.errors.full_messages.each do |msg| %>
 <p>
-		<%= msg %>
+	<%= msg %>
 </p>
+<% end %>
+
+<% if flash[:notice] %>
+<div class="notice">
+	<%= flash[:notice] %>
+</div>
 <% end %>
 
 <%= builder.label "Student name" %>
@@ -17,7 +23,6 @@
 <%= builder.label :course %>
 
 <%= builder.submit "Submit" %>
-
 
 <% end %>
 <%= render "shared/footer" %>
