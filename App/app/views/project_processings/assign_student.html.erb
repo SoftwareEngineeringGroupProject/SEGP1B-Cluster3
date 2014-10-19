@@ -7,8 +7,11 @@
   <div class="aside_cols to_left">
     <div id="tabs" class="to_right vertical_list button">
       <ul>
-        <li><%= link_to "Add extra info", admin_edit_project_path %></li>
-        <li><%= link_to "Assign students", admin_assign_student_path %></li>
+        <li><%=link_to "Newly submitted",admin_dashboard_path,:state => "new" %></li>
+        <li><%=link_to "Accepted", admin_dashboard_path, state: "accepted"  %></li>
+        <li><%=link_to "Rejected", admin_dashboard_path, state: "rejected" %></li>
+        <li><%=link_to "Pending", admin_dashboard_path, state: "pending" %></li>
+        <li><%=link_to "Past projects", admin_dashboard_path, state: "past_projects" %></li>
       </ul>
     </div>
   </div>
@@ -72,13 +75,13 @@
 
   <!--*********************-->
   <div class="aside_cols to_left">
-    <div id="cart" class="to_left vertical_list button">
+    <div id="cart" class="to_right vertical_list button">
       <ul>
-        <% if @cart != nil && @cart.length > 0 %>
-          <% @cart.each do |project| %>
-          <li><%=link_to project.title, admin_assign_student_path(:project_id => project.id) %></li>
-          <% end %>
-        <% end %>
+        <li><%=link_to "Edit Details", edit_details_path(id: @project.id )%></li>
+        <li><%=link_to "Make Decision", project_manip_path(id: @project.id, show_action: true) %></li>
+        <li><%=link_to "Message Log", show_messages_path(id: @project.id ) %></li>
+        <li><%=link_to "Spec Editor", admin_edit_project_path(id: @project.id) %></li>
+        <li><%=link_to "Assign Team", admin_assign_student_path(project_id: @project.id )%></li>
       </ul>
     </div>
   </div>

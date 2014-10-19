@@ -45,12 +45,15 @@ Rails.application.routes.draw do
 
 
   # Dashboards
-  get 'dashboards/view/:state' => "dashboards#view"
-  get 'dashboards/view/' => "dashboards#view", :as => :admin_dashboard
+  get 'dashboards/view' => "dashboards#view", :as => :admin_dashboard
   post 'dashboards/view/:state' => 'dashboards#action_handler', :as => :action_handler
   post 'dashboards/view' => 'dashboards#action_handler'
-  get 'dashboards/edit_desc' => "dashboards#edit_desc", :as => :edit_desc
-  post 'dashboards/edit_desc' =>"dashboards#action_handler"
+  get 'dashboards/project_manip/:id' => "dashboards#project_manip", :as => :project_manip
+  get 'dashboards/edit_details/:id' =>"dashboards#edit_details", :as => :edit_details
+  patch 'dashboards/edit_details/:id' =>"dashboards#update_details"
+
+  get 'dashboards/show_message_log/:id' =>"dashboards#show_message_log", :as => :show_messages
+  post 'dashboards/show_message_log/:id' =>"dashboards#send_message"
 
   get 'dashboards/assign_students' => "dashboards#assign_students", :as => :assign_students
   post 'dashboards/assgin_students' => "dashboards#action_handler"

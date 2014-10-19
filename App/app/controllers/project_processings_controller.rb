@@ -12,12 +12,9 @@ class ProjectProcessingsController < ApplicationController
       redirect_to :unauthorized
     end
 
-    # Current working set
-    @cart = Project.all.select{|p| p.in_cart == true}
-
     # This needs a project to edit, otherwise redirect_to admin_dashboard
-    if ( !params[:project_id].blank? )
-      @project = Project.find(params[:project_id])
+    if ( !params[:id].blank? )
+      @project = Project.find(params[:id])
       @spec_link = '"http://localhost:3000/project_spec_gens/' + (@project.id).to_s + '"'
     else
       @project = Project.new
@@ -68,7 +65,6 @@ class ProjectProcessingsController < ApplicationController
       @project = Project.new
     end
 
-    @cart= Project.all.select{|p| p.in_cart == true}
     @assigned_students = Student.all.select { |s| s.project_id == @project.id && @project != nil }
     @students = Student.all.select {|s| s.is_new == true && s.project_id == nil}
 

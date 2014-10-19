@@ -9,48 +9,119 @@ class DashboardsController < ApplicationController
   		redirect_to :unauthorized
   	end
 
-    # Define how to display the white board, either display description or message log
-    @des = !@log
-
     # View projects based on project state
-    @state = params[:state]
-    @cart = Project.all.select{|p| p.in_cart == true}
-
-    params[:date] = "02/12/1995" if params[:date] == "Filter by date" || params[:date] == nil
-
-    @projects = Project.all.select{|project| project.status == @state && compare_date(project.created_at.strftime("%m/%d/%Y"), params[:date] ) }
-
-    # Create a hash containing emails of all company, this is then used in view
-    # to show the corresponding email of a project  when we select that project
-    @emails = {}
-    User.all.each do |user|
-      if user.acctype == "industry"
-        @emails[user.id] = "To: #{user.lname} <#{user.email}>"
-      end
-
+    if params[:state].blank?
+      @state = "new"
     end
+
+    @state = params[:state]
+    @projects = Project.all.select{ |project| project.status == @state }
+
   end
 
   # Edit the description of a project
-  def edit_desc
+  def project_manip
+    # Authenticate user first
     authenticate_user
-    @cart = Project.all.select{|p| p.in_cart == true}
+    if (@current_user == nil) || (@current_user.acctype != "coordinator")
+      flash[:notice] = "You have an Industry Partner Account, NOT a Coordinator account."
+      redirect_to :unauthorized
+    end
+
+    if params[:id] != nil
+      @project = Project.find(params[:id])
+      @show_action = params[:show_action]
+    else
+      redirect_to action: 'view'
+    end
+  end
+
+  # Assign students to a project
+  def edit_details
+    # Authenticate user first
+    authenticate_user
+    if (@current_user == nil) || (@current_user.acctype != "coordinator")
+      flash[:notice] = "You have an Industry Partner Account, NOT a Coordinator account."
+      redirect_to :unauthorized
+    end
 
     if params[:id] != nil
       @project = Project.find(params[:id])
     else
-      @project = Project.new
-      @project.body = "Please select a project to edit..."
+      redirect_to action: 'view'
+    end
+
+  end
+
+  def update_details
+    # Authenticate user first
+    authenticate_user
+    if (@current_user == nil) || (@current_user.acctype != "coordinator")
+      flash[:notice] = "You have an Industry Partner Account, NOT a Coordinator account."
+      redirect_to :unauthorized
+    end
+    if params[:id] != nil
+      @project = Project.find(params[:id])
+      if (!@project.update_attributes(project_params))
+        render :edit_details
+      else
+        redirect_to action: "project_manip", id: @project.id
+      end
+    else
+      redirect_to action: 'view'
+    end
+
+  end
+
+  def show_message_log
+    # Authenticate user first
+    authenticate_user
+    if (@current_user == nil) || (@current_user.acctype != "coordinator")
+      flash[:notice] = "You have an Industry Partner Account, NOT a Coordinator account."
+      redirect_to :unauthorized
+    end
+
+    if params[:id] != nil
+      @project = Project.find(params[:id])
+      @messages = @project.messages
+      project_owner = User.find(@project.user_id)
+      @email = "#{project_owner.lname}<#{project_owner.email}>"
+    else
+      redirect_to action: 'view'
     end
   end
 
+  def send_message
 
-  # Assign students to a project
-  def assign_students
+    # Authenticate user first
     authenticate_user
+    if (@current_user == nil) || (@current_user.acctype != "coordinator")
+      flash[:notice] = "You have an Industry Partner Account, NOT a Coordinator account."
+      redirect_to :unauthorized
+    end
 
-    @cart = Project.all.select{|p| p.in_cart == true}
+    # Identify the user that owns the project
+    @project = Project.find(params[:id])
+
+    recipient = User.find(@project.user_id)
+    @current_user = User.find(session[:user_id])
+
+    @message = Message.new(:sender_id=> @current_user.id, :project_id => @project.id, :title => params[:subject], :text => params[:email], :recipient_id =>recipient.id)
+
+    if !@message.save
+      render :show_message_log
+      return
+    end
+
+    file = params[:attachment]
+    # Send the message to the user's email
+    UserMailer.email_a_message(params[:email], recipient, params[:subject], file).deliver
+    flash[:notice] = "Message has been delivered to #{recipient.lname} <#{recipient.email}>"
+    redirect_to show_messages_path
+
   end
+
+
 
   # Any post actions will be handled here
   def action_handler
@@ -104,24 +175,6 @@ class DashboardsController < ApplicationController
 
   private
 
-    def send_message
-      # Identify the user that owns the project
-      recipient = User.find(@project.user_id)
-
-      @current_user = User.find(session[:user_id])
-
-      @message = Message.new(:sender_id=> @current_user.id, :project_id => @project.id, :title => params[:subject], :text => params[:email], :recipient_id =>recipient.id)
-
-      if !@message.save
-        return
-      end
-
-      file = params[:attachment]
-      # Send the message to the user's email
-      UserMailer.email_a_message(params[:email], recipient, params[:subject], file).deliver
-      flash[:notice] = "Message has been delivered to #{recipient.lname} <#{recipient.email}>"
-
-    end
 
     # Change state of a project
     def change_state
@@ -142,6 +195,10 @@ class DashboardsController < ApplicationController
 
     def delete
       Project.destroy(params[:project_id]);
+    end
+
+    def project_params
+      params.require(:project).permit(:title, :body)
     end
 
 end
