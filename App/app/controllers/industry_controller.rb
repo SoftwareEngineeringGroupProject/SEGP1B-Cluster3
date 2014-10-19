@@ -50,16 +50,27 @@ class IndustryController < ApplicationController
   	end
   	
   	def update
-		@project = Project.find_by_id(params[:id])
-		if @project != nil
-			if @project.update(project_params)
-		  		redirect_to :display_project
+  		if user_logged_in?
+			@project = Project.find_by_id(params[:id])
+			if @project != nil
+				if @project.user_id == @current_user.id
+					if @project.update(project_params)
+						@message = Message.new(:sender_id => @current_user.id, :project_id => @project.id, :title => "Project Details Updated", :text => "#{@current_user.fname} #{@current_user.lname} updated the project description")
+						@message.save
+		  					redirect_to :display_project
+					else
+						#Otherwise, stay in edit page
+		  				render :edit
+					end
+				else
+					#Not your project!
+					render "unauthorized"
+				end
 			else
-				#Otherwise, stay in edit page
-		  		render :edit
+				redirect_to :my_projects
 			end
 		else
-			redirect_to :my_projects
+			redirect_to :login
 		end
 	end
 	

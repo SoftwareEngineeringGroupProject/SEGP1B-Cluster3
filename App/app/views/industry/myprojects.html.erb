@@ -14,8 +14,15 @@
         <div id="listprojectsdiv">
  		<% @projects.each do |sub| %>
  			<div class="projectrow">
- 				<p class="projname"><td>&nbsp;&nbsp;&nbsp;<%= link_to sub.title, controller: "industry", action: "display", id: sub.id %></td></p>
-				<p class="projdesc"><%= sub.body %>&nbsp;&nbsp;&nbsp;</p>
+ 				<div class="projname"><p><%= link_to sub.title, controller: "industry", action: "display", id: sub.id %></p></div>
+ 				<div class="projdesc"><p><%= sub.body %></p></div>
+ 				<table class="bottomline">
+					<tr>
+						<td>Messages: <%= Message.where("project_id = #{sub.id}").count %></td>
+						<td>Status: <%= sub.status.slice(0,1).capitalize + sub.status.slice(1..-1) %></td>
+						<td>Created: <%= Date.parse(sub.created_at.to_s).strftime("%d-%m-%Y") %></td>
+					</tr>
+				</table>
 			</div>
 			<div class="vspacer"></div>
   		<% end %>
