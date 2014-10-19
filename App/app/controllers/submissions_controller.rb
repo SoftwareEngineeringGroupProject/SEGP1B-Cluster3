@@ -28,7 +28,7 @@ class SubmissionsController < ApplicationController
 
     # If submission is done successfully, redirect to show page
     if @project.save
-      redirect_to submission_path(@project)
+      redirect_to :my_projects
     else
       # Else, render the submission page
       @project.delete

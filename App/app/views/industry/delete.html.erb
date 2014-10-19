@@ -1,39 +1,41 @@
 <%= render "shared/header" %>
+<%= render "shared/dashheader" %>
 
-  <div id="subPro" class="forms flex_height">
-      <div class="titles">
-        <h3>Delete a Project</h3>
+<div class="wrapper content">
+  <%= render "shared/dashsidebar" %>
+  <%= render "shared/dashsidebarright" %>
+
+  <div id="container" >
+  
+      <div id="board_showing" class="general_box flex_height shadow">
+        <div id="industrydisplayproject">
+      			<div class="titles"><h3>Delete a Project</h3></div>
+      			<h4>Please leave some reasons for deleting the Project here</h4>
+      			<h4>Your deletion request will remain pending until confirmed by an admin.</h4>
+
+    				<div class="sep"></div>
+   					<div class="to_left">
+      					<%= "Some fields were missing!" if @project.errors.any? %>
+    				</div>
+    				
+    				
+    				<!-- Message box -->
+        			<%= form_for :newmessage, url: {action: "sendmes"} do |f| %>
+						<div id="message_box" class="to_left">
+          					<%= f.hidden_field 'user_id', :value => @current_user.id %>
+          					<%= f.hidden_field 'proj_id', :value => @project.id %>
+          					<%= f.text_field 'subject', :class => "to_left long_input","placeholder" => "Subject" %>
+          					<%= f.text_area 'email' %>
+        				</div>				
+    				
+    					<div id="subBtn" class="button horizontal_list to_right">
+      						<ul>
+      						<li><%= link_to "CANCEL", :display_project %></li>
+        					<li><%= f.submit "SUBMIT" %></li>
+      						</ul>
+    					</div>
+    			<% end %>
+        </div>
       </div>
-
-      <fieldset class="inputs ">
-        <legend>Project details</legend>
-	TITLE:
-        <%=@project.title %>
-	<br/>
-	DESCRIPTION:
-        <%=@project.body %>
-      </fieldset>
-
-    <div class="sep"></div>
-    <div class="to_left">
-      <%= "Some fields were missing!" if @message.errors.any? || @message.errors.any? %>
-    </div>
-
-
-    <%= form_for @message, url: {action: "pending"} do |f| %>
-
-      <h4>Please leave some reasons for deletion here. Delete pending until confirmation by admins... <h4>
-
-	<%= f.text_area :title, "placeholder" => "Subject here..." %>
-	<%= f.text_area :text , "rows"=>"5", "placeholder" => "Specification here..."%>
-  <%= f.hidden_field :project_id, :value => @project.id %>
-
-    <div id="subBtn" class="button horizontal_list to_right">
-      <ul>
-        <li><%= f.submit "CONFIRM" %></li>
-        <li><%= link_to "CANCEL", industry_dashboard_path %></li>
-      </ul>
-    </div>
-    <% end %>
-
   </div>
+</div>
