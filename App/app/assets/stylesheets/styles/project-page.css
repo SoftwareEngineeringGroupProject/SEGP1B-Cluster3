@@ -13,7 +13,7 @@
 .project-title-subheading {
     margin-left: 70px;
     margin-top: 20px;
-    font-size: 1em;
+    font-size: 1.5em;
     font-family: Georgia, Times, serif;
     color: blue;
     font-weight: normal;
@@ -26,10 +26,24 @@
 .project-title {
     margin-left: 70px;
     margin-top: 10px;
-    font-size: 1.5em;
+    font-size: 3.0em;
     font-family: Georgia, Times, serif;
-    color: blue;
+    color: #005d8f;
     font-weight: normal;
+}
+
+.project-metadata {
+    border-bottom: 2px solid #cdcdcd;
+    border-top: 2px solid #cdcdcd;
+    margin: 10px auto;
+    min-height:30px;
+    max-width:1200px;
+}
+
+ul.metalist li{
+  width: auto;
+  float: left;
+  margin-right:100px;
 }
 
 .project-image {
@@ -97,7 +111,7 @@
     margin-bottom: 20px;
     width: 800px;
     height: 200px;
-    font-size: medium;
+    font-size: 1.0em;
     text-align: left;
     color: #456;
     word-wrap: break-word;
@@ -108,9 +122,8 @@
     font-size: 1.5em;
     font-weight: normal;
     margin: 50px;
-    margin-bottom:50px;
-   height:1000px;
-
+    margin-bottom: 50px;
+    height: 1000px;
 }
 
 .project-image-container {
@@ -118,21 +131,28 @@
     font-size: 1.5em;
     font-weight: normal;
     margin: 50px;
-    margin-bottom:50px;
-   height:1000px;
-   padding-top:100px;
-
+    margin-bottom: 50px;
+    height: 1000px;
+    padding-top: 100px;
 }
 
 .project-background-container {
-    position:relative;
+    position: relative;
     margin: 50px;
-    margin-bottom:50px;
-   height:1000px;
-   min-width:1258px;
-   background-image: url("/assets/project-index-background3.png");
+    margin-bottom: 50px;
+    height: 1000px;
+    min-width: 1258px;
+    background-image: url("/assets/project-index-background3.png");
     background-size: 100% 100%;
     background-origin: content-box;
+}
+
+.project-background-containers {
+    position: relative;
+    margin: 50px;
+    margin-bottom: 50px;
+    height: 1000px;
+    max-width: 1258px;
 }
 
 .portfolio {
@@ -169,9 +189,6 @@
 }
 
 .project-client-image {
-    margin: 200px;
-    margin-top: 50px;
-    margin-bottom: 10px;
     height: 50px;
     width: 100px;
 }
@@ -245,7 +262,7 @@ label {
 
 #filter_search_container {
     height: 30px;
-   min- width: 950px;
+    min- width: 950px;
     margin: 20px 50px;
 }
 

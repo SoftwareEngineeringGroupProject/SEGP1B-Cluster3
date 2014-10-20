@@ -25,7 +25,8 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:student_project).permit(:title, :summary, :image, :client, :client_image, :category, :year, students_attributes: [:id,:name, :email, :studentID, :course])
+    params.require(:student_project).permit(:title, :summary, :image, :client, :client_image, :category, :year, :client_summary, :client_link, 
+    students_attributes: [:id,:name, :email, :studentID, :course])
   end
 
   def show
