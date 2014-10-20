@@ -36,19 +36,24 @@
     border-bottom: 2px solid #cdcdcd;
     border-top: 2px solid #cdcdcd;
     margin: 10px auto;
-    min-height:30px;
-    max-width:1200px;
+    min-height: 30px;
+    max-width: 1150px;
 }
 
-ul.metalist li{
-  width: auto;
-  float: left;
-  margin-right:100px;
+ul.metalist li {
+    width: auto;
+    float: left;
+    margin-right: 60px;
+    margin-left: 60px;
+}
+
+ul.right-client-list li {
+    border-bottom: 3px dotted #cdcdcd;
 }
 
 .project-image {
-    margin: 30px 0px 20px 5px;
-    width: 935px;
+    margin: 30px 0px 20px 60px;
+    width: 750px;
     height: 200px;
 }
 
@@ -106,8 +111,7 @@ ul.metalist li{
 }
 
 .project-content-summary {
-    margin-left: 80px;
-    margin-right: 20px;
+    margin-left: 60px;
     margin-bottom: 20px;
     width: 800px;
     height: 200px;
@@ -121,8 +125,7 @@ ul.metalist li{
     font-family: Georgia, Times, serif;
     font-size: 1.5em;
     font-weight: normal;
-    margin: 50px;
-    margin-bottom: 50px;
+    margin: 20px auto;
     height: 1000px;
 }
 
@@ -134,6 +137,46 @@ ul.metalist li{
     margin-bottom: 50px;
     height: 1000px;
     padding-top: 100px;
+}
+
+.project-client-right-modulo-container {
+    max-width: 300px;
+    height: auto;
+    margin: 100px 15px;
+    float: right;
+}
+
+.project--left-modulo-container {
+    max-width: 750px;
+    margin: 5px auto;
+    float: left;
+}
+
+dl.studentlist {
+    margin: 20px 40px;
+    width: 600px;
+    height: auto;
+    font-size: 1.3em;
+}
+
+.project-client-right-modulo {
+    background-color: #eaeaea;
+    background-image: -moz-linear-gradient(center top , #eaeaea, #ffffff);
+    border-bottom: 5px solid #b38807;
+    border-top: 5px solid #b38807;
+    margin-top: 40px;
+    overflow: scroll;
+    padding: 10px;
+    width: 300px;
+    min-height: 400px;
+    max-height: 600px;
+    word-wrap: break-word;
+    font-family: Georgia, Times, serif;
+    color: grey;
+}
+
+.project-client-right-modulo-title {
+    color: #005d8f;
 }
 
 .project-background-container {
@@ -189,8 +232,9 @@ ul.metalist li{
 }
 
 .project-client-image {
-    height: 50px;
-    width: 100px;
+    height: 150px;
+    width: 300px;
+    margin-bottom: 10px;
 }
 
 .project-container-line1 {

@@ -48,53 +48,67 @@
 						<strong>Last Updated At: </strong>&nbsp;<%= @theProject.updated_at.to_date%>
 					</li>
 				</ul>
-
-			</div>
-			<div class="project-image">
-				<%= image_tag @theProject.image%>
 			</div>
 
-			<div  class="project-title-subheading">
-				Project Summary
-			</div>
+			<!--left modulo here-->
+			<div class="project--left-modulo-container">
 
-			<div class="project-content-summary">
-				<p>
-					<%= @theProject.summary%>
-				</p>
-			</div>
+				<div class="project-image">
+					<%= image_tag @theProject.image%>
+				</div>
 
-			<div  class="project-title-subheading">
-				Industry Partner
-			</div>
+				<div  class="project-title-subheading">
+					Project Summary
+				</div>
 
-			<div class="project-content">
-				<span class="project-content-summary">
-						<%= @theProject.client%>
-				</span>
+				<div class="project-content-summary">
+					<p>
+						<%= @theProject.summary%>
+					</p>
+				</div>
+				<div  class="project-title-subheading">
+					Group members
+				</div>
+
+				<div class="project-content">
+					<dl class="studentlist">
+						<% @students.each do |student| %>
+						<dt>
+							<%= student.name %>
+						</dt>
+						<dd>
+							- <%= student.studentID %>, <%= student.course%>, <%= student.email %>
+						</dd>
+						<% end %>
+					</dl>
+
+				</div>
+			</div>
+			<!--left modulo end-->
+
+			<!--right client module-->
+			<div class="project-client-right-modulo-container">
 				<div class="project-client-image">
 					<%= image_tag @theProject.client_image%>
 				</div>
-			</div>
 
-			<div  class="project-title-subheading">
-				Group members:
-			</div>
+				<div class="project-client-right-modulo">
+					<ul class="right-client-list", style="list-style-type:none">
+						<li class="project-client-right-modulo-title">
+							<strong><%= @theProject.client%></strong>
+						</li>
+						<li>
+							<%= @theProject.client_summary%>
+						</li>
+						<li class="project-client-right-modulo-title">
+							<%= link_to @theProject.client_link,  @theProject.client_link, class: "project-search-link"%>
+						</li>
+					</ul>
+				</div>
 
-			<div class="project-content">
-				<p>
-
-					<% @students.each do |student| %>
-					<tr>
-						<td><%= student.name %></td>
-						<td><%= student.studentID %></td>
-						<td><%= student.course%></td>
-						<td><%= student.email %></td>
-					</tr>
-					<br/>
-					<% end %>
-				</p>
 			</div>
+			<!--right client module end-->
+
 		</div>
 	</div>
 </div>
