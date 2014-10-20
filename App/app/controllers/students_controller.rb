@@ -154,10 +154,13 @@ class StudentsController < ApplicationController
 
 		#many students may have the same course here, so the studentProject is not just one here
 		elsif @classify=="course"
-			#if found, return all students taking this course rather than return the specific project here
-			@finds=@students.where("course = ?",  @search)
-			if @find.blank? == true
-				redirect_to notfound_path
+			if @search.length>=3
+				#if found, return all students taking this course rather than return the specific project here
+				@finds=@students.where("course like ?",  "%#{@search}%")
+			end
+			
+			if @finds.blank? == true
+				redirect_to notfound_path()
 			end
 		end
 	end

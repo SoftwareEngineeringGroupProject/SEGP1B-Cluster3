@@ -6,6 +6,10 @@
     margin-left: 10px;
 }
 
+.project-index-background {
+    background-image: url("/assets/project-index-background.jpg");
+}
+
 .project-title-subheading {
     margin-left: 70px;
     margin-top: 20px;
@@ -37,9 +41,25 @@
 .project-index-image {
     -webkit-box-shadow: 3px 3px 3px #7C7C7C;
     margin: 30px 50px;
+    margin-bottom: 50px;
     width: 200px;
-    height: 200px;
+    height: 300px;
     float: left;
+    font-size: 0.8em;
+    text-align: center;
+    color: #cc3333;
+}
+
+.project-index-image-inside {
+    width: 200px;
+    height: 150px;
+}
+
+.project-index-summary {
+    margin-top: 5px;
+    color: grey;
+    font-size: small;
+    text-align: left;
 }
 
 .project-index-image:hover {
@@ -88,6 +108,31 @@
     font-size: 1.5em;
     font-weight: normal;
     margin: 50px;
+    margin-bottom:50px;
+   height:1000px;
+
+}
+
+.project-image-container {
+    font-family: Georgia, Times, serif;
+    font-size: 1.5em;
+    font-weight: normal;
+    margin: 50px;
+    margin-bottom:50px;
+   height:1000px;
+   padding-top:100px;
+
+}
+
+.project-background-container {
+    position:relative;
+    margin: 50px;
+    margin-bottom:50px;
+   height:1000px;
+   min-width:1258px;
+   background-image: url("/assets/project-index-background3.png");
+    background-size: 100% 100%;
+    background-origin: content-box;
 }
 
 .portfolio {
@@ -182,18 +227,51 @@ label {
 }
 
 .student-course-label {
- margin-right:5px;
+    margin-right: 5px;
 }
 
 .student-course-div {
-   width: 800px;
+    width: 800px;
     height: 60px;
 }
 
-.student-course-select{
-    margin-right:80px;
+.student-course-select {
+    margin-right: 80px;
 }
 
-.student-submit-area{
-    width:300px;
+.student-submit-area {
+    width: 300px;
+}
+
+#filter_search_container {
+    height: 30px;
+   min- width: 950px;
+    margin: 20px 50px;
+}
+
+.project-search-link {
+    color: #005a9c;
+    font-size: medium;
+}
+
+.project-search-link:visited {
+    color: #005a9c;
+}
+.project-search-backbutton {
+    float: right;
+    margin: 10px 50px 20px 0;
+}
+.project-search-notfound-backbutton {
+    float: right;
+    margin-right: 10px;
+}
+
+.project-notfound {
+    background-color: #fff;
+    color: #000;
+    height: 100px;
+    width: 320px;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
 }

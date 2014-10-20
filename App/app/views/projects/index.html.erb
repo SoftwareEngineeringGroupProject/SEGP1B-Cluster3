@@ -9,36 +9,35 @@
 		</div>
 
 		<h2><%= flash[:notice] %></h2>
+		<div id="filter_search_container">
+			<!--filter bar here-->
+			<div class="filter-bar to_left">
+				<!--add some ground options here-->
+				<%=form_tag index_path, :method => 'get' do %>
+				<span class="to_left"> <%= select_tag "year", options_from_collection_for_select( StudentProject.all.map { |p| p.year }.uniq, :to_s, :to_s), prompt: "Year"%> </span>
+				<span class="to_left"> <%= select_tag "category", options_from_collection_for_select(StudentProject.all.map { |p| p.category }.uniq, :to_s, :to_s), prompt: "Category"%> </span>
+				<span class="to_right"><%= submit_tag "Filter"%></span>
+				<%end%>
+			</div>
+			<!----------filter bar end---------->
 
-		<!--filter bar here-->
-		<div class="filter-bar to_left">
-			<!--add some ground options here-->
-			<%=form_tag index_path, :method => 'get' do %>
-			<span class="to_left"> <%= select_tag "year", options_from_collection_for_select(@projects, "year", "year"), prompt: "Year"%> </span>
-			<span class="to_left"> <%= select_tag "category", options_from_collection_for_select(@projects, "category", "category"), prompt: "Category"%> </span>
-			<span class="to_right"><%= submit_tag "Filter"%></span>
-			<%end%>
+			<!--search bar here-->
+			<div class="search-bar to_right">
+
+				<!--add some ground options here-->
+				<% grouped_options = {'PastProject' => ['ID', 'Title', 'Year', 'Category', 'Client Name'],'Student' => ['Name', ['ID', 'Student ID'], ['Degree', 'Course'], 'Email']}
+					@options=grouped_options_for_select(grouped_options)%>
+				<%=form_tag search_path, :method => 'get' do %>
+				<span class="to_left"> <%= select_tag "classify", options_for_select(@options), prompt:"General"%> </span>
+				<span class="to_left"><%= text_field_tag :search, params[:search], placeholder: "Search..."%></span>
+				<span class="to_right"><%= submit_tag "Search"%></span>
+				<%end%>
+			</div>
+			<!----------search bar end---------->
 		</div>
-		<!----------filter bar end---------->
-
-		<!--search bar here-->
-		<div class="search-bar to_right">
-
-			<!--add some ground options here-->
-			<% grouped_options = {'PastProject' => ['ID', 'Title', 'Year', 'Category', 'Client Name'],'Student' => ['Name', ['ID', 'Student ID'], ['Degree', 'Course'], 'Email']}
-             @options=grouped_options_for_select(grouped_options)%>
-			<%=form_tag search_path, :method => 'get' do %>
-			<span class="to_left"> <%= select_tag "classify", options_for_select(@options), prompt:"General"%> </span>
-			<span class="to_left"><%= text_field_tag :search, params[:search], placeholder: "Search..."%></span>
-			<span class="to_right"><%= submit_tag "Search"%></span>
-			<%end%>
-		</div>
-		<!----------search bar end---------->
-
 		<div class="project-container">
 
 			<!-------------------execute filting here------------------>
-
 			<%if (@year!="") && (@category!="") && (@year!=nil) && (@category!=nil)%>
 			<% @filteredProjects=StudentProject.where("year=? and category=?", @year, @category)%>
 			<% for project in @filteredProjects %>
@@ -46,8 +45,15 @@
 			<div class="project-index-image">
 				<!--<!%= image_tag project.image_url(:thumb)  %>-->
 				<!--route to a related project with specific ID-->
-				<%= link_to(image_tag(project.image), project_path(project.id))%>
-				Project Title: <%= project.title %></br>
+				<div class="project-index-image-inside">
+					<%= link_to(image_tag(project.image), project_path(project.id))%>
+				</div>
+				<div>
+					<%= project.title %>
+				</div>
+				<div class="project-index-summary">
+					<%= truncate(project.summary, length: 100) %>
+				</div>
 			</div>
 			<% end %>
 
@@ -58,20 +64,34 @@
 			<div class="project-index-image">
 				<!--<!%= image_tag project.image_url(:thumb)  %>-->
 				<!--route to a related project with specific ID-->
-				<%= link_to(image_tag(project.image), project_path(project.id))%>
-				Project Title: <%= project.title %></br>
+				<div class="project-index-image-inside">
+					<%= link_to(image_tag(project.image), project_path(project.id))%>
+				</div>
+				<div>
+					<%= project.title %>
+				</div>
+				<div class="project-index-summary">
+					<%= truncate(project.summary, length: 100) %>
+				</div>
 			</div>
 			<% end %>
 
 			<%elsif (@category!="") && (@category!=nil)%>
-			<%@filteredProjects=StudentProject.where("category=?", @category)%>
+			<% @filteredProjects=StudentProject.where("category=?", @category)%>
 			<% for project in @filteredProjects %>
 
 			<div class="project-index-image">
 				<!--<!%= image_tag project.image_url(:thumb)  %>-->
 				<!--route to a related project with specific ID-->
-				<%= link_to(image_tag(project.image), project_path(project.id))%>
-				Project Title: <%= project.title %></br>
+				<div class="project-index-image-inside">
+					<%= link_to(image_tag(project.image), project_path(project.id))%>
+				</div>
+				<div>
+					<%= project.title %>
+				</div>
+				<div class="project-index-summary">
+					<%= truncate(project.summary, length: 100) %>
+				</div>
 			</div>
 			<% end%>
 			<!-------------------execute filting end------------------>
@@ -81,8 +101,15 @@
 			<div class="project-index-image">
 				<!--<!%= image_tag project.image_url(:thumb)  %>-->
 				<!--route to a related project with specific ID-->
-				<%= link_to(image_tag(project.image), project_path(project.id))%>
-				Project Title: <%= project.title %></br>
+				<div class="project-index-image-inside">
+					<%= link_to(image_tag(project.image), project_path(project.id))%>
+				</div>
+				<div>
+					<%= project.title %>
+				</div>
+				<div class="project-index-summary">
+					<%= truncate(project.summary, length: 100) %>
+				</div>
 			</div>
 			<% end %>
 			<% end %>

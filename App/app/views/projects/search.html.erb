@@ -1,15 +1,34 @@
-<h1>Projects found</h1>
-<%= button_to "Back To Past Project Show", index_path(), :method => :get%>
+<%= render "shared/header" %>
+<%= render "shared/linkbar" %>
 
-<% @searchVariable.each do |s| %>
-<p>
-		<%= s.title %>,  
-		<%= s.created_at %>, 
-		<%= s.category%>, 
-		<%= s.client%>, 
-		<%= s.summary%>, 
-</p>
-<br/><br/>
-<% end %>
+<div class="wrapper content">
+	<div id="news" class="flex_height shadow">
 
-<%=@a%>
+		<div class="contact-title">
+			<h1><strong>Search Results</strong></h1>
+		</div>
+
+		<% @searchVariable.each do |s| %>
+		<% @students=s.students%>
+		<p style="color: grey; margin: 0 30px;">
+			<%= link_to s.title, project_path(s.id) , class: "project-search-link"%>
+			<br />
+			Production Year:  <%= s.year%>, Category: <%= s.category%>, Client: <%= s.client%>.
+			<br />
+			Student Members:
+			<% @students.each do |student| %>
+			<strong>[</strong>Name: <%= student.name%>, Student ID: <%= student.studentID%>, Course: <%= student.course%>, Email: <%= student.email%><strong>]</strong>
+			<%end%>
+			<br />
+			<%= truncate(s.summary, length: 400) %>
+			<br />
+			<% @path="http:/"+project_path(s.id)%>
+			<span style="color:red"><%= link_to @path, project_path(s.id),  class: "project-search-link" %></span>
+		</p>
+		<br />
+		<% end %>
+
+		<%= button_to "Back To Past Project Show", index_path(), class: "project-search-backbutton",:method => :get%>
+	</div>
+</div>
+<%= render "shared/footer" %>
