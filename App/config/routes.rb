@@ -20,12 +20,13 @@ Rails.application.routes.draw do
      # match 'projects/new' => 'projects#create', via: [:get, :post]
      match '/student_projects' => 'projects#create', via: [:get, :post]
      get 'projects/contact' => 'projects#contact', as: 'contact'
-     get 'projects/:id/show' => 'projects#show', as: 'project'
-     get 'projects/:id/edit' => 'projects#edit', as: 'edit'
-     post 'projects/:id/update' => 'projects#update', as: 'update'
-     get 'projects/:id/unchanged' => 'projects#unchanged', as: 'unchanged'
-     get 'projects/:id/destroy' => 'projects#destroy', as: 'destroy'
-     patch 'projects/:id/destroy' => 'projects#delete', as: 'delete'
+     get 'projects//show/:id' => 'projects#show', as: 'project'
+     get 'projects//edit/:id' => 'projects#edit', as: 'edit'
+     patch 'projects/update/:id' => 'projects#update', as: 'update'
+ 
+     get 'projects/unchanged/:id' => 'projects#unchanged', as: 'unchanged'
+     get 'projects/destroy/:id' => 'projects#destroy', as: 'destroy'
+     patch 'projects/destroy/:id' => 'projects#delete', as: 'delete'
      get 'projects/search' => 'projects#search', as: 'search'
       get 'projects/notfound' => 'projects#notfound', as: 'notfound'
 

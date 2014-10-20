@@ -3,29 +3,55 @@
 
 <%= form_for @theStudent, :url => { :action => "create" } do |builder| %>
 
+<% @theStudent.errors.full_messages.each do |msg| %>
+<p>
+	<%= msg %>
+</p>
+<% end %>
+
 <% if flash[:notice] %>
 <div class="notice">
 	<%= flash[:notice] %>
 </div>
 <% end %>
 
-<%@theStudent.errors.full_messages.each do |msg| %>
-<p>
-	<%= msg %>
-</p>
-<% end %>
+<div  class="project-title-subheading">
+	<%= builder.label "Student ID" %>
+	<%= builder.text_field :studentID %></br>
+</div>
+<div  class="project-title-subheading">
 
-<%= builder.label "Student name" %>
-<%= builder.text_field :name %></br>
-<%= builder.label "Student email" %>
-<%= builder.text_field :email %></br>
-<%= builder.label "Student ID" %>
-<%= builder.text_field :studentID %></br>
-<%= builder.label :course %>
-<%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %>
-<%= builder.text_field :course, "placeholder" => "Course" %>
+	<%= builder.label "Student name" %>
+	<%= builder.text_field :name %></br>
+</div>
+<div  class="project-title-subheading">
 
-<%= builder.submit "Submit" %>
+	<%= builder.label "Student email" %>
+	<%= builder.text_field :email %></br>
+</div>
 
-<% end %>
+<!--choose to add a new course or not-->
+<%if @whetherAddnewCourse=="true"%>
+<div  class="project-title-subheading  student-course-div">
+	<span><%= builder.label :course%></span>
+	<span><%= builder.text_field :course, "placeholder" => "Course" %></span>
+	<span><%= link_to "Or Choose A Course", student_new_path(:addNew=>"false"), :method => :get%></span>
+</div>
+
+<%else%>
+<div  class="project-title-subheading  student-course-div">
+	<span class="to_left"><%= builder.label :course, :class=>"student-course-label"%></span>
+	<span class="to_left student-course-select"><%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %></span>
+	<span class="to_left"><%= link_to "Or Add New Course", student_new_path(:addNew=>"true"), :method => :get%></span>
+</div>
+<%end%>
+
+<div  class="project-title-subheading student-submit-area">
+	<%= builder.submit "Submit" %>
+
+	<% end %>
+
+	<%= button_to "Back To edit Project Page", edit_path(params[:id]), :method => :get%>
+</div>
+
 <%= render "shared/footer" %>

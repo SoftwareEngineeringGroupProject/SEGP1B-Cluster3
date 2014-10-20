@@ -27,8 +27,7 @@
 				</legend>
 
 				<fieldset>
-
-					<%=form_for @theProject, :url => { :action => "update" }, :method=>:POST do |f| %>
+					<%=form_for @theProject, :url => { :action => "update" } do |f| %>
 					<div  class="project-title-subheading">
 						<%= f.label :title %>
 						<%= f.text_field :title %>

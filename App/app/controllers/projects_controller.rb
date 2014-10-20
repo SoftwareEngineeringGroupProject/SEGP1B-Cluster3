@@ -27,14 +27,6 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:student_project).permit(:title, :summary, :image, :client, :client_image, :category, :year, students_attributes: [:id,:name, :email, :studentID, :course])
   end
-  
-  def project_edit_params
-    params.require(:student_project).permit(:title, :summary, :image, :client, :client_image, :category, :year)
-  end
-  
-    def student_edit_params
-	params.require(:student).permit(:name, :email, :studentID, :course)
-    end
 
   def show
     #get the project's ID here
@@ -85,15 +77,15 @@ class ProjectsController < ApplicationController
       
      		 #update the attributes without save to DB yet
       		@updateProject.attributes=project_params
-      	
+      		#save to DB      	
+      	   	@updateProject.save
       		#check if there any change
-      		if @updateProject.changed? ==false
-      			 flash[:notice] ="There is no any change, please edit again"
-         		redirect_to :edit
-      		else
-			#save to DB      	
-      	   		@updateProject.save
-      		end      
+      		#if @updateProject.changed? ==false 
+      		#	 flash[:notice] ="There is no any change, please edit again"
+         	#	redirect_to :edit
+      		#else
+
+      		#end      
     	end                                                                                                                                                                                                        
   end
 

@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
 	def new
+		@whetherAddnewCourse=params[:addNew]
 		if session[:user_id] != nil
 			@user = User.find(session[:user_id])
 			if @user.acctype == "coordinator"
@@ -61,9 +62,11 @@ class StudentsController < ApplicationController
 	end
 
 	def edit
+		@whetherAddnewCourse=params[:addNew]
 		if session[:user_id] != nil
 			@user = User.find(session[:user_id])
 			if @user.acctype == "coordinator"
+
 				if params[:id] !=nil
 					#@s=Student.find(params[:id]).update(student_params)
 					#@s.save
@@ -93,8 +96,8 @@ class StudentsController < ApplicationController
 						flash[:notice] ="There is no any change, please edit again"
 						redirect_to student_edit_path(params[:id])
 					else
-						#save to DB
-						@theStudent.save
+					#save to DB
+					@theStudent.save
 					end
 				end
 			else
