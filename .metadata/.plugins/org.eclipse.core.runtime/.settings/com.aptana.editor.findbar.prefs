@@ -1,0 +1,3 @@
+FIND_BAR_DECORATOR_FIND_ENTRIES=\#\n\#Fri Oct 17 15\:23\:10 CST 2014\n6\=p1.jpg\n5\=\\\:image\\\=>seed_image("p1.jpeg")\n4\=state\n3\=flash\n2\=\\ @options\\\=grouped_options_for_select(grouped_options, 'Title')%> \n1\=\\\:year\\\=\n0\=search\n7\=222.png\n
+FIND_BAR_DECORATOR_REPLACE_ENTRIES=\#\n\#Fri Oct 17 00\:16\:06 CST 2014\n6\=image_url\n5\=seed_image\n4\=222.png\n3\=p1.jpg\n2\=p1.jpeg\n1\=\\\:image\\\=>seed_image("p1.jpeg"), \\\:client_image\\\=>seed_image("p2.jpeg")\n0\=\\\:year\\\=>\n7\=image_tag(\n
+eclipse.preferences.version=1

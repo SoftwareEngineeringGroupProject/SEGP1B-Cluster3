@@ -3,45 +3,45 @@
 <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
 <div class="wrapper gallery">
-		<div id="slides" class="shadow">
-				<img src="images/example.gif" alt="" />
-		</div>
+	<div id="slides" class="shadow">
+		<img src="images/example.gif" alt="" />
+	</div>
 </div>
 
 <div class="wrapper content">
-		<div id="news" class="flex_height shadow">
+	<div id="news" class="flex_height shadow">
 
-				<div class="project-maintitle">
-						<h1 ><strong>SEGP Showcase</strong></h1>
-				</div>
+		<div class="project-maintitle">
+			<h1 ><strong>SEGP Showcase</strong></h1>
+		</div>
 
-				<div class="project-container">
+		<div class="project-container">
 
-						<fieldset>
-								<legend>
-										Delete Project
-								</legend>
+			<fieldset>
+				<legend style="color: #005d8f">
+					<h2><strong>Delete Project</strong></h2>
+				</legend>
 
-								<fieldset>
-													<span class="project-title-subheading"">Are you sure that you want to delete this project?</span> 
-										<%=form_for @theProject, :url => { :action => "delete" } do |f| %>
+				<fieldset>
+					<span class="project-title-subheading"">Are you sure that you want to delete this project?</span>
+					<%=form_for @theProject, :url => { :action => "delete" } do |f| %>
 
-										<div id="subBtn" class="button horizontal_list to_right">
-												<ul>
-														<li>
-																<%= link_to "CANCEL", project_path(@theProject.id) %>
-														</li>
-														<li>
-																<%= f.submit "CONFIRM DELETE"%>
-														</li>
-												</ul>
-										</div>
-										<%end%>
-								</fieldset>
-						</fieldset>
-
-				</div>
+					<div  class="button horizontal_list to_right">
+					<ul>
+					<li>
+					<%= link_to "CANCEL", project_path(@theProject.id) %>
+					</li>
+					<li>
+					<%= f.submit "CONFIRM DELETE"%>
+					</li>
+					</ul>
+					</div>
+					<%end%>
+				</fieldset>
+			</fieldset>
 
 		</div>
+
+	</div>
 </div>
 <%= render "shared/footer" %>

@@ -13,23 +13,36 @@ Rails.application.routes.draw do
      # Past Project Routes
      ###############################################
      get 'projects/info' => 'projects#info', as: 'info'
-     get 'projects/' => 'projects#index', as: 'index'
+     get 'projects' => 'projects#index', as: 'index'
      get 'projects/new' => 'projects#new', as: 'new'
      post 'projects/new' => 'projects#create'
      # post '/student_projects' => 'projects#create'
      # match 'projects/new' => 'projects#create', via: [:get, :post]
      match '/student_projects' => 'projects#create', via: [:get, :post]
      get 'projects/contact' => 'projects#contact', as: 'contact'
-     get 'projects/:id/show' => 'projects#show', as: 'project'
-     get 'projects/:id/edit' => 'projects#edit', as: 'edit'
-     post 'projects/:id/update' => 'projects#update', as: 'update'
-     get 'projects/:id/unchanged' => 'projects#unchanged', as: 'unchanged'
-     get 'projects/:id/destroy' => 'projects#destroy', as: 'destroy'
-     patch 'projects/:id/destroy' => 'projects#delete', as: 'delete'
+     get 'projects//show/:id' => 'projects#show', as: 'project'
+     get 'projects//edit/:id' => 'projects#edit', as: 'edit'
+     patch 'projects/update/:id' => 'projects#update', as: 'update'
+ 
+     get 'projects/unchanged/:id' => 'projects#unchanged', as: 'unchanged'
+     get 'projects/destroy/:id' => 'projects#destroy', as: 'destroy'
+     patch 'projects/destroy/:id' => 'projects#delete', as: 'delete'
      get 'projects/search' => 'projects#search', as: 'search'
-          get 'projects/notfound' => 'projects#notfound', as: 'notfound'
+      get 'projects/notfound' => 'projects#notfound', as: 'notfound'
 
-     post 'students/:id/delete' => 'students#delete', as: 'student_delete'
+     ###############################################
+     # Past Project Students Routes
+     ###############################################
+     get 'students/delete/:id' => 'students#delete', as: 'student_delete'
+     get 'students/edit/:id' => 'students#edit', as: 'student_edit'
+     patch 'students/update/:id' => 'students#update', as: 'student_update'
+     get 'students/search' => 'students#search', as: 'student_search'
+ 
+     get 'projects/:id/students/new' => 'students#new', as: 'student_new'
+     post 'projects/:id/addstudent' => 'students#create', as: 'student_create'
+     get 'projects/:id/addstudent' => 'projects#addstudent', as: 'student_created_to_project'
+     post 'projects/:id/addstudent' => 'projects#addstudent_create'
+       get 'students/notfound' => 'students#notfound', as: 'student_notfound'
 
 
 

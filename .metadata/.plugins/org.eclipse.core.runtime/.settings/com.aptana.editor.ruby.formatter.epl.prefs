@@ -1,10 +1,10 @@
 eclipse.preferences.version=1
-ruby.formatter.formatter.indentation.size=5
+ruby.formatter.formatter.indentation.size=2
 ruby.formatter.formatter.off=@formatter\:off
 ruby.formatter.formatter.on=@formatter\:on
 ruby.formatter.formatter.on.off.enabled=false
-ruby.formatter.formatter.tabulation.char=mixed
-ruby.formatter.formatter.tabulation.size=100
+ruby.formatter.formatter.tabulation.char=editor
+ruby.formatter.formatter.tabulation.size=2
 ruby.formatter.indent.blocks=true
 ruby.formatter.indent.case=false
 ruby.formatter.indent.class=true

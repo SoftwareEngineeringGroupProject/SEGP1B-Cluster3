@@ -4,91 +4,112 @@
 <%= render "shared/banner" %>
 
 <div class="wrapper content">
-		<div id="news" class="flex_height shadow">
+	<div id="news" class="flex_height shadow">
 
-				<div class="project-maintitle">
-						<h1 ><strong>SEGP Showcase</strong></h1>
-				</div>
+		<div class="project-maintitle">
+			<h1 ><strong>SEGP Showcase</strong></h1>
+		</div>
 
-				<!-- admin seesion check, if login, then add a edit button to dashboard
-				editsection-->
+		<!-- admin seesion check, if login, then add a edit button to dashboard
+		editsection-->
+		<% if session[:user_id] != nil %>
+		<% @user = User.find(session[:user_id]) %>
+		<% if @user.acctype == "coordinator" %>
 
-				<div class="button horizontal_list to_right" id="login_buttons">
-						<ul>
-								<li>
-										<%= link_to "Edit", edit_path(@theProject.id)%>
-								</li>
-								<li>
-										<%= link_to "Delete", destroy_path(@theProject.id)%>
-								</li>
-						</ul>
-				</div>
+		<div class="button horizontal_list to_right" id="login_buttons">
+			<ul>
+				<li>
+					<%= link_to "Edit", edit_path(@theProject.id)%>
+				</li>
+				<li>
+					<%= link_to "Delete", destroy_path(@theProject.id)%>
+				</li>
+			</ul>
+		</div>
+		<%end%>
+		<%end%>
+
+		<div class="project-container">
+
+			<div  class="project-title">
+				<strong><%= @theProject.title%></strong>
+			</div>
+
+			<div class="project-metadata">
+				<ul class="metalist", style="list-style-type:none">
+					<li>
+						<strong>Finished Year:</strong> &nbsp;<%= @theProject.year%>
+					</li>
+					<li>
+						<strong>Category:</strong>&nbsp;<%= @theProject.category%>
+					</li>
+
+					<li>
+						<strong>Last Updated At: </strong>&nbsp;<%= @theProject.updated_at.to_date%>
+					</li>
+				</ul>
+			</div>
+
+			<!--left modulo here-->
+			<div class="project--left-modulo-container">
 
 				<div class="project-image">
-						<%= image_tag @theProject.image%>
+					<%= image_tag @theProject.image%>
 				</div>
 
-				<div class="project-container">
-
-						<div  class="project-title">
-								<h2><%= @theProject.title%></h2>
-						</div>
-
-						<div  class="project-title-subheading">
-								Year: <%= @theProject.created_at.strftime("%B  %Y")%>
-						</div>
-
-						<div  class="project-title-subheading">
-								Category:  <%= @theProject.category%>
-						</div>
-
-						<div  class="project-title-subheading">
-								Project Summary
-						</div>
-
-						<div class="project-content-summary">
-								<p>
-										<%= @theProject.summary%>
-								</p>
-						</div>
-
-						<div  class="project-title-subheading">
-								Industry Partner:
-						</div>
-
-						<div class="project-content">
-								<p>
-										<%= @theProject.client%>
-								</p>
-						</div>
-
-						<div  class="project-title-subheading">
-								Client Image:
-						</div>
-
-						<div class="project-client-image">
-										<%= image_tag @theProject.client_image%>
-						</div>
-
-						<div  class="project-title-subheading">
-								Group members:
-						</div>
-
-						<div class="project-content">
-								<p>
-
-										<% @students.each do |student| %>
-										<tr>
-												<td><%= student.name %></td>
-												<td><%= student.studentID %></td>
-												<td><%= student.course%></td>
-												<td><%= student.email %></td>
-										</tr>
-										<br/>
-										<% end %>
-								</p>
-						</div>
+				<div  class="project-title-subheading">
+					Project Summary
 				</div>
+
+				<div class="project-content-summary">
+					<p>
+						<%= @theProject.summary%>
+					</p>
+				</div>
+				<div  class="project-title-subheading">
+					Group members
+				</div>
+
+				<div class="project-content">
+					<dl class="studentlist">
+						<% @students.each do |student| %>
+						<dt>
+							<%= student.name %>
+						</dt>
+						<dd>
+							- <%= student.studentID %>, <%= student.course%>, <%= student.email %>
+						</dd>
+						<% end %>
+					</dl>
+
+				</div>
+			</div>
+			<!--left modulo end-->
+
+			<!--right client module-->
+			<div class="project-client-right-modulo-container">
+				<div class="project-client-image">
+					<%= image_tag @theProject.client_image%>
+				</div>
+
+				<div class="project-client-right-modulo">
+					<ul class="right-client-list", style="list-style-type:none">
+						<li class="project-client-right-modulo-title">
+							<strong><%= @theProject.client%></strong>
+						</li>
+						<li>
+							<%= @theProject.client_summary%>
+						</li>
+						<li class="project-client-right-modulo-title">
+							<%= link_to @theProject.client_link,  @theProject.client_link, class: "project-search-link"%>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+			<!--right client module end-->
+
 		</div>
+	</div>
 </div>
 <%= render "shared/footer" %>

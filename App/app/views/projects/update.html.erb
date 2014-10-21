@@ -1,4 +1,15 @@
-<h1>Projects updated</h1>
- <%= button_to "Back To Past Project Show", index_path(), :method => :get%>
- 
-<%=@c%>
+<%= render "shared/header" %>
+<%= render "shared/linkbar" %>
+
+<div class="flex_height shadow">
+
+	<div class="contact-title">
+		<h1 class="contact-title">Projects Updated</h1>
+	</div>
+	<div class="to_right">
+		<span class="to_left"><%= button_to "Back To Project "+params[:id]+" Edit Page", edit_path(params[:id]), :method => :get%></span>
+		<span class="to_right"><%= button_to "Back To Past Project Show", index_path(), :method => :get%></span>
+	</div>
+</div>
+<%= render "shared/footer" %>
+
