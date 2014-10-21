@@ -177,10 +177,8 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
-
   mail_form
   mercury-rails!
-
   mini_magick
   paperclip!
   rails (= 4.1.5)

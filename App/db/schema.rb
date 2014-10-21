@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20141020132440) do
 
-
   create_table "attacheds", force: true do |t|
     t.integer  "project_id"
     t.binary   "attached"
