@@ -1,0 +1,95 @@
+<%= render "shared/header" %>
+<%= render "shared/linkbar" %>
+<%= render "shared/banner" %>
+
+<div class="wrapper content">
+	<div id="news" class="flex_height shadow">
+
+		<div class="contact-title project-manage-title">
+			<h1><strong>Past Projects Management</strong></h1>
+		</div>
+
+		<div class="project-manage-container">
+			<div class="project-manage-subtitle-container">
+
+				<span class="to_left"><strong>Past Projects</strong> </span>
+				<span class="button to_right"><%= link_to "Add More", new_path, class: "manage-button_small"%></span>
+			</div>
+
+			<div id="project-manage-filter_search_container">
+				<!--filter bar here-->
+				<div class="filter-bar to_left">
+					<!--add some ground options here-->
+					<%=form_tag index_path, :method => 'get' do %>
+					<span class="to_left"> <%= select_tag "year", options_from_collection_for_select( StudentProject.all.map { |p| p.year }.uniq, :to_s, :to_s), prompt: "Year"%> </span>
+					<span class="to_left"> <%= select_tag "category", options_from_collection_for_select(StudentProject.all.map { |p| p.category }.uniq, :to_s, :to_s), prompt: "Category"%> </span>
+					<span class="to_right"><%= submit_tag "Filter"%></span>
+					<%end%>
+				</div>
+				<!----------filter bar end---------->
+
+				<!--search bar here-->
+				<div class="search-bar to_right">
+
+					<!--add some ground options here-->
+					<% grouped_options = {'PastProject' => ['ID', 'Title', 'Year', 'Category', 'Client Name'],'Student' => ['Name', ['ID', 'Student ID'], ['Degree', 'Course'], 'Email']}
+						@options=grouped_options_for_select(grouped_options)%>
+					<%=form_tag search_path, :method => 'get' do %>
+					<span class="to_left"><%= text_field_tag :search, params[:search], placeholder: "Search To Project..."%></span>
+					<span class="to_right"><%= submit_tag "Search", class: "search_submit_button"%></span>
+					<%end%>
+				</div>
+				<!----------search bar end---------->
+			</div>
+			<%=form_tag pastproject_managehandle_path, :method => 'post', class: "project-manage-form" do %>
+
+			<div class="project-manage-table">
+				<table class="project-manage-table-inside">
+					<% if flash[:notice] %>
+					<div class="notice" style="color: red">
+						<strong><%= flash[:notice] %></strong>
+					</div>
+					<%end%>
+					<tr>
+						<th class="project-manage-tick"><%= check_box_tag 'choose[]', 'ticked', false%></th>
+						<th>Title</th>
+						<th>Project ID</th>
+						<th>Client</th>
+						<th>Category</th>
+						<th>Year</th>
+						<th>Last Updated</th>
+					</tr>
+
+					<!--add each project details line here-->
+					<% for project in @Projects %>
+					<%if project==@Projects.last%>
+					<tr class="Project-remove-dashline">
+						<%else%>
+					<tr>
+						<%end%>
+						<td class="project-manage-tick"><%= check_box_tag 'choose[]', project.id, false%></td>
+						<td><%= truncate(project.title, length: 40)%></td>
+						<td><%= project.id%></td>
+						<td><%= truncate(project.client, length: 20)%></td>
+						<td><%= truncate(project.category, length: 20)%></td>
+						<td><%= project.year%></td>
+						<td><%= project.updated_at.to_date%></td>
+					</tr>
+					<%end%>
+					<!--add each project details line end-->
+
+				</table>
+			</div>
+
+			<div  class="project-manage-submit-container button">
+				<span class="to_right"><%= link_to "Cancel", index_path, class: "link_to_button"%></span>
+				<span class="to_right"><%= submit_tag "Remove"%></span>
+				<span class="to_right"><%= submit_tag "Edit"%></span>
+			</div>
+			<%end%>
+
+		</div>
+
+	</div>
+</div>
+<%= render "shared/footer" %>

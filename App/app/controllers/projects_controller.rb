@@ -30,7 +30,14 @@ class ProjectsController < ApplicationController
   def create
     @student_project = StudentProject.new(project_params)
     if @student_project.save
-      redirect_to :index, :notice => "Project created"
+      
+      #check IDarray is set or not
+      if session[:IdArray]=0
+             redirect_to pastproject_management_path, :notice => "Project created" 
+    else
+             redirect_to :index, :notice => "Project created" 
+    end
+
     else
       render :new
     end
@@ -175,6 +182,113 @@ end
 
   def contact
   end
+  
+  def management
+        #intialize sessions here
+        session[:IdArray]=0
 
+        @Projects = StudentProject.all
+  end
+  
+  def managehandle
+        #reset sessions 
+        session[:IdArray]=nil
+        session[:index_value]=nil
+
+        #get all selected pastProjects ID array first
+        @EditArray=params[:choose]
+      
+        #check the array is valid or not
+         if @EditArray !=nil 
+                #trim the array without "ticked" element
+                if @EditArray.first=="ticked"
+                      @EditArray.delete_at(0)              
+                 end         
+                  
+                  if params[:commit]=="Edit"  
+                              #go to multiple edit page with project ID arrays parameters and an initial index value
+                              redirect_to pastproject_multiedit_path(:editArray=> @EditArray, :index=>0)
+                        elsif params[:commit] =="Remove"
+                             redirect_to pastproject_multiremove_path(:editArray=> @EditArray)
+                        end        
+          else
+                        flash[:notice] = "Tick at least one box in order to edit"
+                        redirect_to pastproject_management_path 
+         end
+  end
+  
+  def multiedit          
+          #fetch the projects Id array and index value
+          @EditArray=params[:editArray]
+          
+          #store project ID array and index value into session 
+          session[:IdArray]=@EditArray
+          
+          if @EditArray!=nil             
+            
+                    if params[:commit]=="previous"
+                          #find the related projects index here
+                          @index=params[:index].to_i-1
+                        
+                        #make sure the index is not out of range                        
+                        if @index<0
+                             @index=0
+                       end
+                      @ID=@EditArray.at(@index).to_i              
+          elsif params[:commit]=="next"
+                      #find the related projects index here
+                      @index=params[:index].to_i+1
+                      #make sure the index is not out of range                        
+                        if @index>@EditArray.size-1
+                              @index=@EditArray.size-1
+                        end
+                      @ID=@EditArray.at(@index).to_i
+           else                        
+                      @ID=@EditArray.at( session[:index_value]).to_i
+            end
+           
+           #store index value 
+           session[:index_value]=@index
+
+         #get the specific project
+         @theProject=StudentProject.find(@ID)
+          
+          else
+                redirect_to action: 'management'  
+          end 
+  end
+  
+  def multiupdate
+          #fetch the projects Id array from session
+           @EditArray=session[:IdArray]
+           @index=session[:index_value]
+           
+           #get the project ID from hidden field in edit_form
+           @id=params[:student_project]["projectID"]
+                                                                                                                                                                                                                                                                                                                                                                           
+          @updateProject=StudentProject.find(@id)
+         #get all students worked in this project
+          @students=@updateProject.students.all
+      
+         #update the attributes without save to DB yet
+          @updateProject.attributes=project_params
+          #save to DB       
+            @updateProject.save
+            
+            redirect_to pastproject_multiedit_path(:editArray=> @EditArray, :index=>@index)  
+end
+  
+    def multiremove
+       #fetch the projects Id array
+        @EditArray=params[:editArray]
+      
+      #delete all chose records
+          @EditArray.each do |array|
+                @find=StudentProject.find(array.to_i)            
+                 StudentProject.destroy(@find)
+        end
+      
+        redirect_to pastproject_management_path
+  end
                                                                                  
 end
