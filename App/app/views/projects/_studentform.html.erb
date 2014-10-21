@@ -1,0 +1,13 @@
+<%= f.fields_for :students do |builder| %>
+	<%= builder.label "Student name" %>
+	<%= builder.text_field :name , "placeholder" => "Student Name" %></br>
+	<%= builder.label "Student email" %>
+	<%= builder.text_field :email , "placeholder" => "Student Email" %></br>
+	<%= builder.label "Student ID" %>
+	<%= builder.text_field :studentID ,"placeholder" => "Student ID" %></br>
+	<%= builder.label :course %>
+
+	<%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %></br></br>
+	<%= builder.text_field :course, "style" => "float:right display:inline" ,"placeholder" => "Course" %>
+	</br>
+<% end %>

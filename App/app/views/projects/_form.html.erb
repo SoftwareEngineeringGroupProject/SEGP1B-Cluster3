@@ -20,23 +20,14 @@
 <%= f.text_field :client , "placeholder" => "Client" %></br></br>
 <%= f.label :category %>
 <%= f.text_field :category , "placeholder" => "Category"%></br></br>
+
+<!-- Student forms -->
 <%= f.fields_for :students do |builder| %>
-<%= builder.label "Student name" %>
-<%= builder.text_field :name , "placeholder" => "Student Name" %></br>
-<%= builder.label "Student email" %>
-<%= builder.text_field :email , "placeholder" => "Student Email" %></br>
-<%= builder.label "Student ID" %>
-<%= builder.text_field :studentID ,"placeholder" => "Student ID" %></br>
-<%= builder.label :course %>
-<% if false %>
-<div class="select_course" >
-		<%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %>
-</div>
+<%= render "studentform" , :f => builder %>
 <% end %>
-<%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %></br></br>
-<%= builder.text_field :course, "style" => "float:right display:inline" ,"placeholder" => "Course" %>
-</br>
-<% end %>
+
+<div id = "add_student_field"> </div>
+<%= submit_tag "Add student" , :id => "add_student" %>
 <%= f.label :summary %>
 <%= f.text_area :summary , "placeholder" => "Summary", "rows" => "4", "columns" => "20" %></br>
 <%= f.label :image %>
