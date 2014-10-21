@@ -25,7 +25,13 @@ class SubmissionsController < ApplicationController
 
     # Set state for newly submitted project
     @project.status = "new"
-    @spec = @project.build_spec(:spec_name => @project.title, :spec_name => @project.body)
+    @spec = @project.build_spec(:spec_name => @project.title, :spec_content => @project.body)
+
+    # Generate authentication token for spec
+    @spec.auth_token = loop do
+      auth_token = SecureRandom.urlsafe_base64
+      break auth_token unless Spec.exists?(auth_token: auth_token)
+    end
 
     # If submission is done successfully, redirect to show page
 

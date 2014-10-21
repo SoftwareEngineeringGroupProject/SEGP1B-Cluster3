@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :project_spec_gens do
     member { put :mercury_update }
   end
+  get '/project_specification/:auth_token' => 'project_spec_gens#show'
 
   get 'project_processings/edit_project' => 'project_processings#edit_project', as: 'admin_edit_project'
   post 'project_processings/edit_project' => 'project_processings#post_from_editing_project'
