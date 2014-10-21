@@ -1,0 +1,3 @@
+Industry.define :user for |f|
+	f.name "secret"
+end
