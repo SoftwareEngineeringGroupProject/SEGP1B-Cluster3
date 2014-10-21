@@ -10,9 +10,21 @@ class ProjectsController < ApplicationController
 
   def new
     # @students = Student.all
-    @student_project = StudentProject.new
-    @student = Student.new
-    3.times { @student_project.students.build }
+
+    if session[:user_id] != nil
+      @user = User.find(session[:user_id]) 
+      if @user.acctype == "coordinator" 
+        @student_project = StudentProject.new
+        @student = Student.new
+        3.times { @student_project.students.build }
+      else
+        flash[:notice] = "Please Login as a coordinator to edit a past project"
+        redirect_to :login
+      end
+      else
+        flash[:notice] = "Please Login to edit a past project"
+        redirect_to :login
+    end 
   end
 
   def create
@@ -20,7 +32,7 @@ class ProjectsController < ApplicationController
     if @student_project.save
       redirect_to :index, :notice => "Project created"
     else
-      redirect_to :new
+      render :new
     end
   end
 
@@ -141,8 +153,6 @@ end
 def info
 end
 
-def contact
-end
 
 def search                                                                                                                                                                                                
          #redirect to student's search funtion  if related classify is selected
@@ -161,6 +171,10 @@ end
  
 def notfound 
                                                                                                    
-end                                                                                         
+end               
+
+  def contact
+  end
+
                                                                                  
 end

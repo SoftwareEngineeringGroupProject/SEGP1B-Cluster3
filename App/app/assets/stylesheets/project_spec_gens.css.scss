@@ -1,0 +1,16 @@
+// Place all the styles related to the project_spec_gens controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div#specification_page {
+	background-color: white;
+	width: 700px;
+	height-min: 700px;
+	margin: auto;
+	border-radius: 4px;
+	padding: 30px;
+}
+
+div#specification_page h1, p {
+	color: black;
+}

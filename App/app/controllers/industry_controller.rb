@@ -1,5 +1,126 @@
 class IndustryController < ApplicationController
 
+	def listMyProjects
+		if user_logged_in?
+			if user_type == "industry"
+				@projects = Project.where("user_id = #{@current_user.id}")
+				render "myprojects"
+			else
+				redirect_to :anauthorized
+			end
+		else
+			redirect_to :login
+		end
+	end
+	
+	def display
+		if user_logged_in?
+			@project = Project.find_by_id(params[:id])
+			if @project != nil
+				if @project.user_id == @current_user.id
+					render "display"
+				else
+					#Not your project!
+					render "unauthorized"
+				end
+			else
+				redirect_to :my_projects
+			end
+		else
+			redirect_to :login
+		end
+	end
+	
+	def edit
+		if user_logged_in?
+			@project = Project.find_by_id(params[:id])
+			if @project != nil
+				if @project.user_id == @current_user.id
+					render "edit"
+				else
+					#Not your project!
+					render "unauthorized"
+				end
+			else
+				redirect_to :my_projects
+			end
+		else
+			redirect_to :login
+		end
+  	end
+  	
+  	def update
+  		if user_logged_in?
+			@project = Project.find_by_id(params[:id])
+			if @project != nil
+				if @project.user_id == @current_user.id
+					if @project.update(project_params)
+						@message = Message.new(:sender_id => @current_user.id, :project_id => @project.id, :title => "Project Details Updated", :text => "#{@current_user.fname} #{@current_user.lname} updated the project description")
+						@message.save
+		  					redirect_to :display_project
+					else
+						#Otherwise, stay in edit page
+		  				render :edit
+					end
+				else
+					#Not your project!
+					render "unauthorized"
+				end
+			else
+				redirect_to :my_projects
+			end
+		else
+			redirect_to :login
+		end
+	end
+	
+	def showmessages 
+		if user_logged_in?
+			@project = Project.find_by_id(params[:id])
+			if @project != nil
+				if @project.user_id == @current_user.id
+					@proj_messages = Message.where("project_id = #{@project.id}")
+					render "showmessages"
+				else
+					#Not your project!
+					render "unauthorized"
+				end
+			else
+				redirect_to :my_projects
+			end
+		else
+			redirect_to :login
+		end
+	end
+	
+	def sendmes
+		if user_logged_in?
+			@project = Project.find_by_id(params[:id])
+			if @project != nil
+				if @project.user_id == @current_user.id
+					@newmessage = Message.new()
+					@newmessage.sender_id = @current_user.id
+					@newmessage.project_id = @project.id
+					@newmessage.title = params[:newmessage][:subject]
+					@newmessage.text = params[:newmessage][:email]
+					if @newmessage.save
+						flash[:notice] = "Message has been delivered to project coordinators."
+					else
+						flash[:notice] = "Subject and Message must be not blank!"
+					end
+					redirect_to :project_messages
+				else
+					#Not your project!
+					render "unauthorized"
+				end
+			else
+				redirect_to :my_projects
+			end
+		else
+			redirect_to :login
+		end
+	end
+
 	# View projects and its states
 	def showList
 		# Initialize project list and authenticate user
@@ -36,10 +157,10 @@ class IndustryController < ApplicationController
 		end
 
 		# If user has not selected any project, back to main board with a message
-		if params[:project_id] == nil
+		if params[:id] == nil
 			showList
 			flash[:notice] = 'Select a project before applying your action!'
-			render :showList
+			render :my_projects
 			return
 		end
 
@@ -79,28 +200,23 @@ class IndustryController < ApplicationController
 		render :showList
 	end
 
-	def edit
-		if @project == nil
-			redirect_to industry_dashboard_path
-		end
-  end
-
-	def update
-		@project = Project.find(params[:project][:project_id])
-		# Redirect to show project page if successful
-		if @project.update(project_params)
-		  redirect_to :industry_dashboard
-		else
-		# Otherwise, stay in edit page
-		  render :edit
-		end
-	end
 
 	def delete
-		@message = Message.new
-		@project = Project.find(params[:project_id])
-	  if ( @project == nil )
-			redirect_to industry_dashboard_path
+		if user_logged_in?
+			@project = Project.find_by_id(params[:id])
+			if @project != nil
+				if @project.user_id == @current_user.id
+					@message = Message.new
+					render "delete"
+				else
+					#Not your project!
+					render "unauthorized"
+				end
+			else
+				redirect_to :my_projects
+			end
+		else
+			redirect_to :login
 		end
 	end
 

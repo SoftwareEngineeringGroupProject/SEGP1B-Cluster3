@@ -1,29 +1,39 @@
 <%= render "shared/header" %>
+<%= render "shared/dashheader" %>
 
-  <div id="subPro" class="forms flex_height">
-    <%= form_for @project, url: {action: "update"} do |f| %>
+<div class="wrapper content">
+  <%= render "shared/dashsidebar" %>
+  <%= render "shared/dashsidebarright" %>
 
-      <div class="titles">
-        <h3>Update a Project</h3>
+  <div id="container" >
+  
+      <div id="board_showing" class="general_box flex_height shadow">
+        <div id="industrydisplayproject">
+    		<%= form_for :project, url: {action: "update"} do |f| %>
+
+      			<div class="titles">
+        			<h3>Update a Project</h3>
+     			 </div>
+
+      				<fieldset class="inputs ">
+        			<legend>Project details</legend>
+        				<%=f.hidden_field :id, :value => @project.id %>
+        				<%=f.text_field :title %>
+        				<%=f.text_area :body, "rows"=>"10" %>
+      				</fieldset>
+
+    				<div class="sep"></div>
+   					<div class="to_left">
+      					<%= "Some fields were missing!" if @project.errors.any? %>
+    				</div>
+    				<div id="subBtn" class="button horizontal_list to_right">
+      					<ul>
+      						<li><%= link_to "CANCEL", :display_project %></li>
+        					<li><%= f.submit "SUBMIT" %></li>
+      					</ul>
+    				</div>
+    		<% end %>
+        </div>
       </div>
-
-      <fieldset class="inputs ">
-        <legend>Project details</legend>
-        <%=f.hidden_field :project_id, :value => @project.id %>
-        <%=f.text_field :title %>
-        <%=f.text_area :body, "rows"=>"10" %>
-      </fieldset>
-
-    <div class="sep"></div>
-    <div class="to_left">
-      <%= "Some fields were missing!" if @project.errors.any? %>
-    </div>
-    <div id="subBtn" class="button horizontal_list to_right">
-      <ul>
-        <li><%= f.submit "SUBMIT" %></li>
-        <li><%= link_to "CANCEL", industry_dashboard_path %></li>
-      </ul>
-    </div>
-    <% end %>
-
   </div>
+</div>

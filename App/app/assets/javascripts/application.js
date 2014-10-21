@@ -15,7 +15,6 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery.turbolinks
-//= require bootstrap-sprockets
 
     $( "body" ).delegate( '#idofpagethatusesbelmont', 'pageinit', function() {
         $( 'select[name="state_choice"]' ).change( function() {
@@ -55,4 +54,9 @@
       $("#uploadFile").html("File: " + fileName);
     });
 
+  });
+
+  $(function() {
+    var spec_link = $("#spec_link").val();
+    $("#siteloader").html('<object data='+spec_link+ '/>');
   });

@@ -1,44 +1,46 @@
 <%= javascript_include_tag 'studentprojectform', 'data-turbolinks-track' => true %>
 
-<%= form_for @student_project, :html => {:multipart => true} do |f| %>
+<%= form_for @student_project,:html => { :multipart => true} do |f| %>
+<div style = "color:red;font-weight:bold;font-size:15px">
 <% @student_project.errors.full_messages.each do |msg| %>
-<p>
-		<%= msg %>
-</p>
+		<%= msg %></br>
 <% end %>
+</div>
+
+
 <%= f.label :title %>
 <%= f.text_field :title, "placeholder" => "Title" %></br>
 <%= f.label :year %>
-<%= f.select :year , (2000) .. (Date.today.year) %></br>
+<%= f.select :year , (2000 .. Date.today.year) %></br></br>
 <% if false %>
 <%= f.select :year ,{:start_year => Time.now.year, :end_year => Time.now.year-10} %></br>
 <%= date_select(@student_project, :year, start_year: Time.now.year, end_year: 2000, discard_day: true, discard_month: true)%>
 <% end %>
 <%= f.label :client %>
-<%= f.text_field :client %></br></br>
+<%= f.text_field :client , "placeholder" => "Client" %></br></br>
 <%= f.label :category %>
-<%= f.text_field :category %></br></br>
+<%= f.text_field :category , "placeholder" => "Category"%></br></br>
 <%= f.fields_for :students do |builder| %>
 <%= builder.label "Student name" %>
-<%= builder.text_field :name %></br>
+<%= builder.text_field :name , "placeholder" => "Student Name" %></br>
 <%= builder.label "Student email" %>
-<%= builder.text_field :email %></br>
+<%= builder.text_field :email , "placeholder" => "Student Email" %></br>
 <%= builder.label "Student ID" %>
-<%= builder.text_field :studentID %></br>
+<%= builder.text_field :studentID ,"placeholder" => "Student ID" %></br>
 <%= builder.label :course %>
 <% if false %>
 <div class="select_course" >
 		<%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %>
 </div>
 <% end %>
-<%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %>
-<%= builder.text_field :course, "placeholder" => "Course" %>
+<%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %></br></br>
+<%= builder.text_field :course, "style" => "float:right display:inline" ,"placeholder" => "Course" %>
 </br>
 <% end %>
 <%= f.label :summary %>
-<%= f.text_area :summary %></br>
+<%= f.text_area :summary , "placeholder" => "Summary", "rows" => "4", "columns" => "20" %></br>
 <%= f.label :image %>
-<%= f.file_field :image %></br>
+<%= f.file_field :image  %></br>
 <% if false %>
 <%= f.label :remote_image_url, "or image URL" %>
 <%= f.text_field :remote_image_url %></br>

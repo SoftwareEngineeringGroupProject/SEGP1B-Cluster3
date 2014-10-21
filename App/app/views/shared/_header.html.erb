@@ -11,11 +11,11 @@
         	<% @user = User.find_by_id( session[:user_id] ) %>
         	<% if @user != nil %>
         		<% if @user.acctype == "industry" %>
-        			<li><%= link_to "Industry Projects", industry_dashboard_path  %></li>
+        			<li><%= link_to "Projects", :my_projects  %></li>
           		<% elsif @user.acctype == "coordinator" %>
           			<li><%= link_to "Dashboard", :admin_dashboard %></li>
           		<% end %>
-          		<li><%= link_to "My Profile", :profile %></li>
+          		<li><%= link_to "#{@user.username}", :profile %></li>
           		<li><%= link_to "Logout", :logout %></li>
         	<% else %>
         		<li><%= link_to "Login", :login %></li>

@@ -1,0 +1,39 @@
+<%= render "shared/header" %>
+<%= render "shared/dashheader" %>
+
+<div class="wrapper content">
+  <%= render "shared/dashsidebar" %>
+
+  <div id="container" >
+      <div id="board_showing" class="general_box flex_height shadow">
+      
+      	<div id="industrydisplayproject" class="titles">
+        	<h1 class="centerHead"><%= @current_user.companyname %>'s Projects</h1>
+      	</div>
+      
+      	<div class="vspacer"></div>
+      	
+        <div id="listprojectsdiv">
+        	<% if @projects.length > 0 %>
+ 			<% @projects.each do |sub| %>
+ 			<div class="projectrow">
+ 				<div class="projname"><p><%= link_to sub.title, controller: "industry", action: "display", id: sub.id %></p></div>
+ 				<div class="projdesc"><p><%= sub.body %></p></div>
+ 				<table class="bottomline">
+					<tr>
+						<td>Messages: <%= Message.where("project_id = #{sub.id}").count %></td>
+						<td>Status: <%= sub.status.slice(0,1).capitalize + sub.status.slice(1..-1) %></td>
+						<td>Created: <%= Date.parse(sub.created_at.to_s).strftime("%d-%m-%Y") %></td>
+					</tr>
+				</table>
+			</div>
+			<div class="vspacer"></div>
+  			<% end %>
+  		<% else %>
+  			<br />
+  			<p class="blackmessage">You have not submitted any projects yet! <%=link_to "Click Here to Submit a Project Proposal", :submit_project %></p>
+  		<% end %>
+		</div>
+      </div>
+  </div>
+</div>
