@@ -11,8 +11,11 @@
         	<h1 class="centerHead"><%= @current_user.companyname %>'s Projects</h1>
       	</div>
       
+      	<div class="vspacer"></div>
+      	
         <div id="listprojectsdiv">
- 		<% @projects.each do |sub| %>
+        	<% if @projects.length > 0 %>
+ 			<% @projects.each do |sub| %>
  			<div class="projectrow">
  				<div class="projname"><p><%= link_to sub.title, controller: "industry", action: "display", id: sub.id %></p></div>
  				<div class="projdesc"><p><%= sub.body %></p></div>
@@ -25,6 +28,10 @@
 				</table>
 			</div>
 			<div class="vspacer"></div>
+  			<% end %>
+  		<% else %>
+  			<br />
+  			<p class="blackmessage">You have not submitted any projects yet! <%=link_to "Click Here to Submit a Project Proposal", :submit_project %></p>
   		<% end %>
 		</div>
       </div>

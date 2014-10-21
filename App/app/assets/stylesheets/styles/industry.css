@@ -104,6 +104,10 @@
 	color: black;
 }
 
+.blackmessage {
+	color: black;
+	margin: auto;
+}
 
 /* ------------------- Messages ------------------- */
 .industry_message {
