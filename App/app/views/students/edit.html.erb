@@ -1,56 +1,66 @@
 <%= render "shared/header" %>
 <%= render "shared/linkbar" %>
 
-	<%= form_for @theStudent, :url => { :action => "update" } do |builder| %>
-	<% @theStudent.errors.full_messages.each do |msg| %>
-	<p>
-		<%= msg %>
-	</p>
-	<% end %>
+<div class="wrapper content">
+	<div id="news" class="flex_height shadow">
 
-	<% if flash[:notice] %>
-	<div class="notice">
-		<%= flash[:notice] %>
+		<fieldset class="student-edit-fieldset">
+			<legend style="color: #005d8f">
+				<h2><strong>Edit Student</strong></h2>
+			</legend>
+
+			<%= form_for @theStudent, :url => { :action => "update" } do |builder| %>
+
+			<% @theStudent.errors.full_messages.each do |msg| %>
+			<p>
+				<%= msg %>
+			</p>
+			<% end %>
+
+			<% if flash[:notice] %>
+			<div class="notice" style="color: red">
+				<%= flash[:notice] %>
+			</div>
+
+			<% end %>
+
+			<div  class="project-student-edit-line-container">
+				<%= builder.label "Student ID" %>
+				<%= builder.text_field :studentID %></br>
+			</div>
+			<div  class="project-student-edit-line-container">
+				<%= builder.label "Student Name" %>
+				<%= builder.text_field :name %></br>
+			</div>
+			<div  class="project-student-edit-line-container">
+
+				<%= builder.label "Student Email" %>
+				<%= builder.text_field :email %></br>
+			</div>
+
+			<!--choose to add a new course or not-->
+			<%if @whetherAddnewCourse=="true"%>
+			<div  class="project-student-edit-line-container student-course-div">
+				<span><%= builder.label :course%></span>
+				<span><%= builder.text_field :course, "placeholder" => "Course" %></span>
+				<span><%= link_to "Or Choose A Course", student_edit_path(:addNew=>"false"), :method => :get%></span>
+			</div>
+
+			<%else%>
+			<div  class="project-student-edit-line-container student-course-div">
+				<span class="to_left"><%= builder.label :course, :class=>"student-course-label"%></span>
+				<span class="to_left student-course-select"><%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %></span>
+				<span class="to_left"><%= link_to "Or Add New Course", student_edit_path(:addNew=>"true"), :method => :get%></span>
+			</div>
+			<%end%>
+
+			<div  class="project-edit-line-submit-container button">
+				<span class="to_left"><%= builder.submit "Submit" %></span>
+				<span class="to_right"><%= link_to "Back To edit Project Page", edit_path(@theStudent.student_project_id)%></span>
+			</div>
+			<% end %>
+
+			<fieldset>
 	</div>
-	<% end %>
-
-	<div  class="project-title-subheading">
-		<%= builder.label "Student ID" %>
-		<%= builder.text_field :studentID %></br>
-	</div>
-	<div  class="project-title-subheading">
-
-		<%= builder.label "Student name" %>
-		<%= builder.text_field :name %></br>
-	</div>
-	<div  class="project-title-subheading">
-
-		<%= builder.label "Student email" %>
-		<%= builder.text_field :email %></br>
-	</div>
-
-	<!--choose to add a new course or not-->
-	<%if @whetherAddnewCourse=="true"%>
-	<div  class="project-title-subheading  student-course-div">
-		<span><%= builder.label :course%></span>
-		<span><%= builder.text_field :course, "placeholder" => "Course" %></span>
-		<span><%= link_to "Or Choose A Course", student_edit_path(:addNew=>"false"), :method => :get%></span>
-	</div>
-
-	<%else%>
-	<div  class="project-title-subheading  student-course-div">
-		<span class="to_left"><%= builder.label :course, :class=>"student-course-label"%></span>
-		<span class="to_left student-course-select"><%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %></span>
-		<span class="to_left"><%= link_to "Or Add New Course", student_edit_path(:addNew=>"true"), :method => :get%></span>
-	</div>
-	<%end%>
-
-	<div  class="project-title-subheading student-submit-area">
-		<%= builder.submit "Submit" %>
-
-		<% end %>
-
-		<%= button_to "Back To edit Project Page", edit_path(@theStudent.student_project_id), :method => :get%>
-	</div>
-
+</div>
 <%= render "shared/footer" %>

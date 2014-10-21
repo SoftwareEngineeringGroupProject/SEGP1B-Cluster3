@@ -1,4 +1,14 @@
-<h1 class="contact-title">Student updated</h1>
+<%= render "shared/header" %>
+<%= render "shared/linkbar" %>
 
- <%= button_to "Back To edit Project Page", edit_path(@theStudent.student_project_id), :method => :get%>
+<div class="flex_height shadow">
+
+	<div class="contact-title">
+		<h1 class="contact-title">Student Updated</h1>
+	</div>
+
+	<%= button_to "Back To edit Project Page", edit_path(@theStudent.student_project_id), class: "project-search-notfound-backbutton", :method => :get%>
+
+</div>
+<%= render "shared/footer" %>
 

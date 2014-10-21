@@ -110,6 +110,89 @@ ul.right-client-list li {
     float: right;
 }
 
+.project-edit-fieldset {
+    width: 1000px;
+    height: 1400px;
+    font-size: 1.0em;
+    margin: 0 auto;
+    color: black;
+}
+
+.student-edit-fieldset {
+    width: 800px;
+    height: 500px;
+    font-size: 1.5em;
+    margin: 0 auto;
+    color: black;
+}
+
+.student-edit-fieldset label {
+    color: #005d8f;
+}
+
+.student-edit-fieldset select {
+    width: 210px;
+}
+
+
+.project-student-edit-line-container {
+    margin: 15px auto;
+}
+
+.project-edit-fieldset-group {
+    width: 800px;
+    height: auto;
+    font-size: 1.0em;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.project-edit-fieldset-group legend {
+    color: #005d8f;
+}
+
+table.project-edit-table a:visited {
+    color: #005d8f;
+}
+
+table.project-edit-table th {
+    color: grey;
+}
+.project-edit-line-container {
+    margin: 25px auto;
+}
+
+.project-edit-line-submit-container {
+    margin: 20px auto;
+    margin-top: 50px;
+    width: 600px;
+}
+
+.project-edit-upload-container {
+    margin: 10px auto;
+    margin-top: 20px;
+    width: 800px;
+    height: 50px;
+}
+
+.project-edit-upload-container li {
+    float: left;
+}
+.project-edit-upload-container label {
+    color: #005d8f;
+}
+
+.project-edit-line-container textarea {
+    margin: 10px auto;
+    width: 800px;
+    height: 150px;
+    overflow: scroll;
+}
+.project-edit-line-container label {
+    font-size: 1.2em;
+    color: #005d8f;
+}
+
 .project-content-summary {
     margin-left: 60px;
     margin-bottom: 20px;
@@ -126,7 +209,7 @@ ul.right-client-list li {
     font-size: 1.5em;
     font-weight: normal;
     margin: 20px auto;
-    height: 1000px;
+    height: auto;
 }
 
 .project-image-container {
