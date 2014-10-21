@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
 
-  resources :muas
+  mount Mercury::Engine => '/'
 
+  resources :project_spec_gens do
+    member { put :mercury_update }
+  end
+
+  get 'project_processings/edit_project' => 'project_processings#edit_project', as: 'admin_edit_project'
+  post 'project_processings/edit_project' => 'project_processings#post_from_editing_project'
+  get 'project_processings/assign_student'=> 'project_processings#assign_student', as: 'admin_assign_student'
+  post 'project_processings/assign_student'=> 'project_processings#post_from_assigning_student'
+
+  resources :muas
   resources :submissions
 
-
   root  to: 'application#index', :as => :root
-
-  get 'submit' => "submissions#new"
 
      ###############################################
      # Past Project Routes
@@ -19,7 +26,7 @@ Rails.application.routes.draw do
      # post '/student_projects' => 'projects#create'
      # match 'projects/new' => 'projects#create', via: [:get, :post]
      match '/student_projects' => 'projects#create', via: [:get, :post]
-     get 'projects/contact' => 'projects#contact', as: 'contact'
+     # get 'projects/contact' => 'projects#contact', as: 'contact'
      get 'projects/:id/show' => 'projects#show', as: 'project'
      get 'projects/:id/edit' => 'projects#edit', as: 'edit'
      post 'projects/:id/update' => 'projects#update', as: 'update'
@@ -27,25 +34,30 @@ Rails.application.routes.draw do
      get 'projects/:id/destroy' => 'projects#destroy', as: 'destroy'
      patch 'projects/:id/destroy' => 'projects#delete', as: 'delete'
      get 'projects/search' => 'projects#search', as: 'search'
-          get 'projects/notfound' => 'projects#notfound', as: 'notfound'
+     get 'projects/notfound' => 'projects#notfound', as: 'notfound'
 
      post 'students/:id/delete' => 'students#delete', as: 'student_delete'
 
 
+     # EMAIL FORM
+     match '/contacts',     to: 'contacts#new',             via: 'get', as: "contact"
+      resources "contacts", only: [:new, :create]
 
   # Dashboards
-  get 'dashboards/view/:state' => "dashboards#view"
-  get 'dashboards/view/' => "dashboards#view", :as => :admin_dashboard
+  get 'dashboards/view' => "dashboards#view", :as => :admin_dashboard
   post 'dashboards/view/:state' => 'dashboards#action_handler', :as => :action_handler
   post 'dashboards/view' => 'dashboards#action_handler'
-  get 'dashboards/edit_desc' => "dashboards#edit_desc", :as => :edit_desc
-  post 'dashboards/edit_desc' =>"dashboards#action_handler"
+  get 'dashboards/project_manip/:id' => "dashboards#project_manip", :as => :project_manip
+  get 'dashboards/edit_details/:id' =>"dashboards#edit_details", :as => :edit_details
+  patch 'dashboards/edit_details/:id' =>"dashboards#update_details"
+
+  get 'dashboards/show_message_log/:id' =>"dashboards#show_message_log", :as => :show_messages
+  post 'dashboards/show_message_log/:id' =>"dashboards#send_message"
 
   get 'dashboards/assign_students' => "dashboards#assign_students", :as => :assign_students
   post 'dashboards/assgin_students' => "dashboards#action_handler"
 
-  #get 'profile' => "application#profile", :as => :profile_path
-  #post 'login/:username/:password' => 'application#login'
+
 
 #Users/Login
   #User Management
@@ -82,25 +94,38 @@ Rails.application.routes.draw do
   post 'forgottenpassword' => "users#email_new_password", :as => :email_new_password
 
 
-  # Industry actions
+# Industry actions
+  #Projects
+  get 'myprojects' => "industry#listMyProjects", :as => :my_projects
+  get 'submit' => "submissions#new", :as => :submit_project
+  get 'display/:id' => "industry#display", :as => :display_project
+  get 'modify/:id' => "industry#edit", :as => :edit_industry_project
+  post 'modify/:id' => "industry#update", :as => :update_industry_project
+  get 'delete/:id' => "industry#delete", :as => :delete_industry_project
+  
+  #Messaging
+  get 'messagelog/:id' => "industry#showmessages", :as => :project_messages
+  post 'messagelog/:id' => "industry#sendmes", :as => :send_mes
+  
+  #Other
   get 'industry/showList' => "industry#showList", :as => :industry_dashboard
   get 'industry/showList/:id' => "industry#showList", :as => :show_all_industry_project
 
   get 'industry/edit' => "industry#edit"
-  get 'industry/edit/:id' => "industry#edit", :as => :edit_industry_project
+  #get 'industry/edit/:id' => "industry#edit", :as => :edit_industry_project
 
   get 'industry/update/' => "industry#update"
 
   post 'industry/update/' => "industry#showList"
 
-  patch 'industry/update' => "industry#update", :as => :update_industry_project
+  #patch 'industry/update' => "industry#update", :as => :update_industry_project
 
   post 'industry/showList' => "industry#action_to_project"
   post 'industry/showList/:id' => "industry#action_to_project", :as => :action_to_industry_project
 
 
   post 'industry/remove/:id' => "industry#remove", :as => :remove_industry_project
-  get 'industry/delete' => "industry#delete", :as => :delete_industry_project
+  #get 'industry/delete' => "industry#delete", :as => :delete_industry_project
   post 'industry/delete' => "industry#pending", :as => :delete_pending_project
 
 

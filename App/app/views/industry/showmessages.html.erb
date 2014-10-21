@@ -1,0 +1,63 @@
+<%= render "shared/header" %>
+<%= render "shared/dashheader" %>
+
+<div class="wrapper content">
+  <%= render "shared/dashsidebar" %>
+  <%= render "shared/dashsidebarright" %>
+
+  <div id="container">
+  
+      <div id="board_showing" class="general_box flex_height shadow">
+        <div class="black">
+          <p>Conversation Log:</p>
+            <div id="messageview" style="height:400px; overflow: auto;">
+              <% if !@proj_messages.blank? %>
+                <% @proj_messages.each do |m| %>
+				
+				<% if m.sender_id == @current_user.id %>
+                	<div class="industry_message inset_shadow">
+                <% else %>
+                	<div class="admin_message inset_shadow">
+                <% end %>
+                <% sender = User.find(m.sender_id) %>
+                <strong>&nbsp&nbsp&nbsp<%= sender.fname %> <%= sender.lname %>:&nbsp-&nbspSubject: &nbsp<%=m.title %></strong>
+                <textarea rows="2" readonly><%=m.text %></textarea>
+                </div>
+                <% end %>
+              <% else %>
+                <div class="user_message inset_shadow">
+                <strong>&nbsp&nbsp&nbsp No messages currently.</strong>
+                </div>
+              <% end %>
+            </div>
+        </div>
+		<div class="vspacer"></div>
+      <div id="communication" id="general_box" class="flex_height to_right shadow">
+
+        <!-- Message box -->
+        <%= form_for :newmessage, url: {action: "sendmes"} do |f| %>
+		<div id="message_box" class="to_left">
+          <!--<input class="to_left long_input" type="text" placeholder="Subject:" name ="subject">-->
+          <%= f.hidden_field 'user_id', :value => @current_user.id %>
+          <%= f.hidden_field 'proj_id', :value => @project.id %>
+          <%= f.text_field 'subject', :class => "to_left long_input","placeholder" => "Subject" %>
+          <%= f.text_area 'email' %>
+        </div>
+
+        <!-- Buttons to apply operations on message -->
+  		<div id="action_to_message" class="to_right vertical_list button">
+          	<ul>
+            	<li><%= f.submit 'Send' %></li>
+          	</ul>
+    	</div>
+      </div>
+	  <% end %>
+	
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){  
+	$("#messageview").animate({ scrollTop: $('#messageview')[0].scrollHeight}, 2000);
+});
+</script>

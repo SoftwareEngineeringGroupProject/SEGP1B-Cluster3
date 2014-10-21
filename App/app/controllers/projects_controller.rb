@@ -143,8 +143,6 @@ end
 def info
 end
 
-def contact
-end
 
 def search
       @searchVariable = StudentProject.search(params[:classify], params[:search])
@@ -156,6 +154,10 @@ end
  
 def notfound 
                                                                                                    
-end                                                                                         
+end               
+
+  def contact
+  end
+
                                                                                  
 end

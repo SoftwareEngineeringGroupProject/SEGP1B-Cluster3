@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141017005926) do
+ActiveRecord::Schema.define(version: 20141017172401) do
 
   create_table "attacheds", force: true do |t|
     t.integer  "project_id"
@@ -68,6 +68,24 @@ ActiveRecord::Schema.define(version: 20141017005926) do
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
     t.integer  "user_id"
+    t.integer  "compl_time"
+    t.string   "man_hours"
+    t.text     "languages"
+    t.text     "system_req"
+    t.text     "compat_req"
+    t.text     "student_req_lang"
+    t.text     "student_req_concepts"
+    t.string   "student_police_check"
+    t.text     "student_security"
+    t.text     "extra_details"
+  end
+
+  create_table "specs", force: true do |t|
+    t.string   "spec_name"
+    t.text     "spec_content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "project_id"
   end
 
   create_table "student_projects", force: true do |t|
@@ -90,6 +108,12 @@ ActiveRecord::Schema.define(version: 20141017005926) do
     t.datetime "updated_at"
     t.string   "course"
     t.integer  "student_project_id"
+    t.boolean  "is_new"
+    t.integer  "project_id"
+    t.text     "programming_skils"
+    t.text     "courseworks_completed"
+    t.text     "concepts"
+    t.string   "GPA"
   end
 
   create_table "users", force: true do |t|

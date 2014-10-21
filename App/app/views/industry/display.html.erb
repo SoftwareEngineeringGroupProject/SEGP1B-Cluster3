@@ -1,0 +1,18 @@
+<%= render "shared/header" %>
+<%= render "shared/dashheader" %>
+
+<div class="wrapper content">
+  <%= render "shared/dashsidebar" %>
+  <%= render "shared/dashsidebarright" %>
+
+  <div id="container" >
+  
+      <div id="board_showing" class="general_box flex_height shadow">
+        <div id="industrydisplayproject">
+          <p>Name: <%= @project.title %></p>
+          <p>Description: <%= @project.body %></p>
+          <p>Completion Time: <%= @project.compl_time %></p>
+        </div>
+      </div>
+  </div>
+</div>

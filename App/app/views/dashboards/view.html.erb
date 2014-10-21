@@ -18,130 +18,17 @@
 
   <!-- Middle board -->
   <div id="container" class="to_left">
-    <%= form_tag "", :multipart => true %>
-      <!-- Viewing Project Board -->
-      <div id="board_showing" class="general_box flex_height shadow">
-        <div class="flex_height">
-          <div id="action_to_showing_board" class="to_right horizontal_list button">
-            <ul>
-            <% if @state == "new" %>
-              <li><%= submit_tag 'Accept' %></li>
-              <li><%= submit_tag 'Reject' %></li>
-              <li><%= submit_tag 'Suspend' %></li>
-            <% end%>
-
-            <% if @state == "accepted" %>
-              <li><%= submit_tag 'Suspend' %></li>
-              <li><%= submit_tag 'Add To Cart' %></li>
-            <% end%>
-
-            <% if @state == "rejected" || @state == nil %>
-              <li><%= submit_tag 'Remove' %></li>
-              <li><%= submit_tag 'Suspend' %></li>
-            <% end%>
-
-            <% if @state == "pending" %>
-              <li><%= submit_tag 'Accept' %></li>
-              <li><%= submit_tag 'Reject' %></li>
-            <% end%>
-            
-              <% if @state == "past_projects" %>
-              <li><%= submit_tag 'Accept' %></li>
-              <li><%= submit_tag 'Reject' %></li>
-            <% end%>
-
-
-            </ul>
-          </div>
+    <!-- Viewing Project Board -->
+    <div id="board_showing" class="general_box flex_height shadow">
+      <div class="flex_height">
+        <% @projects.each do |project| %>
+        <div class="project_item">
+          <h1><%=link_to project.title, project_manip_path(project) %></a></h1>
+          <div><%=project.body %></div>
         </div>
-
-        <!-- Project list-->
-        <div class="to_left" id="showing_list">
-          <fieldset>
-            <legend>
-              <div id="search_date" class ="horizontal_list">
-                <ul>
-                  <li><input class="to_left" type="text" id="datepicker" value="Filter by date" name = "date"></li>
-                  <li><%= image_submit_tag "/images/icon_search.gif" %></li>
-                </ul>
-              </div>
-            </legend>
-            <%= select_tag(:project_id, options_for_select(@projects.collect{|project| [project.title,project.id, {'data-desc'=>project.body, 'data-mail' => @emails[project.user_id]}]}), "size" => "12", "id" => "demo") %>
-          </fieldset>
-        </div>
-
-        <!-- Project description-->
-        <div id="show_specification" class="to_right">
-          <fieldset>
-            <legend>
-              <div class="horizontal_list switchButton">
-                <ul>
-                  <li><%= submit_tag "Project Description" %></li>
-                  <li><%= submit_tag "Message Log" %></li>
-                </ul>
-              </div>
-            </legend>
-            <% if @des %>
-            <textarea id="project_desc" class ="inputs", rows="14", readonly >There are some project specification....</textarea>
-            <% end %>
-
-            <% if @log %>
-            <div style="height:250px; overflow: auto;">
-              <% if !@message_log.blank? %>
-                <% @message_log.each do |m| %>
-
-                <div class="user_message inset_shadow">
-                <% sender = User.find(m.sender_id) %>
-                <strong>&nbsp&nbsp&nbspSender:&nbsp<%= sender.lname %>&nbsp-&nbspTitle:&nbsp<%=m.title %></strong>
-                <textarea rows="2" readonly><%=m.text %></textarea>
-                </div>
-                <% end %>
-              <% else %>
-                <div class="user_message inset_shadow">
-                <strong>&nbsp&nbsp&nbsp No messages currently.</strong>
-                </div>
-              <% end %>
-            </div>
-            <% end %>
-
-          </fieldset>
-        </div>
-      </div>
-
-      <!-- Mailing panel-->
-      <div id="communication" id="general_box" class="flex_height to_right shadow">
-
-        <!-- Message box -->
-		    <div id="message_box" class="to_left">
-          <input class="to_left" type="text" placeholder="Subject:", name ="subject" >
-          <input class="to_right" id="mail_address" type="text" placeholder="To: ">
-          <%= text_area_tag 'email' %>
-        </div>
-
-        <!-- Buttons to apply operations on message -->
-  		  <div id="action_to_message" class="to_right vertical_list button">
-          <ul>
-            <li><a href="#">...</a></li>
-            <li><a id="uploadFile" href="#">Attach</a><%=file_field_tag 'attachment', {"id" => "uploadBtn"} %></li>
-            <li><%= submit_tag 'Send' %></li>
-          </ul>
-        </div>
-
-      </div>
-  </div>
-
-  <!-- Cart bar -->
-  <div class="aside_cols to_left">
-    <div id="cart" class="to_left vertical_list button">
-      <ul>
-        <% if @cart != nil && @cart.length > 0 %>
-          <% @cart.each do |project| %>
-          <li><%=link_to project.title, edit_desc_path(:id => project.id) %></li>
-          <% end %>
-        <% else %>
-          <li><a href="#">Current Processing Set</a></li>
         <% end %>
-      </ul>
+      </div>
+
     </div>
   </div>
 </div>

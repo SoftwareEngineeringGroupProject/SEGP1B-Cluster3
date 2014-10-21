@@ -1,0 +1,145 @@
+/* ---------------------------------------- Industry Dashboard -------------------------------- */
+#listprojectsdiv {
+	height: 85%;
+	overflow: auto;
+	margin: auto;
+}
+
+#projectcontainer {
+	margin: 8px auto;
+	width:70%;
+	padding: 4px 10px 10px 10px;
+	background:none;
+	min-height: 350px;
+}
+
+.projectrow {
+	width: 90%;
+	min-height: 100px;
+	border: 4px solid;
+	border-radius: 25px;
+	border-color: gray;
+	margin: auto;
+}
+
+.projname {
+	top: -30px;
+	width: 92%;
+	position: relative;
+	font-size: 35px;
+	font-style: bold;
+	color: blue;
+	text-align: left;
+	margin: auto;
+}
+
+.projdesc {
+	top: -50px;
+	width: 92%;
+	position: relative;
+	font-size: 15px;
+	color: black;
+	text-align: left;
+	margin: auto;
+}
+
+.projdate {
+	right: 0px;
+	font-size: 15px;
+	color: black;
+	text-align: right;
+	margin: auto;
+}
+
+.comments {
+	left: 0px;
+	font-size: 15px;
+	color: black;
+	text-align: left;
+	margin: auto;
+}
+
+.bottomline {
+	font-size: 15px;
+	color: black;
+	width: 92%;
+	text-align: right;
+	margin: auto;
+}
+
+.vspacer {
+	margin: auto;
+	height: 15px;
+}
+
+#functionmenu {
+	border-radius: 6px;
+	background-color: #333333;
+	width: 95%;
+	margin: 4px 0px;
+	padding: 4px 4px 4px 0px;
+}
+
+#functionmenu a {
+	padding: 15px;
+}
+
+#functionmenu li {
+	border-top: 1px solid black;
+}
+
+#industrydisplayproject {
+	color: black;
+}
+
+.long_input {
+	width: 100%;
+}
+
+#messageview {
+	color: black;
+}
+
+.black {
+	color: black;
+}
+
+.blackmessage {
+	color: black;
+	margin: auto;
+}
+
+/* ------------------- Messages ------------------- */
+.industry_message {
+	width: 65%;
+	float:right;
+	margin: 10px 10px;
+	padding:4px;
+	
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:13px;
+	
+	background-repeat: no-repeat;
+	background-position: 10px center;
+
+	color: white;
+	background-color: #33CC33;
+	border-radius: 4px;
+}
+
+.admin_message {
+	width: 65%;
+	float: left;
+	margin: 10px 10px;
+	padding:4px;
+	
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:13px;
+
+	background-repeat: no-repeat;
+	background-position: 10px center;
+
+	color: white;
+	background-color: #0099CC;
+	border-radius: 4px;
+}

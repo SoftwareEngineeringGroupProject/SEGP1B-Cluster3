@@ -22,11 +22,6 @@
     <div id = "navi_tabs" class="button horizontal_list to_left">
       <ul>
         <li><%= link_to "Home", root_path %></li>
-        <% if @current_user.acctype=="coordinator" %>
-        <li><%= link_to "Projects", admin_dashboard_path %></li>
-        <li><%=link_to "Process cart", edit_desc_path %></li>
-        <li><a href="/logout">Logout</a></li>
-        <% end %>
       </ul>
     </div>
 
