@@ -1,0 +1,89 @@
+<%= render "shared/header" %>
+<%= render "shared/dashheader" %>
+<!--##############################################################-->
+<div class="wrapper content">
+
+  <!-- Left navigation -->
+  <div class="aside_cols to_left">
+    <div id="tabs" class="to_right vertical_list button">
+      <ul>
+        <li><%=link_to "Newly submitted",admin_dashboard_path,:state => "new" %></li>
+        <li><%=link_to "Accepted", admin_dashboard_path, state: "accepted"  %></li>
+        <li><%=link_to "Rejected", admin_dashboard_path, state: "rejected" %></li>
+        <li><%=link_to "Pending", admin_dashboard_path, state: "pending" %></li>
+        <li><%=link_to "Past projects", admin_dashboard_path, state: "past_projects" %></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Middle board -->
+  <div id="container" class="to_left">
+    <%= form_tag "", :multipart => true %>
+      <%= hidden_field_tag "project_id", @project.id %>
+    <div id="board_showing" class="general_box flex_height shadow">
+
+      <div class="flex_height">
+        <h1><font color="black">&nbsp;&nbsp;Assign student to project: <strong><%= @project.title %></strong></font></h1>
+        <div id="action_to_showing_board" class="to_right horizontal_list button">
+          <ul>
+            <li><%= submit_tag 'Add' %></li>
+            <li><%= submit_tag 'Remove' %></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="to_left" id="showing_list">
+        <fieldset>
+          <legend>Students</legend>
+          <%= select_tag(:student_id, options_for_select(@students.collect{|student| [student.name,student.id, {'data-desc'=>student.is_new}]}), "size" => "12", "id" => "demo") %>
+        </fieldset>
+      </div>
+
+      <div id="show_specification" class="to_right" >
+        <fieldset>
+          <legend>Student Details</legend>
+          <textarea rows="13">Student Details...</textarea>
+        </fieldset>
+      </div>
+
+    </div>
+
+    <div id="pick_to_communicate" class="general_box flex_height shadow to_left">
+        <fieldset>
+          <legend>Assigned Students</legend>
+          <%= select_tag(:student_id, options_for_select(@assigned_students.collect{|student| [student.name,student.id, {'data-desc'=>student.is_new }]}), "size" => "3", "id" => "demo") %>
+        </fieldset>
+    </div>
+      <!--*********************************************-->
+    <div id="communication_extra" id="general_box" id="box_shinked" class="shadow flex_height to_right">
+      <!-- Message box -->
+      <div id="message_box" class="to_left">
+        <input class="to_left" type="text" placeholder="Subject:", name ="subject" >
+        <%= text_field_tag '',@email , "id"=>"mail_address", "class" => "to_right" %>
+        <%= text_area_tag 'email' %>
+      </div>
+
+      <div id="action_to_message" class="to_right vertical_list button">
+        <ul>
+          <li><a id="uploadFile" href="#">Attach</a><%=file_field_tag 'attachment', {"id" => "uploadBtn"} %></li>
+          <li><%= submit_tag 'Send' %></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!--*********************-->
+  <div class="aside_cols to_left">
+    <div id="cart" class="to_right vertical_list button">
+      <ul>
+        <li><%=link_to "Edit Details", edit_details_path(id: @project.id )%></li>
+        <li><%=link_to "Make Decision", project_manip_path(id: @project.id, show_action: true) %></li>
+        <li><%=link_to "Message Log", show_messages_path(id: @project.id ) %></li>
+        <li><%=link_to "Spec Editor", admin_edit_project_path(id: @project.id) %></li>
+        <li><%=link_to "Assign Team", admin_assign_student_path(project_id: @project.id )%></li>
+      </ul>
+    </div>
+  </div>
+
+</div>

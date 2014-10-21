@@ -1,0 +1,79 @@
+<%= render "shared/header" %>
+<%= render "shared/dashheader" %>
+<!--############################## MAIN BODY ################################-->
+<div class="wrapper content">
+
+  <!-- Left navigation -->
+  <div class="aside_cols to_left">
+    <div id="tabs" class="to_right vertical_list button">
+      <ul>
+        <li><%=link_to "Newly submitted",admin_dashboard_path,:state => "new" %></li>
+        <li><%=link_to "Accepted", admin_dashboard_path, state: "accepted"  %></li>
+        <li><%=link_to "Rejected", admin_dashboard_path, state: "rejected" %></li>
+        <li><%=link_to "Pending", admin_dashboard_path, state: "pending" %></li>
+        <li><%=link_to "Past projects", admin_dashboard_path, state: "past_projects" %></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Middle board -->
+  <div id="container" class="to_left">
+    <!-- Viewing Project Board -->
+    <div id="board_showing" class="general_box flex_height shadow">
+        <div class="flex_height">
+          <div id="action_to_showing_board" class="to_right horizontal_list button">
+          <% if @show_action%>
+            <ul>
+            <% if @state == "new" %>
+              <li><%= submit_tag 'Accept' %></li>
+              <li><%= submit_tag 'Reject' %></li>
+              <li><%= submit_tag 'Suspend' %></li>
+            <% end%>
+
+            <% if @state == "accepted" %>
+              <li><%= submit_tag 'Suspend' %></li>
+              <li><%= submit_tag 'Add To Cart' %></li>
+            <% end%>
+
+            <% if @state == "rejected" || @state == nil %>
+              <li><%= submit_tag 'Remove' %></li>
+              <li><%= submit_tag 'Suspend' %></li>
+            <% end%>
+
+            <% if @state == "pending" %>
+              <li><%= submit_tag 'Accept' %></li>
+              <li><%= submit_tag 'Reject' %></li>
+            <% end%>
+
+              <% if @state == "past_projects" %>
+              <li><%= submit_tag 'Accept' %></li>
+              <li><%= submit_tag 'Reject' %></li>
+            <% end%>
+          <% end %>
+
+            </ul>
+          </div>
+        </div>
+
+      <div class="flex_height">
+        <div class="project_item">
+          <h1><%=link_to @project.title, project_manip_path(@project) %></a></h1>
+          <div><%=@project.body %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aside_cols to_left">
+    <div id="cart" class="to_right vertical_list button">
+      <ul>
+        <li><%=link_to "Edit Details", edit_details_path(id: @project.id )%></li>
+        <li><%=link_to "Make Decision", project_manip_path(id: @project.id, show_action: true) %></li>
+        <li><%=link_to "Message Log", show_messages_path(id: @project.id ) %></li>
+        <li><%=link_to "Spec Editor", admin_edit_project_path(id: @project.id) %></li>
+        <li><%=link_to "Assign Team", admin_assign_student_path(project_id: @project.id )%></li>
+      </ul>
+    </div>
+  </div>
+
+</div>

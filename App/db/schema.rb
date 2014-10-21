@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20141014121419) do
+=======
+ActiveRecord::Schema.define(version: 20141017172401) do
+>>>>>>> admin_dashboar_refactor
 
   create_table "attacheds", force: true do |t|
     t.integer  "project_id"
@@ -80,6 +84,14 @@ ActiveRecord::Schema.define(version: 20141014121419) do
     t.text     "extra_details"
   end
 
+  create_table "specs", force: true do |t|
+    t.string   "spec_name"
+    t.text     "spec_content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "project_id"
+  end
+
   create_table "student_projects", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -101,6 +113,12 @@ ActiveRecord::Schema.define(version: 20141014121419) do
     t.datetime "updated_at"
     t.string   "course"
     t.integer  "student_project_id"
+    t.boolean  "is_new"
+    t.integer  "project_id"
+    t.text     "programming_skils"
+    t.text     "courseworks_completed"
+    t.text     "concepts"
+    t.string   "GPA"
   end
 
   create_table "users", force: true do |t|
