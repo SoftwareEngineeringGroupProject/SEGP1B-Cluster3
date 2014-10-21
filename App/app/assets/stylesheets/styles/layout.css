@@ -135,8 +135,9 @@ div.wrapper h1 {
 /* -------------------------------------------Specific Wrappers-------------------------------------*/
 .banner{
 	color:#F2EEEE;
-	background-color:#191919;
-	border-top:8px solid #7A991A;
+	/*background-color:#191919;*/
+	background: url(/images/header-bg.png);
+	border-top:8px solid #005A9F;
 	}
 
 .navigation{

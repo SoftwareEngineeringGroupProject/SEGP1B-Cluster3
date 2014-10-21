@@ -63,3 +63,7 @@
 		padding: 5px;
 		transition: background-color 0.2s;
 }
+
+#admin_user_acctype {
+	width: 45%;
+}

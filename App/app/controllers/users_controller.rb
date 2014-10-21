@@ -43,7 +43,6 @@ class UsersController < ApplicationController
   	def createadmin
   		if user_logged_in?
   			@newadminuser = User.new(admin_params)
-  			@newadminuser.acctype = "coordinator"
   			@newadminuser.passwordvalid = -1
   			randompw = (0...8).map { (65 + rand(26)).chr }.join
   			@newadminuser.password = randompw
@@ -259,7 +258,7 @@ class UsersController < ApplicationController
   	end
 
   	def admin_params
-    	params.require(:admin_user).permit(:username, :email, :fname, :lname)
+    	params.require(:admin_user).permit(:username, :email, :fname, :lname, :acctype)
   	end
 
   	def match_password(login_password="")

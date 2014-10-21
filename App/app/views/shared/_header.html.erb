@@ -13,7 +13,7 @@
         		<% if @user.acctype == "industry" %>
         			<li><%= link_to "Projects", :my_projects  %></li>
           		<% elsif @user.acctype == "coordinator" %>
-          			<li><%= link_to "Dashboard", :admin_dashboard %></li>
+          			<li><%= link_to "Dashboard", :admin_dashboard_show_new %></li>
           		<% end %>
           		<li><%= link_to "#{@user.username}", :profile %></li>
           		<li><%= link_to "Logout", :logout %></li>

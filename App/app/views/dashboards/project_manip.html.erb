@@ -3,18 +3,7 @@
 <!--############################## MAIN BODY ################################-->
 <div class="wrapper content">
 
-  <!-- Left navigation -->
-  <div class="aside_cols to_left">
-    <div id="tabs" class="to_right vertical_list button">
-      <ul>
-        <li><%=link_to "Newly submitted",admin_dashboard_path,:state => "new" %></li>
-        <li><%=link_to "Accepted", admin_dashboard_path, state: "accepted"  %></li>
-        <li><%=link_to "Rejected", admin_dashboard_path, state: "rejected" %></li>
-        <li><%=link_to "Pending", admin_dashboard_path, state: "pending" %></li>
-        <li><%=link_to "Past projects", admin_dashboard_path, state: "past_projects" %></li>
-      </ul>
-    </div>
-  </div>
+  <%= render "shared/statussidebar" %>
 
   <!-- Middle board -->
   <div id="container" class="to_left">

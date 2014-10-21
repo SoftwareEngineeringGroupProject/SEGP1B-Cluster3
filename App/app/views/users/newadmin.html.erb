@@ -24,8 +24,8 @@
 
       <fieldset class="inputs">
         <legend>User details</legend>
+          Account Type:<%= f.select(:acctype, options_for_select([['Prospective Project Coordinator', 'coordinator'], ['Past Project Contributor', 'contributor']]), :class=>'acctypeselect') %>
     	  <%= f.text_field :username, "placeholder" => "Username" %>
-
     	  <%= f.text_field :fname, "placeholder" => "First Name" %>
     	  <%= f.text_field :lname, "placeholder" => "Last Name" %>
     	  <%= f.text_field :email, "placeholder" => "Email" %>
