@@ -21,7 +21,7 @@ Rails.application.routes.draw do
      ###############################################
      get 'projects/info' => 'projects#info', as: 'info'
      get 'projects' => 'projects#index', as: 'index'
-     get 'projects/new' => 'projects#new', as: 'new'
+     get 'projects/new' => 'projects#new', :as => :new_past_project
      post 'projects/new' => 'projects#create'
      # post '/student_projects' => 'projects#create'
      # match 'projects/new' => 'projects#create', via: [:get, :post]
@@ -56,8 +56,14 @@ Rails.application.routes.draw do
      match '/contacts',     to: 'contacts#new',             via: 'get', as: "contact"
       resources "contacts", only: [:new, :create]
 
-  # Dashboards
+# Admin Dashboard
   get 'dashboards/view' => "dashboards#view", :as => :admin_dashboard
+  #states
+  get 'dashboards/view?state=new' => "dashboards#view", :as => :admin_dashboard_show_new
+  get 'dashboards/view?state=pending' => "dashboards#view", :as => :admin_dashboard_show_pending
+  get 'dashboards/view?state=rejected' => "dashboards#view", :as => :admin_dashboard_show_rejected
+  get 'dashboards/view?state=accepted' => "dashboards#view", :as => :admin_dashboard_show_accepted
+  
   post 'dashboards/view/:state' => 'dashboards#action_handler', :as => :action_handler
   post 'dashboards/view' => 'dashboards#action_handler'
   get 'dashboards/project_manip/:id' => "dashboards#project_manip", :as => :project_manip
@@ -125,20 +131,15 @@ Rails.application.routes.draw do
   get 'industry/showList/:id' => "industry#showList", :as => :show_all_industry_project
 
   get 'industry/edit' => "industry#edit"
-  #get 'industry/edit/:id' => "industry#edit", :as => :edit_industry_project
-
   get 'industry/update/' => "industry#update"
 
   post 'industry/update/' => "industry#showList"
 
-  #patch 'industry/update' => "industry#update", :as => :update_industry_project
 
   post 'industry/showList' => "industry#action_to_project"
   post 'industry/showList/:id' => "industry#action_to_project", :as => :action_to_industry_project
 
-
   post 'industry/remove/:id' => "industry#remove", :as => :remove_industry_project
-  #get 'industry/delete' => "industry#delete", :as => :delete_industry_project
   post 'industry/delete' => "industry#pending", :as => :delete_pending_project
 
 

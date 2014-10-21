@@ -3,29 +3,23 @@
 <!--############################## MAIN BODY ################################-->
 <div class="wrapper content">
 
-  <!-- Left navigation -->
-  <div class="aside_cols to_left">
-    <div id="tabs" class="to_right vertical_list button">
-      <ul>
-        <li><%=link_to "Newly submitted", state: "new" %></li>
-        <li><%=link_to "Accepted", state: "accepted"  %></li>
-        <li><%=link_to "Rejected", state: "rejected" %></li>
-        <li><%=link_to "Pending", state: "pending" %></li>
-        <li><%=link_to "Past projects", state: "past_projects" %></li>
-      </ul>
-    </div>
-  </div>
+  <%= render "shared/statussidebar" %>
 
   <!-- Middle board -->
   <div id="container" class="to_left">
     <!-- Viewing Project Board -->
     <div id="board_showing" class="general_box flex_height shadow">
       <div class="flex_height">
-        <% @projects.each do |project| %>
-        <div class="project_item">
-          <h1><%=link_to project.title, project_manip_path(project) %></a></h1>
-          <div><%=project.body %></div>
-        </div>
+      	<% if @projects.length > 0 %>
+        	<% @projects.each do |project| %>
+        		<div class="project_item">
+          			<h1><%=link_to project.title, project_manip_path(project) %></a></h1>
+          			<div><%=project.body %></div>
+        		</div>
+        	<% end %>
+        <% else %>
+        	<h3 class="black center">There are currently no projects of this type.</h3>
+        	<h3 class="black center">Please click the left side links to View Projects!</h3>
         <% end %>
       </div>
 

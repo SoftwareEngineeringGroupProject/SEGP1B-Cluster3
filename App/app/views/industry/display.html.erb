@@ -9,9 +9,51 @@
   
       <div id="board_showing" class="general_box flex_height shadow">
         <div id="industrydisplayproject">
-          <p>Name: <%= @project.title %></p>
           <p>Description: <%= @project.body %></p>
           <p>Completion Time: <%= @project.compl_time %></p>
+ 
+      				<div>
+        			<h3>Basic details</h3>
+        			Project Name: <%= @project.title %><br />
+        			Basic Project Description: <%= @project.body %><br />
+        			Estimated Project Length: <%= @project.compl_time %>months<br />
+      				</div>
+
+      				<div>
+        			<h3>System requirements</h3>
+        			Required Language(s): <%= @project.languages %><br />
+        			System Requirements: <%= @project.system_req %><br />
+        			Compatability Requirements: <%= @project.compat_req %><br />
+      				</div>  
+
+      				<div>
+        			<h3>Ideal Student Expertise</h3>
+      				Languages: <%= @project.student_req_lang %><br />
+      				Concepts: <%= @project.student_req_concepts %><br />
+      				</div>
+      				
+      				<div>
+      				<h3>Security Requirements</h3>
+      				Police Check Required: <%= @project.student_police_check %><br />
+      				Other Security Clearance/Confidentiality Clause Required: <%= @project.student_security %><br />
+      				</div>
+
+      				<div>
+      				<h3>Further details</h3>
+        			Anything else helpful to know: <%= @project.extra_details %><br />
+      				</div>
+
+      				<div>
+      				<h3>Attachments</h3>
+      				</div>
+
+  					</fieldset>
+          
+          
+      
+          
+          
+          
         </div>
       </div>
   </div>
