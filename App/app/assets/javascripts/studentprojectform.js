@@ -14,8 +14,8 @@ $(document).ready(function() {
 		}
 	});
 
-	$(studentField).click(function () {
-		$(wrapper).append()
-	});
-
+	// $(studentField).click(function () {
+	// 	$('#add_student_field').appendTo($("#add_student_field").html());
+		
+	// });
 });
