@@ -54,11 +54,8 @@ gem 'autoprefixer-rails'
 
 
 # testing
-gem "rspec-rails", :group => [:test, :development]
-group :test do
-  gem "factory_girl_rails"
-  gem "capybara"
-  gem "guard-rspec"
+group :development, :test do
+  gem 'rspec-rails'
 end
 
 #email form
