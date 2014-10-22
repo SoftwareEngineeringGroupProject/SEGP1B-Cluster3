@@ -74,7 +74,7 @@ clinical and interpersonal skills as well as the confidence and competence to wo
      :summary=> "ARA uses light aircraft to perform aerial mappings. They do this by flying in parallel lines across the area.
      During these flights it's possible for spots to be missed, and this will not be known until the data is processed post-flight.
      ARA needs a tool to indicate spots that have been missed while they are in-flight.", :image=>seed_image("project5Banner.jpg"), 
-     :client_image=>seed_image("project5Client.gif"), :category=>"Mech application", :year=>2012, :client_summary=>"Airborne Research Australia (ARA) is a 
+     :client_image=>seed_image("project5Client.gif"), :category=>"Mech application", :year=>2012, :students_attributes=>[{:name=>"Craig Lawrence", :email=>"craig.lawrence@student.adelaide.edu.au", :studentID=>"craig.lawrence", :course=>"BEng(Software)"},{:name=>"Alec Bellati", :email=>"alec.bellati@student.adelaide.edu.au", :studentID=>"alec.bellati", :course=>"BEng(Software)"},{:name=>"Aidan Snoswell", :email=>"aidan.snoswell@student.adelaide.edu.au", :studentID=>"aidan.snoswell", :course=>"BEng(Software)"}], :client_summary=>"Airborne Research Australia (ARA) is a 
      Research Centre at Flinders University and Australia's National Research Aircraft Facility located at Parafield Airport in Adelaide, South Australia. ARA was 
      established in 1996 with funding from the Commonwealth Government's Major National Research Facilities Programme and Flinders University. The core 
      activity of ARA is the use of airborne platforms (special missionaircraft) for a wide range applications and projects, mainly in the Environmental Research &
