@@ -1,23 +1,23 @@
 <div class="linkbar">
-    <div id="bottomlinks" class="to_right">
-    	<% if current_page?(:index) %>
-        	<button class="btnSelected"><a href="/projects">Project Gallery</a></button>
-        <% else %>
-        	<button class="btn"><a href="/projects">Project Gallery</a></button>
-        <% end %>
-        
-        <% if current_page?(:info) %>
-        	<button class="btnSelected"><%=link_to "Information", info_path %></button>
-        <% else %>
-        	<button class="btn"><%=link_to "Information", info_path %></button>
-        <% end %>
-        
-        <% if current_page?(:contact) %>
-        	<button class="btnSelected"><%=link_to "Contact", contact_path %></button>
-        <% else %>
-        	<button class="btn"><%=link_to "Contact", contact_path %></button>
-        <% end %>
-        
+	<div id="bottomlinks" class="to_right">
+		<% if current_page?(:index) %>
+		<span class="btnSelected"><a href="/projects">Project Gallery</a></span>
+		<% else %>
+		<span class="btn"><a href="/projects">Project Gallery</a></span>
+		<% end %>
+
+		<% if current_page?(:info) %>
+		<span class="btnSelected"><%= link_to "Information", info_path %></span>
+		<% else %>
+		<span class="btn"><%= link_to "Information", info_path %></span>
+		<% end %>
+
+		<% if current_page?(:contact) %>
+		<span class="btnSelected"><%= link_to "Contact", contact_path %></span>
+		<% else %>
+		<span class="btn"><%= link_to "Contact", contact_path %></span>
+		<% end %>
+
 	</div>
 </div>
 <div class="pushlower"></div>
