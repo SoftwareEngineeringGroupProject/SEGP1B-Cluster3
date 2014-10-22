@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'studentproject_manage', 'data-turbolinks-track' => true %>
+
 <%= render "shared/header" %>
 <%= render "shared/linkbar" %>
 <%= render "shared/banner" %>
@@ -20,7 +22,7 @@
 				<!--filter bar here-->
 				<div class="filter-bar to_left">
 					<!--add some ground options here-->
-					<%=form_tag index_path, :method => 'get' do %>
+					<%=form_tag pastproject_management_path, :method => 'get' do %>
 					<span class="to_left"> <%= select_tag "year", options_from_collection_for_select( StudentProject.all.map { |p| p.year }.uniq, :to_s, :to_s), prompt: "Year"%> </span>
 					<span class="to_left"> <%= select_tag "category", options_from_collection_for_select(StudentProject.all.map { |p| p.category }.uniq, :to_s, :to_s), prompt: "Category"%> </span>
 					<span class="to_right"><%= submit_tag "Filter"%></span>
@@ -33,8 +35,9 @@
 
 					<!--add some ground options here-->
 					<% grouped_options = {'PastProject' => ['ID', 'Title', 'Year', 'Category', 'Client Name'],'Student' => ['Name', ['ID', 'Student ID'], ['Degree', 'Course'], 'Email']}
-						@options=grouped_options_for_select(grouped_options)%>
-					<%=form_tag search_path, :method => 'get' do %>
+            @options=grouped_options_for_select(grouped_options)%>
+					<%=form_tag pastproject_management_path, :method => 'get' do %>
+					<span class="to_left"> <%= hidden_field_tag "classify", :value=>"title"%> </span>
 					<span class="to_left"><%= text_field_tag :search, params[:search], placeholder: "Search To Project..."%></span>
 					<span class="to_right"><%= submit_tag "Search", class: "search_submit_button"%></span>
 					<%end%>
@@ -50,8 +53,10 @@
 						<strong><%= flash[:notice] %></strong>
 					</div>
 					<%end%>
+
 					<tr>
-						<th class="project-manage-tick"><%= check_box_tag 'choose[]', 'ticked', false%></th>
+						<!--pass the click event to a JS function that is capable of select/deselect all checkboxes-->
+						<th class="project-manage-tick"><%= check_box_tag 'choose[]', 'ticked', false , :onClick=>"select_all(this)" %></th>
 						<th>Title</th>
 						<th>Project ID</th>
 						<th>Client</th>
@@ -60,6 +65,83 @@
 						<th>Last Updated</th>
 					</tr>
 
+					<!-------------------execute filting here------------------>
+					<%if (@year!="") && (@category!="") && (@year!=nil) && (@category!=nil)%>
+					<% @filteredProjects=StudentProject.where("year=? and category=?", @year, @category)%>
+					<% for project in @filteredProjects %>
+					<%if project==@filteredProjects.last%>
+					<tr class="Project-remove-dashline">
+						<%else%>
+					<tr>
+						<%end%>
+						<td class="project-manage-tick"><%= check_box_tag 'choose[]', project.id, false%></td>
+						<td><%= truncate(project.title, length: 40)%></td>
+						<td><%= project.id%></td>
+						<td><%= truncate(project.client, length: 20)%></td>
+						<td><%= truncate(project.category, length: 20)%></td>
+						<td><%= project.year%></td>
+						<td><%= project.updated_at.to_date%></td>
+					</tr>
+					<%end%>
+
+					<%elsif (@year!="") && (@year!=nil)%>
+					<% @filteredProjects=StudentProject.where("year=?", @year)%>
+
+					<% for project in @filteredProjects %>
+					<%if project==@filteredProjects.last%>
+					<tr class="Project-remove-dashline">
+						<%else%>
+					<tr>
+						<%end%>
+						<td class="project-manage-tick"><%= check_box_tag 'choose[]', project.id, false%></td>
+						<td><%= truncate(project.title, length: 40)%></td>
+						<td><%= project.id%></td>
+						<td><%= truncate(project.client, length: 20)%></td>
+						<td><%= truncate(project.category, length: 20)%></td>
+						<td><%= project.year%></td>
+						<td><%= project.updated_at.to_date%></td>
+					</tr>
+					<%end%>
+
+					<%elsif (@category!="") && (@category!=nil)%>
+					<% @filteredProjects=StudentProject.where("category=?", @category)%>
+					<% for project in @filteredProjects %>
+					<%if project==@filteredProjects.last%>
+					<tr class="Project-remove-dashline">
+						<%else%>
+					<tr>
+						<%end%>
+						<td class="project-manage-tick"><%= check_box_tag 'choose[]', project.id, false%></td>
+						<td><%= truncate(project.title, length: 40)%></td>
+						<td><%= project.id%></td>
+						<td><%= truncate(project.client, length: 20)%></td>
+						<td><%= truncate(project.category, length: 20)%></td>
+						<td><%= project.year%></td>
+						<td><%= project.updated_at.to_date%></td>
+					</tr>
+					<%end%>
+					<!-------------------execute filting end------------------>
+					<%else%>
+
+					<!--execute search here if exists-->
+					<%if @searchVariable.blank? ==false%>
+					<% for project in @searchVariable %>
+					<%if project==@Projects.last%>
+					<tr class="Project-remove-dashline">
+						<%else%>
+					<tr>
+						<%end%>
+						<td class="project-manage-tick"><%= check_box_tag 'choose[]', project.id, false%></td>
+						<td><%= truncate(project.title, length: 40)%></td>
+						<td><%= project.id%></td>
+						<td><%= truncate(project.client, length: 20)%></td>
+						<td><%= truncate(project.category, length: 20)%></td>
+						<td><%= project.year%></td>
+						<td><%= project.updated_at.to_date%></td>
+					</tr>
+					<%end%>
+					<!---searching end here-->
+					<%else%>
 					<!--add each project details line here-->
 					<% for project in @Projects %>
 					<%if project==@Projects.last%>
@@ -77,13 +159,14 @@
 					</tr>
 					<%end%>
 					<!--add each project details line end-->
-
+					<%end%>
+					<%end%>
 				</table>
 			</div>
 
 			<div  class="project-manage-submit-container button">
-				<span class="to_right"><%= link_to "Cancel", index_path, class: "link_to_button"%></span>
-				<span class="to_right"><%= submit_tag "Remove"%></span>
+				<span class="to_right"><%= link_to "Back", index_path, class: "link_to_button"%></span>
+				<span class="to_right"><%= submit_tag "Remove", data: { confirm: "Are you sure to delete?" }%></span>
 				<span class="to_right"><%= submit_tag "Edit"%></span>
 			</div>
 			<%end%>

@@ -12,9 +12,9 @@
 			<%= form_for @theStudent, :url => { :action => "update" } do |builder| %>
 
 			<% @theStudent.errors.full_messages.each do |msg| %>
-			<p>
+			<div class="notice" style="color: red">
 				<%= msg %>
-			</p>
+			</div>
 			<% end %>
 
 			<% if flash[:notice] %>

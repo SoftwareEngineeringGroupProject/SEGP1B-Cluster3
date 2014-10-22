@@ -44,8 +44,6 @@ Rails.application.routes.draw do
        get 'projects/multiupdate' => 'projects#multiupdate' , as: 'pastproject_multiupdate'
        patch 'projects/multiupdate/' => 'projects#multiupdate'
         get 'projects/multiremove' => 'projects#multiremove' , as: 'pastproject_multiremove'
-
-
       
      ###############################################
      # Past Project Students Routes
