@@ -32,6 +32,9 @@ describe Company do
 		it { should_not be_valid }
 	end
 
-	
+	describe "a company must have a user ID" do
+		before { @comp.user_id = " " }
+		it { should_not be_valid }
+	end
 
 end
