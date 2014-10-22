@@ -10,33 +10,26 @@
 
 <%= f.label :title %>
 <%= f.text_field :title, "placeholder" => "Title" %></br>
+
 <%= f.label :year %>
 <%= f.select :year , (2000 .. Date.today.year) %></br></br>
-<% if false %>
-<%= f.select :year ,{:start_year => Time.now.year, :end_year => Time.now.year-10} %></br>
-<%= date_select(@student_project, :year, start_year: Time.now.year, end_year: 2000, discard_day: true, discard_month: true)%>
-<% end %>
+
 <%= f.label :client %>
 <%= f.text_field :client , "placeholder" => "Client" %></br></br>
+
 <%= f.label :category %>
 <%= f.text_field :category , "placeholder" => "Category"%></br></br>
+
+<!-- Student forms -->
+<div id = "add_student_field">
 <%= f.fields_for :students do |builder| %>
-<%= builder.label "Student name" %>
-<%= builder.text_field :name , "placeholder" => "Student Name" %></br>
-<%= builder.label "Student email" %>
-<%= builder.text_field :email , "placeholder" => "Student Email" %></br>
-<%= builder.label "Student ID" %>
-<%= builder.text_field :studentID ,"placeholder" => "Student ID" %></br>
-<%= builder.label :course %>
-<% if false %>
-<div class="select_course" >
-		<%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %>
+<%= render "studentform" , :f => builder %>
+<% end %>
 </div>
-<% end %>
-<%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %></br></br>
-<%= builder.text_field :course, "style" => "float:right display:inline" ,"placeholder" => "Course" %>
-</br>
-<% end %>
+
+<%= f.submit 'Add Student', :name => "add_student" %></br>
+<%= f.submit 'Remove Student', :name => "remove_student" %></br>
+
 <%= f.label :summary %>
 <%= f.text_area :summary , "placeholder" => "Summary", "rows" => "4", "columns" => "20" %></br>
 <%= f.label :image %>
