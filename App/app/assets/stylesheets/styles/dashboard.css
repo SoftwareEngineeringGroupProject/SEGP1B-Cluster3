@@ -3,8 +3,8 @@
 #container {
 	margin: 8px auto;
 	width:70%;
-	padding: 4px 10px 10px 10px;
-	background:none;
+	padding: 4px 0px 10px 10px;
+	background: none;
 	min-height: 350px;
 	}
 
@@ -12,7 +12,7 @@ div.content {
 	margin-top: 8px;
 	}
 
-#communication, #board_showing , #pick_to_communicate{
+#communication, #pick_to_communicate{
 	margin-bottom: 20px;
 	padding: 10px;
 	border-radius: 4px;
@@ -57,8 +57,15 @@ div.content {
 
 #board_showing {
 	background-color: #FAFAFA;
+	padding: 0;
+	min-height: 500px;
 	}
 
+#new_board_showing {
+	background-color: #FAFAFA;
+	padding: 15px;
+	min-height: 500px;
+}
 
 /*------------------- Top bar --------------------- */
 #navi_tabs li {
@@ -242,4 +249,115 @@ div.content {
 	color: #6E6E6E;
 	background-color: #F2F2F2;
 	border-radius: 4px;
+}
+
+/* -------------------------- Table ----------------------------- */
+strong a:link, strong a:active, strong a:visited{
+	font-weight: bold; 
+	color: black;
+}
+
+strong a:hover {
+	color: blue;
+}
+
+em {
+	font-style: italic; 
+}
+
+table {
+	background: #f5f5f5;
+	color:black;
+	border-collapse: separate;
+	box-shadow: inset 0 1px 0 #fff;
+	font-size: 12px;
+	line-height: 24px;
+	margin: 20px auto;
+	text-align: left;
+	width: 95%;
+}	
+
+th {
+	background: url(http://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#777, #444);
+	border-left: 1px solid #555;
+	border-right: 1px solid #777;
+	border-top: 1px solid #555;
+	border-bottom: 1px solid #333;
+	box-shadow: inset 0 1px 0 #999;
+	color: #fff;
+  	font-weight: bold;
+	padding: 10px 15px;
+	position: relative;
+	text-shadow: 0 1px 0 #000;	
+}
+
+th:after {
+	background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.08));
+	content: '';
+	display: block;
+	height: 25%;
+	left: 0;
+	margin: 1px 0 0 0;
+	position: absolute;
+	top: 25%;
+	width: 100%;
+}
+
+td {
+	border-right: 1px solid #fff;
+	border-left: 1px solid #e8e8e8;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #e8e8e8;
+	padding: 10px 15px;
+	position: relative;
+	transition: all 300ms;
+}	
+
+tr {
+	background: url(http://jackrugile.com/images/misc/noise-diagonal.png);	
+}
+
+/* ---------------------------------- content section header ------------------------- */
+.content_bar {
+	margin:0;
+	padding: 10px;
+	background: #EEE;
+	height: 30px;
+}
+
+.content_bar h3 {
+	color: #5e5c54;
+}
+
+/* --------------------------------- project_item ---------------------------------- */
+.project_item{
+  color: black;
+  border-radius: 8px;
+  padding: 30px;
+}
+.project_item h3, .project_item h1 {
+	color: #B38808;
+	border:none;
+}
+.project_item > div {
+	width: 48%;
+}
+
+/* ---------------------------------- title item --------------------------------- */
+.title_item {
+	padding: 15px;
+	word-spacing: 4px;
+	background: #EEE;
+	margin: 4px;
+	color: #333;
+} 
+
+hr.fancy-line { 
+	height: 12px; 
+	border: 0; 
+	box-shadow: inset 0 12px 9px -12px rgba(0,0,0,0.5); 
+}
+
+.title_item strong {
+	color: #005A9C;
 }

@@ -7,20 +7,18 @@
   <%= render "shared/statussidebar" %>
 
   <!--********************-->
-  <%= form_tag %>
-  <%= hidden_field_tag "spec_url", @spec_link, :id => "spec_link" %>
-  <div id="container" class="to_left">
-    <div id="board_showing" class="general_box flex_height shadow">
-
-      <div class="flex_height">
-        <div id="action_to_showing_board" class="to_right horizontal_list button">
-          <ul>
-            <li><%= submit_tag 'Edit' %></li>
-            <li><%= submit_tag 'Preview' %></li>
-          </ul>
-        </div>
+ 
+   <div id="container" class="to_left">
+     <div id="new_board_showing" class="flex_height shadow">
+      <%= form_tag %>
+      <%= hidden_field_tag "spec_url", @spec_link, :id => "spec_link" %>
+      <div id="action_to_showing_board" class="to_right horizontal_list button">
+        <ul>
+          <li><%= submit_tag 'Edit' %></li>
+          <li><%= submit_tag 'Preview' %></li>
+        </ul>
       </div>
-
+        
       <div id="edit_specification" class="to_right"  >
         <fieldset>
           <legend>Project specification</legend>
@@ -28,10 +26,10 @@
           <%= hidden_field_tag 'project_id', @project.id %>
         </fieldset>
       </div>
+        
     </div>
   </div>
 
-  <!--*********************-->
   <%= render "shared/projectmanipsidebar" %>
-
 </div>
+  

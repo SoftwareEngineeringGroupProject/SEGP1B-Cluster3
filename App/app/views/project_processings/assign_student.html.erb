@@ -8,7 +8,7 @@
 
   <!-- Middle board -->
   <div id="container" class="to_left">
-     <div id="board_showing" class="general_box flex_height shadow">
+     <div id="new_board_showing" class="flex_height shadow">
     <% if @student1.errors.any? || @student2.errors.any? || @student3.errors.any?%>
       <ul class="Signup_Errors">
       <% for message_error in @student1.errors.full_messages %>
