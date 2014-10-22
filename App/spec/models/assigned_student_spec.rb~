@@ -18,7 +18,10 @@ describe AssignedStudent do
 
 	it { should be_valid }
 
-
+	describe "must have student id" do
+		before { @assignedStudent.studentID = " " }
+		it { should_not be_valid }
+	end
 
 
 

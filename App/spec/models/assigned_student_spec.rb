@@ -23,7 +23,15 @@ describe AssignedStudent do
 		it { should_not be_valid }
 	end
 
+	describe "must have project id" do
+		before { @assignedStudent.project_id = " " }
+		it { should_not be_valid }
+	end
 
+	describe "must have project id" do
+		before { @assignedStudent.group_name = " " }
+		it { should_not be_valid }
+	end
 
 
 end
