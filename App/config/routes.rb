@@ -54,7 +54,7 @@ Rails.application.routes.draw do
 
 
      # EMAIL FORM
-     match '/contacts',     to: 'contacts#new',             via: 'get', as: "contact"
+     match '/contacts',     to: 'contacts#new',             via: 'get', :as => :contact
       resources "contacts", only: [:new, :create]
 
 # Admin Dashboard
