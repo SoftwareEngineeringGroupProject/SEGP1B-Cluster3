@@ -12,15 +12,7 @@
       			<div class="titles">
        				 <h3>Submit a Project</h3>
       			</div>
-
-      			<fieldset class="leftPart inputs to_left">
-        			<legend>Project details</legend>
-        			<%=f.text_field :title, "placeholder" => "Title" %>
-        			<%=f.text_area :body, "placeholder" => "Project description", "rows"=>"10" %>
-        			<%=f.file_field :attachment %>
-      			</fieldset>
-
-      			<div class="sep"></div>
+      			
       			<div class="to_left">
 
      				<% if @project.errors.any? %>
@@ -30,6 +22,49 @@
         				<% end %>
       				<% end %>
       			</div>
+
+      			<fieldset class="inputs to_left" style="width:95%">
+    				<legend>Project details</legend>	
+      				<div>
+        			<h3>Basic details</h3>
+        			Project Name: <%=f.text_area :title, "placeholder" => "e.g. My Project Idea", "rows" => 1 %>
+        			Basic Project Description: <%=f.text_area :body, "placeholder" => "e.g. My Awesome Project Idea Description", "rows"=>"10" %>
+        			Estimated Project Length: <%=f.select(:compl_time, options_for_select([['1 month', 1], ['2 months', 2], ['3 months', 3], ['6 months', 6], ['9 months', 9], ['1 year', 12], ['1.5 years', 18], ['2 years', 24]])) %>
+      				</div>
+
+      				<div>
+        			<h3>System requirements</h3>
+        			Required Language(s): <%=f.text_area :languages, "placeholder" => "e.g. Must be written in Ruby on Rails version 4.2 or PHP with HTML/JavaScript" %>
+        			System Requirements: <%=f.text_area :system_req, "placeholder" => "e.g. Must run on apache version X" %>
+        			Compatability Requirements: <%=f.text_area :compat_req, "placeholder" => "e.g. Must run on Internet Explorer version 8 and up" %>
+      				</div>  
+
+      				<div>
+        			<h3>Ideal Student Expertise</h3>
+      				Languages: <%=f.text_area :student_req_lang, "placeholder" => "e.g. Must become familiar with SQL" %>
+      				Concepts: <%=f.text_area :student_req_concepts, "placeholder" => "e.g. Must be familiar with distributed hash tables" %>
+      				</div>
+      				
+      				<div>
+      				<h3>Security Requirements</h3>
+      				Police Check Required: <%=f.text_area :student_police_check, "placeholder" => "e.g. Yes/No" %>
+      				Other Security Clearance/Confidentiality Clause Required: <%=f.text_area :student_security, "placeholder" => "e.g. This is a defence force project and secret agent clearance is required" %>
+      				</div>
+
+      				<div>
+      				<h3>Further details</h3>
+        			Anything else helpful to know: <%=f.text_area :extra_details, "placeholder" => "e.g. Any extra info can be added here", "rows"=>"10" %>
+      				</div>
+
+      				<div>
+      				<h3>Attach any extra information from file</h3>
+        			<%=f.file_field :attachment %>
+      				</div>
+
+  			</fieldset>
+
+      			<div class="sep"></div>
+      			
       			<div id="subBtn" class="button horizontal_list to_right">
         			<ul>
           				<li><%= f.submit "SUBMIT" %></li>

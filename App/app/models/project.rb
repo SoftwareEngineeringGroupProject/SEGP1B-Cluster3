@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
 	has_many :messages
 	has_many :students
 	has_one :spec
+	has_many :assigned_students
 	belongs_to :user
 	has_attached_file :attachment
 	validates_presence_of :title, :body

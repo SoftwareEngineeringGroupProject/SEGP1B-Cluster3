@@ -17,6 +17,7 @@ end
 User.create(username: "industry", email: "industry@indust.com", password: "cluster3", password_confirmation: "cluster3", fname: "Default", lname: "User", companyname: "Cluster 3", address: "NA", phone: "NA", website: "NA", acctype: "industry")
 User.create(username: "administrator", email: "admin@admin.com", password: "cluster3", password_confirmation: "cluster3", fname: "Default", lname: "Admin", companyname: "Cluster 3", address: "NA", phone: "NA", website: "NA", acctype: "coordinator")
 
+
      StudentProject.create(:title=> "QB50 SUSat CubeSat Nanosatellite Project", :client=> "QB50, The University of Adelaide",
      :summary=> "The QB50 project involves launching a network of 61 independently developed miniature satellites into
      the lower thermosphere to carry out research on the sections of the atmosphere rarely studied. The project is headed by
@@ -75,4 +76,5 @@ clinical and interpersonal skills as well as the confidence and competence to wo
      activity of ARA is the use of airborne platforms (special missionaircraft) for a wide range applications and projects, mainly in the Environmental Research &
      Development area. Most of these projects are based on collaborations with colleagues and institutions within Australia and internationally. ", 
     :client_link=>"http://www.airborneresearch.com.au/")
+
 

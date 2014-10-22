@@ -237,7 +237,7 @@ class IndustryController < ApplicationController
 
 	private
 	  def project_params
-	    params.require(:project).permit(:title, :body)
+	    params.require(:project).permit(:title, :body, :compl_time, :man_hours, :languages, :system_req, :compat_req, :student_req_lang, :student_req_concepts, :student_police_check, :student_security, :extra_details)
 	  end
 
 	 	def message_params
