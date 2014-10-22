@@ -94,5 +94,9 @@ class ApplicationController < ActionController::Base
     		return true
   		end
 	end
+	
+	def current_controller(names)
+    	names.include?(current_controller)
+  	end
 
 end

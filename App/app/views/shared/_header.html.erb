@@ -1,18 +1,43 @@
 <div class="headercontainer">
 	<div class="topheader">
 		<div id="headerbuttons" class="to_right">
-			<button class="btn"><%= link_to "Home", :root %></button>
+			<% if current_page?(:root) %>
+				<%= link_to "Home", :root, :class => "btnSelected" %>
+			<% else %>
+				<%= link_to "Home", :root, :class => "btn" %>
+			<% end %>
         	<% @user = User.find_by_id( session[:user_id] ) %>
         	<% if @user != nil %>
     			<% if @user.acctype == "industry" %>
-					<button class="btn"><%= link_to "Projects", :my_projects  %></buton>      				<% elsif @user.acctype == "coordinator" %>
-          			<button class="btn"><%= link_to "Projects", :admin_dashboard_show_new %></button>
+    				<% if current_page?(:my_projects) %>
+        				<%= link_to "Projects", :my_projects, :class => "btnSelected" %>
+        			<% else %>
+        				<%= link_to "Projects", :my_projects, :class => "btn" %>
+        			<% end %>      				
+				<% elsif @user.acctype == "coordinator" %>
+					<% if controller_name == 'dashboards' || controller_name == 'project_processings' %>
+          				<%= link_to "Projects", :admin_dashboard_show_new, :class => "btnSelected" %>
+          			<% else %>
+          				<%= link_to "Projects", :admin_dashboard_show_new, :class => "btn" %>
+          			<% end %>
           		<% end %>
-          		<button class="btn"><%= link_to "#{@user.username}", :profile %></button>
-          		<button class="btn"><%= link_to "Logout", :logout %></button>
+          		<% if controller_name == 'users' %>
+          			<%= link_to "#{@user.username}", :profile, :class => "btnSelected" %>
+          		<% else %>
+          			<%= link_to "#{@user.username}", :profile, :class => "btn" %>
+          		<% end %>
+          		<%= link_to "Logout", :logout, :class => "btn" %>
         	<% else %>
-    			<button class="btn"><%= link_to "Login", :login %></button>
-      			<button class="btn"><%= link_to "Register", :signup %></button>
+        		<% if current_page?(:login) %>
+    				<%= link_to "Login", :login, :class => "btnSelected" %>
+    			<% else %>
+    				<%= link_to "Login", :login, :class => "btn" %>
+    			<% end %>
+    			<% if current_page?(:signup) %>
+      				<%= link_to "Register", :signup, :class => "btnSelected" %>
+      			<% else %>
+      				<%= link_to "Register", :signup, :class => "btn" %>
+      			<% end %>
        		<% end %>
       	</div>
 	</div>
