@@ -4,8 +4,19 @@
 
 <div class="wrapper content">
 	<div id="news" class="flex_height shadow">
-		<div class="contact-title">
-			<h1><strong>Project Portfolio</strong></h1>
+
+		<div id="project-index-header-container">
+			<div class="contact-title to_left">
+				<h1><strong>Project Portfolio</strong></h1>
+			</div>
+			<% if session[:user_id] != nil %>
+			<% @user = User.find(session[:user_id]) %>
+			<% if @user.acctype == "coordinator" %>
+			<div class="button to_right" style="margin-right: 20px;">
+				<%= link_to "Past Projects Management", pastproject_management_path%>
+			</div>
+			<%end%>
+			<%end%>
 		</div>
 
 		<h2><%= flash[:notice] %></h2>
@@ -30,7 +41,7 @@
 				<%=form_tag search_path, :method => 'get' do %>
 				<span class="to_left"> <%= select_tag "classify", options_for_select(@options), prompt:"General"%> </span>
 				<span class="to_left"><%= text_field_tag :search, params[:search], placeholder: "Search..."%></span>
-				<span class="to_right"><%= submit_tag "Search"%></span>
+				<span class="to_right"><%= submit_tag "Search", class: "search_submit_button"%></span>
 				<%end%>
 			</div>
 			<!----------search bar end---------->
@@ -114,7 +125,7 @@
 			<% end %>
 			<% end %>
 		</div>
-		
+
 	</div>
 </div>
 <%= render "shared/footer" %>
