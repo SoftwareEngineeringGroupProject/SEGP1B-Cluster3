@@ -1,27 +1,30 @@
-  <!--#######################################################-->
-  <div class="wrapper banner">
-    <div id="top_bar" class="flex_height">
-      <div class="to_left">
-        <h1><a href="/">University of Adelaide</a></h1>
-        <p>School of Computer Science</p>
-      </div>
-
-      <div id="login_buttons" class="button horizontal_list to_right">
-        <ul>
+<div class="headercontainer">
+	<div class="topheader">
+		<div id="headerbuttons" class="to_right">
+			<button class="btn"><%= link_to "Home", :root %></button>
         	<% @user = User.find_by_id( session[:user_id] ) %>
         	<% if @user != nil %>
-        		<% if @user.acctype == "industry" %>
-        			<li><%= link_to "Projects", :my_projects  %></li>
-          		<% elsif @user.acctype == "coordinator" %>
-          			<li><%= link_to "Dashboard", :admin_dashboard_show_new %></li>
+    			<% if @user.acctype == "industry" %>
+					<button class="btn"><%= link_to "Projects", :my_projects  %></buton>      				<% elsif @user.acctype == "coordinator" %>
+          			<button class="btn"><%= link_to "Projects", :admin_dashboard_show_new %></button>
           		<% end %>
-          		<li><%= link_to "#{@user.username}", :profile %></li>
-          		<li><%= link_to "Logout", :logout %></li>
+          		<button class="btn"><%= link_to "#{@user.username}", :profile %></button>
+          		<button class="btn"><%= link_to "Logout", :logout %></button>
         	<% else %>
-        		<li><%= link_to "Login", :login %></li>
-          		<li><%= link_to "Register", :signup %></li>
-        	<% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
+    			<button class="btn"><%= link_to "Login", :login %></button>
+      			<button class="btn"><%= link_to "Register", :signup %></button>
+       		<% end %>
+      	</div>
+	</div>
+  	<div class="bottomheader">
+    	<div id="top_bar" class="flex_height">
+      		<div class="to_left">
+        		<%= link_to(image_tag("UofA.png", :alt => "home image", :class => "bannerlogo", :title => "Click here to return to Home"), "/") %>
+        		<p>School of Computer Science</p>
+      		</div>
+
+      		
+    	</div>
+  	</div>
+</div>
+<div class="push"></div>

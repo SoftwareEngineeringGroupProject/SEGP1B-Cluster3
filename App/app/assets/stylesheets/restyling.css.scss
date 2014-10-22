@@ -1,0 +1,71 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.headercontainer {
+	position: fixed;
+	width: 100%;
+	z-index: 1000;
+}
+.topheader {
+	top: 0;
+	background-color: #005AA3;
+	height: 30px;
+	position: fixed;
+	width: 100%;
+}
+
+.bottomheader {
+	top: 30px;
+	width: 100%;
+	background-image: image-url("header-bg.png");
+	background-size: contain;
+	color: white;
+	height: 70px;
+	position: fixed;
+}
+
+.bannerlogo {
+	height: 48px;
+	width: 156px;
+}
+.push {
+	margin-bottom: 100px;
+}
+
+
+.btn {
+  background: #f01111;
+  background-image: -webkit-linear-gradient(top, #f01111, #a33f3f);
+  background-image: -moz-linear-gradient(top, #f01111, #a33f3f);
+  background-image: -ms-linear-gradient(top, #f01111, #a33f3f);
+  background-image: -o-linear-gradient(top, #f01111, #a33f3f);
+  background-image: linear-gradient(to bottom, #f01111, #a33f3f);
+  -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  border-radius: 5px;
+  text-shadow: 1px 1px 5px #666666;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 10px 20px 10px 20px;
+  border: solid #1f628d 0px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #4867c4;
+  background-image: -webkit-linear-gradient(top, #4867c4, #53a2d6);
+  background-image: -moz-linear-gradient(top, #4867c4, #53a2d6);
+  background-image: -ms-linear-gradient(top, #4867c4, #53a2d6);
+  background-image: -o-linear-gradient(top, #4867c4, #53a2d6);
+  background-image: linear-gradient(to bottom, #4867c4, #53a2d6);
+  text-decoration: none;
+}
+
+#headerbuttons {
+	margin-right: 16%;
+	color: white;
+	bottom: 0px;
+	border-color: black;
+}
