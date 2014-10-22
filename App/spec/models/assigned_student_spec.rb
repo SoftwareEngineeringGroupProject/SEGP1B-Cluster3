@@ -18,6 +18,8 @@ describe AssignedStudent do
 
 	it { should be_valid }
 
+
+#not null test
 	describe "must have student id" do
 		before { @assignedStudent.studentID = " " }
 		it { should_not be_valid }
@@ -32,6 +34,21 @@ describe AssignedStudent do
 		before { @assignedStudent.group_name = " " }
 		it { should_not be_valid }
 	end
+
+#unique test
+
+	describe "the student id must be unique" do
+		before do
+			dupStudent = @assignedStudent.dup
+			dupStudent.studentID = @assignedStudent.studentID
+  			dupStudent.save
+		end
+
+		it {should_not be_valid}
+	end
+
+
+
 
 
 end
