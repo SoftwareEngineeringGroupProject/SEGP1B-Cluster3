@@ -5,7 +5,7 @@ describe AssignedStudent do
 
 #valid test
 	before do
-		@assignedStudent = AssignedStudent.new(studentID: "a1234567", project_id: "1234", created_at: "12-21-2012", updated_at: "13-31-2013", group_name: "SEGP" )
+		@assignedStudent = AssignedStudent.new(studentID: "a1234567", project_id: "1234", group_name: "SEGP" )
 	end
 
 	subject { @assignedStudent }
@@ -13,7 +13,8 @@ describe AssignedStudent do
 	it { should respond_to(:studentID) }
 	it { should respond_to(:project_id) }
 	it { should respond_to(:created_at) }
-	it { should respond_to(:13-31-2013) }
+	it { should respond_to(:created_at) }
+	it { should respond_to(:updated_at) }
 	it { should respond_to(:group_name) }
 
 	it { should be_valid }
@@ -30,7 +31,7 @@ describe AssignedStudent do
 		it { should_not be_valid }
 	end
 
-	describe "must have project id" do
+	describe "must have project grou name" do
 		before { @assignedStudent.group_name = " " }
 		it { should_not be_valid }
 	end
