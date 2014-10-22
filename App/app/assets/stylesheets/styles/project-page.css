@@ -1,421 +1,545 @@
 .project-maintitle {
-    font-family: Georgia, Times, serif;
-    color: #b38807;
-    font-size: 2.28em;
-    font-weight: normal;
-    margin-left: 10px;
+	font-family: Georgia, Times, serif;
+	color: #b38807;
+	font-size: 2.28em;
+	font-weight: normal;
+	margin-left: 10px;
 }
 
 .project-index-background {
-    background-image: url("/assets/project-index-background.jpg");
+	background-image: url("/assets/project-index-background.jpg");
 }
 
 .project-title-subheading {
-    margin-left: 70px;
-    margin-top: 20px;
-    font-size: 1.5em;
-    font-family: Georgia, Times, serif;
-    color: blue;
-    font-weight: normal;
+	margin-left: 70px;
+	margin-top: 20px;
+	font-size: 1.5em;
+	font-family: Georgia, Times, serif;
+	color: blue;
+	font-weight: normal;
 }
 
 .project-title-subheading:active {
-    background: white;
+	background: white;
 }
 
 .project-title {
-    margin-left: 70px;
-    margin-top: 10px;
-    font-size: 3.0em;
-    font-family: Georgia, Times, serif;
-    color: #005d8f;
-    font-weight: normal;
+	margin-left: 70px;
+	margin-top: 10px;
+	font-size: 3.0em;
+	font-family: Georgia, Times, serif;
+	color: #005d8f;
+	font-weight: normal;
 }
 
 .project-metadata {
-    border-bottom: 2px solid #cdcdcd;
-    border-top: 2px solid #cdcdcd;
-    margin: 10px auto;
-    min-height: 30px;
-    max-width: 1150px;
+	border-bottom: 2px solid #cdcdcd;
+	border-top: 2px solid #cdcdcd;
+	margin: 10px auto;
+	min-height: 30px;
+	max-width: 1150px;
 }
 
 ul.metalist li {
-    width: auto;
-    float: left;
-    margin-right: 60px;
-    margin-left: 60px;
+	width: auto;
+	float: left;
+	margin-right: 60px;
+	margin-left: 60px;
 }
 
 ul.right-client-list li {
-    border-bottom: 3px dotted #cdcdcd;
+	border-bottom: 3px dotted #cdcdcd;
 }
 
 .project-image {
-    margin: 30px 0px 20px 60px;
-    width: 750px;
-    height: 200px;
+	margin: 30px 0px 20px 60px;
+	width: 750px;
+	height: 200px;
 }
 
 .project-index-image {
-    -webkit-box-shadow: 3px 3px 3px #7C7C7C;
-    margin: 30px 50px;
-    margin-bottom: 50px;
-    width: 200px;
-    height: 300px;
-    float: left;
-    font-size: 0.8em;
-    text-align: center;
-    color: #cc3333;
+	-webkit-box-shadow: 3px 3px 3px #7C7C7C;
+	margin: 30px 50px;
+	margin-bottom: 50px;
+	width: 200px;
+	height: 300px;
+	float: left;
+	font-size: 0.8em;
+	text-align: center;
+	color: #cc3333;
 }
 
 .project-index-image-inside {
-    width: 200px;
-    height: 150px;
+	width: 200px;
+	height: 150px;
 }
 
 .project-index-summary {
-    margin-top: 5px;
-    color: grey;
-    font-size: small;
-    text-align: left;
+	margin-top: 5px;
+	color: grey;
+	font-size: small;
+	text-align: left;
 }
 
 .project-index-image:hover {
-    color: blue;
-    opacity: 0.4;
-    box-shadow: 3px 3px 3px #7C7C7C;
+	color: blue;
+	opacity: 0.4;
+	box-shadow: 3px 3px 3px #7C7C7C;
 }
 
 .project-content {
-    margin-left: 80px;
-    margin-right: 20px;
-    width: 800px;
-    height: 100px;
-    font-size: medium;
-    text-align: left;
-    color: #456;
-    word-wrap: break-word;
+	margin-left: 80px;
+	margin-right: 20px;
+	width: 800px;
+	height: 100px;
+	font-size: medium;
+	text-align: left;
+	color: #456;
+	word-wrap: break-word;
 }
 
 .project-content-edit {
-    margin-left: 80px;
-    margin-right: 20px;
-    width: 800px;
-    height: 100px;
-    font-size: medium;
-    text-align: left;
-    color: #456;
-    word-wrap: break-word;
-    float: right;
+	margin-left: 80px;
+	margin-right: 20px;
+	width: 800px;
+	height: 100px;
+	font-size: medium;
+	text-align: left;
+	color: #456;
+	word-wrap: break-word;
+	float: right;
 }
 
 .project-edit-fieldset {
-    width: 1000px;
-    height: 1400px;
-    font-size: 1.0em;
-    margin: 0 auto;
-    color: black;
+	width: 1000px;
+	height: 1400px;
+	font-size: 1.0em;
+	margin: 0 auto;
+	color: black;
 }
 
 .student-edit-fieldset {
-    width: 800px;
-    height: 500px;
-    font-size: 1.5em;
-    margin: 0 auto;
-    color: black;
+	width: 800px;
+	height: 500px;
+	font-size: 1.5em;
+	margin: 0 auto;
+	color: black;
 }
 
 .student-edit-fieldset label {
-    color: #005d8f;
+	color: #005d8f;
 }
 
 .student-edit-fieldset select {
-    width: 210px;
+	width: 210px;
 }
 
-
 .project-student-edit-line-container {
-    margin: 15px auto;
+	margin: 15px auto;
 }
 
 .project-edit-fieldset-group {
-    width: 800px;
-    height: auto;
-    font-size: 1.0em;
-    margin: 0 auto;
-    margin-top: 40px;
+	width: 800px;
+	height: auto;
+	font-size: 1.0em;
+	margin: 0 auto;
+	margin-top: 40px;
 }
 
 .project-edit-fieldset-group legend {
-    color: #005d8f;
+	color: #005d8f;
 }
 
 table.project-edit-table a:visited {
-    color: #005d8f;
+	color: #005d8f;
 }
 
 table.project-edit-table th {
-    color: grey;
+	color: grey;
 }
 .project-edit-line-container {
-    margin: 25px auto;
+	margin: 25px auto;
 }
 
 .project-edit-line-submit-container {
-    margin: 20px auto;
-    margin-top: 50px;
-    width: 600px;
+	margin: 20px auto;
+	margin-top: 50px;
+	width: 600px;
 }
 
 .project-edit-upload-container {
-    margin: 10px auto;
-    margin-top: 20px;
-    width: 800px;
-    height: 50px;
+	margin: 10px auto;
+	margin-top: 20px;
+	width: 800px;
+	height: 50px;
 }
 
 .project-edit-upload-container li {
-    float: left;
+	float: left;
 }
 .project-edit-upload-container label {
-    color: #005d8f;
+	color: #005d8f;
 }
 
 .project-edit-line-container textarea {
-    margin: 10px auto;
-    width: 800px;
-    height: 150px;
-    overflow: scroll;
+	margin: 10px auto;
+	width: 800px;
+	height: 150px;
+	overflow: scroll;
 }
 .project-edit-line-container label {
-    font-size: 1.2em;
-    color: #005d8f;
+	font-size: 1.2em;
+	color: #005d8f;
 }
 
 .project-content-summary {
-    margin-left: 60px;
-    margin-bottom: 20px;
-    width: 800px;
-    height: 200px;
-    font-size: 1.0em;
-    text-align: left;
-    color: #456;
-    word-wrap: break-word;
+	margin-left: 60px;
+	margin-bottom: 20px;
+	width: 800px;
+	height: 200px;
+	font-size: 1.0em;
+	text-align: left;
+	color: #456;
+	word-wrap: break-word;
 }
 
 .project-container {
-    font-family: Georgia, Times, serif;
-    font-size: 1.5em;
-    font-weight: normal;
-    margin: 20px auto;
-    height: auto;
+	font-family: Georgia, Times, serif;
+	font-size: 1.5em;
+	font-weight: normal;
+	margin: 20px auto;
+	height: auto;
 }
 
 .project-image-container {
-    font-family: Georgia, Times, serif;
-    font-size: 1.5em;
-    font-weight: normal;
-    margin: 50px;
-    margin-bottom: 50px;
-    height: 1000px;
-    padding-top: 100px;
+	font-family: Georgia, Times, serif;
+	font-size: 1.5em;
+	font-weight: normal;
+	margin: 50px;
+	margin-bottom: 50px;
+	height: 1000px;
+	padding-top: 100px;
 }
 
 .project-client-right-modulo-container {
-    max-width: 300px;
-    height: auto;
-    margin: 100px 15px;
-    float: right;
+	max-width: 300px;
+	height: auto;
+	margin: 100px 15px;
+	float: right;
 }
 
 .project--left-modulo-container {
-    max-width: 750px;
-    margin: 5px auto;
-    float: left;
+	max-width: 750px;
+	margin: 5px auto;
+	float: left;
 }
 
 dl.studentlist {
-    margin: 20px 40px;
-    width: 600px;
-    height: auto;
-    font-size: 1.3em;
+	margin: 20px 40px;
+	width: 600px;
+	height: auto;
+	font-size: 1.3em;
 }
 
 .project-client-right-modulo {
-    background-color: #eaeaea;
-    background-image: -moz-linear-gradient(center top , #eaeaea, #ffffff);
-    border-bottom: 5px solid #b38807;
-    border-top: 5px solid #b38807;
-    margin-top: 40px;
-    overflow: scroll;
-    padding: 10px;
-    width: 300px;
-    min-height: 400px;
-    max-height: 600px;
-    word-wrap: break-word;
-    font-family: Georgia, Times, serif;
-    color: grey;
+	background-color: #eaeaea;
+	background-image: -moz-linear-gradient(center top , #eaeaea, #ffffff);
+	border-bottom: 5px solid #b38807;
+	border-top: 5px solid #b38807;
+	margin-top: 40px;
+	overflow: scroll;
+	padding: 10px;
+	width: 300px;
+	min-height: 400px;
+	max-height: 600px;
+	word-wrap: break-word;
+	font-family: Georgia, Times, serif;
+	color: grey;
 }
 
 .project-client-right-modulo-title {
-    color: #005d8f;
+	color: #005d8f;
 }
 
 .project-background-container {
-    position: relative;
-    margin: 50px;
-    margin-bottom: 50px;
-    height: 1000px;
-    min-width: 1258px;
-    background-image: url("/assets/project-index-background3.png");
-    background-size: 100% 100%;
-    background-origin: content-box;
+	position: relative;
+	margin: 50px;
+	margin-bottom: 50px;
+	height: 1000px;
+	min-width: 1258px;
+	background-image: url("/assets/project-index-background3.png");
+	background-size: 100% 100%;
+	background-origin: content-box;
 }
 
 .project-background-containers {
-    position: relative;
-    margin: 50px;
-    margin-bottom: 50px;
-    height: 1000px;
-    max-width: 1258px;
+	position: relative;
+	margin: 50px;
+	margin-bottom: 50px;
+	height: 1000px;
+	max-width: 1258px;
 }
 
 .portfolio {
-    position: relative;
-    float: left;
-    width: 150px;
-    height: 25px;
-    align: left;
+	position: relative;
+	float: left;
+	width: 150px;
+	height: 25px;
+	text-align: left;
 }
 
 .search-bar {
-    width: 338px;
-    max-height: 21px;
-    display: inline-block;
+	max- width: 340px;
+	height: 30px;
+	display: inline-block;
+}
+
+.search_submit_button {
+	min-height: 20px;
+}
+
+.search-bar input {
+	min-height: 20px;
 }
 
 .project-show {
-    margin: 100px;
-    margin-top: 50px;
+	margin: 100px;
+	margin-top: 50px;
 }
 
 .project-filter {
-    margin: 50px;
+	margin: 50px;
 }
 
 .project-apply {
-    margin-left: 300px;
+	margin-left: 300px;
 }
 
 .projects-image {
-    margin: 5px;
-    margin-top: 50px;
-    margin-bottom: 10px;
+	margin: 5px;
+	margin-top: 50px;
+	margin-bottom: 10px;
 }
 
 .project-client-image {
-    height: 150px;
-    width: 300px;
-    margin-bottom: 10px;
+	height: 150px;
+	width: 300px;
+	margin-bottom: 10px;
 }
 
 .project-container-line1 {
 
-    margin-left: 50px;
-    margin-right: 50px;
-    width: 700px;
-    height: 50px;
+	margin-left: 50px;
+	margin-right: 50px;
+	width: 700px;
+	height: 50px;
 }
 
 .project-container-line2 {
 
-    width: 600px;
-    height: 50px;
+	width: 600px;
+	height: 50px;
 }
 
 .project-pagefoot {
-    margin: 200px;
+	margin: 200px;
 }
 
 label {
-    display: block;
-    width: 300px;
+	display: block;
+	width: 300px;
 }
 .projectTableCol {
-    width: 100px;
+	width: 100px;
 }
 .projectTableCol-long {
-    width: 300px;
+	width: 300px;
 }
 .Project-text_field-ID {
-    width: 80px;
+	width: 80px;
 }
 .Project-text_field-NAME {
-    width: 100px;
+	width: 100px;
 }
 .Project-text_field-EMAIL {
-    width: 300px;
+	width: 300px;
 }
 .Project-text_field-COURSE {
-    width: 80px;
+	width: 80px;
 }
 
 .Project-to_center {
-    text-align: center;
+	text-align: center;
 }
 
 .project-table-td {
-    margin-left: 50px;
-    display: inline-block;
+	margin-left: 50px;
+	display: inline-block;
 }
 
 .student-course-label {
-    margin-right: 5px;
+	margin-right: 5px;
 }
 
 .student-course-div {
-    width: 800px;
-    height: 60px;
+	width: 800px;
+	height: 60px;
 }
 
 .student-course-select {
-    margin-right: 80px;
+	margin-right: 80px;
 }
 
 .student-submit-area {
-    width: 300px;
+	width: 300px;
 }
 
 #filter_search_container {
-    height: 30px;
-    min- width: 950px;
-    margin: 20px 50px;
+	height: 30px;
+	min- width: 950px;
+	margin: 20px 50px;
+}
+
+#project-index-header-container {
+	margin: 0 auto;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	min-height: 40px;
+	font-size: 1.5em;
 }
 
 .project-search-link {
-    color: #005a9c;
-    font-size: medium;
+	color: #005a9c;
+	font-size: medium;
 }
 
 .project-search-link:visited {
-    color: #005a9c;
+	color: #005a9c;
 }
 .project-search-backbutton {
-    float: right;
-    margin: 10px 50px 20px 0;
+	float: right;
+	margin: 10px 50px 20px 0;
 }
 .project-search-notfound-backbutton {
-    float: right;
-    margin-right: 10px;
+	float: right;
+	margin-right: 10px;
 }
 
 .project-notfound {
-    background-color: #fff;
-    color: #000;
-    height: 100px;
-    width: 320px;
-    margin: 0 auto;
-    margin-top: 100px;
-    margin-bottom: 100px;
+	background-color: #fff;
+	color: #000;
+	height: 100px;
+	width: 320px;
+	margin: 0 auto;
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
+.project-manage-container {
+	width: 85%;
+	height: auto;
+	border: 5px solid #261a6c;
+	border-radius: 10px;
+	margin: 30px auto;
+	display: block;
+}
+
+.project-manage-form {
+	height: auto;
+	margin: 0 auto;
+}
+
+.project-manage-title {
+	margin-bottom: 30px;
+}
+
+.project-manage-subtitle-container {
+	height: 30px;
+	width: 95%;
+	margin: 0 auto;
+	font-size: 1.5em;
+	color: #005a9c;
+	border-bottom: 2px solid #cdcdcd;
+	padding: 5px 5px;
+}
+
+.manage-button_small {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+#project-manage-filter_search_container {
+	height: 30px;
+	width: 96%;
+	margin: 5px auto;
+	border-bottom: 2px solid #cdcdcd;
+}
+
+.project-manage-submit-container {
+	height: 40px;
+	margin: 5px auto;
+	margin-right: 10px;
+	width: auto;
+}
+
+.project-manage-table {
+	width: 95%;
+	height: auto;
+	margin: 10px auto;
+	margin-bottom: 30px;
+	border: 2px dashed #cdcdcd;
+}
+
+.project-manage-table th {
+	width: auto;
+	color: blue;
+	text-align: center;
+}
+
+.project-manage-table tr {
+	margin: 0 auto;
+	width: auto;
+}
+
+tr.Project-remove-dashline td {
+	border-bottom: 0px;
+}
+
+.project-manage-table td {
+	border-bottom: 2px dashed #cdcdcd;
+	width: auto;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 1.2em;
+}
+
+th.project-manage-tick {
+	width: 1px;
+}
+
+td.project-manage-tick {
+	width: 1px;
+}
+
+.link_to_button {
+	display:inline-block;
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
+.buttons-hold {
+	background: -moz-linear-gradient(center bottom , #58ba32 0%, #73ca4b 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	border: medium none;
+	border-radius: 5px;
+	box-shadow: 0 1px 3px rgba(0, 1, 0, 0.2), 0 -1px 0 rgba(0, 0, 0, 0.26) inset;
+	color: #fff;
+	display: inline-block;
+	font-family: "ProximaNova_bold", sans-serif;
+	font-size: 20px;
+	font-weight: normal;
+	height: 50px;
+	line-height: 50px;
+	padding: 0 25px;
+	text-decoration: none;
+	text-shadow: 0 1px 0 rgba(0, 1, 0, 0.1);
 }
