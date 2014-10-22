@@ -21,5 +21,16 @@ describe Message do
 	it { should respond_to(:updated_at) }
 	it { should respond_to(:user_id) }
 
+#not null tests
+
+	describe "a message must have a title" do
+		before { @message.title = " " }
+		it { should_not be_valid }
+	end
+
+	describe "a message must have content" do
+		before { @message.text = " " }
+		it { should_not be_valid }
+	end
 
 end
