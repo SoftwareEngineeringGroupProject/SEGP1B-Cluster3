@@ -22,9 +22,9 @@
           			<% end %>
           		<% end %>
           		<% if controller_name == 'users' %>
-          			<%= link_to "#{@user.username}", :profile, :class => "btnSelected" %>
+          			<%= link_to "#{@user.username}".humanize, :profile, :class => "btnSelected" %>
           		<% else %>
-          			<%= link_to "#{@user.username}", :profile, :class => "btn" %>
+          			<%= link_to "#{@user.username}".humanize, :profile, :class => "btn" %>
           		<% end %>
           		<%= link_to "Logout", :logout, :class => "btn" %>
         	<% else %>
