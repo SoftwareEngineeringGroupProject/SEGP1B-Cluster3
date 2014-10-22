@@ -33,4 +33,13 @@ describe Message do
 		it { should_not be_valid }
 	end
 
+	describe "a message must have an id from sender" do
+		before { @message.sender_id = " " }
+		it { should_not be_valid }
+	end
+
+	describe "a message must have an id for project" do
+		before { @message.project_id = " " }
+		it { should_not be_valid }
+	end
 end
