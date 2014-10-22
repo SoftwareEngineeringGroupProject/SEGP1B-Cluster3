@@ -9,7 +9,7 @@
         	<% @user = User.find_by_id( session[:user_id] ) %>
         	<% if @user != nil %>
     			<% if @user.acctype == "industry" %>
-    				<% if current_page?(:my_projects) %>
+    				<% if controller_name == 'industry' || controller_name == 'submissions' %>
         				<%= link_to "Projects", :my_projects, :class => "btnSelected" %>
         			<% else %>
         				<%= link_to "Projects", :my_projects, :class => "btn" %>
