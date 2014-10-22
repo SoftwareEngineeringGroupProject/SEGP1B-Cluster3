@@ -154,8 +154,11 @@ div.wrapper h1 {
 	}
 
 .footer{
+	margin: auto;
 	color:#F2EEEE;
-	background-color:#191919;
+	background-color:gray;
+	height: 100px;
+	width: 70%;
 	}
 
 /* ----------------------------------------------General-------------------------------------*/
@@ -194,3 +197,4 @@ div.wrapper h1 {
 	top: 550px;
 	left: 620px;
 }
+

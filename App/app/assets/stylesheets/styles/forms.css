@@ -194,10 +194,14 @@ input[type="file"] {
 
 /* ---------------------------------------- Submit Form For Student Project -------------------------------- */
 .studentProjectForm {
-	margin-left: 20% ;
-/*	margin-right: 50%;
-	padding-right: 10%;
-*/	width: 50%;
+/*	margin-left: 15% ;
+	margin-right: 15%;
+*/
+	margin: auto;	
+	/*padding: 3% 1% 5% 5%;*/
+	width: 80%;
+	border-color: black;
+   	/*box-shadow: inset 2px 2px 2px rgba( 0,0,0,0.1 );*/
 }
 
 .studentProjectForm label{
@@ -218,6 +222,7 @@ input[type="file"] {
    	outline:0;
     border:0;
     clear:both;
+    width: 20em	;
     /*display: inline;*/	
     /*float:right;*/
 	
@@ -229,6 +234,10 @@ input[type="file"] {
 
 .studentProjectForm select{
 	float:left;
+}
+
+.studentProjectForm input[type="submit"]{
+	text-align: center;
 }
 
 #courseTextField {

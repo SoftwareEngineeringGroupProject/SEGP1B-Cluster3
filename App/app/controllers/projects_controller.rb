@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
         redirect_to :login
       end
       else
-        flash[:notice] = "Please Login to edit a past project"
+        flash[:notice] = "Please Login to submit a past project"
         redirect_to :login
     end 
   end
