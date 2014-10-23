@@ -100,3 +100,10 @@ class ApplicationController < ActionController::Base
   	end
 
 end
+
+
+
+  # BAD URL ROUTING
+  def badurl
+
+  end

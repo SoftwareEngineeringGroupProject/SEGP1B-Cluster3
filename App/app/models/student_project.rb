@@ -5,6 +5,7 @@ class StudentProject < ActiveRecord::Base
 	mount_uploader :client_image, ImageUploader
 	accepts_nested_attributes_for :students, allow_destroy: true
 	validates_uniqueness_of :id, :title
+	validates :year, numericality: { :greater_than => 0 }
 	#the search funtion used in search bar of index page
 	def self.search(classify, search)
 		#"title","production year", "id", "category", "summary", "client name", "studentName","studentID"]
