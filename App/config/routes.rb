@@ -38,7 +38,7 @@ Rails.application.routes.draw do
      patch 'projects/destroy/:id' => 'projects#delete', as: 'delete'
      get 'projects/search' => 'projects#search', as: 'search'
       get 'projects/notfound' => 'projects#notfound', as: 'notfound'
-      get 'projects/management' => 'projects#management', as: 'pastproject_management'
+      get 'projects/management' => 'projects#management', :as => :pastproject_management
       post 'projects/management' => 'projects#managehandle'
       post 'projects/managehandle' => 'projects#managehandle' , as: 'pastproject_managehandle'
       get 'projects/multiedit/' => 'projects#multiedit' , as: 'pastproject_multiedit'

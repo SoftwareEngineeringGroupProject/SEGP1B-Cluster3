@@ -1,11 +1,15 @@
 <!-- Profile Sidebar navigation -->
 <div class="aside_cols to_right">
-<div id="functionmenu" class="to_right vertical_list button">
+<div id="tabs" class="to_right vertical_list tab">
 	<ul>
-		<li><%=link_to "Project Details", :display_project, :id => @project.id %></li>
-	<li><%=link_to "Edit Details", :edit_industry_project, :id => @project.id %></li>
-	<li><%=link_to "Message Log", :project_messages, :id => @project.id %></li>
-	<li><%=link_to "Delete Project", :delete_industry_project, :id => @project.id %></li>
+		<% if current_page?(:display_project) %>
+			<li><%=link_to "Project Details", :display_project, :id => @project.id %></li>
+		<% else %>
+			<li><%=link_to "Project Details", :display_project, :id => @project.id %></li>
+		<% end %>
+		<li><%=link_to "Edit Details", :edit_industry_project, :id => @project.id %></li>
+		<li><%=link_to "Message Log", :project_messages, :id => @project.id %></li>
+		<li><%=link_to "Delete Project", :delete_industry_project, :id => @project.id %></li>
     </ul>
 </div>
 </div>

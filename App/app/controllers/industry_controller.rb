@@ -101,7 +101,11 @@ class IndustryController < ApplicationController
 					@newmessage = Message.new()
 					@newmessage.sender_id = @current_user.id
 					@newmessage.project_id = @project.id
-					@newmessage.title = params[:newmessage][:subject]
+					if params[:newmessage][:subject] == nil
+						@newmessage.title = "No Subject"
+					else
+						@newmessage.title = params[:newmessage][:subject]
+					end
 					@newmessage.text = params[:newmessage][:email]
 					if @newmessage.save
 						flash[:notice] = "Message has been delivered to project coordinators."
