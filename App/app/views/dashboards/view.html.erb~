@@ -9,7 +9,7 @@
   <div id="container" class="to_left">
     <!-- Viewing Project Board -->
     
-    <div id="board_showing" class="shadow project_list">
+    <div id="board_showing" class="shadow">
   
     <% if @projects.length > 0 %>  
 
