@@ -6,7 +6,7 @@
 @import url(carousel.css);
 
 /*------------------------------------------------- Initial setup---------------------------------*/
-body{margin:0; padding:0; font-size:13px; color: #333; font-family:Georgia, "Times New Roman", Times, serif; background-color: #E6E6E6; }
+body{margin:0; padding:0; font-size:13px; color: #333; font-family:Arial,Helvetica,sans-serif; background-color: #E6E6E6; }
 a { outline: none none; text-decoration:none;}
 img {margin:0; padding:0; border:none; width:100%; height:100%;}
 
@@ -74,42 +74,39 @@ text-align: center;
 }
 
 
-.button a:link, a:visited, .button input {
+.button a:link, .button a:visited, .button input {
     display: block;
     font-weight: bold;
     color: #C7CED6;
-    background-color: #333333;
+    background: #f01111;
+  	background-image: -webkit-linear-gradient(top, #f01111, #a33f3f);
+  	background-image: -moz-linear-gradient(top, #f01111, #a33f3f);
+  	background-image: -ms-linear-gradient(top, #f01111, #a33f3f);
+  	background-image: -o-linear-gradient(top, #f01111, #a33f3f);
+  	background-image: linear-gradient(to bottom, #f01111, #a33f3f);
     text-align: center;
-		margin: 0;
-		border: 0;
-		padding: 5px;
-		transition: background-color 0.2s;
+	margin: 0;
+	border: 0;
+	padding: 5px;
+	transition: background-color 0.2s;
 }
 
 .button a:hover, .button input:hover {
-    background-color: #ABDA0F;
-		color: black;
-		cursor: pointer;
+    background: #4867c4;
+  	background-image: -webkit-linear-gradient(top, #4867c4, #53a2d6);
+  	background-image: -moz-linear-gradient(top, #4867c4, #53a2d6);
+ 	background-image: -ms-linear-gradient(top, #4867c4, #53a2d6);
+  	background-image: -o-linear-gradient(top, #4867c4, #53a2d6);
+  	background-image: linear-gradient(to bottom, #4867c4, #53a2d6);
+  	color: black;
+	cursor: pointer;
 }
 
 .button a:active, .button input:focus {
     background-color: #7A991A;
 }
 
-.switchButton input {
-	background-color: #FAFAFA;
-	margin: 0;
-	border: 0;
-	cursor: pointer;
-}
 
-.switchButton input:hover {
-		background-color: #F2F2F2;;
-}
-
-.switchButton input:focus {
-		background-color: #7A991A;
-}
 
 div.wrapper h1 {
 	margin:0;
@@ -155,8 +152,11 @@ div.wrapper h1 {
 	}
 
 .footer{
+	margin: auto;
 	color:#F2EEEE;
-	background-color:#191919;
+	background-color:gray;
+	height: 100px;
+	width: 70%;
 	}
 
 /* ----------------------------------------------General-------------------------------------*/
@@ -195,3 +195,4 @@ div.wrapper h1 {
 	top: 550px;
 	left: 620px;
 }
+

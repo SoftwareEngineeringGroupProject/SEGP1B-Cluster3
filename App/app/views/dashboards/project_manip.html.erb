@@ -2,13 +2,11 @@
 <%= render "shared/dashheader" %>
 <!--############################## MAIN BODY ################################-->
 <div class="wrapper content">
-
   <%= render "shared/statussidebar" %>
-
   <!-- Middle board -->
   <div id="container" class="to_left">
     <!-- Viewing Project Board -->
-    <div id="board_showing" class="general_box flex_height shadow">
+    <div id="new_board_showing" class="flex_height shadow">
         <div class="flex_height">
           <div id="action_to_showing_board" class="to_right horizontal_list button">
           <% if @show_action%>
@@ -44,25 +42,58 @@
           </div>
         </div>
 
-      <div class="flex_height">
-        <div class="project_item">
-          <h1><%=link_to @project.title, project_manip_path(@project) %></a></h1>
-          <div><%=@project.body %></div>
-        </div>
-      </div>
-    </div>
-  </div>
+      <div class="project_item flex_height">
+          <div class ="to_left">
+            <div class = "title_item">
+              <h1>Basic details</h1>
+              <hr class ="fancy-line">
+              <strong>Project Name: </strong><br /><%= @project.title %><br /><br />
+              <strong>Basic Project Description: </strong><br /><%= @project.body %><br /><br />
+              <strong>Estimated Project Length: </strong><br /><%= @project.compl_time %>months<br /><br />
+            </div>  
+            
+            <div class = "title_item">
+              <h1>System  requirements</h1>
+              <hr class = "fancy-line">
+              <strong>Required Language(s): </strong><br /><%= @project.languages %><br /><br />
+              <strong>System Requirements: </strong><br /><%= @project.system_req %><br /><br />
+              <strong>Compatability Requirements: </strong><br /><%= @project.compat_req %><br /><br />
+            </div>    
+          </div>
 
-  <div class="aside_cols to_left">
-    <div id="cart" class="to_right vertical_list button">
-      <ul>
-        <li><%=link_to "Edit Details", edit_details_path(id: @project.id )%></li>
-        <li><%=link_to "Make Decision", project_manip_path(id: @project.id, show_action: true) %></li>
-        <li><%=link_to "Message Log", show_messages_path(id: @project.id ) %></li>
-        <li><%=link_to "Spec Editor", admin_edit_project_path(id: @project.id) %></li>
-        <li><%=link_to "Assign Team", admin_assign_student_path(project_id: @project.id )%></li>
-      </ul>
+          <div class ="to_right">    
+
+            <div class = "title_item">  
+              <h1>Ideal Student Expertise</h1>
+              <hr class = "fancy-line">
+              <strong>Languages: </strong><br /><%= @project.student_req_lang %><br /><br />
+              <strong>Concepts: </strong><br /><%= @project.student_req_concepts %><br /><br />
+            </div> 
+
+            <div class = "title_item">  
+              <h1>Security Requirements</h1>
+              <hr class = "fancy-line">
+              <strong>Police Check Required: </strong><br /><%= @project.student_police_check %><br /><br />
+              <br />
+              <strong>Other Security Clause Required: </strong><br /><%= @project.student_security %><br /><br />
+            </div>   
+
+            <div class = "title_item">  
+              <h1>Further details</h1>
+              <hr class= "fancy-line">
+              <strong>Anything else helpful to know: </strong><br /><%= @project.extra_details %><br /><br />
+            </div> 
+
+            <div class = "title_item">  
+              <h1>Attachments</h1>  
+              <hr class="fancy-line">
+            </div> 
+          </div>
     </div>
   </div>
 
 </div>
+<%= render "shared/projectmanipsidebar" %>
+</div>
+
+ 

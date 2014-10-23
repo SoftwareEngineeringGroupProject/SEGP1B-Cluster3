@@ -1,27 +1,55 @@
-  <!--#######################################################-->
-  <div class="wrapper banner">
-    <div id="top_bar" class="flex_height">
-      <div class="to_left">
-        <h1><a href="/">University of Adelaide</a></h1>
-        <p>School of Computer Science</p>
-      </div>
-
-      <div id="login_buttons" class="button horizontal_list to_right">
-        <ul>
+<div class="headercontainer">
+	<div class="topheader">
+		<div id="headerbuttons" class="to_right">
+			<% if current_page?(:root) %>
+				<%= link_to "Home", :root, :class => "btnSelected" %>
+			<% else %>
+				<%= link_to "Home", :root, :class => "btn" %>
+			<% end %>
         	<% @user = User.find_by_id( session[:user_id] ) %>
         	<% if @user != nil %>
-        		<% if @user.acctype == "industry" %>
-        			<li><%= link_to "Projects", :my_projects  %></li>
-          		<% elsif @user.acctype == "coordinator" %>
-          			<li><%= link_to "Dashboard", :admin_dashboard_show_new %></li>
+    			<% if @user.acctype == "industry" %>
+    				<% if controller_name == 'industry' || controller_name == 'submissions' %>
+        				<%= link_to "Projects", :my_projects, :class => "btnSelected" %>
+        			<% else %>
+        				<%= link_to "Projects", :my_projects, :class => "btn" %>
+        			<% end %>      				
+				<% elsif @user.acctype == "coordinator" %>
+					<% if controller_name == 'dashboards' || controller_name == 'project_processings' %>
+          				<%= link_to "Projects", :admin_dashboard_show_new, :class => "btnSelected" %>
+          			<% else %>
+          				<%= link_to "Projects", :admin_dashboard_show_new, :class => "btn" %>
+          			<% end %>
           		<% end %>
-          		<li><%= link_to "#{@user.username}", :profile %></li>
-          		<li><%= link_to "Logout", :logout %></li>
+          		<% if controller_name == 'users' %>
+          			<%= link_to "#{@user.username}".humanize, :profile, :class => "btnSelected" %>
+          		<% else %>
+          			<%= link_to "#{@user.username}".humanize, :profile, :class => "btn" %>
+          		<% end %>
+          		<%= link_to "Logout", :logout, :class => "btn" %>
         	<% else %>
-        		<li><%= link_to "Login", :login %></li>
-          		<li><%= link_to "Register", :signup %></li>
-        	<% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
+        		<% if current_page?(:login) %>
+    				<%= link_to "Login", :login, :class => "btnSelected" %>
+    			<% else %>
+    				<%= link_to "Login", :login, :class => "btn" %>
+    			<% end %>
+    			<% if current_page?(:signup) %>
+      				<%= link_to "Register", :signup, :class => "btnSelected" %>
+      			<% else %>
+      				<%= link_to "Register", :signup, :class => "btn" %>
+      			<% end %>
+       		<% end %>
+      	</div>
+	</div>
+  	<div class="bottomheader">
+    	<div id="top_bar" class="flex_height">
+      		<div class="to_left">
+        		<%= link_to(image_tag("UofA.png", :alt => "home image", :class => "bannerlogo", :title => "Click here to return to Home"), "/") %>
+        		
+      		</div>
+			<h1 class="headertitle">&nbsp;&nbsp;&nbsp;Industry Engagement</h1>
+      		
+    	</div>
+  	</div>
+</div>
+<div class="push"></div>

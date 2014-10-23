@@ -1,0 +1,26 @@
+<%= render "shared/header" %>
+<%= render "shared/linkbar" %>
+<%= render "shared/banner" %>
+
+<div class="wrapper content">
+	<div id="news" class="flex_height shadow">
+
+		<div class="contact-title project-manage-title"></div>
+
+		<div class="project-manage-container">
+			<div class="project-manage-subtitle-container">
+				<span class="to_left"><strong>Past Projects</strong> </span>
+			</div>
+
+			<%= render :partial => "edit_form" %>
+
+			<div  class="project-manage-submit-container button">
+				<span class="to_right"><%= link_to "CANCEL", pastproject_management_path, class: "link_to_button"%></span>
+				<span class="to_right"><%= button_to "PREVIOUS", pastproject_multiedit_path(:index=>@index, :editArray=>@EditArray, :commit=>"previous"), :method => :post%></span>
+				<span class="to_right"><%= button_to "NEXT", pastproject_multiedit_path(:index=>@index, :editArray=>@EditArray, :commit=>"next"), :method => :post, class: "link_to_button"%></span>
+			</div>
+		</div>
+
+	</div>
+</div>
+<%= render "shared/footer" %>

@@ -1,23 +1,23 @@
-    <div class="wrapper navigation">
-      <div id="navi" class="flex_height">
-        <div class="to_left">
-          <h1>Industry Engagement</h1>
-        </div>
+<div class="linkbar">
+	<div id="bottomlinks" class="to_right">
+		<% if current_page?(:index) %>
+		<span class="btnSelected"><a href="/projects">Project Gallery</a></span>
+		<% else %>
+		<span class="btn"><a href="/projects">Project Gallery</a></span>
+		<% end %>
 
-        <div class="to_right">
-          <form action="#" method="post" id="search">
-            <input type="text" value="Search&hellip;" onfocus="this.value=(this.value=='Search&hellip;')? '' : this.value ;" />
-            <input type="image" id="go" src="/images/search_r.gif" alt="Search" />
-          </form>
-        </div>
+		<% if current_page?(:info) %>
+		<span class="btnSelected"><%= link_to "Information", info_path %></span>
+		<% else %>
+		<span class="btn"><%= link_to "Information", info_path %></span>
+		<% end %>
 
-        <div id="navi_tabs" class="button horizontal_list to_right">
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/projects">Projects</a></li>
-            <li><%=link_to "Information", info_path %></li>
-            <li><%=link_to "Contact", contact_path %></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+		<% if current_page?(:contact) %>
+		<span class="btnSelected"><%= link_to "Contact", contact_path %></span>
+		<% else %>
+		<span class="btn"><%= link_to "Contact", contact_path %></span>
+		<% end %>
+
+	</div>
+</div>
+<div class="pushlower"></div>

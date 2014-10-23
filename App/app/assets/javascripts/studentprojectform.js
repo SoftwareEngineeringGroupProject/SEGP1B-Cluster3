@@ -1,55 +1,21 @@
-// $(function(){
-//     $(".course_text").hide();
-//     if ($("student.course").val() == 'Add Course')
-// 	    $(".course_text").show();
-// });
 
 $(document).ready(function() {
-    // $(".course_text").hide();
+	var i = 0;
+	var studentField = $("#add_student");
+	var wrapper = $("#add_student_field")
 
-	$("select[id='student_project_students_attributes_0_course']").change(function() {
-		if ($("select[id='student_project_students_attributes_0_course").val() == ""){
-		    $(":text[id=student_project_students_attributes_0_course]").prop('disabled', false);
-		} else {
-			$(":text[id=student_project_students_attributes_0_course]").prop('disabled', true);
-		}
-	});
-	$("select[id='student_project_students_attributes_1_course']").change(function() {
-		if ($("select[id='student_project_students_attributes_1_course").val() == ""){
-		    $(":text[id=student_project_students_attributes_1_course]").prop('disabled', false);
-		} else {
-			$(":text[id=student_project_students_attributes_1_course]").prop('disabled', true);
-		}
-	});
-	$("select[id='student_project_students_attributes_2_course']").change(function() {
-		if ($("select[id='student_project_students_attributes_2_course").val() == ""){
-		    $(":text[id=student_project_students_attributes_2_course]").prop('disabled', false);
-		} else {
-			$(":text[id=student_project_students_attributes_2_course]").prop('disabled', true);
-		}
-	});
-/*	$("#student_project_students_attributes_0_course").change(function() {
-		if ($("#student_project_students_attributes_0_course").val() == "Add Course"){
-		    $("#course_text").show();
-		} else {
-			$("#course_text").hide();
-		}
-	});
-*/
 
-	// $(".select_course").change(function() {
-	// 	if ($(".select_course").val() == "Add Course"){
-	// 	    $("#course_text").show();
-	// 	} else {
-	// 		$("#course_text").hide();
-	// 	}
+	//disable add course text field based on the course option
+	$("select[name*='course']").change(function() {
+		if ($("select[name*='course']").val() == ""){
+		    $(":text[name*='course']").prop('disabled', false);
+		} else {
+			$(":text[name*='course']").prop('disabled', true);
+		}
+	});
+
+	// $(studentField).click(function () {
+	// 	$('#add_student_field').appendTo($("#add_student_field").html());
+		
 	// });
 });
-
-// $(function(){
-//     $('input[name="course_text"]').hide();
-//     // $('input[name="course"]').change(function() {
-//     //   $('input[name="source_other"]').toggle(  $(this).val()=="Other" );
-
-//     // });
-// });

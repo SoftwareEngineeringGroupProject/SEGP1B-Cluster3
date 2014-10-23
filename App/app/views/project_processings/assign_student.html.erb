@@ -8,7 +8,7 @@
 
   <!-- Middle board -->
   <div id="container" class="to_left">
-     <div id="board_showing" class="general_box flex_height shadow">
+     <div id="new_board_showing" class="flex_height shadow">
     <% if @student1.errors.any? || @student2.errors.any? || @student3.errors.any?%>
       <ul class="Signup_Errors">
       <% for message_error in @student1.errors.full_messages %>
@@ -20,6 +20,7 @@
       <% for message_error in @student3.errors.full_messages %>
         <li><%= message_error %></li>
       <% end %>
+      </ul>
     <% end %>
     <%= form_tag "", :multipart => true %>
     <%= hidden_field_tag "project_id", @project.id %>
@@ -34,21 +35,15 @@
       <label>Student 2<%= text_field_tag :student2,@student2.studentID, "placeholder" => "axxxxxxx" %></label>
       <label>Student 3<%= text_field_tag :student3,@student3.studentID, "placeholder" => "axxxxxxx" %></label>
     </fieldset>
-    <%= submit_tag 'Assign' %>
-    <%= submit_tag 'Cancel' %>
-    </div>
-  </div>  
+    
   <!--*********************-->
-  <div class="aside_cols to_left">
-    <div id="cart" class="to_right vertical_list button">
+  <div id="action_to_showing_board" class="horizontal_list button" >
       <ul>
-        <li><%=link_to "Edit Details", edit_details_path(id: @project.id )%></li>
-        <li><%=link_to "Make Decision", project_manip_path(id: @project.id, show_action: true) %></li>  
-        <li><%=link_to "Message Log", show_messages_path(id: @project.id ) %></li>
-        <li><%=link_to "Spec Editor", admin_edit_project_path(id: @project.id) %></li>
-        <li><%=link_to "Assign Team", admin_assign_student_path(project_id: @project.id )%></li>
+        <li><%= submit_tag 'Assign' %></li>
+        <li><%= submit_tag 'Cancel' %></li>
       </ul>
-    </div>
   </div>
-
+</div>
+</div>
+<%= render "shared/projectmanipsidebar" %>
 </div>

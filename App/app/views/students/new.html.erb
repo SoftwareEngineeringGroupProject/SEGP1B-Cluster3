@@ -56,7 +56,11 @@
 
 			<div  class="project-edit-line-submit-container button">
 				<span class="to_left"><%= builder.submit "Submit" %></span>
-				<span class="to_right"><%= link_to "Back To edit Project Page", edit_path(params[:id])%></span>
+				<%if session[:IdArray]!=nil%>
+				<span class="to_right"><%= link_to "Back To Multiple Edit Project Page", pastproject_multiedit_path(:editArray=> session[:IdArray])%></span>
+				<%else%>
+				<span class="to_right"><%= link_to "Back To Edit Project Page", edit_path(params[:id])%></span>
+				<%end%>
 			</div>
 
 			<% end %>
