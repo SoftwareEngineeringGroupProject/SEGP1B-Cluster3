@@ -51,7 +51,7 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:student_project).permit(:title, :summary, :image, :client, :client_image, :category, :year, :client_summary, :client_link, 
-    students_attributes: [:id,:name, :email, :studentID, :course])
+    students_attributes: [:id,:name, :email, :studentID, :course, :_destroy])
   end
 
   def show

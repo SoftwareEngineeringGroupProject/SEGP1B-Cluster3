@@ -201,8 +201,11 @@ input[type="file"] {
 */
 	margin: auto;	
 	/*padding: 3% 1% 5% 5%;*/
+	padding: 5%;
 	width: 80%;
-	border-color: black;
+	/*border-color: black;*/
+	border: 3px solid #858585;
+
    	/*box-shadow: inset 2px 2px 2px rgba( 0,0,0,0.1 );*/
 }
 
@@ -214,6 +217,13 @@ input[type="file"] {
 	/*display: inline;*/
 }
 
+.floatRight{
+	float:right !important;
+}
+
+.floatLeft {
+	float: left !important;
+}
 .studentProjectForm input[type="text"]{
     background: #f6f6f6;
     color: #555555;
@@ -240,6 +250,25 @@ input[type="file"] {
 
 .studentProjectForm input[type="submit"]{
 	text-align: center;
+}
+
+/*fields for entering student details*/
+.studentField {
+	margin-top: 5px;
+	margin-bottom: 20px;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	box-shadow: 14px 17px 21px -10px rgba(0,0,0,0.75);
+	border: 3px solid #858585;
+}
+
+.studentProjectError {
+	background-color: #F5B5BE;
+	border: 1px solid red;
+	text-align: left;
+	padding: 1%;
+	padding-left: 100px;
+	margin-bottom: 25px;
 }
 
 #courseTextField {

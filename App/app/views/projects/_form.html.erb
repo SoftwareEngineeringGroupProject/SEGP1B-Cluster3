@@ -1,11 +1,14 @@
 <%= javascript_include_tag 'studentprojectform', 'data-turbolinks-track' => true %>
 
 <%= form_for @student_project,:html => { :multipart => true} do |f| %>
-<div style = "color:red;font-weight:bold;font-size:15px">
+<!-- <div style = "color:red;font-weight:bold;font-size:15px"> -->
+<% if @student_project.errors.present? %>
+<div class= "studentProjectError" >
 <% @student_project.errors.full_messages.each do |msg| %>
-		<%= msg %></br>
+		<li><%= msg %></li>
 <% end %>
 </div>
+<% end %>
 
 
 <%= f.label :title %>
@@ -18,7 +21,7 @@
 <%= f.text_field :client , "placeholder" => "Client" %></br></br>
 
 <%= f.label :client_summary %>
-<%= f.text_field :client_summary , "placeholder" => "Client Summary" %></br></br>
+<%= f.text_area :client_summary , "placeholder" => "Client Summary", "rows" => "4", "columns" => "20" %></br>
 
 <%= f.label :client_link %>
 <%= f.text_field :client_link , "placeholder" => "Client Link" %></br></br>
@@ -27,7 +30,7 @@
 <%= f.text_field :category , "placeholder" => "Category"%></br></br>
 
 <!-- Student forms -->
-<div class="shadow">
+<div class="studentField">
 <%= f.fields_for :students do |builder| %>
 <%= builder.label "Student name" %>
 <%= builder.text_field :name , "placeholder" => "Student Name" %></br>
@@ -36,16 +39,16 @@
 <%= builder.label "Student ID" %>
 <%= builder.text_field :studentID ,"placeholder" => "Student ID" %></br>
 <%= builder.label :course %>
-<%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %></br></br>
-<%= builder.text_field :course, "style" => "float:right display:inline" ,"placeholder" => "Course" %>
+<%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<%= builder.text_field :course, "style" => "float:right display:inline" ,"placeholder" => "Course" %></br>
+<%= builder.check_box :_destroy %>
+<%= builder.label :_destroy,'Remove student?'%></br>
 </br>
 <% end %>
 </div>
 
-<%= f.submit 'Add Student', :name => "add_student" %></br>
-<% if false %>
+<%= f.submit 'Add Student', :name => "add_student" %> &nbsp;&nbsp;&nbsp;&nbsp;
 <%= f.submit 'Remove Student', :name => "remove_student" %></br>
-<% end %>
 
 <%= f.label :summary %>
 <%= f.text_area :summary , "placeholder" => "Summary", "rows" => "4", "columns" => "20" %></br>
