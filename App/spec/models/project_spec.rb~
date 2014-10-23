@@ -45,7 +45,6 @@ describe Project do
 
 #presence testing
 
-
 	describe "a project must have a title" do
 		before { @project.title = " " }
 		it { should_not be_valid }
@@ -54,6 +53,22 @@ describe Project do
 	describe "a project must have a body to keep content" do
 		before { @project.body = " " }
 		it { should_not be_valid }
+	end
+
+#attachment type tests
+
+	describe "a PDF file type should be valid" do
+		it "should be invalid" do
+			attachment_content_type = "application/pdf"
+			expect(@project).to be_valid
+		end
+	end
+	
+	describe "an Excel file type should be valid" do
+		it "should be invalid" do
+			attachment_content_type = "application/vnd.ms-excel"
+			expect(@project).to be_valid
+		end
 	end
 
 end

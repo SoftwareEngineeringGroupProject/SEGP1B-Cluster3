@@ -71,4 +71,17 @@ describe Project do
 		end
 	end
 
+	describe "a Microsoft Word document type should be valid" do
+		it "should be invalid" do
+			attachment_content_type = "application/msword"
+			expect(@project).to be_valid
+		end
+	end
+
+	describe "a text file type should be valid" do
+		it "should be invalid" do
+			attachment_content_type = "text/plain"
+			expect(@project).to be_valid
+		end
+	end
 end
