@@ -1,0 +1,54 @@
+<%= render "shared/header" %>
+<%= render "shared/dashheader" %>
+<!--############################## MAIN BODY ################################-->
+<div class="wrapper content">
+
+  <%= render "shared/statussidebar" %>
+
+  <!-- Middle board -->
+  <div id="container" class="to_left">
+    <!-- Viewing Project Board -->
+    
+    <div id="board_showing" class="shadow">
+  
+    <% if @projects.length > 0 %>  
+
+    <div class="content_bar">
+      <h3>Please click on project name for detailed information</h3>
+    </div>
+
+    <table>
+      
+      <thead>
+        <tr>
+          <th>Project Name</th>
+          <th>Status</th>
+          <th>Description</th>
+          <th>Messages</th>
+          <th>Creation Time</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @projects.each do |project| %>
+        <tr>
+          <td><strong><%=link_to project.title.upcase, project_manip_path(project) %></strong></td>
+          <td><%=project.status.humanize%></td>
+          <td><%=project.body[0..70]+"..."%></td>
+          <td><%=project.messages.count%></td>
+          <td><%=project.created_at %></td>
+        </tr>
+        <% end %>
+      </tbody>
+
+    </table>
+
+    <% else %>
+    <div class="content_bar">
+      <h3 class="black center">There are currently no projects of this type. Please click the left side links to View Projects!</h3>
+    </div>
+      
+    <% end %>
+    </div>
+  </div>
+</div>

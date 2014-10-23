@@ -361,32 +361,3 @@ hr.fancy-line {
 .title_item strong {
 	color: #005A9C;
 }
-
-
-/* --------------------------------- assign project to student ---------------------------------- */
-
-#form_team {
-	padding: 0px 20px 20px 20px;
-	width: 45%;
-}
-
-#message_for_students {
-	padding: 0px 20px 20px 20px;
-	width: 45%;
-}
-
-#form_team p, #message_for_students p{
-	color: #005A9C;
-	font-weight: bold;
-}
-
-#new_board_showing legend{
-	color: #B38808;
-	font-weight: bold;
-}
-
-.student_assigned fieldset{
-	margin: 10px 10px 20px 10px;
-}
-
-

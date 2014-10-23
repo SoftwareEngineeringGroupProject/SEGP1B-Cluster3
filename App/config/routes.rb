@@ -151,6 +151,9 @@ Rails.application.routes.draw do
   post 'industry/remove/:id' => "industry#remove", :as => :remove_industry_project
   post 'industry/delete' => "industry#pending", :as => :delete_pending_project
 
+  #BAD URL ROUTING
+  get '*path' => "application#badurl"
+
 
 # The priority is based upon order of creation: first created -> highest priority.
 # See how all your routes lay out with "rake routes".
