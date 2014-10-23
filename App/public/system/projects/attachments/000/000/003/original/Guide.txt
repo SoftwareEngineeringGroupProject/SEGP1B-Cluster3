@@ -1,0 +1,48 @@
+Format of the input
+3 {1,2,3,4,4}
+
+The first number is frame size (i dont know if this is right way to call it, since i have not got chance to attend in lecs for long time)
+Numbers in bracket are page reference, each one of them will put into frame
+For example, at the first time the frame is filled, the frame of size 3 looks like this:
+	1
+	2
+	3
+
+Psuedo code for LRU Algorithm:
+
+( consider page as integer. If you want to use page as an object of a class then make sure use it properly, dont use it randomly as an normal integer. )
+
+
+- For each line (i.e., for a single test case ) you have to read in 
+
+	- Size of frame ( create an linkedlist for this frame, use a variable to keep track of its size to determine it is full or not)
+
+	- Elements in bracket as an linkedlist 
+
+	( make sure you have right data in your linkedlist before proceeding, just system out to see if it is right or wrong)
+
+Add(int page) {
+
+	if frame contains page {
+
+		- remove page from frame
+		- add that page again to the head of the frame
+
+		if (frame is full) { // mentioned in specification
+			- number of References ++ 
+		}
+			
+	else {
+		
+		if frame is not full {
+			- add page to the head of the frame
+		} else {
+			- add page to the head of the frame
+			- remove the last element from the frame => the replaced page is this last page
+			- page fault ++
+			- number of references ++
+		}
+
+	}
+
+}

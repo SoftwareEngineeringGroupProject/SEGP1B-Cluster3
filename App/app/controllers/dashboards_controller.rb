@@ -130,15 +130,15 @@ class DashboardsController < ApplicationController
     actions = ["Accept", "Suspend", "Reject"]
 
     # If user has selected a project to apply an action
-    if (params[:project_id] != nil)
+    if (params[:id] != nil)
 
       # Find project that has id of :project_id
-      @project = Project.find(params[:project_id])
+      @project = Project.find(params[:id])
 
       # If user wants to change state of project
       if ( actions.include? params[:commit] )
         # Update state of the project
-        change_state
+      change_state
       elsif ( params[:commit]=='Remove' )
         # Delete the selected project
         delete
@@ -194,11 +194,11 @@ class DashboardsController < ApplicationController
     end
 
     def delete
-      Project.destroy(params[:project_id]);
+      Project.destroy(params[:id]);
     end
 
     def project_params
-      params.require(:project).permit(:title, :body)
+      params.require(:project).permit(:title, :body, :attachment, :compl_time, :languages, :system_req, :compat_req, :student_req_lang, :student_req_concepts, :student_police_check, :student_security, :extra_details)
     end
 
 end
