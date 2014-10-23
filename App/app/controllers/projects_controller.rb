@@ -33,15 +33,16 @@ class ProjectsController < ApplicationController
 
   def create
     @student_project = StudentProject.new(project_params)
-   # if params[:add_student]
-      #@student_project.students.build
-    #elsif params[:remove_student]
-      # automatically destroyed by rails
+    if params[:add_student]
+      @student_project.students.build
+    elsif params[:remove_student]
+      automatically destroyed by rails
     if @student_project.save
                  redirect_to pastproject_management_path, :notice => "Project created" 
       else
         render :new
-    end    
+    end  
+    end  
   end
 
   def project_params
@@ -50,6 +51,11 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    
+    #reset sessions 
+    session[:IdArray]=nil
+    session[:index_value]=nil
+    
     #get the project's ID here
       @ProjectID = params[:id]
       @Projects = StudentProject.all
@@ -66,6 +72,10 @@ class ProjectsController < ApplicationController
 
      
     def edit
+          #reset sessions 
+          session[:IdArray]=nil
+          session[:index_value]=nil
+      
        if session[:user_id] != nil
           @user = User.find(session[:user_id]) 
         if @user.acctype == "coordinator" 

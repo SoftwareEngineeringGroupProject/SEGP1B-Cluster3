@@ -36,18 +36,12 @@
 			</div>
 
 			<div class="project-metadata">
-				<ul class="metalist", style="list-style-type:none">
-					<li>
-						<strong>Finished Year:</strong> &nbsp;<%= @theProject.year%>
-					</li>
-					<li>
-						<strong>Category:</strong>&nbsp;<%= @theProject.category%>
-					</li>
+				<span style="margin-left: 8%"><strong>Finished Year:</strong> &nbsp;<%= @theProject.year%></span>
 
-					<li>
-						<strong>Last Updated At: </strong>&nbsp;<%= @theProject.updated_at.to_date%>
-					</li>
-				</ul>
+				<span><strong>Category:</strong>&nbsp;<%= @theProject.category%></span>
+
+				<span><strong>Last Updated At: </strong>&nbsp;<%= @theProject.updated_at.to_date%></span>
+
 			</div>
 
 			<!--left modulo here-->
@@ -62,9 +56,7 @@
 				</div>
 
 				<div class="project-content-summary">
-					<p>
-						<%= @theProject.summary%>
-					</p>
+					<%= @theProject.summary%>
 				</div>
 				<div  class="project-title-subheading">
 					Group members
