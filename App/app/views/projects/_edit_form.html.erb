@@ -4,13 +4,12 @@
 	<span class="to_left"><%= f.label :title %></span>
 	<span><%= f.text_field :title %></span>
 </div>
-<div  class="project-edit-line-container">
-	<span class="to_left"> <%= f.label :Finished_Year%> </span>
+<div  class="project-edit-line-container-year">
+	<%= f.label :Finished_Year%>
 	<%= f.select :year, (2000) .. (Date.today.year) %>
 
 	<!--<%= date_select(:StudentProject, :year, start_year: 2000, end_year: Time.now.year, discard_day: true, discard_month: true)%>-->
 </div>
-
 <div  class="project-edit-line-container">
 	<%= f.label :category %>
 	<%= f.text_field :category %>

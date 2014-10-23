@@ -36,15 +36,31 @@
 	border-bottom: 2px solid #cdcdcd;
 	border-top: 2px solid #cdcdcd;
 	margin: 10px auto;
-	min-height: 30px;
-	max-width: 1150px;
+	height: 25px;
+	max-width: 95%;
+}
+
+.project-metadata span {
+	width: auto;
+	float: left;
+	margin-right: 6%;
+	margin-left: 6%;
+	max-height: inherit;
+}
+ul.metalist {
+	height: 30px;
+	margin: 0 4%;
+	width: auto;
+	margin-top: 5px;
+	max-width: 95%;
 }
 
 ul.metalist li {
 	width: auto;
 	float: left;
-	margin-right: 60px;
-	margin-left: 60px;
+	margin-right: 5%;
+	margin-left: 5%;
+	max-height: 10%;
 }
 
 ul.right-client-list li {
@@ -53,7 +69,7 @@ ul.right-client-list li {
 
 .project-image {
 	margin: 30px 0px 20px 60px;
-	width: 750px;
+	width: auto;
 	height: 200px;
 }
 
@@ -88,10 +104,10 @@ ul.right-client-list li {
 }
 
 .project-content {
-	margin-left: 80px;
-	margin-right: 20px;
-	width: 800px;
-	height: 100px;
+	margin-left: 120px;
+	margin-right: 10px;
+	width: auto;
+	height: auto;
 	font-size: medium;
 	text-align: left;
 	color: #456;
@@ -111,16 +127,16 @@ ul.right-client-list li {
 }
 
 .project-edit-fieldset {
-	width: 1000px;
-	height: 1400px;
+	max-width: 80%;
+	height: 80%;
 	font-size: 1.0em;
-	margin: 0 auto;
+	margin:5% auto;
 	color: black;
 }
 
 .student-edit-fieldset {
-	width: 800px;
-	height: 500px;
+	max-width: 90%;
+	height: auto;
 	font-size: 1.5em;
 	margin: 0 auto;
 	color: black;
@@ -128,30 +144,54 @@ ul.right-client-list li {
 
 .student-edit-fieldset label {
 	color: #005d8f;
+	float: left;
 }
 
 .student-edit-fieldset select {
-	width: 210px;
+	max-width: 210px;
 }
 
 .project-student-edit-line-container {
 	margin: 15px auto;
+	max-width: 95%;
 }
 
 .project-edit-fieldset-group {
-	width: 800px;
+	max-width: 90%;
 	height: auto;
 	font-size: 1.0em;
-	margin: 0 auto;
+	margin: 0 2%;
 	margin-top: 40px;
+}
+
+.project-edit-fieldset-group  table{
+	max-width: 85%;
+	height:auto;
+}
+
+.project-edit-table tbody{
+		max-width: 85%;
 }
 
 .project-edit-fieldset-group legend {
 	color: #005d8f;
 }
 
+.project-container  table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: #ffffff;
+}
 table.project-edit-table a:visited {
 	color: #005d8f;
+}
+.project-edit-table{
+	max-width:85%;
+	margin: 0 auto;
 }
 
 table.project-edit-table th {
@@ -159,21 +199,38 @@ table.project-edit-table th {
 }
 .project-edit-line-container {
 	margin: 25px auto;
+	max-width: 95%;
+}
+
+.project-edit-line-container-year {
+	margin: 25px auto;
+	margin-left: 100px;
+	width: 300px;
+}
+
+.project-edit-line-container-year label {
+	float: left;
+	font-size: 1.2em;
+	color: #005d8f;
+	width: 200px;
 }
 
 .project-edit-line-submit-container {
 	margin: 20px auto;
-	margin-top: 50px;
-	width: 600px;
+	margin-top: 70px;
+	max-width: 80%;
 }
 
 .project-edit-upload-container {
 	margin: 10px auto;
 	margin-top: 20px;
-	width: 800px;
+	nax-width: 90%;
 	height: 50px;
 }
 
+.student-course-div {
+	height: auto;
+}
 .project-edit-upload-container li {
 	float: left;
 }
@@ -182,22 +239,23 @@ table.project-edit-table th {
 }
 
 .project-edit-line-container textarea {
-	margin: 10px auto;
-	width: 800px;
+	margin: 10px 2%;
+	max-width: 90%;
 	height: 150px;
 	overflow: scroll;
 }
 .project-edit-line-container label {
 	font-size: 1.2em;
 	color: #005d8f;
+	float: left;
 }
 
 .project-content-summary {
-	margin-left: 60px;
-	margin-bottom: 20px;
-	width: 800px;
-	height: 200px;
-	font-size: 1.0em;
+	margin: 30px 20px;
+	margin-left: 80px;
+	width: auto;
+	height: auto;
+	font-size: 1.4em;
 	text-align: left;
 	color: #456;
 	word-wrap: break-word;
@@ -207,8 +265,9 @@ table.project-edit-table th {
 	font-family: Georgia, Times, serif;
 	font-size: 1.5em;
 	font-weight: normal;
-	margin: 20px auto;
+	margin: 10px 2%;
 	height: auto;
+	max-width: 98%;
 }
 
 .project-image-container {
@@ -222,23 +281,24 @@ table.project-edit-table th {
 }
 
 .project-client-right-modulo-container {
-	max-width: 300px;
+	width: 22%;
 	height: auto;
-	margin: 100px 15px;
+	margin: 100px auto;
+	margin-right: 5px;
 	float: right;
 }
 
 .project--left-modulo-container {
-	max-width: 750px;
+	max-width: 75%;
 	margin: 5px auto;
 	float: left;
 }
 
 dl.studentlist {
-	margin: 20px 40px;
-	width: 600px;
+	margin: 20px auto;
+	width: auto;
 	height: auto;
-	font-size: 1.3em;
+	font-size: 1.4em;
 }
 
 .project-client-right-modulo {
@@ -249,7 +309,7 @@ dl.studentlist {
 	margin-top: 40px;
 	overflow: scroll;
 	padding: 10px;
-	width: 300px;
+	width: auto;
 	min-height: 400px;
 	max-height: 600px;
 	word-wrap: break-word;
@@ -323,12 +383,11 @@ dl.studentlist {
 
 .project-client-image {
 	height: 150px;
-	width: 300px;
+	width: auto;
 	margin-bottom: 10px;
 }
 
 .project-container-line1 {
-
 	margin-left: 50px;
 	margin-right: 50px;
 	width: 700px;
@@ -381,9 +440,8 @@ label {
 	margin-right: 5px;
 }
 
-.student-course-div {
-	width: 800px;
-	height: 60px;
+.student-course-div a {
+	color: blue;
 }
 
 .student-course-select {
@@ -522,7 +580,7 @@ td.project-manage-tick {
 }
 
 .link_to_button {
-	display:inline-block;
+	display: inline-block;
 	padding-top: 7px;
 	padding-bottom: 7px;
 }

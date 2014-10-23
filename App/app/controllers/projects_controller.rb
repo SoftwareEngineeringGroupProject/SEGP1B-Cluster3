@@ -50,6 +50,11 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    
+    #reset sessions 
+    session[:IdArray]=nil
+    session[:index_value]=nil
+    
     #get the project's ID here
       @ProjectID = params[:id]
       @Projects = StudentProject.all
@@ -66,6 +71,10 @@ class ProjectsController < ApplicationController
 
      
     def edit
+          #reset sessions 
+          session[:IdArray]=nil
+          session[:index_value]=nil
+      
        if session[:user_id] != nil
           @user = User.find(session[:user_id]) 
         if @user.acctype == "coordinator" 
