@@ -1,7 +1,7 @@
 <!-- Profile Sidebar navigation -->
 <div class="aside_cols to_left">
-<div id="tabs" class="to_right vertical_list button">
-	<p align="center"><b><font color="white"><%= @current_user.username %></font></b></p>
+<div id="tabs" class="to_right vertical_list tab">
+	<p align="center"><b><font color="black"><%= @current_user.username.humanize %></font></b></p>
 	<ul>
 	<li><%=link_to "My Projects", :my_projects %></li>
 	<li><%=link_to "Submit New Project", :submit_project %></li>
