@@ -44,7 +44,7 @@
 	width: auto;
 	float: left;
 	margin-right: 6%;
-	margin-left: 6%;
+	margin-left: 3%;
 	max-height: inherit;
 }
 ul.metalist {
@@ -130,7 +130,7 @@ ul.right-client-list li {
 	max-width: 80%;
 	height: 80%;
 	font-size: 1.0em;
-	margin:5% auto;
+	margin: 5% auto;
 	color: black;
 }
 
@@ -164,33 +164,25 @@ ul.right-client-list li {
 	margin-top: 40px;
 }
 
-.project-edit-fieldset-group  table{
-	max-width: 85%;
-	height:auto;
+.project-edit-fieldset-group  table {
+	max-width: 90%;
+	height: auto;
+	margin: 0 2px;
 }
 
-.project-edit-table tbody{
-		max-width: 85%;
+.project-edit-table tbody {
+	max-width: 85%;
 }
 
 .project-edit-fieldset-group legend {
 	color: #005d8f;
 }
 
-.project-container  table, caption, tbody, tfoot, thead, tr, th, td {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	outline: 0;
-	font-size: 100%;
-	vertical-align: baseline;
-	background: #ffffff;
-}
 table.project-edit-table a:visited {
 	color: #005d8f;
 }
-.project-edit-table{
-	max-width:85%;
+.project-edit-table {
+	max-width: 85%;
 	margin: 0 auto;
 }
 
@@ -200,6 +192,11 @@ table.project-edit-table th {
 .project-edit-line-container {
 	margin: 25px auto;
 	max-width: 95%;
+}
+
+.project-edit-line-container fieldset{
+	margin: 25px auto;
+	max-width: 80%;
 }
 
 .project-edit-line-container-year {
@@ -585,7 +582,59 @@ td.project-manage-tick {
 	padding-bottom: 7px;
 }
 
-.buttons-hold {
+.project-contact-container {
+	margin: 0 auto;
+	max-width: 80%;
+	font-size: 1.2em;
+	color: black;
+	margin-bottom:10px;
+}
+
+.contact_name {
+	margin: 15px auto;
+	max-width: 95%;
+}
+
+.contact_email {
+	margin: 15px auto;
+	max-width: 95%;
+}
+
+.contact_message {
+	margin: 15px auto;
+	max-width: 95%;
+}
+
+.contact_message label{
+	margin-bottom: 15px;
+}
+
+.contact_message textarea{
+	max-width:55%;
+	max-height:80%;
+	margin:0 auto;
+}
+
+.contact_button{
+	margin:5px auto;
+	margin-left:40%;
+	margin-bottom:5px;
+	width:115px;
+}
+.contact_button input{
+	margin-bottom:10px;
+}
+
+.project-contact-container form {
+	margin: 0 auto;
+}
+
+.project-contact-container label {
+	float: left;
+	font-weight: bold;
+}
+
+.buttons-hold { 
 	background: -moz-linear-gradient(center bottom , #58ba32 0%, #73ca4b 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
 	border: medium none;
 	border-radius: 5px;
