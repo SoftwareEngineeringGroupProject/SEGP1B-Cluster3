@@ -57,8 +57,8 @@
 					<tr>
 						<!--pass the click event to a JS function that is capable of select/deselect all checkboxes-->
 						<th class="project-manage-tick"><%= check_box_tag 'choose[]', 'ticked', false , :onClick=>"select_all(this)" %></th>
-						<th>Title</th>
-						<th>Project ID</th>
+						<th style="width:40%">Title</th>
+						<th style="width:10%">Project ID</th>
 						<th>Client</th>
 						<th>Category</th>
 						<th>Year</th>
@@ -126,7 +126,7 @@
 					<!--execute search here if exists-->
 					<%if @searchVariable.blank? ==false%>
 					<% for project in @searchVariable %>
-					<%if project==@Projects.last%>
+					<%if project==@searchVariable.last%>
 					<tr class="Project-remove-dashline">
 						<%else%>
 					<tr>
@@ -164,10 +164,10 @@
 				</table>
 			</div>
 
-			<div  class="project-manage-submit-container button">
+			<div  class="project-manage-submit-container ">
 				<span class="to_right"><%= link_to "Back", index_path, class: "link_to_button"%></span>
-				<span class="to_right"><%= submit_tag "Remove", data: { confirm: "Are you sure to delete?" }%></span>
-				<span class="to_right"><%= submit_tag "Edit"%></span>
+				<span class="to_right button"><%= submit_tag "Remove", data: { confirm: "Are you sure to delete?" }%></span>
+				<span class="to_right button"><%= submit_tag "Edit"%></span>
 			</div>
 			<%end%>
 
@@ -175,4 +175,3 @@
 
 	</div>
 </div>
-<%= render "shared/footer" %>
