@@ -3,11 +3,10 @@
 <div class="wrapper content">
   <%= render "shared/dashsidebar" %>
 
-  <div id="container" >
-      <div id="board_showing" class="general_box flex_height shadow">
-      
+      <div class="newcontainer flex_height shadow">
+      	<br />
       	<div id="industrydisplayproject" class="titles">
-        	<h1 class="centerHead"><%= @current_user.companyname %>'s Projects</h1>
+        	<h1 id="titleheader"><%= @current_user.companyname %>'s Projects</h1>
       	</div>
       
       	<div class="vspacer"></div>
@@ -34,5 +33,4 @@
   		<% end %>
 		</div>
       </div>
-  </div>
 </div>

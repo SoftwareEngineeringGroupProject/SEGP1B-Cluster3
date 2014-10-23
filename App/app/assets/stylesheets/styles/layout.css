@@ -77,7 +77,7 @@ text-align: center;
 .button a:link, .button a:visited, .button input {
     display: block;
     font-weight: bold;
-    color: #C7CED6;
+    color: #f5eded;
     background: #f01111;
   	background-image: -webkit-linear-gradient(top, #f01111, #a33f3f);
   	background-image: -moz-linear-gradient(top, #f01111, #a33f3f);
@@ -98,7 +98,7 @@ text-align: center;
  	background-image: -ms-linear-gradient(top, #4867c4, #53a2d6);
   	background-image: -o-linear-gradient(top, #4867c4, #53a2d6);
   	background-image: linear-gradient(to bottom, #4867c4, #53a2d6);
-  	color: black;
+  	color: white;
 	cursor: pointer;
 }
 
@@ -147,8 +147,7 @@ div.wrapper h1 {
 	}
 
 .content{
-	color:#F2EEEE;
-	background-color:none;
+	color:#dde5ee;
 	}
 
 .footer{

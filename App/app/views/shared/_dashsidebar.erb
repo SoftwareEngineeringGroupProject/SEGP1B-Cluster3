@@ -3,8 +3,17 @@
 <div id="tabs" class="to_right vertical_list button">
 	<p align="center"><b><font color="white"><%= @current_user.username %></font></b></p>
 	<ul>
-	<li><%=link_to "My Projects", :my_projects %></li>
-	<li><%=link_to "Submit New Project", :submit_project %></li>
+		<% if current_page?(:my_projects) %>
+			<li><%=link_to "My Projects", :my_projects, :id => "selected" %></li>
+		<% else %>
+			<li><%=link_to "My Projects", :my_projects%></li>
+		<% end %>
+		
+		<% if current_page?(:submit_project) %>
+			<li><%=link_to "Submit New Project", :submit_project, :id => "selected" %></li>
+		<% else %>
+			<li><%=link_to "Submit New Project", :submit_project %></li>
+		<% end %>
     </ul>
 </div>
 </div>

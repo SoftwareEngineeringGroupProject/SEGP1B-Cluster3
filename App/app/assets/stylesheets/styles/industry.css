@@ -18,19 +18,23 @@
 	min-height: 100px;
 	border: 4px solid;
 	border-radius: 25px;
-	border-color: gray;
+	border-color: #005AA3;
 	margin: auto;
 }
 
 .projname {
-	top: -30px;
-	width: 92%;
+	top: -35px;
+	width: 100%;
+	border-top-left-radius: 20px;
+	border-top-right-radius:20px;
 	position: relative;
 	font-size: 35px;
 	font-style: bold;
 	color: blue;
 	text-align: left;
 	margin: auto;
+	background-color: #005AA3;
+	text-align: center;
 }
 
 .projdesc {

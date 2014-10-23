@@ -110,8 +110,72 @@
 
 #bottomlinks {
 	margin-right: 15%;
-	margin-top: -3px;
+	margin-top: 1px;
 	color: white;
-	top: 0px;
+	top: 2px;
 }
 
+html {
+	background-color: #dde5ee;
+}
+
+.newcontainer {
+	margin: 8px auto;
+	width:71%;
+	padding: 4px 0px 10px 10px;
+	background: #000000;
+	min-height: 350px;
+	z-index: 100; 
+}
+
+.lefttabs {
+	background-color: #C7DAEA;
+	width: 95%;
+	margin: 2px 0px;
+	font-family: Arial,Helvetica,sans-serif;
+}
+
+.lefttabs a {
+	min-height: 40px;
+	padding: 15px;
+	text-align: center;
+}
+
+#titleheader {
+	text-align: center;
+	font-size: 40px;
+}
+
+#selected {
+	background: #4867c4;
+	background-image: -webkit-linear-gradient(top, #4867c4, #53a2d6);
+	background-image: -moz-linear-gradient(top, #4867c4, #53a2d6);
+	background-image: -ms-linear-gradient(top, #4867c4, #53a2d6);
+	background-image: -o-linear-gradient(top, #4867c4, #53a2d6);
+	background-image: linear-gradient(to bottom, #4867c4, #53a2d6);
+	text-decoration: none;
+}
+
+.profileleft {
+	float: left;
+	width: 47%;
+
+	padding: 5px;
+	margin-bottom: 10px;
+	height: 100%;
+}
+
+.profileright {
+	float: right;
+	width: 47%;
+	padding: 5px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	height: 100%;
+}
+
+.profilebox {
+	border: 4px solid;
+	border-color: #005AA3;
+	border-radius: 10px;
+}

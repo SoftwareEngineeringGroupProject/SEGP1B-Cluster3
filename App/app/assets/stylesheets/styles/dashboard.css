@@ -101,7 +101,7 @@ div.content {
 }
 
 #tabs li, #cart li {
-	border-bottom: 1.5px solid white;
+	border-bottom: 1.5px solid black;
 }
 
 .tab a:link, .tab a:visited{
