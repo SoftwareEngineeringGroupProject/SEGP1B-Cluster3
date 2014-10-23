@@ -8,7 +8,7 @@
 
   <!-- Middle board -->
   <div id="container" class="to_left">
-     <div id="new_board_showing" class="flex_height shadow">
+    <div id="new_board_showing" class="flex_height shadow student_assigned">
     <% if @student1.errors.any? || @student2.errors.any? || @student3.errors.any?%>
       <ul class="Signup_Errors">
       <% for message_error in @student1.errors.full_messages %>
@@ -25,24 +25,34 @@
     <%= form_tag "", :multipart => true %>
     <%= hidden_field_tag "project_id", @project.id %>
     <fieldset>
-      <legend>Assign Project to Students</legend>
-      <label>Group Name<%= text_field_tag :group_name,@group_name, "placeholder"=>"Group name" %></label>
-      <label>Message for students<%= text_area_tag :message, params[:message], "placeholder" => "message" %></label>
-      <p>Here is project specification link. Copy and paste to the message if wish!</p>
-      <%=text_field_tag :spec_link, @spec_link, "readonly"=>"true"%>
-      <p>Enter StudentIDs</p>
-      <label>Student 1<%= text_field_tag :student1,@student1.studentID, "placeholder" => "axxxxxxx" %></label>
-      <label>Student 2<%= text_field_tag :student2,@student2.studentID, "placeholder" => "axxxxxxx" %></label>
-      <label>Student 3<%= text_field_tag :student3,@student3.studentID, "placeholder" => "axxxxxxx" %></label>
+
+      <legend><strong>Assign Project to Students</strong></legend>
+
+      <div id="form_team" class="to_left inputs">
+        <p>Group Name</p>
+        <%= text_field_tag :group_name,@group_name, "placeholder"=>"Group name" %>
+        <p>Enter StudentIDs</p>
+        <%= text_field_tag :student1,@student1.studentID, "placeholder" => "axxxxxxx" %>
+        <%= text_field_tag :student2,@student2.studentID, "placeholder" => "axxxxxxx" %>
+        <%= text_field_tag :student3,@student3.studentID, "placeholder" => "axxxxxxx" %>
+      </div>
+
+      <div id="message_for_students" class="to_right inputs">
+        <p>Link to project specification</p>
+        <%=text_field_tag :spec_link, @spec_link, "readonly"=>"true"%>  
+        <p>Message for students</p>
+        <%= text_area_tag :message, params[:message], "placeholder" => "message", "rows" =>"8" %>
+      </div>  
+
     </fieldset>
     
   <!--*********************-->
-  <div id="action_to_showing_board" class="horizontal_list button" >
-      <ul>
-        <li><%= submit_tag 'Assign' %></li>
-        <li><%= submit_tag 'Cancel' %></li>
-      </ul>
-  </div>
+    <div id="action_to_showing_board" class="horizontal_list button to_right button_in_assinged_students" >
+        <ul>
+          <li><%= submit_tag 'Assign' %></li>
+          <li><%= submit_tag 'Cancel' %></li>
+        </ul>
+    </div>
 </div>
 </div>
 <%= render "shared/projectmanipsidebar" %>
