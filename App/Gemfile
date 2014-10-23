@@ -72,3 +72,4 @@ gem 'mercury-rails', :git => 'git://github.com/jejacks0n/mercury.git'
 gem "chartkick"
 gem "groupdate"
 gem 'active_median'
+
