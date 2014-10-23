@@ -9,3 +9,4 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( studentprojectform.js )
 Rails.application.config.assets.precompile += %w( jquery-1.7.js )
 Rails.application.config.assets.precompile += %w( studentproject_manage.js)
+Rails.application.config.assets.precompile += %w( jsapi.js )

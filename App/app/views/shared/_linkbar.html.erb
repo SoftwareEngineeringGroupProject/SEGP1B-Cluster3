@@ -18,6 +18,25 @@
 		<span class="btn"><%= link_to "Contact", contact_path %></span>
 		<% end %>
 
+
+	
+
+
+
+
+         <% if session[:user_id] != nil %>
+        <% @user = User.find(session[:user_id]) %>
+          <% if @user.acctype == "coordinator" %>
+    			
+              	<% if current_page?(:stats) %>
+		<span class="btnSelected"><%= link_to "Stats", stats_path %></span>
+		<% else %>
+		<span class="btn"><%= link_to "Stats", stats_path %></span>
+		<% end %>		<% end %>
+		<% end %>
+
+		
+
 	</div>
 </div>
 <div class="pushlower"></div>
