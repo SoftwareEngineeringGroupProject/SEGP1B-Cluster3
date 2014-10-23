@@ -1,4 +1,5 @@
 <%= render "shared/header" %>
+<%= render "shared/dashheader" %>
 
 <div class="wrapper content">
   <%= render "shared/dashsidebar" %>
@@ -7,53 +8,57 @@
   <div id="container" >
   
       <div id="new_board_showing" class="general_box flex_height shadow">
-        <div id="industrydisplayproject">
-          <p>Description: <%= @project.body %></p>
-          <p>Completion Time: <%= @project.compl_time %></p>
- 
-      				<div>
-        			<h3>Basic details</h3>
-        			Project Name: <%= @project.title %><br />
-        			Basic Project Description: <%= @project.body %><br />
-        			Estimated Project Length: <%= @project.compl_time %>months<br />
-      				</div>
 
-      				<div>
-        			<h3>System requirements</h3>
-        			Required Language(s): <%= @project.languages %><br />
-        			System Requirements: <%= @project.system_req %><br />
-        			Compatability Requirements: <%= @project.compat_req %><br />
-      				</div>  
+      <div class="project_item flex_height">
+          <div class ="to_left">
+            <div class = "title_item">
+              <h1>Basic details</h1>
+              <hr class ="fancy-line">
+              <strong>Project Name: </strong><br /><%= @project.title %><br /><br />
+              <strong>Basic Project Description: </strong><br /><%= @project.body %><br /><br />
+              <strong>Estimated Project Length: </strong><br /><%= @project.compl_time %>months<br /><br />
+            </div>  
+            
+            <div class = "title_item">
+              <h1>System  requirements</h1>
+              <hr class = "fancy-line">
+              <strong>Required Language(s): </strong><br /><%= @project.languages %><br /><br />
+              <strong>System Requirements: </strong><br /><%= @project.system_req %><br /><br />
+              <strong>Compatability Requirements: </strong><br /><%= @project.compat_req %><br /><br />
+            </div>    
+          </div>
 
-      				<div>
-        			<h3>Ideal Student Expertise</h3>
-      				Languages: <%= @project.student_req_lang %><br />
-      				Concepts: <%= @project.student_req_concepts %><br />
-      				</div>
-      				
-      				<div>
-      				<h3>Security Requirements</h3>
-      				Police Check Required: <%= @project.student_police_check %><br />
-      				Other Security Clearance/Confidentiality Clause Required: <%= @project.student_security %><br />
-      				</div>
+          <div class ="to_right">    
 
-      				<div>
-      				<h3>Further details</h3>
-        			Anything else helpful to know: <%= @project.extra_details %><br />
-      				</div>
+            <div class = "title_item">  
+              <h1>Ideal Student Expertise</h1>
+              <hr class = "fancy-line">
+              <strong>Languages: </strong><br /><%= @project.student_req_lang %><br /><br />
+              <strong>Concepts: </strong><br /><%= @project.student_req_concepts %><br /><br />
+            </div> 
 
-      				<div>
-      				<h3>Attachments</h3>
-      				</div>
+            <div class = "title_item">  
+              <h1>Security Requirements</h1>
+              <hr class = "fancy-line">
+              <strong>Police Check Required: </strong><br /><%= @project.student_police_check %><br /><br />
+              <br />
+              <strong>Other Security Clause Required: </strong><br /><%= @project.student_security %><br /><br />
+            </div>   
 
-  					</fieldset>
-          
-          
-      
-          
-          
-          
-        </div>
+            <div class = "title_item">  
+              <h1>Further details</h1>
+              <hr class= "fancy-line">
+              <strong>Anything else helpful to know: </strong><br /><%= @project.extra_details %><br /><br />
+            </div> 
+
+            <div class = "title_item">  
+              <h1>Attachments</h1>  
+              <hr class="fancy-line">
+            </div> 
+          </div>
+    </div>
+    
+        
       </div>
   </div>
 </div>

@@ -403,3 +403,35 @@ hr.fancy-line {
 	 padding: 10px;
 }
 
+/* --------------------------------------- delete message ---------------------------------- */
+#delete_message {
+	margin: auto;
+	width: 80%;
+	padding: 20px;
+}
+#delete_message textarea, #delete_message input {
+	float:left;
+}
+
+
+
+/* ----------------------------------------- User info item ---------------------------- */
+.userinfo_item {
+	padding: 20px;
+	margin: auto;
+	color: black;
+  	border-radius: 8px;
+  	width: 90%;
+}
+.userinfo_item h3, .userinfo_item h1 {
+	color: #B38808;
+	border:none;
+}
+.userinfo_item > div {
+	padding: 40px;
+	margin:auto;
+	border-radius: 8px;
+	-webkit-box-shadow: 0 10px 6px -6px #777;
+	-moz-box-shadow: 0 10px 6px -6px #777;
+	box-shadow: 0 10px 6px -6px #777;
+}

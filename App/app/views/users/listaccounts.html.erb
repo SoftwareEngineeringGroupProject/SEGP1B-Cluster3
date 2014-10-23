@@ -2,30 +2,35 @@
 <%= render "shared/linkbar" %>
 <%= render "shared/profilesidebar" %>
 
-<div id="container" class="to_left shadow">
-	<div class="profilemain forms flex_height">
+<div id="container" class="to_left">
+  <div id="new_board_showing" class="shadow">  
       <div class="titles">
-        <h1 class="centerHead">PPMS User Management</h1>
+        <font color="#B38808"><h1 class="centerHead">PPMS User Management</h1></font>
       </div>
       
-    <div id="listusersdiv">
-   		<table id="listuserstable">
-  		<tr><th>Account Type</th><th>Username</th><th>Full Name</th><th>Email</th><th colspan="2"></th></tr>
+    <div class="project_list">
+   		<table >
+  		<thead><tr><th>Account Type</th><th>Username</th><th>Full Name</th><th>Email</th><th colspan="3">Actions</th></tr></thead>
+
+      <tbody>
  		<% @users.each do |user| %>
     		<tr>
-    			<td><%= user.acctype %></td>
+    		<td><%= user.acctype %></td>
 				<td><%= user.username %></td>
 				<td><%= user.fname %> <%= user.lname %></td>
 				<td><%= user.email %></td>
-				<td><%= link_to 'Details', controller: "users", action: "show", id: user.id %></td>
-				<td><%= link_to 'Edit', controller: "users", action: "edit", id: user.id %></td>
+				<td><strong><%= link_to 'Details', controller: "users", action: "show", id: user.id %></strong></td>
+				<td><strong><%= link_to 'Edit', controller: "users", action: "edit", id: user.id %></strong></td>
 				<% if user.id != @current_user.id %>
-					<td><%= link_to 'Delete User', controller: "users", action: "destroy", id: user.id,
-                    	method: :delete, :confirm => 'Are you sure you want to delete this user\'s account?' %></td>
+					<td><strong><%= link_to 'Delete User', controller: "users", action: "destroy", id: user.id,
+                    	method: :delete, :confirm => 'Are you sure you want to delete this user\'s account?' %></strong></td>
                 <% end %>
     		</tr>
   		<% end %>
+      </tbody>
+
 		</table>
 	</div>
+
   </div>
 </div>

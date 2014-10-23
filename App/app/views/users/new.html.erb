@@ -1,6 +1,6 @@
 <%= render "shared/header" %>
 <%= render "shared/linkbar" %>
-
+<div id="container" >
   <div id="ProfileSetting" class=" forms flex_height">
     <%= form_for :user, :url => {:controller => 'users', :action => 'create'}  do |f| %>
       <div class="titles">
@@ -48,3 +48,4 @@
     <% end %>
 
   </div>
+</div>

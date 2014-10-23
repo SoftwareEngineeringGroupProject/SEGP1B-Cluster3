@@ -1,8 +1,11 @@
 <%= render "shared/header" %>
 <%= render "shared/linkbar" %>
 <%= render "shared/profilesidebar" %>
+<div id="container" class="flex_height">
 
-  <%= form_tag(:perform_reset, class: "forms flex_height", id: "login") do %>
+<div id="login" class=" forms flex_height">
+
+  <%= form_tag(:perform_reset) do %>
       <div class="titles">
         <h3>Change Password for <%= @current_user.username %></h3>
         <!--message flash up-->
@@ -22,3 +25,7 @@
         </ul>
       </div>
   <% end %>
+  
+</div>
+
+</div>

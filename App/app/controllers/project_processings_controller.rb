@@ -132,7 +132,8 @@ class ProjectProcessingsController < ApplicationController
       end
 
     elsif (params[:commit] == "Cancel") 
-      redirect_to project_manip_path
+      redirect_to project_manip_path(id: @project.id)
+      return
     end
     assign_student
     render :assign_student

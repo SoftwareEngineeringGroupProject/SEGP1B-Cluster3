@@ -1,6 +1,7 @@
 <%= render "shared/header" %>
 <%= render "shared/linkbar" %>
 <%= render "shared/profilesidebar" %>
+<div id="container" >
 
   <div id="CreateAdminDiv" class=" forms flex_height">
     <%= form_for :admin_user  do |f| %>
@@ -9,7 +10,7 @@
       </div>
 
 	  <% if flash[:notice] %>
-  		<li><font color="black"><%= flash[:notice] %></font></li
+  		<li><font color="black"><%= flash[:notice] %></font></li>
   		<br />
 	  <% end %>
 
@@ -44,3 +45,4 @@
     <% end %>
 
   </div>
+</div>
