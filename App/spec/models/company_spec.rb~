@@ -32,6 +32,16 @@ describe Company do
 		it { should_not be_valid }
 	end
 
+	describe "a company must have a webpage" do
+		before { @comp.website = " " }
+		it { should_not be_valid }
+	end
+
+	describe "a company must have a phone number" do
+		before { @comp.phone = " " }
+		it { should_not be_valid }
+	end
+
 	describe "a company must have a user ID" do
 		before { @comp.user_id = " " }
 		it { should_not be_valid }

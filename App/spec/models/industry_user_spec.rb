@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe IndustryUser do
+describe Industryuser do
 
 end
