@@ -26,22 +26,19 @@
 					<span class="project-title-subheading"">Are you sure that you want to delete this project?</span>
 					<%=form_for @theProject, :url => { :action => "delete" } do |f| %>
 
-					<div  class="button horizontal_list to_right">
-					<ul>
-					<li>
-					<%= link_to "CANCEL", project_path(@theProject.id) %>
-					</li>
-					<li>
+					<div  class="project-manage-submit-container">
+					<span class="to_right">
+					<%= link_to "CANCEL", project_path(@theProject.id), class: "link_to_button"%>
+					</span>
+					<span class="to_right button">
 					<%= f.submit "CONFIRM DELETE"%>
-					</li>
-					</ul>
-					</div>
-					<%end%>
-				</fieldset>
-			</fieldset>
-
+					</span>
 		</div>
+		<%end%>
+		</fieldset>
+		</fieldset>
 
 	</div>
+
 </div>
-<%= render "shared/footer" %>
+</div>
