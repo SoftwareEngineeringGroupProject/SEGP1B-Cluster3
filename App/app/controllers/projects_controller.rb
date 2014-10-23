@@ -33,16 +33,19 @@ class ProjectsController < ApplicationController
 
   def create
     @student_project = StudentProject.new(project_params)
-    if params[:add_student]
+     if params[:add_student]
       @student_project.students.build
     elsif params[:remove_student]
-      automatically destroyed by rails
-    if @student_project.save
-                 redirect_to pastproject_management_path, :notice => "Project created" 
-      else
-        render :new
-    end  
-    end  
+      # automatically destroyed by rails
+    else
+      if @student_project.save
+        redirect_to pastproject_management_path, :notice => "Project created"
+      #   return
+      # else
+      #   render :new
+      end
+    end
+    render :new
   end
 
   def project_params
