@@ -42,10 +42,8 @@
 
 .project-metadata span {
 	width: auto;
-	float: left;
-	margin-right: 6%;
-	margin-left: 3%;
-	max-height: inherit;
+	margin-left: 5%;
+	max-height: 30px;
 }
 ul.metalist {
 	height: 30px;
@@ -86,7 +84,7 @@ ul.right-client-list li {
 }
 
 .project-index-image-inside {
-	width: 200px;
+	max-width: 100%;
 	height: 150px;
 }
 
@@ -165,9 +163,13 @@ ul.right-client-list li {
 }
 
 .project-edit-fieldset-group  table {
-	max-width: 90%;
+	max-width: 100%;
 	height: auto;
 	margin: 0 2px;
+}
+
+table.project-edit-table tr {
+	max-width: 100%;
 }
 
 .project-edit-table tbody {
@@ -182,27 +184,53 @@ table.project-edit-table a:visited {
 	color: #005d8f;
 }
 .project-edit-table {
-	max-width: 85%;
+	max-width: 100%;
 	margin: 0 auto;
 }
 
 table.project-edit-table th {
 	color: grey;
+	max-width: 100%;
 }
 .project-edit-line-container {
 	margin: 25px auto;
-	max-width: 95%;
+	max-width: 1000px;
 }
 
-.project-edit-line-container fieldset{
+.project-edit-line-container fieldset {
 	margin: 25px auto;
-	max-width: 80%;
+	max-width: 90%;
+}
+
+.project-manage-submit-container  a:link, a:visited {
+	background: linear-gradient(to bottom, #f01111, #a33f3f) repeat scroll 0 0 #f01111;
+	border: 0 none;
+	color: #c7ced6;
+	display: block;
+	font-weight: bold;
+	margin: 0;
+	padding-bottom: 7px;
+	height: 15px;
+	padding-top: 7px;
+	text-align: center;
+	transition: background-color 0.2s ease 0s;
+}
+
+.project-manage-submit-container a:hover {
+	background: #4867c4;
+	background-image: -webkit-linear-gradient(top, #4867c4, #53a2d6);
+	background-image: -moz-linear-gradient(top, #4867c4, #53a2d6);
+	background-image: -ms-linear-gradient(top, #4867c4, #53a2d6);
+	background-image: -o-linear-gradient(top, #4867c4, #53a2d6);
+	background-image: linear-gradient(to bottom, #4867c4, #53a2d6);
+	color: black;
+	cursor: pointer;
 }
 
 .project-edit-line-container-year {
 	margin: 25px auto;
 	margin-left: 100px;
-	width: 300px;
+	width: 350px;
 }
 
 .project-edit-line-container-year label {
@@ -320,7 +348,7 @@ dl.studentlist {
 
 .project-background-container {
 	position: relative;
-	margin: 50px;
+	margin: 0 auto;
 	margin-bottom: 50px;
 	height: 1000px;
 	min-width: 1258px;
@@ -483,11 +511,9 @@ label {
 .project-notfound {
 	background-color: #fff;
 	color: #000;
-	height: 100px;
-	width: 320px;
-	margin: 0 auto;
-	margin-top: 100px;
-	margin-bottom: 100px;
+	height: auto;
+	width: 400px;
+	margin: 300px auto;
 }
 
 .project-manage-container {
@@ -538,7 +564,7 @@ label {
 }
 
 .project-manage-table {
-	width: 95%;
+	max-width: 95%;
 	height: auto;
 	margin: 10px auto;
 	margin-bottom: 30px;
@@ -546,14 +572,14 @@ label {
 }
 
 .project-manage-table th {
-	width: auto;
+	width: 20%;
 	color: blue;
 	text-align: center;
 }
 
 .project-manage-table tr {
 	margin: 0 auto;
-	width: auto;
+	max-width: 100%;
 }
 
 tr.Project-remove-dashline td {
@@ -576,18 +602,13 @@ td.project-manage-tick {
 	width: 1px;
 }
 
-.link_to_button {
-	display: inline-block;
-	padding-top: 7px;
-	padding-bottom: 7px;
-}
 
 .project-contact-container {
 	margin: 0 auto;
 	max-width: 80%;
 	font-size: 1.2em;
 	color: black;
-	margin-bottom:10px;
+	margin-bottom: 10px;
 }
 
 .contact_name {
@@ -605,24 +626,24 @@ td.project-manage-tick {
 	max-width: 95%;
 }
 
-.contact_message label{
+.contact_message label {
 	margin-bottom: 15px;
 }
 
-.contact_message textarea{
-	max-width:55%;
-	max-height:80%;
-	margin:0 auto;
+.contact_message textarea {
+	max-width: 55%;
+	max-height: 80%;
+	margin: 0 auto;
 }
 
-.contact_button{
-	margin:5px auto;
-	margin-left:40%;
-	margin-bottom:5px;
-	width:115px;
+.contact_button {
+	margin: 5px auto;
+	margin-left: 40%;
+	margin-bottom: 5px;
+	width: 115px;
 }
-.contact_button input{
-	margin-bottom:10px;
+.contact_button input {
+	margin-bottom: 10px;
 }
 
 .project-contact-container form {
@@ -634,7 +655,7 @@ td.project-manage-tick {
 	font-weight: bold;
 }
 
-.buttons-hold { 
+.buttons-hold {
 	background: -moz-linear-gradient(center bottom , #58ba32 0%, #73ca4b 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
 	border: medium none;
 	border-radius: 5px;
