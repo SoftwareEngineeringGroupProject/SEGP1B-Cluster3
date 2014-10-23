@@ -7,32 +7,29 @@
   <div id="container" class="to_left">
     <!-- Viewing Project Board -->
     <div id="new_board_showing" class="flex_height shadow">
+
         <div class="flex_height">
+          <h1><font color= "#B38808" > &nbsp; &nbsp; &nbsp;<%=User.find(@project.user_id).companyname.upcase %>'s PROJECT</font></h1>
           <div id="action_to_showing_board" class="to_right horizontal_list button">
-          <% if @show_action%>
+          <%=form_tag %>
+          <% if @show_action %>
             <ul>
-            <% if @state == "new" %>
+            <% if @project.status == "new" %>
               <li><%= submit_tag 'Accept' %></li>
               <li><%= submit_tag 'Reject' %></li>
               <li><%= submit_tag 'Suspend' %></li>
             <% end%>
 
-            <% if @state == "accepted" %>
+            <% if @project.status == "accepted" %>
               <li><%= submit_tag 'Suspend' %></li>
-              <li><%= submit_tag 'Add To Cart' %></li>
             <% end%>
 
-            <% if @state == "rejected" || @state == nil %>
+            <% if @project.status == "rejected" || @project.status == nil %>
               <li><%= submit_tag 'Remove' %></li>
               <li><%= submit_tag 'Suspend' %></li>
             <% end%>
 
-            <% if @state == "pending" %>
-              <li><%= submit_tag 'Accept' %></li>
-              <li><%= submit_tag 'Reject' %></li>
-            <% end%>
-
-              <% if @state == "past_projects" %>
+            <% if @project.status == "pending" %>
               <li><%= submit_tag 'Accept' %></li>
               <li><%= submit_tag 'Reject' %></li>
             <% end%>

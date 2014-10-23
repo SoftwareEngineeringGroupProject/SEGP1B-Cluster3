@@ -55,6 +55,6 @@ class SubmissionsController < ApplicationController
   # Required due to strong parameter mechanisms
   private
     def project_params
-      params.require(:project).permit(:title, :body, :attachment)
+      params.require(:project).permit(:title, :body, :attachment, :compl_time, :languages, :system_req, :compat_req, :student_req_lang, :student_req_concepts, :student_police_check, :student_security, :extra_details)
     end
 end

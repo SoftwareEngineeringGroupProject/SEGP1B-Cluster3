@@ -3,71 +3,61 @@
 <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
 <div class="wrapper gallery">
-  <div id="slides" class="shadow">
-    <img src="images/example.gif" alt="" />
-  </div>
+	<div id="slides" class="shadow">
+		<img src="images/example.gif" alt="" />
+	</div>
 </div>
 
 <div class="wrapper content">
 
+	<div id="news" class="flex_height shadow">
+		<h1 class="contact-title"><strong>Contacts</strong></h1>
+		<p></p>
 
+		<!-- FLASH status for email form -->
+		<div>
+			<% flash.each do |key, value| %>
+			<div>
+				<a href="#" data-dismiss="alert">×</a>
+				<h2 style="color:black" class="tab1"><%= value %></h2>
+			</div>
+			<% end %>
+		</div>
 
+		<h2 class="tab1"> General Enquiries:</h2>
+		<h3 class="tab2">Phone: <span class="ContactInfo"> <em>8343245</em> </span></h3>
+		<h3 class="tab2">Email:<span class="ContactInfo"> <em>adelaideuni@adlaide.edu.au</em></span></h3>
+		<p></p>
+		<h2 class="tab1"> Student Enquiries:</h2>
+		<h3 class="tab2">Phone:<span class="ContactInfo"> <em>8343245</em></span></h3>
+		<p></p>
+		<h2 class="tab1"> Course Coordinator:</h2>
+		<h3 class="tab2">Phone:<span class="ContactInfo"> <em>23453544</em></span></h3>
+		<h3 class="tab2">Email: <span class="ContactInfo"> <em>kevin@cs.adelaide.edu.au</em></span></h3>
+		<p></p>
+		<h2 class="tab1"> Location:</h2>
+		<iframe class="tab1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.430650819623!2d138.60646403439335!3d-34.92073495590061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ab0ced27ef95329%3A0xb46ee5f583fae2bf!2sThe+University+of+Adelaide!5e0!3m2!1sen!2sau!4v1413086083205" width="600" height="450" frameborder="0" style="border:0"></iframe>
+		<p></p>
+		<p></p>
 
+		<!-- CONTACT FORM -->
+		<h2 class="tab1"> Contact Us:</h2>
+		<div class="project-contact-container">
 
-<div id="news" class="flex_height shadow">
-<h1 class="contact-title"><strong>Contacts</strong></h1>
-<p></p>
+			<%= simple_form_for @contact, :html => {:class => 'form-horizontal' } do |f| %>
+			<%= f.input :name, :required => true %>
+			<%= f.input :email, :required => true %>
+			<%= f.input :message, :as => :text, :required => true %>
+			<div class= "hidden">
+				<!--%= f.input :nickname, :hint => 'Leave this field blank!' %-->
+			</div>
+			<div class="contact_button">
+				<%= f.button :submit, 'Send message', :class=> "btn btn-primary" %>
+			</div>
+			<% end %>
+		</div>
 
-<!-- FLASH status for email form -->
-<div>
-  <% flash.each do |key, value| %>
-    <div>
-      <a href="#" data-dismiss="alert">×</a>
-      <h2 style="color:black" class="tab1"><%= value %></h2>
-    </div>
-  <% end %>
-</div>
-
-
-<h2 class="tab1"> General Enquiries:</h2>
-<h3 class="tab2">Phone: <span class="ContactInfo"> <em>8343245</em> </span></h3>
-<h3 class="tab2">Email:<span class="ContactInfo"> <em>adelaideuni@adlaide.edu.au</em></span></h3>
-<p></p>
-<h2 class="tab1"> Student Enquiries:</h2>
-<h3 class="tab2">Phone:<span class="ContactInfo"> <em>8343245</em></span></h3>
-<p></p>
-<h2 class="tab1"> Course Coordinator:</h2>
-<h3 class="tab2">Phone:<span class="ContactInfo">  <em>23453544</em></span></h3>
-<h3 class="tab2">Email: <span class="ContactInfo"> <em>kevin@cs.adelaide.edu.au</em></span></h3>
-<p></p>
-<h2 class="tab1"> Location:</h2>
-<iframe class="tab1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.430650819623!2d138.60646403439335!3d-34.92073495590061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ab0ced27ef95329%3A0xb46ee5f583fae2bf!2sThe+University+of+Adelaide!5e0!3m2!1sen!2sau!4v1413086083205" width="600" height="450" frameborder="0" style="border:0"></iframe>
-<p></p>
-<p></p>
-
-<!-- CONTACT FORM -->
-<h2 class="tab1"> Contact Us:</h2>
-<div align="center">
-
-  <%= simple_form_for @contact, :html => {:class => 'form-horizontal' } do |f| %>
-    <%= f.input :name, :required => true %>
-    <%= f.input :email, :required => true %>
-    <%= f.input :message, :as => :text, :required => true %>
-    <div class= "hidden">
-      <!--%= f.input :nickname, :hint => 'Leave this field blank!' %-->
-    </div>
-    <div>
-      </br>
-      <%= f.button :submit, 'Send message', :class=> "btn btn-primary" %>
-    </div>
-  <% end %>
-</div>
-
-
-
-
-
-  </div>
+	</div>
 </div>
 
 <%= render "shared/footer" %>

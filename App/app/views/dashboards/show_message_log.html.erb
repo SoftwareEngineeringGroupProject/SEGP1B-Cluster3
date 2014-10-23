@@ -8,16 +8,21 @@
   <!-- Middle board -->
   <div id="container" class="to_left">
     <!-- Viewing Project Board -->
-    <div id="board_showing" class="general_box flex_height shadow">
-      <div style="height:300px; overflow: auto;">
-
+    <div id="new_board_showing" class="general_box flex_height shadow">
+      <div style="height:500px; overflow: auto;">
+      <h1><strong><font color = "#B38808">Conversation Log</font><strong></h1>  
       <% if !@messages.blank? %>
       <% @messages.each do |m| %>
-        <div class="user_message inset_shadow">
-        <% sender = User.find(m.sender_id) %>
-        <strong>&nbsp&nbsp&nbspSender:&nbsp<%= sender.lname %>&nbsp-&nbspTitle:&nbsp<%=m.title %></strong>
-        <textarea rows="2" readonly><%=m.text %></textarea>
-        </div>
+
+        <% if m.sender_id == @current_user.id %>
+          <div class="admin_message inset_shadow">
+        <% else %>
+          <div class="industry_message inset_shadow">
+        <% end %>
+          <% sender = User.find(m.sender_id) %>
+          <strong>&nbsp&nbsp&nbspSender:&nbsp<%= sender.lname %>&nbsp-&nbspTitle:&nbsp<%=m.title %></strong>
+          <textarea rows="2" readonly><%=m.text %></textarea>
+          </div>
       <% end %>
       <% else %>
         <div class="user_message inset_shadow">

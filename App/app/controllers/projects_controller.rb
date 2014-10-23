@@ -33,16 +33,20 @@ class ProjectsController < ApplicationController
 
   def create
     @student_project = StudentProject.new(project_params)
-    if params[:add_student]
+     if params[:add_student]
       @student_project.students.build
     elsif params[:remove_student]
-      automatically destroyed by rails
-    if @student_project.save
-                 redirect_to pastproject_management_path, :notice => "Project created" 
-      else
-        render :new
-    end  
-    end  
+      # automatically destroyed by rails
+    else
+      if @student_project.save
+        redirect_to pastproject_management_path, :notice => "Project created"
+        return
+      #   return
+      # else
+      #   render :new
+      end
+    end
+    render :new
   end
 
   def project_params
@@ -383,5 +387,30 @@ end
       
         redirect_to pastproject_management_path
   end
-                                                                                 
+             
+
+#STATS
+def stats
+
+         if session[:user_id] != nil
+        @user = User.find(session[:user_id]) 
+          if @user.acctype != "coordinator"   
+              flash[:notice] = "Please Login as a coordinator to edit a past project"
+              redirect_to :login
+            end
+         else
+            flash[:notice] = "Please Login to edit a past project"
+            redirect_to :login
+        end 
+
+end
+
+
+
+
+
+
+
+
+
 end

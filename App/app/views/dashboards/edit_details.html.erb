@@ -6,15 +6,14 @@
 
   <div id="container" class ="to_left">
     
-      <div id="new_board_showing" class="general_box flex_height shadow">
+      <div id="new_board_showing" class="flex_height shadow">
         <div id="industrydisplayproject">
-        <%= form_for @project, url: {action: "update_details"}, :html => { :multipart => true} do |f| %>
+          <%= form_for @project, url: {action: "update_details"}, :html => { :multipart => true} do |f| %>
             <div class="titles">
                <h3>Edit Project</h3>
             </div>
             
             <div class="to_left">
-
             <% if @project.errors.any? %>
                 <ul class="Signup_Errors">
                 <% for message_error in @project.errors.full_messages %>
@@ -23,48 +22,48 @@
               <% end %>
             </div>
 
-            <fieldset class="inputs to_left" style="width:95%">
+            <fieldset class="inputs to_left" style="width:96%">
             <legend>Project details</legend>  
               <div>
-              <h3>Basic details</h3>
-              Project Name: <%=f.text_area :title, "placeholder" => "e.g. My Project Idea", "rows" => 1 %>
-              Basic Project Description: <%=f.text_area :body, "placeholder" => "e.g. My Awesome Project Idea Description", "rows"=>"10" %>
-              Estimated Project Length: <%=f.select(:compl_time, options_for_select([['1 month', 1], ['2 months', 2], ['3 months', 3], ['6 months', 6], ['9 months', 9], ['1 year', 12], ['1.5 years', 18], ['2 years', 24]])) %>
+              <h3>&nbsp;&nbsp;&nbsp;&nbsp;Basic details</h3>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;Project Name: </p><%=f.text_area :title, "placeholder" => "e.g. My Project Idea", "rows" => 1 %><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;Basic Project Description: <%=f.text_area :body, "placeholder" => "e.g. My Awesome Project Idea Description", "rows"=>"10" %><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;Estimated Project Length:<br><%=f.select(:compl_time, options_for_select([['1 month', 1], ['2 months', 2], ['3 months', 3], ['6 months', 6], ['9 months', 9], ['1 year', 12], ['1.5 years', 18], ['2 years', 24]])) %><br>
               </div>
 
               <div>
-              <h3>System requirements</h3>
-              Required Language(s): <%=f.text_area :languages, "placeholder" => "e.g. Must be written in Ruby on Rails version 4.2 or PHP with HTML/JavaScript" %>
-              System Requirements: <%=f.text_area :system_req, "placeholder" => "e.g. Must run on apache version X" %>
-              Compatability Requirements: <%=f.text_area :compat_req, "placeholder" => "e.g. Must run on Internet Explorer version 8 and up" %>
+              <h3>&nbsp;&nbsp;&nbsp;&nbsp;System requirements</h3>
+              &nbsp;&nbsp;&nbsp;&nbsp;Required Language(s): <%=f.text_area :languages, "placeholder" => "e.g. Must be written in Ruby on Rails version 4.2 or PHP with HTML/JavaScript" %>
+              &nbsp;&nbsp;&nbsp;&nbsp;System Requirements: <%=f.text_area :system_req, "placeholder" => "e.g. Must run on apache version X" %>
+              &nbsp;&nbsp;&nbsp;&nbsp;Compatability Requirements: <%=f.text_area :compat_req, "placeholder" => "e.g. Must run on Internet Explorer version 8 and up" %>
               </div>  
 
               <div>
-              <h3>Ideal Student Expertise</h3>
-              Languages: <%=f.text_area :student_req_lang, "placeholder" => "e.g. Must become familiar with SQL" %>
-              Concepts: <%=f.text_area :student_req_concepts, "placeholder" => "e.g. Must be familiar with distributed hash tables" %>
+              <h3>&nbsp;&nbsp;&nbsp;&nbsp;Ideal Student Expertise</h3>
+              &nbsp;&nbsp;&nbsp;&nbsp;Languages: <%=f.text_area :student_req_lang, "placeholder" => "e.g. Must become familiar with SQL" %>
+              &nbsp;&nbsp;&nbsp;&nbsp;Concepts: <%=f.text_area :student_req_concepts, "placeholder" => "e.g. Must be familiar with distributed hash tables" %>
               </div>
               
               <div>
-              <h3>Security Requirements</h3>
-              Police Check Required: <%=f.text_area :student_police_check, "placeholder" => "e.g. Yes/No" %>
-              Other Security Clearance/Confidentiality Clause Required: <%=f.text_area :student_security, "placeholder" => "e.g. This is a defence force project and secret agent clearance is required" %>
+              <h3>&nbsp;&nbsp;&nbsp;&nbsp;Security Requirements</h3>
+              &nbsp;&nbsp;&nbsp;&nbsp;Police Check Required: <%=f.text_area :student_police_check, "placeholder" => "e.g. Yes/No" %>
+              &nbsp;&nbsp;&nbsp;&nbsp;Other Security Clearance/Confidentiality Clause Required: <%=f.text_area :student_security, "placeholder" => "e.g. This is a defence force project and secret agent clearance is required" %>
               </div>
 
               <div>
-              <h3>Further details</h3>
-              Anything else helpful to know: <%=f.text_area :extra_details, "placeholder" => "e.g. Any extra info can be added here", "rows"=>"10" %>
+              <h3>&nbsp;&nbsp;&nbsp;&nbsp;Further details</h3>
+              &nbsp;&nbsp;&nbsp;&nbsp;Anything else helpful to know: <%=f.text_area :extra_details, "placeholder" => "e.g. Any extra info can be added here", "rows"=>"10" %>
               </div>
 
               <div>
-              <h3>Attach any extra information from file</h3>
-              <%=f.file_field :attachment %>
+              <h3>&nbsp;&nbsp;&nbsp;&nbsp;Attach any extra information from file</h3>
+              &nbsp;&nbsp;&nbsp;&nbsp;<%=f.file_field :attachment %>
               </div>
 
         </fieldset>
 
             <div class="sep"></div>
-            
+
             <div id="subBtn" class="button horizontal_list to_right">
               <ul>
                   <li><%= f.submit "SAVE" %></li>

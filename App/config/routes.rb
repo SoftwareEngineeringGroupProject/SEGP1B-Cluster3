@@ -5,12 +5,13 @@ Rails.application.routes.draw do
   resources :project_spec_gens do
     member { put :mercury_update }
   end
-  get '/project_specification/:auth_token' => 'project_spec_gens#show'
 
+  get '/project_specification/:auth_token' => 'project_spec_gens#show'
   get 'project_processings/edit_project' => 'project_processings#edit_project', as: 'admin_edit_project'
   post 'project_processings/edit_project' => 'project_processings#post_from_editing_project'
   get 'project_processings/assign_student'=> 'project_processings#assign_student', as: 'admin_assign_student'
   post 'project_processings/assign_student'=> 'project_processings#post_from_assigning_student'
+
 
   resources :muas
   resources :submissions
@@ -73,7 +74,7 @@ Rails.application.routes.draw do
   get 'dashboards/view?state=rejected' => "dashboards#view", :as => :admin_dashboard_show_rejected
   get 'dashboards/view?state=accepted' => "dashboards#view", :as => :admin_dashboard_show_accepted
   
-  post 'dashboards/view/:state' => 'dashboards#action_handler', :as => :action_handler
+  post 'dashboards/project_manip/:id' => 'dashboards#action_handler', :as => :action_handler
   post 'dashboards/view' => 'dashboards#action_handler'
   get 'dashboards/project_manip/:id' => "dashboards#project_manip", :as => :project_manip
   get 'dashboards/edit_details/:id' =>"dashboards#edit_details", :as => :edit_details
@@ -151,8 +152,11 @@ Rails.application.routes.draw do
   post 'industry/remove/:id' => "industry#remove", :as => :remove_industry_project
   post 'industry/delete' => "industry#pending", :as => :delete_pending_project
 
-  #BAD URL ROUTING
-  get '*path' => "application#badurl"
+
+
+  # STATS
+  get 'projects/stats' => 'projects#stats', as: 'stats'
+
 
 
 # The priority is based upon order of creation: first created -> highest priority.
@@ -209,5 +213,9 @@ Rails.application.routes.draw do
 #     # (app/controllers/admin/products_controller.rb)
 #     resources :products
 #   end
+
+
+  #BAD URL ROUTING
+  get '*path' => "application#badurl"
 
 end
