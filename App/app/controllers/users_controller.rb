@@ -250,7 +250,7 @@ class UsersController < ApplicationController
   	end
 
   	def edit_user_params
-    	params.require(:user).permit(:email, :fname, :lname, :phone)
+    	params.require(:user).permit(:email, :fname, :lname, :phone, :website, :address, :companyname)
   	end
 
   	def update_user_params

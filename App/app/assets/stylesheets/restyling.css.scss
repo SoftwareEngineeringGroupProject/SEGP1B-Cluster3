@@ -107,13 +107,20 @@
 .headertitle {
 	margin: auto;
 	color: white;
+	text-align: center;
+	margin-left: 22%;
+	margin-right: 42%;
 }
 
 #bottomlinks {
 	margin-right: 15%;
 	margin-top: 1px;
-	color: white;
+	color: #f5eded;
 	top: 2px;
+}
+
+#bottomlinks a {
+	color: #f5eded;
 }
 
 html {
@@ -176,7 +183,41 @@ html {
 }
 
 .profilebox {
-	border: 4px solid;
+	border: 3px solid;
 	border-color: #005AA3;
 	border-radius: 10px;
+	min-height: 200px;
+	background-color: #C7DAEA;
+}
+
+#projstats {
+	width: 98.5%;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+#addprojectview {
+	width: 86%;
+	margin-left: 4%;
+}
+
+.projecttitle {
+	text-align: center;
+	font-size: 30px;
+	color: #005AA3;
+}
+
+.question {
+	font-weight: bold;
+	font-size: 16px;
+	padding-right: 15px;
+	margin-bottom: 10px;
+}
+
+.categoryheader {
+	font-size: 20px;
+}
+
+#forgotpw {
+	color: black;
 }

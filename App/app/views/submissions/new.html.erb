@@ -8,7 +8,7 @@
       <div id="board_showing" class="general_box flex_height shadow">
         <div id="industrydisplayproject">
     		<%= form_for @project, url: {action: "create"}, :html => { :multipart => true} do |f| %>
-      			<div class="titles">
+      			<div class="headertitle titles">
        				 <h3>Submit a Project</h3>
       			</div>
       			
@@ -22,7 +22,7 @@
       				<% end %>
       			</div>
 
-      			<fieldset class="inputs to_left" style="width:95%">
+      			<fieldset id="addprojectview" class="inputs to_left">
     				<legend>Project details</legend>	
       				<div>
         			<h3>Basic details</h3>
@@ -66,9 +66,10 @@
       			
       			<div id="subBtn" class="button horizontal_list to_right">
         			<ul>
+        				<li><%= link_to "CANCEL", :my_projects %></li>
           				<li><%= f.submit "SUBMIT" %></li>
-         				<li><%= link_to "CANCEL", :my_projects %></li>
         			</ul>
+        			<br /><br />
       			</div>
     		<% end %>
         </div>

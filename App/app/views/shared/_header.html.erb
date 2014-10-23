@@ -10,15 +10,15 @@
         	<% if @user != nil %>
     			<% if @user.acctype == "industry" %>
     				<% if controller_name == 'industry' || controller_name == 'submissions' %>
-        				<%= link_to "Projects", :my_projects, :class => "btnSelected" %>
+        				<%= link_to "My Projects", :my_projects, :class => "btnSelected" %>
         			<% else %>
-        				<%= link_to "Projects", :my_projects, :class => "btn" %>
+        				<%= link_to "My Projects", :my_projects, :class => "btn" %>
         			<% end %>      				
 				<% elsif @user.acctype == "coordinator" %>
 					<% if controller_name == 'dashboards' || controller_name == 'project_processings' %>
-          				<%= link_to "Projects", :admin_dashboard_show_new, :class => "btnSelected" %>
+          				<%= link_to "Project Admin", :admin_dashboard_show_new, :class => "btnSelected" %>
           			<% else %>
-          				<%= link_to "Projects", :admin_dashboard_show_new, :class => "btn" %>
+          				<%= link_to "Project Admin", :admin_dashboard_show_new, :class => "btn" %>
           			<% end %>
           		<% end %>
           		<% if controller_name == 'users' %>
@@ -47,7 +47,7 @@
         		<%= link_to(image_tag("UofA.png", :alt => "home image", :class => "bannerlogo", :title => "Click here to return to Home"), "/") %>
         		
       		</div>
-			<h1 class="headertitle">&nbsp;&nbsp;&nbsp;Industry Engagement</h1>
+			<h1 class="headertitle">Industry Engagement</h1>
       		
     	</div>
   	</div>

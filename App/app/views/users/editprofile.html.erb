@@ -27,7 +27,14 @@
     	  First Name: <%= f.text_field :fname, "placeholder" => "First Name" %>
     	  Last Name: <%= f.text_field :lname, "placeholder" => "Last Name" %>
     	  Email Address: <%= f.text_field :email, "placeholder" => "Email" %>
-    	  Phone Number: <%= f.text_field :phone, "placeholder" => "Contact Phone Number" %>
+      </fieldset>
+      <br /><br />
+      <fieldset class="inputs">
+        <legend>Organisation details</legend>
+    	  Company Name: <%= f.text_field :companyname, "placeholder" => "Company Name" %>
+    	  Contact Phone Number: <%= f.text_field :phone, "placeholder" => "Contact Phone Number" %>
+    	  Work Address: <%= f.text_field :address, "placeholder" => "Work Address" %>
+    	  Company Website: <%= f.text_field :website, "placeholder" => "Company Website" %>
       </fieldset>
       
       <div id="subBtn" class="button horizontal_list to_right" >

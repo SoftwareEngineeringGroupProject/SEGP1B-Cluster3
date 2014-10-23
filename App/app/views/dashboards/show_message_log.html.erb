@@ -9,15 +9,15 @@
   <div id="container" class="to_left">
     <!-- Viewing Project Board -->
     <div id="new_board_showing" class="general_box flex_height shadow">
-      <div style="height:500px; overflow: auto;">
+      <div id="messageview" style="height:500px; overflow: auto;">
       <h1><strong><font color = "#B38808">Conversation Log</font><strong></h1>  
       <% if !@messages.blank? %>
       <% @messages.each do |m| %>
 
         <% if m.sender_id == @current_user.id %>
-          <div class="admin_message inset_shadow">
-        <% else %>
           <div class="industry_message inset_shadow">
+        <% else %>
+          <div class="admin_message inset_shadow">
         <% end %>
           <% sender = User.find(m.sender_id) %>
           <strong>&nbsp&nbsp&nbspSender:&nbsp<%= sender.lname %>&nbsp-&nbspTitle:&nbsp<%=m.title %></strong>
@@ -59,3 +59,9 @@
   
 
 </div>
+
+<script>
+$(document).ready(function(){  
+	$("#messageview").animate({ scrollTop: $('#messageview')[0].scrollHeight}, 2000);
+});
+</script>
