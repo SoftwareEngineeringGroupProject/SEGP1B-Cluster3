@@ -43,4 +43,17 @@ describe Project do
 	it{ should respond_to(:extra_details) }
 
 
+#presence testing
+
+
+	describe "a project must have a title" do
+		before { @project.title = " " }
+		it { should_not be_valid }
+	end
+
+	describe "a project must have a body to keep content" do
+		before { @project.body = " " }
+		it { should_not be_valid }
+	end
+
 end
