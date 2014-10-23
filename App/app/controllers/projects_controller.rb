@@ -40,6 +40,7 @@ class ProjectsController < ApplicationController
     else
       if @student_project.save
         redirect_to pastproject_management_path, :notice => "Project created"
+        return
       #   return
       # else
       #   render :new
