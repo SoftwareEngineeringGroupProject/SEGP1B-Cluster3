@@ -383,5 +383,30 @@ end
       
         redirect_to pastproject_management_path
   end
-                                                                                 
+             
+
+#STATS
+def stats
+
+         if session[:user_id] != nil
+        @user = User.find(session[:user_id]) 
+          if @user.acctype != "coordinator"   
+              flash[:notice] = "Please Login as a coordinator to edit a past project"
+              redirect_to :login
+            end
+         else
+            flash[:notice] = "Please Login to edit a past project"
+            redirect_to :login
+        end 
+
+end
+
+
+
+
+
+
+
+
+
 end

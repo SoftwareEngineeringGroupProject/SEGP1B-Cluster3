@@ -151,8 +151,11 @@ Rails.application.routes.draw do
   post 'industry/remove/:id' => "industry#remove", :as => :remove_industry_project
   post 'industry/delete' => "industry#pending", :as => :delete_pending_project
 
-  #BAD URL ROUTING
-  get '*path' => "application#badurl"
+
+
+  # STATS
+  get 'projects/stats' => 'projects#stats', as: 'stats'
+
 
 
 # The priority is based upon order of creation: first created -> highest priority.
@@ -209,5 +212,9 @@ Rails.application.routes.draw do
 #     # (app/controllers/admin/products_controller.rb)
 #     resources :products
 #   end
+
+
+  #BAD URL ROUTING
+  get '*path' => "application#badurl"
 
 end
