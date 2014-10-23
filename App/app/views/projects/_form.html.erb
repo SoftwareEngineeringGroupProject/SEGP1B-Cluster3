@@ -43,7 +43,9 @@ Remove student? <%= builder.check_box :_destroy %></br>
 <% end %>
 </div>
 <%= f.submit 'Add Student', :name => "add_student" %></br>
+<% if false %>
 <%= f.submit 'Remove Student', :name => "remove_student" %></br>
+<% end %>
 
 <%= f.label :summary %>
 <%= f.text_area :summary , "placeholder" => "Summary", "rows" => "4", "columns" => "20" %></br>
