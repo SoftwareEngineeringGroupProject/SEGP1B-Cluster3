@@ -56,7 +56,7 @@ describe Project do
 	end
 
 #attachment type tests
-
+#valid
 	describe "a PDF file type should be valid" do
 		it "should be invalid" do
 			attachment_content_type = "application/pdf"
@@ -82,6 +82,21 @@ describe Project do
 		it "should be invalid" do
 			attachment_content_type = "text/plain"
 			expect(@project).to be_valid
+		end
+	end
+
+#invalid
+	describe "a JPG picture file type should be valid" do
+		it "should not be invalid" do
+			attachment_content_type = "image/jpg"
+			expect(@project).not_to be_valid
+		end
+	end
+	
+	describe "a PNG picture file type should be valid" do
+		it "should not be invalid" do
+			attachment_content_type = "image/png"
+			expect(@project).not_to be_valid
 		end
 	end
 end

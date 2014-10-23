@@ -86,16 +86,30 @@ describe Project do
 	end
 
 #invalid
-	describe "a JPG picture file type should be valid" do
+	describe "a JPG picture file type should not be valid" do
 		it "should not be invalid" do
 			attachment_content_type = "image/jpg"
 			expect(@project).not_to be_valid
 		end
 	end
 	
-	describe "a PNG picture file type should be valid" do
+	describe "a PNG picture file type should not be valid" do
 		it "should not be invalid" do
 			attachment_content_type = "image/png"
+			expect(@project).not_to be_valid
+		end
+	end
+
+	describe "a exe binary runnable file type should not be valid" do
+		it "should not be invalid" do
+			attachment_content_type = "application/octet-stream"
+			expect(@project).not_to be_valid
+		end
+	end
+
+	describe "an octet-stream file type eg exe,bin,class should not be valid" do
+		it "should not be invalid" do
+			attachment_content_type = "application/octet-stream"
 			expect(@project).not_to be_valid
 		end
 	end
