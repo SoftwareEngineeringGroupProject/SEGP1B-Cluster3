@@ -81,7 +81,13 @@ describe "register an account to use" do
 		page.should have_content("Password confirmation doesn't match Password")
 	end
 
-
+	it "valid password due to two inputs match" do
+		visit signup_path
+		fill_in "password", :with => "qw4rtd8oyn"
+		fill_in "password_confirmation", :with "qw4rtd8oyn"
+		click_button "Continue"
+		page.should_not have_content("Password confirmation doesn't match Password")
+	end
 end
 
 
