@@ -2,6 +2,15 @@ require 'spec_helper'
 
 describe "register an account to use" do
 
+#user name tests
+
+	it "invalid username can't be blank" do
+		visit signup_path
+		fill_in "username", :with => ""
+		click_button "Continue"
+		page.should have_content("Username can't be blank")
+	end
+
 	it "invalid too short for username" do
 		visit signup_path
 		fill_in "username", :with => "12"
@@ -11,10 +20,21 @@ describe "register an account to use" do
 
 	it "invalid to long for username" do
 		visit signup_path
-		fill_in "username", :with => "121231231231231231233123123"
+		fill_in "username", :with => "12123*H@EOIUR(@#*EDJUO$ITRJ#O*R3uw9284fhw4123"
 		click_button "Continue"
 		page.should have_content("Username is too long")
 	end
+
+# email tests
+
+	it "invalid email can't be blank" do
+		visit signup_path
+		fill_in "email", :with => ""
+		click_button "Continue"
+		page.should have_content("Email can't be blank")
+	end
+
+
 
 end
 
