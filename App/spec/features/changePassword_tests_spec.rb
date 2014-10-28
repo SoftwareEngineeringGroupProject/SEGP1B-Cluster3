@@ -31,7 +31,7 @@ describe "to change a password" do
 		visit change_pw_path
 		fill_in "login_password", :with => user.password
 		fill_in "new_password", :with => "12"
-		page.should_not have_content("New password must be at least 6 chracters in length")
+		page.should have_content("New password must be at least 6 chracters in length")
 	end
 
 	#confirm password testing
@@ -41,7 +41,7 @@ describe "to change a password" do
 		fill_in "login_password", :with => user.password
 		fill_in "new_password", :with => "w345hsztusr7ht"
 		fill_in "confirm_password", :with => "asdaaaaaa"
-		page.should_not have_content("Confirmation Password does not match New Password")
+		page.should have_content("Confirmation Password does not match New Password")
 	end
 
 	#successful testing
@@ -51,6 +51,6 @@ describe "to change a password" do
 		fill_in "login_password", :with => user.password
 		fill_in "new_password", :with => "w345hsztusr7ht"
 		fill_in "confirm_password", :with => "w345hsztusr7ht"
-		page.should_not have_content("Password Successfully Updated")
+		page.should have_content("Password Successfully Updated")
 	end
 end
