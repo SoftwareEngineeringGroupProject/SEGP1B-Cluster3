@@ -92,15 +92,31 @@ end
 
 
 describe "login system before register" do
-  it "login user with invalid account" do
-    user = FactoryGirl.create(:user)
-    visit login_path
-    fill_in "username_or_email", :with => user.username
-    fill_in "login_password", :with => user.password
-    click_button "LOG IN"
-    page.should have_content("Invalid Username or Password")
-  end
+	it "login user with invalid account" do
+		user = FactoryGirl.create(:user)
+		visit login_path
+		fill_in "username_or_email", :with => user.username
+		fill_in "login_password", :with => user.password
+		click_button "LOG IN"
+		page.should have_content("Invalid Username or Password")
+	end
 
+	it "login user with valid account which register" do
+		#register
+		user = FactoryGirl.create(:user)
+		visit signup_path
+		fill_in "username", :with => user.username
+		fill_in "email", :with => "sampleMail@gmail.com"
+		fill_in "password", :with => user.password
+		fill_in "password_confirmation", :with user.password
+		click_button "Continue"
 
+		#login
+		visit login_path
+		fill_in "username_or_email", :with => user.username
+		fill_in "login_password", :with => user.password
+		click_button "LOG IN"
+		page.should have_content("Account Successfuly Created. Please Log In to Continue")
+	end
 
 end
