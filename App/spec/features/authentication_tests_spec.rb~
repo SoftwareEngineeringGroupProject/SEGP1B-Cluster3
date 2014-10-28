@@ -34,7 +34,19 @@ describe "register an account to use" do
 		page.should have_content("Email can't be blank")
 	end
 
+	it "invalid email " do
+		visit signup_path
+		fill_in "email", :with => "e45tbse5rtyw4"
+		click_button "Continue"
+		page.should have_content("Email is invalid")
+	end
 
+	it "valid email " do
+		visit signup_path
+		fill_in "email", :with => "123@gmail.com"
+		click_button "Continue"
+		page.should_not have_content("Email is invalid")
+	end
 
 end
 

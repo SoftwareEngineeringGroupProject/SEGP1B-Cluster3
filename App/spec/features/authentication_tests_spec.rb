@@ -48,6 +48,29 @@ describe "register an account to use" do
 		page.should_not have_content("Email is invalid")
 	end
 
+#password tests
+
+	it "invalid password can't be blank" do
+		visit signup_path
+		fill_in "password", :with => ""
+		click_button "Continue"
+		page.should have_content("Password is too short")
+	end
+
+	it "invalid password can't be too short" do
+		visit signup_path
+		fill_in "password", :with => ""
+		click_button "Continue"
+		page.should have_content("Password is too short")
+	end
+
+	it "invalid password can't be too long" do
+		visit signup_path
+		fill_in "password", :with => "qw4rtd8oynxa8i8qw24ry7n2389yr4nq398y*R*TR#"
+		click_button "Continue"
+		page.should have_content("Password is too long")
+	end
+
 end
 
 
