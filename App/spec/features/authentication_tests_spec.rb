@@ -71,6 +71,17 @@ describe "register an account to use" do
 		page.should have_content("Password is too long")
 	end
 
+#confirm password
+
+	it "invalid password due to two inputs does not match" do
+		visit signup_path
+		fill_in "password", :with => "qw4rtd8oyn"
+		fill_in "password_confirmation", :with ""
+		click_button "Continue"
+		page.should have_content("Password confirmation doesn't match Password")
+	end
+
+
 end
 
 
