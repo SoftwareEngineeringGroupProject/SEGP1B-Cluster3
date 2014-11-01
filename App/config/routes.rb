@@ -12,68 +12,72 @@ Rails.application.routes.draw do
   get 'project_processings/assign_student'=> 'project_processings#assign_student', as: 'admin_assign_student'
   post 'project_processings/assign_student'=> 'project_processings#post_from_assigning_student'
 
-
   resources :muas
   resources :submissions
 
   root  to: 'application#index', :as => :root
 
-     ###############################################
-     # Past Project Routes
-     ###############################################
-     get 'projects/info' => 'projects#info', as: 'info'
-     get 'projects' => 'projects#index', as: 'index'
-     get 'projects/new' => 'projects#new', :as => :new_past_project
-     post 'projects/new' => 'projects#create'
-     # post '/student_projects' => 'projects#create'
-     # match 'projects/new' => 'projects#create', via: [:get, :post]
-     match '/student_projects' => 'projects#create', via: [:get, :post]
-     #get 'projects/contact' => 'projects#contact', as: 'contact'
-     get 'projects//show/:id' => 'projects#show', as: 'project'
-     get 'projects//edit/:id' => 'projects#edit', as: 'edit'
-     patch 'projects/update/:id' => 'projects#update', as: 'update'
- 
-     get 'projects/unchanged/:id' => 'projects#unchanged', as: 'unchanged'
-     get 'projects/destroy/:id' => 'projects#destroy', as: 'destroy'
-     patch 'projects/destroy/:id' => 'projects#delete', as: 'delete'
-     get 'projects/search' => 'projects#search', as: 'search'
-      get 'projects/notfound' => 'projects#notfound', as: 'notfound'
-      get 'projects/management' => 'projects#management', :as => :pastproject_management
-      post 'projects/management' => 'projects#managehandle'
-      post 'projects/managehandle' => 'projects#managehandle' , as: 'pastproject_managehandle'
-      get 'projects/multiedit/' => 'projects#multiedit' , as: 'pastproject_multiedit'
-      post 'projects/multiedit' => 'projects#multiedit'
-       get 'projects/multiupdate' => 'projects#multiupdate' , as: 'pastproject_multiupdate'
-       patch 'projects/multiupdate/' => 'projects#multiupdate'
-        get 'projects/multiremove' => 'projects#multiremove' , as: 'pastproject_multiremove'
-      
-     ###############################################
-     # Past Project Students Routes
-     ###############################################
-     get 'students/delete/:id' => 'students#delete', as: 'student_delete'
-     get 'students/edit/:id' => 'students#edit', as: 'student_edit'
-     patch 'students/update/:id' => 'students#update', as: 'student_update'
-     get 'students/search' => 'students#search', as: 'student_search'
- 
-     get 'projects/:id/students/new' => 'students#new', as: 'student_new'
-     post 'projects/:id/addstudent' => 'students#create', as: 'student_create'
-     get 'projects/:id/addstudent' => 'projects#addstudent', as: 'student_created_to_project'
-     post 'projects/:id/addstudent' => 'projects#addstudent_create'
-       get 'students/notfound' => 'students#notfound', as: 'student_notfound'
+  ###############################################
+  # Past Project Routes
+  ###############################################
+  get 'projects/info' => 'projects#info', as: 'info'
+  get 'projects' => 'projects#index', as: 'index'
+  get 'projects/new' => 'projects#new', :as => :new_past_project
+  post 'projects/new' => 'projects#create'
+  # post '/student_projects' => 'projects#create'
+  # match 'projects/new' => 'projects#create', via: [:get, :post]
+  match '/student_projects' => 'projects#create', via: [:get, :post]
+  #get 'projects/contact' => 'projects#contact', as: 'contact'
+  get 'projects//show/:id' => 'projects#show', as: 'project'
+  get 'projects//edit/:id' => 'projects#edit', as: 'edit'
+  patch 'projects/update/:id' => 'projects#update', as: 'update'
 
+  get 'projects/unchanged/:id' => 'projects#unchanged', as: 'unchanged'
+  get 'projects/destroy/:id' => 'projects#destroy', as: 'destroy'
+  patch 'projects/destroy/:id' => 'projects#delete', as: 'delete'
+  get 'projects/search' => 'projects#search', as: 'search'
+  get 'projects/notfound' => 'projects#notfound', as: 'notfound'
+  get 'projects/management' => 'projects#management', :as => :pastproject_management
+  post 'projects/management' => 'projects#managehandle'
+  post 'projects/managehandle' => 'projects#managehandle' , as: 'pastproject_managehandle'
+  get 'projects/multiedit/' => 'projects#multiedit' , as: 'pastproject_multiedit'
+  post 'projects/multiedit' => 'projects#multiedit'
+  get 'projects/multiupdate' => 'projects#multiupdate' , as: 'pastproject_multiupdate'
+  patch 'projects/multiupdate/' => 'projects#multiupdate'
+  get 'projects/multiremove' => 'projects#multiremove' , as: 'pastproject_multiremove'
 
-     # EMAIL FORM
-     match '/contacts',     to: 'contacts#new',             via: 'get', :as => :contact
-      resources "contacts", only: [:new, :create]
+  ###############################################
+  # Past Project Students Routes
+  ###############################################
+  get 'students/delete/:id' => 'students#delete', as: 'student_delete'
+  get 'students/edit/:id' => 'students#edit', as: 'student_edit'
+  patch 'students/update/:id' => 'students#update', as: 'student_update'
+  get 'students/search' => 'students#search', as: 'student_search'
 
-# Admin Dashboard
+  get 'projects/:id/students/new' => 'students#new', as: 'student_new'
+  post 'projects/:id/addstudent' => 'students#create', as: 'student_create'
+  get 'projects/:id/addstudent' => 'projects#addstudent', as: 'student_created_to_project'
+  post 'projects/:id/addstudent' => 'projects#addstudent_create'
+  get 'students/notfound' => 'students#notfound', as: 'student_notfound'
+
+  ###############################################
+  # Past Project Management Routes
+  ###############################################
+  get 'projects/management/edit' => 'pastproject_management#edit' , as: 'pastproject_manage_edit'
+  put 'projects/management/update' => 'pastproject_management#update' , as: 'pastproject_manage_update'
+
+  # EMAIL FORM
+  match '/contacts',     to: 'contacts#new',             via: 'get', :as => :contact
+  resources "contacts", only: [:new, :create]
+
+  # Admin Dashboard
   get 'dashboards/view' => "dashboards#view", :as => :admin_dashboard
   #states
   get 'dashboards/view?state=new' => "dashboards#view", :as => :admin_dashboard_show_new
   get 'dashboards/view?state=pending' => "dashboards#view", :as => :admin_dashboard_show_pending
   get 'dashboards/view?state=rejected' => "dashboards#view", :as => :admin_dashboard_show_rejected
   get 'dashboards/view?state=accepted' => "dashboards#view", :as => :admin_dashboard_show_accepted
-  
+
   post 'dashboards/project_manip/:id' => 'dashboards#action_handler', :as => :action_handler
   post 'dashboards/view' => 'dashboards#action_handler'
   get 'dashboards/project_manip/:id' => "dashboards#project_manip", :as => :project_manip
@@ -86,9 +90,7 @@ Rails.application.routes.draw do
   get 'dashboards/assign_students' => "dashboards#assign_students", :as => :assign_students
   post 'dashboards/assgin_students' => "dashboards#action_handler"
 
-
-
-#Users/Login
+  #Users/Login
   #User Management
   get 'users/list' => "users#index", :as => :list_all_path
   get 'users/show/:id' => "users#show", :as => :show_user_path
@@ -110,7 +112,6 @@ Rails.application.routes.draw do
   #Authorization
   get 'unauthorized/' => "sessions#unauthorized", :as => :unauthorized
 
-
   #User Profile
   get 'profile' => "users#profile", :as => :profile
   get 'profile/edit' => "users#editprofile", :as => :edit_profile
@@ -122,8 +123,7 @@ Rails.application.routes.draw do
   get 'forgottenpassword' => "users#forgot_password", :as => :forgot_password
   post 'forgottenpassword' => "users#email_new_password", :as => :email_new_password
 
-
-# Industry actions
+  # Industry actions
   #Projects
   get 'myprojects' => "industry#listMyProjects", :as => :my_projects
   get 'submit' => "submissions#new", :as => :submit_project
@@ -131,11 +131,11 @@ Rails.application.routes.draw do
   get 'modify/:id' => "industry#edit", :as => :edit_industry_project
   post 'modify/:id' => "industry#update", :as => :update_industry_project
   get 'delete/:id' => "industry#delete", :as => :delete_industry_project
-  
+
   #Messaging
   get 'messagelog/:id' => "industry#showmessages", :as => :project_messages
   post 'messagelog/:id' => "industry#sendmes", :as => :send_mes
-  
+
   #Other
   get 'industry/showList' => "industry#showList", :as => :industry_dashboard
   get 'industry/showList/:id' => "industry#showList", :as => :show_all_industry_project
@@ -145,75 +145,69 @@ Rails.application.routes.draw do
 
   post 'industry/update/' => "industry#showList"
 
-
   post 'industry/showList' => "industry#action_to_project"
   post 'industry/showList/:id' => "industry#action_to_project", :as => :action_to_industry_project
 
   post 'industry/remove/:id' => "industry#remove", :as => :remove_industry_project
   post 'industry/delete' => "industry#pending", :as => :delete_pending_project
 
-
-
   # STATS
   get 'projects/stats' => 'projects#stats', as: 'stats'
 
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".
 
+  # You can have the root of your site routed with "root"
+  # root 'welcome#index'
 
-# The priority is based upon order of creation: first created -> highest priority.
-# See how all your routes lay out with "rake routes".
+  # Example of regular route:
+  #   get 'products/:id' => 'catalog#view'
 
-# You can have the root of your site routed with "root"
-# root 'welcome#index'
+  # Example of named route that can be invoked with purchase_url(id: product.id)
+  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
-# Example of regular route:
-#   get 'products/:id' => 'catalog#view'
+  # Example resource route (maps HTTP verbs to controller actions automatically):
+  #   resources :products
 
-# Example of named route that can be invoked with purchase_url(id: product.id)
-#   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  # Example resource route with options:
+  #   resources :products do
+  #     member do
+  #       get 'short'
+  #       post 'toggle'
+  #     end
+  #
+  #     collection do
+  #       get 'sold'
+  #     end
+  #   end
 
-# Example resource route (maps HTTP verbs to controller actions automatically):
-#   resources :products
+  # Example resource route with sub-resources:
+  #   resources :products do
+  #     resources :comments, :sales
+  #     resource :seller
+  #   end
 
-# Example resource route with options:
-#   resources :products do
-#     member do
-#       get 'short'
-#       post 'toggle'
-#     end
-#
-#     collection do
-#       get 'sold'
-#     end
-#   end
+  # Example resource route with more complex sub-resources:
+  #   resources :products do
+  #     resources :comments
+  #     resources :sales do
+  #       get 'recent', on: :collection
+  #     end
+  #   end
 
-# Example resource route with sub-resources:
-#   resources :products do
-#     resources :comments, :sales
-#     resource :seller
-#   end
+  # Example resource route with concerns:
+  #   concern :toggleable do
+  #     post 'toggle'
+  #   end
+  #   resources :posts, concerns: :toggleable
+  #   resources :photos, concerns: :toggleable
 
-# Example resource route with more complex sub-resources:
-#   resources :products do
-#     resources :comments
-#     resources :sales do
-#       get 'recent', on: :collection
-#     end
-#   end
-
-# Example resource route with concerns:
-#   concern :toggleable do
-#     post 'toggle'
-#   end
-#   resources :posts, concerns: :toggleable
-#   resources :photos, concerns: :toggleable
-
-# Example resource route within a namespace:
-#   namespace :admin do
-#     # Directs /admin/products/* to Admin::ProductsController
-#     # (app/controllers/admin/products_controller.rb)
-#     resources :products
-#   end
-
+  # Example resource route within a namespace:
+  #   namespace :admin do
+  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # (app/controllers/admin/products_controller.rb)
+  #     resources :products
+  #   end
 
   #BAD URL ROUTING
   get '*path' => "application#badurl"

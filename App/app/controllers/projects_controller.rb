@@ -263,7 +263,7 @@ end
                   
                   if params[:commit]=="Edit"  
                               #go to multiple edit page with project ID arrays parameters and an initial index value
-                              redirect_to pastproject_multiedit_path(:editArray=> @EditArray, :index=>0)
+                              redirect_to pastproject_manage_edit_path(:editArray=> @EditArray, :index=>0)
                         elsif params[:commit] =="Remove"
                              redirect_to pastproject_multiremove_path(:editArray=> @EditArray)
                         end        
@@ -273,7 +273,8 @@ end
          end
   end
   
-  def multiedit         
+  def multiedit
+    @projects=StudentProject.find(params[:editArray])         
     
         if session[:user_id] != nil
         @user = User.find(session[:user_id]) 
@@ -360,6 +361,7 @@ end
           #save to DB       
             @updateProject.save
             
+             flash[:notice] = "Past Project "+@id+" Updated"
             redirect_to pastproject_multiedit_path(:editArray=> @EditArray, :index=>@index)  
 end
   
@@ -384,7 +386,8 @@ end
                 @find=StudentProject.find(array.to_i)            
                  StudentProject.destroy(@find)
         end
-      
+        
+        flash[:notice] = "Past Projects Deleted"
         redirect_to pastproject_management_path
   end
              

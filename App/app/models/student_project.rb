@@ -1,9 +1,12 @@
 class StudentProject < ActiveRecord::Base
 	validates_presence_of :title, :summary, :client, :category, :year, :client_summary, :client_link
 	has_many :students
+	belongs_to :pastproject_management
 	mount_uploader :image, ImageUploader
 	mount_uploader :client_image, ImageUploader
 	accepts_nested_attributes_for :students, allow_destroy: true
+	 accepts_nested_attributes_for :pastproject_management, allow_destroy: true
+
 	validates_uniqueness_of :id, :title
 	validates :year, numericality: { :greater_than => 0 }
 	#the search funtion used in search bar of index page
