@@ -64,7 +64,7 @@ Rails.application.routes.draw do
   # Past Project Management Routes
   ###############################################
   get 'projects/management/edit' => 'pastproject_management#edit' , as: 'pastproject_manage_edit'
-  put 'projects/management/update' => 'pastproject_management#update' , as: 'pastproject_manage_update'
+  patch 'projects/management/update' => 'pastproject_management#update' , as: 'pastproject_manage_update'
 
   # EMAIL FORM
   match '/contacts',     to: 'contacts#new',             via: 'get', :as => :contact

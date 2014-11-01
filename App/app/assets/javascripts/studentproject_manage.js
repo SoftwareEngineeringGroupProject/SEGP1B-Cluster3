@@ -17,3 +17,16 @@ function select_all(check_all) {
 		}
 	}
 }
+
+//the function is used to expand or collapse a modulo
+$(document).on('ready page:load', function () {
+	$(".header-expand").click(function() {
+		$header = $(this);
+		$content = $header.next();
+		$content.slideToggle(400, function() {
+			$header.text(function() {
+			});
+		});
+	});
+});
+

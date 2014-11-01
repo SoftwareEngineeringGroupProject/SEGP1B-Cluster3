@@ -1,4 +1,4 @@
-<%= javascript_include_tag 'studentproject_manage', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
 <%= render "shared/header" %>
 <%= render "shared/linkbar" %>
@@ -35,7 +35,7 @@
 
 					<!--add some ground options here-->
 					<% grouped_options = {'PastProject' => ['ID', 'Title', 'Year', 'Category', 'Client Name'],'Student' => ['Name', ['ID', 'Student ID'], ['Degree', 'Course'], 'Email']}
-            @options=grouped_options_for_select(grouped_options)%>
+	@options=grouped_options_for_select(grouped_options)%>
 					<%=form_tag pastproject_management_path, :method => 'get' do %>
 					<span class="to_left"> <%= hidden_field_tag "classify", :value=>"title"%> </span>
 					<span class="to_left"><%= text_field_tag :search, params[:search], placeholder: "Search To Project..."%></span>
@@ -168,6 +168,7 @@
 				<span class="to_right"><%= link_to "Back", index_path, class: "link_to_button"%></span>
 				<span class="to_right button"><%= submit_tag "Remove", data: { confirm: "Are you sure to delete?" }%></span>
 				<span class="to_right button"><%= submit_tag "Edit"%></span>
+				<span class="to_right button"><%= submit_tag "Edit One-By-One"%></span>
 			</div>
 			<%end%>
 

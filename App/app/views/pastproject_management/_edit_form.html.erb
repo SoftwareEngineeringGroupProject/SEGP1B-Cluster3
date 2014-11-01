@@ -1,90 +1,106 @@
-<%=form_for @management, :url => pastproject_manage_update_path, :html=>{:method=>:put} do |manage| %>
+<%=form_for @management, :url => pastproject_manage_update_path do |manage| %>
+<br />
+<% @management.errors.full_messages.each do |msg| %>
+<li>
+	<%= msg %>
+</li>
+<% end %>
 
+<% if flash[:notice] %>
+<div class="notice" style="color: red; margin-left:30px;">
+	<h3><strong><%= flash[:notice] %></strong></h3>
+</div>
+<%end%>
 <!--modify pastProjects  record here-->
-
 <%= manage.fields_for  :student_project, @pastProjects do |f| %>
-<div  class="project-edit-line-container">
-	<span class="to_left"><%= f.label :title %></span>
-	<span><%= f.text_field :title %></span>
-</div>
-<div  class="project-edit-line-container-year">
-	<%= f.label :Finished_Year%>
-	<%= f.select :year, (2000) .. (Date.today.year) %>
-</div>
 
-<div  class="project-edit-line-container">
-	<%= f.label :category %>
-	<%= f.text_field :category %>
-</div>
-<div  class="project-edit-line-container">
-	<%= f.label :client %>
-	<%= f.text_field :client %>
-</div>
-<div  class="project-edit-line-container">
-	<%= f.label :client_link %>
-	<%= f.text_field :client_link %>
-</div>
+<div class="container-expand container-edit-expand">
+	<div class="header-expand">
+		<span>Edit &nbsp; ' <%= f.object.title%>'</span>
+	</div>
+	<div class="content-expand">
 
-<div  class="project-edit-line-container">
-	<%= f.label :Client_Summary%>
-	<%= f.text_area :client_summary%>
+		<div  class="project-edit-line-container">
+			<span class="to_left"><%= f.label :title %></span>
+			<span><%= f.text_field :title %></span>
+		</div>
+		<div  class="project-edit-line-container-year">
+			<%= f.label :Finished_Year%>
+			<%= f.select :year, (2000) .. (Date.today.year) %>
+		</div>
+
+		<div  class="project-edit-line-container">
+			<%= f.label :category %>
+			<%= f.text_field :category %>
+		</div>
+		<div  class="project-edit-line-container">
+			<%= f.label :client %>
+			<%= f.text_field :client %>
+		</div>
+		<div  class="project-edit-line-container">
+			<%= f.label :client_link %>
+			<%= f.text_field :client_link %>
+		</div>
+
+		<div  class="project-edit-line-container">
+			<%= f.label :Client_Summary%>
+			<%= f.text_area :client_summary%>
+		</div>
+
+		<div  class="project-edit-line-container">
+			<%= f.label :Project_Summary %>
+			<%= f.text_area :summary%>
+		</div>
+
+		<div  class="project-edit-upload-container">
+			<span class="to_left"> <%= f.label :image, "Upload a related project image" %> </span>
+			<span  class="to_left"> <%= f.file_field :image%></span>
+		</div>
+
+		<div  class="project-edit-upload-container">
+			<span class="to_left"> <%= f.label :client_image, "Upload a related client image" %> </span>
+			<span  class="to_left"> <%= f.file_field :client_image%></span>
+		</div>
+
+		<div  class="project-edit-line-container">
+			<fieldset class="project-edit-fieldset-group">
+				<legend>
+					<strong>Group Edit</strong>
+				</legend>
+				<!--output all students in details here-->
+				<table class="project-edit-table">
+					<tr>
+						<th class="Project-text_field-ID">ID </th>
+						<th class="Project-text_field-NAME">NAME </th>
+						<th class="Project-text_field-EMAIL">EMAIL </th>
+						<th class="Project-text_field-COURSE">COURSE </th>
+
+						<th class="project-table-td"><%= link_to "Add", student_new_path(f.object.id),
+						data: { confirm: "Are you sure to add a new student ?" }%></th>
+
+						<%if f.object.students.empty? == false%>
+					</tr>
+					<!--modify students record here-->
+					<%= f.fields_for :students do |student| %>
+					<tr>
+						<td><%=student.text_field :studentID, class: "Project-text_field-ID"%></td>
+						<td><%=student.text_field :name, class: "Project-text_field-NAME"%></td>
+						<td><%= student.text_field :email, class: "Project-text_field-EMAIL"%></td>
+						<td><%=student.text_field :course, class: "Project-text_field-COURSE"%></td>
+						<% @theStudent=student.object%>
+						<td class="project-table-td"><%= link_to "Remove", student_delete_path(student.object.id), data: { confirm: "Are you sure to delete this student '"+student.object.name.to_s+"' ?" }%></td>
+					</tr>
+					<%end%>
+					<%end%>
+				</table>
+			</fieldset>
+		</div>
+	</div>
 </div>
-
-<div  class="project-edit-line-container">
-	<%= f.label :Project_Summary %>
-	<%= f.text_area :summary%>
-</div>
-
-<div  class="project-edit-upload-container">
-	<span class="to_left"> <%= f.label :image, "Upload a related project image" %> </span>
-	<span  class="to_left"> <%= f.file_field :image%></span>
-</div>
-
-<div  class="project-edit-upload-container">
-	<span class="to_left"> <%= f.label :client_image, "Upload a related client image" %> </span>
-	<span  class="to_left"> <%= f.file_field :client_image%></span>
-</div>
-
-<div  class="project-edit-line-container">
-	<fieldset class="project-edit-fieldset-group">
-		<legend>
-			<strong>Group Edit</strong>
-		</legend>
-		<!--output all students in details here-->
-		<table class="project-edit-table">
-			<tr>
-				<th class="Project-text_field-ID">ID </th>
-				<th class="Project-text_field-NAME">NAME </th>
-				<th class="Project-text_field-EMAIL">EMAIL </th>
-				<th class="Project-text_field-COURSE">COURSE </th>
-				<%if @index==nil%>
-				<% @index=0%>
-				<%end%>
-				<th class="project-table-td"><%= link_to "Add", student_new_path(@theProject.id),
-				data: { confirm: "Are you sure to add a new student ?" }%></th>
-
-				<%if @theProject.students.empty? == false%>
-			</tr>
-			<!--modify students record here-->
-			<%= f.fields_for :students do |student| %>
-			<tr>
-				<td><%=student.text_field :studentID, class: "Project-text_field-ID"%></td>
-				<td><%=student.text_field :name, class: "Project-text_field-NAME"%></td>
-				<td><%= student.text_field :email, class: "Project-text_field-EMAIL"%></td>
-				<td><%=student.text_field :course, class: "Project-text_field-COURSE"%></td>
-				<% @theStudent=student.object%>
-				<td class="project-table-td"><%= link_to "Remove", student_delete_path(student.object.id), data: { confirm: "Are you sure to delete this student '"+student.object.name.to_s+"' ?" }%></td>
-			</tr>
-			<%end%>
-			<%end%>
-		</table>
-	</fieldset>
-</div>
-
 <%end%>
 
-<div  class="project-edit-line-submit-container button">
-	<%= manage.submit "submit"%>
+<div  class="project-edit-line-submit-container button", style="height: 40px">
+	<span class="to_left"><%= manage.submit "SUBMIT"%></span>
 	<span class="to_right"><%= link_to "CANCEL", pastproject_management_path, class: "link_to_button"%></span>
 </div>
 

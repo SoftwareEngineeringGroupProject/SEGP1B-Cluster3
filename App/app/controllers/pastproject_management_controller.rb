@@ -1,64 +1,73 @@
 class PastprojectManagementController < ApplicationController
-  def new
+	def new
 
-  end
+	end
 
-  def create
+	def create
 
-  end
+	end
 
-  def edit
+	def edit
 
-    if session[:user_id] != nil
-      @user = User.find(session[:user_id])
-      if @user.acctype != "coordinator"
-        flash[:notice] = "Please Login as a coordinator to edit a past project"
-        redirect_to :login
-      end
-    else
-      flash[:notice] = "Please Login to edit a past project"
-      redirect_to :login
-    end
+		if session[:user_id] != nil
+			@user = User.find(session[:user_id])
+			if @user.acctype != "coordinator"
+				flash[:notice] = "Please Login as a coordinator to edit a past project"
+				redirect_to :login
+			end
+		else
+			flash[:notice] = "Please Login to edit a past project"
+			redirect_to :login
+		end
 
-    #fetch the projects Ids that needs to be updated
-    @EditArray=params[:editArray]
-    @EditArray=@EditArray
+		#fetch the projects Ids that needs to be updated
+		@EditArray=params[:editArray]
+		@EditArray=@EditArray
 
-    @IdArray=Array.new
+		@IdArray=Array.new
 
-    #convert params IDs to int
-    @EditArray.each do |element|
-      @IdArray.push(element.to_i)
-    end
+		#convert params IDs to int
+		@EditArray.each do |element|
+			@IdArray.push(element.to_i)
+		end
 
-    #get projectManagement record
-    @management=PastprojectManagement.find(0)
+		#get projectManagement record
+		@management=PastprojectManagement.find(0)
 
-    #get the pastProjects that have been choosed
-    @pastProjects=StudentProject.find(@IdArray)
+		#get the pastProjects that have been choosed
+		@pastProjects=StudentProject.find(@IdArray)
 
-  end
+		#create a management IDs sessions
+		session[:manageIDarray]=@EditArray
 
-  def update
-    
-    @updateManagement=PastprojectManagement.find(0)
+	end
 
-    #update the attributes without save to DB yet
-    @updateManagement.attributes=manage_params
+	def update
 
-    #save to DB
-    @updateManagement.save
-    redirect_to pastproject_management_path
+		@updateManagement=PastprojectManagement.find(0)
 
-  end
+		#update the attributes without save to DB yet
+		@updateManagement.attributes=manage_params
 
-  def destroy
+		#save to DB
+		if @updateManagement.save
+			flash[:notice] = " Past Projects Updated"
+			redirect_to pastproject_management_path
+		else
+			flash[:notice] = " Past projects update fail, please check the errors"
+			redirect_to  pastproject_manage_edit_path(:editArray=> session[:manageIDarray])
 
-  end
+		end
 
-  def manage_params
-                 params.require(:pastproject_management).permit(student_project_attributes: [ :id, :title, :summary, :image, :client, :client_image, 
-            :category, :year, :client_summary, :client_link,  students_attributes: [:id,:name, :email, :studentID, :course, :_destroy] ])
-  end
+	end
+
+	def destroy
+
+	end
+
+	def manage_params
+                         params.require(:pastproject_management).permit(student_project_attributes: [ :id, :title, :summary, :image, :client, :client_image, 
+                         :category, :year, :client_summary, :client_link,  students_attributes: [:id,:name, :email, :studentID, :course, :_destroy] ])
+	end
 
 end
