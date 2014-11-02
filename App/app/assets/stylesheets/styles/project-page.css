@@ -37,13 +37,13 @@
 	border-top: 2px solid #cdcdcd;
 	margin: 10px auto;
 	height: 25px;
-	max-width: 95%;
+	max-width: 100%;
 }
 
 .project-metadata span {
 	width: auto;
-	margin-left: 5%;
-	max-height: 30px;
+	margin: 0 4%;
+	height: auto;
 }
 ul.metalist {
 	height: 30px;
@@ -205,15 +205,15 @@ table.project-edit-table th {
 .project-manage-submit-container  a:link, a:visited {
 	background: linear-gradient(to bottom, #f01111, #a33f3f) repeat scroll 0 0 #f01111;
 	border: 0 none;
-	color: #c7ced6;
+	color: white;
 	display: block;
-	font-weight: bold;
 	margin: 0;
 	padding-bottom: 7px;
 	height: 15px;
 	padding-top: 7px;
 	text-align: center;
 	transition: background-color 0.2s ease 0s;
+	font-size: 14px;
 }
 
 .project-manage-submit-container a:hover {
@@ -223,8 +223,8 @@ table.project-edit-table th {
 	background-image: -ms-linear-gradient(top, #4867c4, #53a2d6);
 	background-image: -o-linear-gradient(top, #4867c4, #53a2d6);
 	background-image: linear-gradient(to bottom, #4867c4, #53a2d6);
-	color: black;
 	cursor: pointer;
+	color: white;
 }
 
 .project-edit-line-container-year {
@@ -251,6 +251,8 @@ table.project-edit-table th {
 	margin-top: 20px;
 	nax-width: 90%;
 	height: 50px;
+	font-size: 1.2em;
+	color: #005d8f;
 }
 
 .student-course-div {
@@ -310,11 +312,12 @@ table.project-edit-table th {
 	height: auto;
 	margin: 100px auto;
 	margin-right: 5px;
+	margin-top: 200px;
 	float: right;
 }
 
 .project--left-modulo-container {
-	max-width: 75%;
+	width: 75%;
 	margin: 5px auto;
 	float: left;
 }
@@ -336,7 +339,7 @@ dl.studentlist {
 	padding: 10px;
 	width: auto;
 	min-height: 400px;
-	max-height: 600px;
+	max-height: 800px;
 	word-wrap: break-word;
 	font-family: Georgia, Times, serif;
 	color: grey;
@@ -602,15 +605,16 @@ td.project-manage-tick {
 	width: 1px;
 }
 
-
 .project-contact-container {
 	margin: 0 auto;
 	max-width: 80%;
-	font-size: 1.2em;
-	color: black;
+	font-size: 1.0em;
+	color: #456;
 	margin-bottom: 10px;
 }
-
+.project-contact-container label {
+	color: #456;
+}
 .contact_name {
 	margin: 15px auto;
 	max-width: 95%;
@@ -624,15 +628,17 @@ td.project-manage-tick {
 .contact_message {
 	margin: 15px auto;
 	max-width: 95%;
+	color: #456;
 }
 
 .contact_message label {
 	margin-bottom: 15px;
+	color: #456;
 }
 
 .contact_message textarea {
-	max-width: 55%;
-	max-height: 80%;
+	max-width: 90%;
+	height: 80%;
 	margin: 0 auto;
 }
 
@@ -655,6 +661,7 @@ td.project-manage-tick {
 	font-weight: bold;
 }
 
+
 .buttons-hold {
 	background: -moz-linear-gradient(center bottom , #58ba32 0%, #73ca4b 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
 	border: medium none;
@@ -670,4 +677,68 @@ td.project-manage-tick {
 	padding: 0 25px;
 	text-decoration: none;
 	text-shadow: 0 1px 0 rgba(0, 1, 0, 0.1);
+}
+
+/*add css for an expandable modulo here*/
+.container-expand {
+	border: 1px solid #d3d3d3;
+}
+.container-expand .header-expand {
+	cursor: pointer;
+	background: linear-gradient(to bottom, #f01111, #a33f3f) repeat scroll 0 0 #f01111;
+	border: 0 solid #1f628d;
+	border-radius: 5px;
+	color: #ffffff;
+	font-family: Arial;
+	padding: 10px 20px;
+	text-decoration: none;
+	text-shadow: 1px 1px 5px #666666;
+	z-index: 0;
+}
+
+.container-expand .header-expand:hover {
+	background: #4867c4;
+	background-image: -webkit-linear-gradient(top, #4867c4, #53a2d6);
+	background-image: -moz-linear-gradient(top, #4867c4, #53a2d6);
+	background-image: -ms-linear-gradient(top, #4867c4, #53a2d6);
+	background-image: -o-linear-gradient(top, #4867c4, #53a2d6);
+	background-image: linear-gradient(to bottom, #4867c4, #53a2d6);
+}
+
+.container-edit-expand {
+	max-width: 95%;
+	margin: 0 auto;
+}
+
+.container-contact-expand {
+	max-width: 80%;
+	margin: 30px auto;
+}
+
+.container-info-expand {
+	max-width: 80%;
+	margin: 30px auto;
+}
+
+.container-expand .content-expand {
+	display: none;
+	padding: 5px;
+}
+
+.container-expand .content-collapse {
+	padding: 5px;
+}
+.info-link {
+	margin: 5px auto;
+	font-size: 1.0em;
+	width: 100%;
+}
+
+.info-link a:visited, a:hover, a:link {
+	color: blue;
+}
+
+.info-list li {
+	list-style-type: none;
+	height: 50px;
 }

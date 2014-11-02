@@ -31,7 +31,7 @@ of Adelaide and the University of South Australia.", :image=>seed_image("project
 {:name=>"Sergei Fadeev", :email=>" a1608693@student.adelaide.edu.au", :studentID=>" a1608693", :course=>"BEng(Software)"},
 {:name=>"Samuel Wong", :email=>" a1607031@student.adelaide.edu.au", :studentID=>" a1607031", :course=>"BEng(Software)"}], 
 :year=>2014, :client_summary=> "Maptek™ is the leading provider of innovative software, hardware and services for the global mining industry. With more than 30 years of commitment to mine technology research and development,
-we offer an extensive range of products backed by unparalleled customer service and support.", :client_link=>"http://www.maptek.com/")
+we offer an extensive range of products backed by unparalleled customer service and support.", :client_link=>"http://www.maptek.com/",  :pastproject_management_id=>0)
 
      StudentProject.create(:title=> "A mobile e-learning platform for Medical Students", :client=> "The Adelaide Simulation Centre",
      :summary=> "The motivation behind Respond is to ensure that medical students have the skills required to deal with emergency situations
@@ -47,7 +47,7 @@ we offer an extensive range of products backed by unparalleled customer service 
 has been developed to address current and future inter-professional learning needs of health and related workforces. Equipped with a variety of simulation manikins 
 and a fully integrated audiovisual system for remote video conferencing, the Centre offers the capacity for all levels of fidelity in simulation education as well as training.
 Using state-of-the-art technology to deliver an innovative and effective learning experience, our safe, evidence-based environment supports participants to develop 
-clinical and interpersonal skills as well as the confidence and competence to work effectively within their healthcare teams.", :client_link=>"https://health.adelaide.edu.au/medicine/simulation-skills/")
+clinical and interpersonal skills as well as the confidence and competence to work effectively within their healthcare teams.", :client_link=>"https://health.adelaide.edu.au/medicine/simulation-skills/", :pastproject_management_id=>0)
 
      StudentProject.create(:title=> "Radiometri Correction of Image Sets Using Genetic Programming", :client=> "Maptek",
      :summary=> "The project aims to normalise the radiometric characteristics of sets of interrelated photos.
@@ -60,7 +60,7 @@ has been developed to address current and future inter-professional learning nee
 and a fully integrated audiovisual system for remote video conferencing, the Centre offers the capacity for all levels of fidelity in simulation education as well as training.
 Using state-of-the-art technology to deliver an innovative and effective learning experience, our safe, evidence-based environment supports participants to develop 
 clinical and interpersonal skills as well as the confidence and competence to work effectively within their healthcare teams.", 
-:client_link=>"https://health.adelaide.edu.au/medicine/simulation-skills/")
+:client_link=>"https://health.adelaide.edu.au/medicine/simulation-skills/",  :pastproject_management_id=>0)
 
      StudentProject.create(:title=> "Deconvolution of Aerial Photography", :client=> " Maptek",
      :summary=> "Photography taken from a moving aerial vehicle will inherently have minor amounts of blurring due to motion.
@@ -68,7 +68,7 @@ clinical and interpersonal skills as well as the confidence and competence to wo
      significantly affect the results of these calculations.", :image=>seed_image("project4Banner.jpg"), :client_image=>seed_image("project4Client.jpg"), 
      :category=>"Imaging software", :year => 2014, :students_attributes=>[{:name=>"Ken Ear", :email=>"ken.ear@student.adelaide.edu.au", :studentID=>"ken.ear", :course=>"BEng(Software)"},{:name=>"Dominik Jarco", :email=>"dominik.jarco@student.adelaide.edu.au", :studentID=>"dominik.jarco", :course=>"BEng(Software)"},{:name=>"Josiah Saunders", :email=>"josiah.saunders@student.adelaide.edu.au", :studentID=>"josiah.saunders", :course=>"BEng(Software)"}],  :client_summary=> "Maptek™ is the leading provider of innovative software, hardware and services for the global 
      mining industry. With more than 30 years of commitment to mine technology research and development, we offer an extensive range of products backed 
-     by unparalleled customer service and support.", :client_link=>"http://www.maptek.com/")
+     by unparalleled customer service and support.", :client_link=>"http://www.maptek.com/",  :pastproject_management_id=>0)
 
      StudentProject.create(:title=> "Breadcrumbs", :client=> "Airborne Research Australia",
      :summary=> "ARA uses light aircraft to perform aerial mappings. They do this by flying in parallel lines across the area.
@@ -79,6 +79,6 @@ clinical and interpersonal skills as well as the confidence and competence to wo
      established in 1996 with funding from the Commonwealth Government's Major National Research Facilities Programme and Flinders University. The core 
      activity of ARA is the use of airborne platforms (special missionaircraft) for a wide range applications and projects, mainly in the Environmental Research &
      Development area. Most of these projects are based on collaborations with colleagues and institutions within Australia and internationally. ", 
-    :client_link=>"http://www.airborneresearch.com.au/")
+    :client_link=>"http://www.airborneresearch.com.au/", :pastproject_management_id=>0)
 
-
+PastprojectManagement.create(:id=>0)

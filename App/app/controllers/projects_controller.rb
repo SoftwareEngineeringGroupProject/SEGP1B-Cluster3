@@ -59,6 +59,7 @@ class ProjectsController < ApplicationController
     #reset sessions 
     session[:IdArray]=nil
     session[:index_value]=nil
+    session[:manageIDarray]=nil
     
     #get the project's ID here
       @ProjectID = params[:id]
@@ -207,7 +208,8 @@ end
         #intialize sessions here
         session[:IdArray]=0
         session[:index_value]=0
-        
+         session[:manageIDarray]=nil
+         
         @Projects = StudentProject.all
             #get the filter year and category data
           @year=params[:year]
@@ -251,6 +253,7 @@ end
         session[:IdArray]=nil
         session[:index_value]=nil
 
+
         #get all selected pastProjects ID array first
         @EditArray=params[:choose]
       
@@ -261,19 +264,22 @@ end
                       @EditArray.delete_at(0)              
                  end         
                   
-                  if params[:commit]=="Edit"  
+                      if params[:commit]=="Edit"  
                               #go to multiple edit page with project ID arrays parameters and an initial index value
-                              redirect_to pastproject_multiedit_path(:editArray=> @EditArray, :index=>0)
-                        elsif params[:commit] =="Remove"
+                              redirect_to pastproject_manage_edit_path(:editArray=> @EditArray, :index=>0)
+                     elsif params[:commit] =="Remove"
                              redirect_to pastproject_multiremove_path(:editArray=> @EditArray)
-                        end        
+                     elsif params[:commit] =="Edit One-By-One"
+                             redirect_to pastproject_multiedit_path(:editArray=> @EditArray, :index=>0)
+                     end        
           else
                         flash[:notice] = "Tick at least one box in order to edit"
-                                redirect_to pastproject_management_path 
+                        redirect_to pastproject_management_path 
          end
   end
   
-  def multiedit         
+  def multiedit
+    @projects=StudentProject.find(params[:editArray])         
     
         if session[:user_id] != nil
         @user = User.find(session[:user_id]) 
@@ -358,8 +364,11 @@ end
          #update the attributes without save to DB yet
           @updateProject.attributes=project_params
           #save to DB       
-            @updateProject.save
-            
+            if @updateProject.save
+                      flash[:notice] = "Past Project "+@id+" Updated"
+            else 
+                  flash[:notice] = "Past project "+@id+" update fail, please check errors."       
+            end         
             redirect_to pastproject_multiedit_path(:editArray=> @EditArray, :index=>@index)  
 end
   
@@ -384,7 +393,8 @@ end
                 @find=StudentProject.find(array.to_i)            
                  StudentProject.destroy(@find)
         end
-      
+        
+        flash[:notice] = "Past Projects Deleted"
         redirect_to pastproject_management_path
   end
              

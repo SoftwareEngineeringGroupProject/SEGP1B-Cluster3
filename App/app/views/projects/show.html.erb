@@ -1,6 +1,7 @@
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
 <%= render "shared/header" %>
 <%= render "shared/linkbar" %>
-<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 <%= render "shared/showPagebanner" %>
 
 <div class="wrapper content">
@@ -36,11 +37,11 @@
 			</div>
 
 			<div class="project-metadata">
-				<span style="margin-left: 5%"><strong>Finished Year:</strong> &nbsp;<%= @theProject.year%></span>
+				<span style="margin-left: 12%"><strong>Finished Year:</strong> &nbsp;<%= @theProject.year%></span>
 
 				<span><strong>Category:</strong>&nbsp;<%= @theProject.category%></span>
 
-				<span><strong>Last Updated At: </strong>&nbsp;<%= @theProject.updated_at.to_date%></span>
+				<span style="margin-right: 0"><strong>Last Updated At: </strong>&nbsp;<%= @theProject.updated_at.to_date%></span>
 
 			</div>
 
@@ -51,30 +52,38 @@
 					<%= image_tag @theProject.image%>
 				</div>
 
-				<div  class="project-title-subheading">
-					Project Summary
+				<div  class="project-title-subheading container-expand">
+					<div class="header-expand">
+						<span> Project Summary</span>
+					</div>
+					<div class="content-collapse">
+						<div class="project-content-summary">
+							<%= @theProject.summary%>
+						</div>
+					</div>
+				</div>
+				
+				<div  class="project-title-subheading container-expand">
+					<div class="header-expand">
+						Group members
+					</div>
+					<div class="content-collapse">
+						<div class="project-content">
+							<dl class="studentlist">
+								<% @students.each do |student| %>
+								<dt>
+									<%= student.name %>
+								</dt>
+								<dd>
+									-  <%= student.course%>, <%= student.email %>
+								</dd>
+								<% end %>
+							</dl>
+
+						</div>
+					</div>
 				</div>
 
-				<div class="project-content-summary">
-					<%= @theProject.summary%>
-				</div>
-				<div  class="project-title-subheading">
-					Group members
-				</div>
-
-				<div class="project-content">
-					<dl class="studentlist">
-						<% @students.each do |student| %>
-						<dt>
-							<%= student.name %>
-						</dt>
-						<dd>
-							-  <%= student.course%>, <%= student.email %>
-						</dd>
-						<% end %>
-					</dl>
-
-				</div>
 			</div>
 			<!--left modulo end-->
 

@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
 <%= render "shared/header" %>
 <%= render "shared/linkbar" %>
 <%= render "shared/banner" %>
@@ -9,9 +11,13 @@
 
 		<div class="project-manage-container">
 			<div class="project-manage-subtitle-container">
-				<span class="to_left"><strong>Past Projects</strong> </span>
+				<span class="to_left"><strong>Past Projects Edit</strong> </span>
 			</div>
-
+			<% if flash[:notice] %>
+			<div class="notice" style="color: red;margin-left:20px">
+				<h3><strong><%= flash[:notice] %></strong></h3>
+			</div>
+			<%end%>
 			<%= render :partial => "edit_form" %>
 
 			<div  class="project-manage-submit-container button">
