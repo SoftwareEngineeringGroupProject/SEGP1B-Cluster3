@@ -23,7 +23,7 @@ describe Company do
 
 #presence tests
 	describe "a company must have a name" do
-		before { @comp.name = " " }
+		before { @.name = " " }
 		it { should_not be_valid }
 	end
 
