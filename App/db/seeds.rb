@@ -30,8 +30,9 @@ of Adelaide and the University of South Australia.", :image=>seed_image("project
 :students_attributes=>[{:name=>"Scott Lamacraft", :email=>"a1607969@student.adelaide.edu.au", :studentID=>"a1607969", :course=>"BEng(Software)"}, 
 {:name=>"Sergei Fadeev", :email=>" a1608693@student.adelaide.edu.au", :studentID=>" a1608693", :course=>"BEng(Software)"},
 {:name=>"Samuel Wong", :email=>" a1607031@student.adelaide.edu.au", :studentID=>" a1607031", :course=>"BEng(Software)"}], 
-:year=>2014, :client_summary=> "Maptek™ is the leading provider of innovative software, hardware and services for the global mining industry. With more than 30 years of commitment to mine technology research and development,
-we offer an extensive range of products backed by unparalleled customer service and support.", :client_link=>"http://www.maptek.com/",  :pastproject_management_id=>0)
+:year=>2014, :client_summary=>"The QB50 project involves launching a network of 61 independently developed miniature satellites into
+the lower thermosphere to carry out research on the sections of the atmosphere rarely studied. The project is headed by
+the Belgian Von Karman Institute for Fluid Dynamics." , :client_link=>"http://www.adelaide.edu.au/",  :pastproject_management_id=>0)
 
      StudentProject.create(:title=> "A mobile e-learning platform for Medical Students", :client=> "The Adelaide Simulation Centre",
      :summary=> "The motivation behind Respond is to ensure that medical students have the skills required to deal with emergency situations
@@ -55,12 +56,9 @@ clinical and interpersonal skills as well as the confidence and competence to wo
      The potos are produced for Maptek by an overhead drone. After radiometric smoothing and other quality improving procedures,
      the photos are used to create a 3D model of the space, as well as large composite image. These products are extremely accurate and
      have a cariety of uses.",:image=>seed_image("project3Banner.jpg"), :client_image=>seed_image("project3Client.png"), :category=>"Imaging software", 
-     :year=>2012, :students_attributes=>[{:name=>"Michael Stimson", :email=>"a1608486@student.adelaide.edu.au", :studentID=>"a1608486", :course=>"BEng(Software)"},{:name=>"William Reid", :email=>"a1215621@student.adelaide.edu.au", :studentID=>"a1215621", :course=>"BEng(Software)"},{:name=>"Pengcheng Zhou", :email=>"a1218763@student.adelaide.edu.au", :studentID=>"a1218763", :course=>"BEng(Software)"}], :client_summary=>"One of the most high-tech medical teaching facilities in South Australia, the Adelaide Health Simulation & Skills Centre, 
-has been developed to address current and future inter-professional learning needs of health and related workforces. Equipped with a variety of simulation manikins 
-and a fully integrated audiovisual system for remote video conferencing, the Centre offers the capacity for all levels of fidelity in simulation education as well as training.
-Using state-of-the-art technology to deliver an innovative and effective learning experience, our safe, evidence-based environment supports participants to develop 
-clinical and interpersonal skills as well as the confidence and competence to work effectively within their healthcare teams.", 
-:client_link=>"https://health.adelaide.edu.au/medicine/simulation-skills/",  :pastproject_management_id=>0)
+     :year=>2012, :students_attributes=>[{:name=>"Michael Stimson", :email=>"a1608486@student.adelaide.edu.au", :studentID=>"a1608486", :course=>"BEng(Software)"},{:name=>"William Reid", :email=>"a1215621@student.adelaide.edu.au", :studentID=>"a1215621", :course=>"BEng(Software)"},{:name=>"Pengcheng Zhou", :email=>"a1218763@student.adelaide.edu.au", :studentID=>"a1218763", :course=>"BEng(Software)"}], :client_summary=>"Maptek™ is the leading provider of innovative software, hardware and services for the global mining industry. With more than 30 years of commitment to mine technology research and development,
+we offer an extensive range of products backed by unparalleled customer service and support.", 
+:client_link=>"http://www.maptek.com/",  :pastproject_management_id=>0)
 
      StudentProject.create(:title=> "Deconvolution of Aerial Photography", :client=> " Maptek",
      :summary=> "Photography taken from a moving aerial vehicle will inherently have minor amounts of blurring due to motion.

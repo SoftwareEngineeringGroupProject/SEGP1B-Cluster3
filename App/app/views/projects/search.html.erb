@@ -5,7 +5,7 @@
 
 <div class="wrapper content">
 	<div id="news" class="flex_height shadow">
-	<br />
+		<br />
 		<div class="contact-title">
 			<h1><strong>Search Results</strong></h1>
 		</div>
@@ -30,6 +30,9 @@
 		<br />
 		<% end %>
 
-		<%= button_to "Back To Past Project Show", index_path(), class: "project-search-backbutton",:method => :get%>
+		<div class="button horizontal_list to_right" style="margin: 10px 10px">
+			<%= button_to "Back To Past Project Show", index_path(), class: "project-search-backbutton",:method => :get%>
+		</div>
 	</div>
+	<br />
 </div>

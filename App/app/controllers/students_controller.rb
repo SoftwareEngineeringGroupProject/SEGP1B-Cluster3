@@ -132,7 +132,7 @@ class StudentsController < ApplicationController
 
 	def search
 		#take in the searching params here
-		@search=params[:search]
+		@search=params[:search].strip
 		@classify=params[:classify].downcase
 
 		#define a project that will be searched

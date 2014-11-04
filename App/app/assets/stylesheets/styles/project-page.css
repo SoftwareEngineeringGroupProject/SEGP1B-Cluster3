@@ -5,11 +5,9 @@
 	font-weight: normal;
 	margin-left: 10px;
 }
-
 .project-index-background {
 	background-image: url("/assets/project-index-background.jpg");
 }
-
 .project-title-subheading {
 	margin-left: 70px;
 	margin-top: 20px;
@@ -18,11 +16,9 @@
 	color: blue;
 	font-weight: normal;
 }
-
 .project-title-subheading:active {
 	background: white;
 }
-
 .project-title {
 	margin-left: 70px;
 	margin-top: 10px;
@@ -31,7 +27,6 @@
 	color: #005d8f;
 	font-weight: normal;
 }
-
 .project-metadata {
 	border-bottom: 2px solid #cdcdcd;
 	border-top: 2px solid #cdcdcd;
@@ -39,7 +34,6 @@
 	height: 25px;
 	max-width: 100%;
 }
-
 .project-metadata span {
 	width: auto;
 	margin: 0 4%;
@@ -52,7 +46,6 @@ ul.metalist {
 	margin-top: 5px;
 	max-width: 95%;
 }
-
 ul.metalist li {
 	width: auto;
 	float: left;
@@ -60,47 +53,40 @@ ul.metalist li {
 	margin-left: 5%;
 	max-height: 10%;
 }
-
 ul.right-client-list li {
 	border-bottom: 3px dotted #cdcdcd;
 }
-
 .project-image {
 	margin: 30px 0px 20px 60px;
 	width: auto;
 	height: 200px;
 }
-
 .project-index-image {
 	-webkit-box-shadow: 3px 3px 3px #7C7C7C;
-	margin: 30px 50px;
+	margin: 30px 5%;
 	margin-bottom: 50px;
 	width: 200px;
-	height: 300px;
+	min-height: 300px;
 	float: left;
 	font-size: 0.8em;
 	text-align: center;
 	color: #cc3333;
 }
-
 .project-index-image-inside {
 	max-width: 100%;
 	height: 150px;
 }
-
 .project-index-summary {
 	margin-top: 5px;
 	color: grey;
 	font-size: small;
 	text-align: left;
 }
-
 .project-index-image:hover {
 	color: blue;
 	opacity: 0.4;
 	box-shadow: 3px 3px 3px #7C7C7C;
 }
-
 .project-content {
 	margin-left: 120px;
 	margin-right: 10px;
@@ -111,7 +97,6 @@ ul.right-client-list li {
 	color: #456;
 	word-wrap: break-word;
 }
-
 .project-content-edit {
 	margin-left: 80px;
 	margin-right: 20px;
@@ -123,7 +108,6 @@ ul.right-client-list li {
 	word-wrap: break-word;
 	float: right;
 }
-
 .project-edit-fieldset {
 	max-width: 80%;
 	height: 80%;
@@ -132,6 +116,9 @@ ul.right-client-list li {
 	color: black;
 }
 
+.project-edit-fieldset label {
+	font-size: 0.8em;
+}
 .student-edit-fieldset {
 	max-width: 90%;
 	height: auto;
@@ -139,47 +126,42 @@ ul.right-client-list li {
 	margin: 0 auto;
 	color: black;
 }
-
 .student-edit-fieldset label {
 	color: #005d8f;
 	float: left;
 }
-
 .student-edit-fieldset select {
 	max-width: 210px;
 }
-
 .project-student-edit-line-container {
 	margin: 15px auto;
 	max-width: 95%;
 }
-
 .project-edit-fieldset-group {
 	max-width: 90%;
 	height: auto;
-	font-size: 1.0em;
+	font-size: 1.2em;
 	margin: 0 2%;
 	margin-top: 40px;
 }
-
 .project-edit-fieldset-group  table {
 	max-width: 100%;
 	height: auto;
 	margin: 0 2px;
 }
-
+.project-edit-fieldset-group a {
+	font-size: 1.2em;
+}
 table.project-edit-table tr {
 	max-width: 100%;
 }
-
 .project-edit-table tbody {
 	max-width: 85%;
 }
-
 .project-edit-fieldset-group legend {
 	color: #005d8f;
+	font-size: 1.2em;
 }
-
 table.project-edit-table a:visited {
 	color: #005d8f;
 }
@@ -187,30 +169,32 @@ table.project-edit-table a:visited {
 	max-width: 100%;
 	margin: 0 auto;
 }
+.edit_student_project label {
+	font-weight: bold;
+	font-size: 1.2em;
+}
 
 table.project-edit-table th {
 	color: grey;
 	max-width: 100%;
+	font-size: 1.2em;
 }
 .project-edit-line-container {
 	margin: 25px auto;
 	max-width: 1000px;
 }
-
 .project-edit-line-container fieldset {
 	margin: 25px auto;
 	max-width: 90%;
 }
-
 .project-manage-submit-container  a:link, a:visited {
 	background: linear-gradient(to bottom, #f01111, #a33f3f) repeat scroll 0 0 #f01111;
 	border: 0 none;
-	color: white;
+	color: #f000;
 	display: block;
 	margin: 0;
-	padding-bottom: 7px;
+	padding: 7px 7px;
 	height: 15px;
-	padding-top: 7px;
 	text-align: center;
 	transition: background-color 0.2s ease 0s;
 	font-size: 14px;
@@ -227,42 +211,82 @@ table.project-edit-table th {
 	color: white;
 }
 
+.project-manage-submit-container span {
+	margin: 0 1px;
+}
 .project-edit-line-container-year {
 	margin: 25px auto;
 	margin-left: 100px;
-	width: 350px;
+	max-width: 250px;
 }
-
 .project-edit-line-container-year label {
 	float: left;
 	font-size: 1.2em;
 	color: #005d8f;
 	width: 200px;
 }
-
 .project-edit-line-submit-container {
 	margin: 20px auto;
 	margin-top: 70px;
 	max-width: 80%;
 }
 
+.project-single-edit-fieldset-group {
+	font-size: 0.8em;
+}
+
+table.project-single-edit-table th {
+	font-size: 0.8em;
+}
+
+.project-single-table-td {
+	font-size: 0.8em;
+}
+
 .project-edit-upload-container {
 	margin: 10px auto;
 	margin-top: 20px;
-	nax-width: 90%;
-	height: 50px;
-	font-size: 1.2em;
+	max-width: 90%;
+	height: 30px;
+	font-size: 1.0em;
 	color: #005d8f;
 }
 
 .student-course-div {
 	height: auto;
 }
+
+.project-single-edit-upload-container {
+	margin: 10px auto;
+	margin-top: 20px;
+	max-width: 90%;
+	height: 30px;
+	font-size: 0.6em;
+	color: #005d8f;
+}
+
+.project-single-edit-upload-container label {
+	float: left;
+	color: #005d8f;
+}
+
+.single-edit-cancel a {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 0.8em;
+}
 .project-edit-upload-container li {
 	float: left;
 }
 .project-edit-upload-container label {
 	color: #005d8f;
+	font-size: 1.2em;
+}
+.upload-label {
+	font-size: 2em;
+}
+.project-edit-upload-container input {
+	height: 30px;
 }
 
 .project-edit-line-container textarea {
@@ -277,6 +301,10 @@ table.project-edit-table th {
 	float: left;
 }
 
+.project-single-edit-line-container label {
+	font-size: 0.8em;
+}
+
 .project-content-summary {
 	margin: 30px 20px;
 	margin-left: 80px;
@@ -287,7 +315,6 @@ table.project-edit-table th {
 	color: #456;
 	word-wrap: break-word;
 }
-
 .project-container {
 	font-family: Georgia, Times, serif;
 	font-size: 1.5em;
@@ -296,7 +323,6 @@ table.project-edit-table th {
 	height: auto;
 	max-width: 98%;
 }
-
 .project-image-container {
 	font-family: Georgia, Times, serif;
 	font-size: 1.5em;
@@ -306,7 +332,6 @@ table.project-edit-table th {
 	height: 1000px;
 	padding-top: 100px;
 }
-
 .project-client-right-modulo-container {
 	width: 22%;
 	height: auto;
@@ -315,20 +340,17 @@ table.project-edit-table th {
 	margin-top: 200px;
 	float: right;
 }
-
 .project--left-modulo-container {
 	width: 75%;
 	margin: 5px auto;
 	float: left;
 }
-
 dl.studentlist {
 	margin: 20px auto;
 	width: auto;
 	height: auto;
 	font-size: 1.4em;
 }
-
 .project-client-right-modulo {
 	background-color: #eaeaea;
 	background-image: -moz-linear-gradient(center top , #eaeaea, #ffffff);
@@ -362,10 +384,11 @@ dl.studentlist {
 
 .project-background-containers {
 	position: relative;
-	margin: 50px;
+	margin: 0 3%;
+	margin-left: 6%;
 	margin-bottom: 50px;
 	height: 1000px;
-	max-width: 1258px;
+	max-width: 100%;
 }
 
 .portfolio {
@@ -375,7 +398,6 @@ dl.studentlist {
 	height: 25px;
 	text-align: left;
 }
-
 .search-bar {
 	max- width: 340px;
 	height: 30px;
@@ -383,55 +405,46 @@ dl.studentlist {
 }
 
 .search_submit_button {
-	min-height: 20px;
+	height: 24px;
 }
 
-.search-bar input {
-	min-height: 20px;
+.search-bar select {
+	height: 25px;
 }
 
 .project-show {
 	margin: 100px;
 	margin-top: 50px;
 }
-
 .project-filter {
 	margin: 50px;
 }
-
 .project-apply {
 	margin-left: 300px;
 }
-
 .projects-image {
 	margin: 5px;
 	margin-top: 50px;
 	margin-bottom: 10px;
 }
-
 .project-client-image {
 	height: 150px;
 	width: auto;
 	margin-bottom: 10px;
 }
-
 .project-container-line1 {
 	margin-left: 50px;
 	margin-right: 50px;
 	width: 700px;
 	height: 50px;
 }
-
 .project-container-line2 {
-
 	width: 600px;
 	height: 50px;
 }
-
 .project-pagefoot {
 	margin: 200px;
 }
-
 label {
 	display: block;
 	width: 300px;
@@ -454,36 +467,39 @@ label {
 .Project-text_field-COURSE {
 	width: 80px;
 }
-
 .Project-to_center {
 	text-align: center;
 }
-
 .project-table-td {
 	margin-left: 50px;
 	display: inline-block;
 }
-
 .student-course-label {
 	margin-right: 5px;
 }
-
 .student-course-div a {
 	color: blue;
 }
-
 .student-course-select {
 	margin-right: 80px;
 }
-
 .student-submit-area {
 	width: 300px;
 }
 
 #filter_search_container {
-	height: 30px;
-	min- width: 950px;
-	margin: 20px 50px;
+	height: 25px;
+	width: 90%;
+	margin: 20px 5%;
+}
+
+.filter-bar {
+	width: auto;
+	height: 25px;
+}
+
+.filter-bar select {
+	height: 25px;
 }
 
 #project-index-header-container {
@@ -493,12 +509,10 @@ label {
 	min-height: 40px;
 	font-size: 1.5em;
 }
-
 .project-search-link {
 	color: #005a9c;
 	font-size: medium;
 }
-
 .project-search-link:visited {
 	color: #005a9c;
 }
@@ -510,7 +524,6 @@ label {
 	float: right;
 	margin-right: 10px;
 }
-
 .project-notfound {
 	background-color: #fff;
 	color: #000;
@@ -518,7 +531,6 @@ label {
 	width: 400px;
 	margin: 300px auto;
 }
-
 .project-manage-container {
 	width: 85%;
 	height: auto;
@@ -527,16 +539,13 @@ label {
 	margin: 30px auto;
 	display: block;
 }
-
 .project-manage-form {
 	height: auto;
 	margin: 0 auto;
 }
-
 .project-manage-title {
 	margin-bottom: 30px;
 }
-
 .project-manage-subtitle-container {
 	height: 30px;
 	width: 95%;
@@ -546,26 +555,22 @@ label {
 	border-bottom: 2px solid #cdcdcd;
 	padding: 5px 5px;
 }
-
 .manage-button_small {
 	padding-top: 0;
 	padding-bottom: 0;
 }
-
 #project-manage-filter_search_container {
 	height: 30px;
 	width: 96%;
 	margin: 5px auto;
 	border-bottom: 2px solid #cdcdcd;
 }
-
 .project-manage-submit-container {
 	height: 40px;
 	margin: 5px auto;
 	margin-right: 10px;
 	width: auto;
 }
-
 .project-manage-table {
 	max-width: 95%;
 	height: auto;
@@ -573,22 +578,39 @@ label {
 	margin-bottom: 30px;
 	border: 2px dashed #cdcdcd;
 }
-
 .project-manage-table th {
 	width: 20%;
 	color: blue;
 	text-align: center;
 }
-
 .project-manage-table tr {
 	margin: 0 auto;
 	max-width: 100%;
 }
 
+.manage-project-title a:link a:after a:visited {
+	color: black;
+}
+
+.manage-project-title a {
+	color: black;
+}
+
+.showpage-header-expand {
+	font-size: 0.8em;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.manage-project-title a:hover {
+	color: blue;
+	font-weight: bold;
+	cursor: pointer;
+}
+
 tr.Project-remove-dashline td {
 	border-bottom: 0px;
 }
-
 .project-manage-table td {
 	border-bottom: 2px dashed #cdcdcd;
 	width: auto;
@@ -596,15 +618,24 @@ tr.Project-remove-dashline td {
 	text-align: center;
 	font-size: 1.2em;
 }
+table.project-multiple-edit-table th {
+	font-size: 0.8em;
+}
+
+table.project-multiple-edit-table a {
+	font-size: 1.0em;
+}
+
+.choose-new-course select{
+	height:25px;
+}
 
 th.project-manage-tick {
 	width: 1px;
 }
-
 td.project-manage-tick {
 	width: 1px;
 }
-
 .project-contact-container {
 	margin: 0 auto;
 	max-width: 80%;
@@ -619,29 +650,24 @@ td.project-manage-tick {
 	margin: 15px auto;
 	max-width: 95%;
 }
-
 .contact_email {
 	margin: 15px auto;
 	max-width: 95%;
 }
-
 .contact_message {
 	margin: 15px auto;
 	max-width: 95%;
 	color: #456;
 }
-
 .contact_message label {
 	margin-bottom: 15px;
 	color: #456;
 }
-
 .contact_message textarea {
 	max-width: 90%;
 	height: 80%;
 	margin: 0 auto;
 }
-
 .contact_button {
 	margin: 5px auto;
 	margin-left: 40%;
@@ -651,17 +677,13 @@ td.project-manage-tick {
 .contact_button input {
 	margin-bottom: 10px;
 }
-
 .project-contact-container form {
 	margin: 0 auto;
 }
-
 .project-contact-container label {
 	float: left;
 	font-weight: bold;
 }
-
-
 .buttons-hold {
 	background: -moz-linear-gradient(center bottom , #58ba32 0%, #73ca4b 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
 	border: medium none;
@@ -678,7 +700,6 @@ td.project-manage-tick {
 	text-decoration: none;
 	text-shadow: 0 1px 0 rgba(0, 1, 0, 0.1);
 }
-
 /*add css for an expandable modulo here*/
 .container-expand {
 	border: 1px solid #d3d3d3;
@@ -695,7 +716,6 @@ td.project-manage-tick {
 	text-shadow: 1px 1px 5px #666666;
 	z-index: 0;
 }
-
 .container-expand .header-expand:hover {
 	background: #4867c4;
 	background-image: -webkit-linear-gradient(top, #4867c4, #53a2d6);
@@ -704,7 +724,6 @@ td.project-manage-tick {
 	background-image: -o-linear-gradient(top, #4867c4, #53a2d6);
 	background-image: linear-gradient(to bottom, #4867c4, #53a2d6);
 }
-
 .container-edit-expand {
 	max-width: 95%;
 	margin: 0 auto;
@@ -715,30 +734,84 @@ td.project-manage-tick {
 	margin: 30px auto;
 }
 
+#new_contact label {
+	font-size: 1.2em
+}
+
 .container-info-expand {
 	max-width: 80%;
 	margin: 30px auto;
 }
-
 .container-expand .content-expand {
 	display: none;
 	padding: 5px;
+	font-size: 0.6em;
 }
-
+.container-expand label {
+	font-size: 2.0em;
+	font-weight: bold;
+}
+.project-edit-line-container-year select {
+	height: 30px;
+}
 .container-expand .content-collapse {
 	padding: 5px;
+	font-size: 0.6em;
 }
 .info-link {
 	margin: 5px auto;
 	font-size: 1.0em;
 	width: 100%;
 }
-
 .info-link a:visited, a:hover, a:link {
 	color: blue;
 }
-
 .info-list li {
 	list-style-type: none;
 	height: 50px;
 }
+
+/* add the searching buttons's style*/
+.search_filter_Button {
+	-moz-box-shadow: inset 0px 1px 0px 0px #d9fbbe;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #d9fbbe;
+	box-shadow: inset 0px 1px 0px 0px #d9fbbe;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #b8e356), color-stop(1, #a5cc52));
+	background: -moz-linear-gradient(top, #b8e356 5%, #a5cc52 100%);
+	background: -webkit-linear-gradient(top, #b8e356 5%, #a5cc52 100%);
+	background: -o-linear-gradient(top, #b8e356 5%, #a5cc52 100%);
+	background: -ms-linear-gradient(top, #b8e356 5%, #a5cc52 100%);
+	background: linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b8e356', endColorstr='#a5cc52',GradientType=0);
+	background-color: #b8e356;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	border: 1px solid #83c41a;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: arial;
+	font-size: 15px;
+	font-weight: bold;
+	padding: 0 auto;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #86ae47;
+	height: 24px;
+}
+
+.search_filter_Button:hover {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #a5cc52), color-stop(1, #b8e356));
+	background: -moz-linear-gradient(top, #a5cc52 5%, #b8e356 100%);
+	background: -webkit-linear-gradient(top, #a5cc52 5%, #b8e356 100%);
+	background: -o-linear-gradient(top, #a5cc52 5%, #b8e356 100%);
+	background: -ms-linear-gradient(top, #a5cc52 5%, #b8e356 100%);
+	background: linear-gradient(to bottom, #a5cc52 5%, #b8e356 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a5cc52', endColorstr='#b8e356',GradientType=0);
+	background-color: #a5cc52;
+}
+.search_filter_Button:active {
+	position: relative;
+	top: 1px;
+}
+

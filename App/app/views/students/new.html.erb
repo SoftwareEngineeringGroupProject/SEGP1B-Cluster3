@@ -4,11 +4,11 @@
 <%= render "shared/linkbar" %>
 
 <div class="wrapper content">
-	<div id="news" class="flex_height shadow">
+	<div id="news" class="flex_height shadow" style="padding-top: 40px">
 
 		<fieldset class="student-edit-fieldset">
-			<legend style="color: #005d8f">
-				<h2><strong>Add New Student</strong></h2>
+			<legend style="color: #005d8f; font-size: 1.0em">
+				<strong>Add New Student</strong>
 			</legend>
 
 			<%= form_for @theStudent, :url => { :action => "create" } do |builder| %>
@@ -51,7 +51,7 @@
 			<%else%>
 			<div  class="project-student-edit-line-container  student-course-div">
 				<span class="to_left"><%= builder.label :course, :class=>"student-course-label"%></span>
-				<span class="to_left student-course-select"><%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %></span>
+				<span class="to_left student-course-select choose-new-course"><%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %></span>
 				<span class="to_left"><%= link_to "Or Add New Course", student_new_path(:addNew=>"true"), :method => :get%></span>
 			</div>
 			<%end%>
