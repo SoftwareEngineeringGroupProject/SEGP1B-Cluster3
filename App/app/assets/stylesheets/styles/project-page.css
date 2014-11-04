@@ -374,7 +374,7 @@ dl.studentlist {
 }
 
 .search-bar {
-	max- width: 340px;
+	max-width: 340px;
 	height: 30px;
 	display: inline-block;
 }
@@ -479,7 +479,7 @@ label {
 
 #filter_search_container {
 	height: 30px;
-	min- width: 950px;
+	min-width: 950px;
 	margin: 20px 50px;
 }
 
