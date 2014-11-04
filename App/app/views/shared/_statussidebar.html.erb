@@ -2,14 +2,31 @@
   <div class="aside_cols to_left">
     <div id="tabs" class="to_right vertical_list tab">
       <ul>
+
       	<% if params[:state] == "new" %>
-        	<li><%=link_to "Newly submitted", :admin_dashboard_show_new %></li>
+        	<li><%=link_to "Newly submitted", :admin_dashboard_show_new, "style"=>"background-color: #4391CA" %></li>
         <% else %>
         	<li><%=link_to "Newly submitted", :admin_dashboard_show_new %></li>
         <% end %>
-        <li><%=link_to "Accepted", :admin_dashboard_show_accepted  %></li>
-        <li><%=link_to "Rejected", :admin_dashboard_show_rejected %></li>
-        <li><%=link_to "Pending", :admin_dashboard_show_pending %></li>
+
+        <% if params[:state] == "accepted" %>
+          <li><%=link_to "Accepted", :admin_dashboard_show_accepted, "style"=>"background-color: #4391CA"   %></li>
+        <% else %>
+          <li><%=link_to "Accepted", :admin_dashboard_show_accepted  %></li>
+        <% end %>
+
+        <% if params[:state] == "rejected" %>
+          <li><%=link_to "Rejected", :admin_dashboard_show_rejected, "style"=>"background-color: #4391CA"  %></li>
+        <%else %>
+          <li><%=link_to "Rejected", :admin_dashboard_show_rejected %></li>
+        <%end%>
+
+        <% if params[:state] == "pending" %>
+          <li><%=link_to "Pending", :admin_dashboard_show_pending, "style"=>"background-color: #4391CA"  %></li>
+        <%else%>
+          <li><%=link_to "Pending", :admin_dashboard_show_pending %></li>
+        <%end%>
+
         <li><%=link_to "Past Project Admin", :pastproject_management %></li>
       </ul>
     </div>

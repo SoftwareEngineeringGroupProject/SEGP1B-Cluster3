@@ -1,4 +1,6 @@
 <%= render "shared/header" %>
+<%= render "shared/linkbar" %>
+<%= render "shared/dashheader" %>
 
 <div class="wrapper content">
   <%= render "shared/dashsidebar" %>
@@ -6,28 +8,28 @@
 
   <div id="container" >
   
-      <div id="board_showing" class="general_box flex_height shadow">
+      <div id="new_board_showing" class="general_box flex_height shadow">
         <div id="industrydisplayproject">
       			<div class="titles">
       				<h3 class="centerHead">Delete Project</h3>
       			</div>
-      			<h4>Please leave some reasons for deleting the Project here</h4>
-      			<h4>Your deletion request will remain pending until confirmed by an admin.</h4>
-
-    				<div class="sep"></div>
+      			
    					<div class="to_left">
       					<%= "Some fields were missing!" if @project.errors.any? %>
     				</div>
     				
     				
     				<!-- Message box -->
+            <div id="delete_message">
+              <h4>Please leave some reasons for deleting the Project here</h4>
+              <h4>Your deletion request will remain pending until confirmed by an admin.</h4>
         			<%= form_for :newmessage, url: {action: "sendmes"} do |f| %>
-						<div id="message_box" class="to_left">
+						        <div  class="inputs">
           					<%= f.hidden_field 'user_id', :value => @current_user.id %>
           					<%= f.hidden_field 'proj_id', :value => @project.id %>
           					<%= f.text_field 'subject', :class => "to_left long_input","placeholder" => "Subject" %>
-          					<%= f.text_area 'email' %>
-        				</div>				
+          					<%= f.text_area 'email', "placeholder"=>"Message", "rows" => "6" %>
+                    </div>
     				
     					<div id="subBtn" class="button horizontal_list to_right">
       						<ul>
@@ -36,6 +38,9 @@
       						</ul>
     					</div>
     			<% end %>
+
+          </div>
+
         </div>
       </div>
   </div>

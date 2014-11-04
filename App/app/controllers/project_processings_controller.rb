@@ -14,6 +14,7 @@ class ProjectProcessingsController < ApplicationController
     # This needs a project to edit, otherwise redirect_to admin_dashboard
     if ( !params[:id].blank? )
       @project = Project.find(params[:id])
+      params[:state] = @project.status  
       @spec = Spec.find_by_project_id(params[:id])
       @spec_link = '"http://localhost:3000/project_specification/'+@spec.auth_token+ '"'
     else
@@ -38,6 +39,7 @@ class ProjectProcessingsController < ApplicationController
     end
 
     @project = Project.find((params[:project_id]))
+    params[:state] = @project.status
 
     if ( params[:commit] == "Edit" )
       @spec = Spec.find_by_project_id(params[:project_id])
@@ -67,6 +69,7 @@ class ProjectProcessingsController < ApplicationController
     # This needs a project to edit, otherwise redirect_to admin_dashboard
     if !params[:project_id].blank?
       @project = Project.find(params[:project_id])
+      params[:state] = @project.status  
       @spec = @project.spec
       @spec_link = '<http://localhost:3000/project_specification/'+@spec.auth_token+ '>'
     else
@@ -102,6 +105,7 @@ class ProjectProcessingsController < ApplicationController
     end
     
     @project = Project.find(params[:project_id])
+    params[:state] = @project.status  
 
     if (params[:commit] == "Assign")
 
@@ -132,7 +136,8 @@ class ProjectProcessingsController < ApplicationController
       end
 
     elsif (params[:commit] == "Cancel") 
-      redirect_to project_manip_path
+      redirect_to project_manip_path(id: @project.id)
+      return
     end
     assign_student
     render :assign_student

@@ -1,8 +1,10 @@
 <%= render "shared/header" %>
 <%= render "shared/linkbar" %>
-<%= render "shared/profilesidebar" %>
+<%= render "shared/dashheader" %>
 
-<div id="container" class="to_left shadow">
+<div class="wrapper content">
+<%= render "shared/profilesidebar" %>
+<div id="container" class="to_left">
 	<div class="editprofile forms flex_height">
       <div class="titles">
       	<%= link_to 'Back', :list_all_path, :class => "navibutton" %>
@@ -37,4 +39,6 @@
 		<% end %>
 	</div>
   </div>
+</div>
+
 </div>

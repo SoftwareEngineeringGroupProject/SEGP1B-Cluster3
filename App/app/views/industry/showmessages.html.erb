@@ -1,4 +1,6 @@
 <%= render "shared/header" %>
+<%= render "shared/linkbar" %>
+<%= render "shared/dashheader" %>
 
 <div class="wrapper content">
   <%= render "shared/dashsidebar" %>
@@ -8,7 +10,7 @@
   
       <div id="new_board_showing" class="general_box flex_height shadow">
         <div class="black">
-          <p>Conversation Log:</p>
+          <h2><strong><font color = "#B38808">Conversation Log</font><strong></h2>  
             <div id="messageview" style="height:400px; overflow: auto;">
               <% if !@proj_messages.blank? %>
                 <% @proj_messages.each do |m| %>

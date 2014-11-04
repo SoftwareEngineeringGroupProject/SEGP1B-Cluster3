@@ -1,37 +1,64 @@
 <%= render "shared/header" %>
+<%= render "shared/linkbar" %>
+<%= render "shared/dashheader" %>
+<div class="wrapper content">
 
   <%= render "shared/dashsidebar" %>
 <div class="wrapper content">
 
-
-      <div class="newcontainer flex_height shadow">
-      	<br />
+  <div id="container" >
+      <div id="board_showing" class="project_list shadow">
+      
       	<div id="industrydisplayproject" class="titles">
-        	<h1 id="titleheader"><%= @current_user.companyname %>'s Projects</h1>
+        	<font color="#B38808"><h1 class="centerHead"><%= @current_user.companyname %>'s Projects</h1></font>
       	</div>
       
-      	<div class="vspacer"></div>
-      	
-        <div id="listprojectsdiv">
-        	<% if @projects.length > 0 %>
- 			<% @projects.each do |sub| %>
- 			<div class="projectrow">
- 				<div class="projname"><p><%= link_to sub.title, controller: "industry", action: "display", id: sub.id %></p></div>
- 				<div class="projdesc"><p><%= sub.body %></p></div>
- 				<table class="bottomline">
-					<tr>
-						<td>Messages: <%= Message.where("project_id = #{sub.id}").count %></td>
-						<td>Status: <%= sub.status.slice(0,1).capitalize + sub.status.slice(1..-1) %></td>
-						<td>Created: <%= Date.parse(sub.created_at.to_s).strftime("%d-%m-%Y") %></td>
-					</tr>
-				</table>
-			</div>
-			<div class="vspacer"></div>
-  			<% end %>
-  		<% else %>
-  			<br />
-  			<p class="blackmessage">You have not submitted any projects yet! <%=link_to "Click Here to Submit a Project Proposal", :submit_project %></p>
-  		<% end %>
+
+
+  <% if @projects.length > 0 %>  
+
+    <div class="content_bar">
+      <h3>Please click on project name for detailed information</h3>
+    </div>
+
+    <table>
+      
+      <thead>
+        <tr>
+          <th>Project Name</th>
+          <th>Status</th>
+          <th>Description</th>
+          <th>Messages</th>
+          <th>Creation Time</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @projects.each do |sub| %>
+        <tr>
+          <td><strong><%= link_to sub.title, controller: "industry", action: "display", id: sub.id %></strong></td>
+          <td><%=sub.status.humanize%></td>
+          <td><%=sub.body[0..70]+"..."%></td>
+          <td><%=sub.messages.count%></td>
+          <td><%=Date.parse(sub.created_at.to_s).strftime("%d-%m-%Y") %></td>
+        </tr>
+        <% end %>
+      </tbody>
+
+    </table>
+    <br>
+    <% else %>
+    <div class="content_bar">
+      <h3 class="black center">There are currently no projects of this type. Please click the left side links to View Projects!</h3>
+    </div>
+      
+    <% end %>
+
+
+
+
+
+
 		</div>
       </div>
 </div>
