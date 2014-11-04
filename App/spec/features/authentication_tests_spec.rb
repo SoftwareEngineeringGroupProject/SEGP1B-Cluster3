@@ -76,7 +76,7 @@ describe "register an account to use" do
 	it "invalid password due to two inputs does not match" do
 		visit signup_path
 		fill_in "password", :with => "qw4rtd8oyn"
-		fill_in "password_confirmation", :with ""
+		fill_in "password_confirmation", :with => ""
 		click_button "Continue"
 		page.should have_content("Password confirmation doesn't match Password")
 	end
@@ -84,7 +84,7 @@ describe "register an account to use" do
 	it "valid password due to two inputs match" do
 		visit signup_path
 		fill_in "password", :with => "qw4rtd8oyn"
-		fill_in "password_confirmation", :with "qw4rtd8oyn"
+		fill_in "password_confirmation", :with => "qw4rtd8oyn"
 		click_button "Continue"
 		page.should_not have_content("Password confirmation doesn't match Password")
 	end
@@ -96,20 +96,13 @@ describe "login system before register" do
 		user = FactoryGirl.create(:user)
 		visit login_path
 		fill_in "username_or_email", :with => user.username
-		fill_in "login_password", :with => user.password
+		fill_in "login_password", :with => "aaasssss"
 		click_button "LOG IN"
 		page.should have_content("Invalid Username or Password")
 	end
 
 	it "login user with valid account which register" do
-		#register
-		user = FactoryGirl.create(:user)
-		visit signup_path
-		fill_in "username", :with => user.username
-		fill_in "email", :with => "sampleMail@gmail.com"
-		fill_in "password", :with => user.password
-		fill_in "password_confirmation", :with => user.password
-		click_button "Continue"
+		
 
 		#login
 		visit login_path

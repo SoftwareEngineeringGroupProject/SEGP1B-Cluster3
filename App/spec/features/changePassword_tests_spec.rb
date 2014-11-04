@@ -1,15 +1,6 @@
 require 'spec_helper'
 
-describe "to change a password" do
-
-	#register
-	user = FactoryGirl.create(:user)
-	visit signup_path
-	fill_in "username", :with => user.username
-	fill_in "email", :with => "sampleMail@gmail.com"
-	fill_in "password", :with => user.password
-	fill_in "password_confirmation", :with => user.password
-	click_button "Continue"
+describe "to change a password" do	
 
 	#current password testing
 
