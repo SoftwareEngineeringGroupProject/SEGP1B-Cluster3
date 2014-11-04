@@ -13,8 +13,7 @@ describe AssignedStudent do
 	it { should respond_to(:studentID) }
 	it { should respond_to(:project_id) }
 	it { should respond_to(:created_at) }
-	it { should respond_to(:created_at) }
-	it { should respond_to(:updated_at) }
+	it { should respond_to(:date) }
 	it { should respond_to(:group_name) }
 
 	it { should be_valid }
