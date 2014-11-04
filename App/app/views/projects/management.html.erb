@@ -25,7 +25,7 @@
 					<%=form_tag pastproject_management_path, :method => 'get' do %>
 					<span class="to_left"> <%= select_tag "year", options_from_collection_for_select( StudentProject.all.map { |p| p.year }.uniq, :to_s, :to_s), prompt: "Year"%> </span>
 					<span class="to_left"> <%= select_tag "category", options_from_collection_for_select(StudentProject.all.map { |p| p.category }.uniq, :to_s, :to_s), prompt: "Category"%> </span>
-					<span class="to_right"><%= submit_tag "Filter"%></span>
+					<span class="to_right"><%= submit_tag "Filter", class: "search_filter_Button"%></span>
 					<%end%>
 				</div>
 				<!----------filter bar end---------->
@@ -35,11 +35,11 @@
 
 					<!--add some ground options here-->
 					<% grouped_options = {'PastProject' => ['ID', 'Title', 'Year', 'Category', 'Client Name'],'Student' => ['Name', ['ID', 'Student ID'], ['Degree', 'Course'], 'Email']}
-	@options=grouped_options_for_select(grouped_options)%>
+            @options=grouped_options_for_select(grouped_options)%>
 					<%=form_tag pastproject_management_path, :method => 'get' do %>
 					<span class="to_left"> <%= hidden_field_tag "classify", :value=>"title"%> </span>
 					<span class="to_left"><%= text_field_tag :search, params[:search], placeholder: "Search To Project..."%></span>
-					<span class="to_right"><%= submit_tag "Search", class: "search_submit_button"%></span>
+					<span class="to_right"><%= submit_tag "Search", class: "search_submit_button search_filter_Button"%></span>
 					<%end%>
 				</div>
 				<!----------search bar end---------->
@@ -75,7 +75,7 @@
 					<tr>
 						<%end%>
 						<td class="project-manage-tick"><%= check_box_tag 'choose[]', project.id, false%></td>
-						<td><%= truncate(project.title, length: 40)%></td>
+						<td class="manage-project-title"><%= link_to truncate(project.title, length: 40), project_path(project.id)%></td>
 						<td><%= project.id%></td>
 						<td><%= truncate(project.client, length: 20)%></td>
 						<td><%= truncate(project.category, length: 20)%></td>
@@ -94,7 +94,7 @@
 					<tr>
 						<%end%>
 						<td class="project-manage-tick"><%= check_box_tag 'choose[]', project.id, false%></td>
-						<td><%= truncate(project.title, length: 40)%></td>
+						<td class="manage-project-title"><%= link_to truncate(project.title, length: 40), project_path(project.id)%></td>
 						<td><%= project.id%></td>
 						<td><%= truncate(project.client, length: 20)%></td>
 						<td><%= truncate(project.category, length: 20)%></td>
@@ -112,7 +112,7 @@
 					<tr>
 						<%end%>
 						<td class="project-manage-tick"><%= check_box_tag 'choose[]', project.id, false%></td>
-						<td><%= truncate(project.title, length: 40)%></td>
+						<td class="manage-project-title"><%= link_to truncate(project.title, length: 40), project_path(project.id)%></td>
 						<td><%= project.id%></td>
 						<td><%= truncate(project.client, length: 20)%></td>
 						<td><%= truncate(project.category, length: 20)%></td>
@@ -132,7 +132,7 @@
 					<tr>
 						<%end%>
 						<td class="project-manage-tick"><%= check_box_tag 'choose[]', project.id, false%></td>
-						<td><%= truncate(project.title, length: 40)%></td>
+						<td class="manage-project-title"><%= link_to truncate(project.title, length: 40), project_path(project.id)%></td>
 						<td><%= project.id%></td>
 						<td><%= truncate(project.client, length: 20)%></td>
 						<td><%= truncate(project.category, length: 20)%></td>
@@ -150,7 +150,7 @@
 					<tr>
 						<%end%>
 						<td class="project-manage-tick"><%= check_box_tag 'choose[]', project.id, false%></td>
-						<td><%= truncate(project.title, length: 40)%></td>
+						<td class="manage-project-title"><%= link_to truncate(project.title, length: 40), project_path(project.id)%></td>
 						<td><%= project.id%></td>
 						<td><%= truncate(project.client, length: 20)%></td>
 						<td><%= truncate(project.category, length: 20)%></td>

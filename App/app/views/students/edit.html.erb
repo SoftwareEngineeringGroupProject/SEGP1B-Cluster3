@@ -2,11 +2,10 @@
 <%= render "shared/linkbar" %>
 
 <div class="wrapper content">
-	<div id="news" class="flex_height shadow">
-
+	<div id="news" class="flex_height shadow" style="padding-top: 40px">
 		<fieldset class="student-edit-fieldset">
-			<legend style="color: #005d8f">
-				<h2><strong>Edit Student</strong></h2>
+			<legend style="color: #005d8f; font-size: 1.0em">
+				<strong>Edit Student</strong>
 			</legend>
 
 			<%= form_for @theStudent, :url => { :action => "update" } do |builder| %>
@@ -43,13 +42,13 @@
 			<div  class="project-student-edit-line-container student-course-div">
 				<span><%= builder.label :course%></span>
 				<span><%= builder.text_field :course, "placeholder" => "Course" %></span>
-				<span><%= link_to "Or Choose A Course", student_edit_path(:addNew=>"false"), :method => :get%></span>
+				<span ><%= link_to "Or Choose A Course", student_edit_path(:addNew=>"false"), :method => :get%></span>
 			</div>
 
 			<%else%>
 			<div  class="project-student-edit-line-container student-course-div">
 				<span class="to_left"><%= builder.label :course, :class=>"student-course-label"%></span>
-				<span class="to_left student-course-select"><%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %></span>
+				<span class="to_left student-course-select choose-new-course"><%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %></span>
 				<span class="to_left"><%= link_to "Or Add New Course", student_edit_path(:addNew=>"true"), :method => :get%></span>
 			</div>
 			<%end%>
@@ -60,6 +59,6 @@
 			</div>
 			<% end %>
 
-			<fieldset>
+			</fieldset>
 	</div>
 </div>

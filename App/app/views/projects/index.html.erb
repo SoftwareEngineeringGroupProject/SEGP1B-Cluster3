@@ -27,7 +27,7 @@
 				<%=form_tag index_path, :method => 'get' do %>
 				<span class="to_left"> <%= select_tag "year", options_from_collection_for_select( StudentProject.all.map { |p| p.year }.uniq, :to_s, :to_s), prompt: "Year"%> </span>
 				<span class="to_left"> <%= select_tag "category", options_from_collection_for_select(StudentProject.all.map { |p| p.category }.uniq, :to_s, :to_s), prompt: "Category"%> </span>
-				<span class="to_right"><%= submit_tag "Filter"%></span>
+				<span class="to_right"><%= submit_tag "Filter", class: "search_submit_button search_filter_Button"%></span>
 				<%end%>
 			</div>
 			<!----------filter bar end---------->
@@ -41,7 +41,7 @@
 				<%=form_tag search_path, :method => 'get' do %>
 				<span class="to_left"> <%= select_tag "classify", options_for_select(@options), prompt:"General"%> </span>
 				<span class="to_left"><%= text_field_tag :search, params[:search], placeholder: "Search..."%></span>
-				<span class="to_right"><%= submit_tag "Search", class: "search_submit_button"%></span>
+				<span class="to_right"><%= submit_tag "Search", class: "search_submit_button search_filter_Button"%></span>
 				<%end%>
 			</div>
 			<!----------search bar end---------->

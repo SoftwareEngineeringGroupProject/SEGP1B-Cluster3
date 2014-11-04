@@ -6,8 +6,9 @@
 	<div class="contact-title">
 		<h3 class="contact-title">Student Updated</h3>
 	</div>
-
-	<%= button_to "Back To edit Project Page", edit_path(@theStudent.student_project_id), class: "project-search-notfound-backbutton", :method => :get%>
-
+	<div class="button horizontal_list" style="margin: 10px 10px">
+		<%= button_to "Back To edit Project Page", edit_path(@theStudent.student_project_id), class: "project-search-notfound-backbutton", :method => :get%>
+	</div>
+	<br />
 </div>
 

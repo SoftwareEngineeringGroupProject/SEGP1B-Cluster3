@@ -1,13 +1,13 @@
 <%= render "shared/header" %>
 <%= render "shared/linkbar" %>
 
-<div class="flex_height shadow project-notfound">
+<div class="flex_height shadow project-notfound" style="width:60%">
 
 	<div class="contact-title">
 		<h3 class="contact-title">Project Updated</h3>
 	</div>
-	<div class="to_right">
+	<div class="button horizontal_list to_right" style="margin: 10px 10px">
 		<span class="to_left"><%= button_to "Back To Project "+params[:id]+" Edit Page", edit_path(params[:id]), :method => :get%></span>
-		<span class="to_right"><%= button_to "Back To Past Project Show", index_path(), :method => :get%></span>
+		<span class="to_right" style="margin-left:2px "><%= button_to "Back To Past Project Show", index_path(), :method => :get%></span>
 	</div>
 </div>

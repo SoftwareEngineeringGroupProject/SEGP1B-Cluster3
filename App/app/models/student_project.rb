@@ -9,9 +9,14 @@ class StudentProject < ActiveRecord::Base
 
 	validates_uniqueness_of :id, :title
 	validates :year, numericality: { :greater_than => 0 }
+	
+	
 	#the search funtion used in search bar of index page
 	def self.search(classify, search)
 		#"title","production year", "id", "category", "summary", "client name", "studentName","studentID"]
+
+    #trim searching word without leading and tailing whitespaces
+    search=search.strip
 
 		#find project by related attributes here
 		if classify.downcase=="title"
