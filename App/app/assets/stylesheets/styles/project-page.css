@@ -190,14 +190,18 @@ table.project-edit-table th {
 .project-manage-submit-container  a:link, a:visited {
 	background: linear-gradient(to bottom, #f01111, #a33f3f) repeat scroll 0 0 #f01111;
 	border: 0 none;
-	color: #f000;
 	display: block;
-	margin: 0;
-	padding: 7px 7px;
-	height: 15px;
 	text-align: center;
 	transition: background-color 0.2s ease 0s;
+	color: #f000;
+}
+
+.project-manage-submit-container a {
+	margin: 0;
+	padding: 5.5px 5.5px;
+	height: 15px;
 	font-size: 14px;
+	color: #f000;
 }
 
 .project-manage-submit-container a:hover {
@@ -217,14 +221,18 @@ table.project-edit-table th {
 .project-edit-line-container-year {
 	margin: 25px auto;
 	margin-left: 100px;
-	max-width: 250px;
+	width: 41%;
+	height: auto;
 }
 .project-edit-line-container-year label {
-	float: left;
 	font-size: 1.2em;
 	color: #005d8f;
 	width: 200px;
 }
+
+.project-edit-line-container-year select {
+}
+
 .project-edit-line-submit-container {
 	margin: 20px auto;
 	margin-top: 70px;
@@ -502,6 +510,11 @@ label {
 	height: 25px;
 }
 
+.filter-bar input {
+	padding: 0 0;
+	height: 25px;
+}
+
 #project-index-header-container {
 	margin: 0 auto;
 	margin-bottom: 10px;
@@ -560,7 +573,7 @@ label {
 	padding-bottom: 0;
 }
 #project-manage-filter_search_container {
-	height: 30px;
+	height: 25px;
 	width: 96%;
 	margin: 5px auto;
 	border-bottom: 2px solid #cdcdcd;
@@ -588,7 +601,7 @@ label {
 	max-width: 100%;
 }
 
-.manage-project-title a:link a:after a:visited {
+.manage-project-title a:link a:visited {
 	color: black;
 }
 
@@ -626,8 +639,8 @@ table.project-multiple-edit-table a {
 	font-size: 1.0em;
 }
 
-.choose-new-course select{
-	height:25px;
+.choose-new-course select {
+	height: 25px;
 }
 
 th.project-manage-tick {
@@ -762,56 +775,18 @@ td.project-manage-tick {
 	margin: 5px auto;
 	font-size: 1.0em;
 	width: 100%;
+	color: black;
 }
-.info-link a:visited, a:hover, a:link {
+.info-link  a:hover {
 	color: blue;
+	font-weight:bold;
+}
+
+.info-link a:link a:visited a:after {
+	color: black;
 }
 .info-list li {
 	list-style-type: none;
 	height: 50px;
-}
-
-/* add the searching buttons's style*/
-.search_filter_Button {
-	-moz-box-shadow: inset 0px 1px 0px 0px #d9fbbe;
-	-webkit-box-shadow: inset 0px 1px 0px 0px #d9fbbe;
-	box-shadow: inset 0px 1px 0px 0px #d9fbbe;
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #b8e356), color-stop(1, #a5cc52));
-	background: -moz-linear-gradient(top, #b8e356 5%, #a5cc52 100%);
-	background: -webkit-linear-gradient(top, #b8e356 5%, #a5cc52 100%);
-	background: -o-linear-gradient(top, #b8e356 5%, #a5cc52 100%);
-	background: -ms-linear-gradient(top, #b8e356 5%, #a5cc52 100%);
-	background: linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b8e356', endColorstr='#a5cc52',GradientType=0);
-	background-color: #b8e356;
-	-moz-border-radius: 6px;
-	-webkit-border-radius: 6px;
-	border-radius: 6px;
-	border: 1px solid #83c41a;
-	display: inline-block;
-	cursor: pointer;
-	color: #ffffff;
-	font-family: arial;
-	font-size: 15px;
-	font-weight: bold;
-	padding: 0 auto;
-	text-decoration: none;
-	text-shadow: 0px 1px 0px #86ae47;
-	height: 24px;
-}
-
-.search_filter_Button:hover {
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #a5cc52), color-stop(1, #b8e356));
-	background: -moz-linear-gradient(top, #a5cc52 5%, #b8e356 100%);
-	background: -webkit-linear-gradient(top, #a5cc52 5%, #b8e356 100%);
-	background: -o-linear-gradient(top, #a5cc52 5%, #b8e356 100%);
-	background: -ms-linear-gradient(top, #a5cc52 5%, #b8e356 100%);
-	background: linear-gradient(to bottom, #a5cc52 5%, #b8e356 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a5cc52', endColorstr='#b8e356',GradientType=0);
-	background-color: #a5cc52;
-}
-.search_filter_Button:active {
-	position: relative;
-	top: 1px;
 }
 
