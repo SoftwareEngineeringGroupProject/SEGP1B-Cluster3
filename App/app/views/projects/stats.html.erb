@@ -12,37 +12,68 @@
 <div class="wrapper content">
 	<div id="news" class="flex_height shadow">
 		<div class="contact-title">
-
 			<h1><strong>Past Project Statistics</strong></h1>
-			<h6 style="color:blue">Category Distribution</h6>
-		    <%= pie_chart(StudentProject.group(:category).count) %>
 
-		    <h6 style="color:blue" >Projects per Year</h6>
-			<%= line_chart(StudentProject.group(:year).count) %>
+			<div  class="project-title-subheading container-expand stats-expand">
+				<div class="header-expand stats-header-expand">
+					<span> Category Distribution</span>
+				</div>
+				<div class="content-collapse">
+					<div class="project-content-summary">
+						<%= pie_chart(StudentProject.group(:category).count) %>
+					</div>
+				</div>
+			</div>
 
-			<h6 style="color:blue" >Quick Stats</h6>
-			<p class="courseContent">
-			Number of: <br>
-			Students - <%= Student.count %> <br>
-			Past Projects - <%= StudentProject.count %> <br>
-			Registered Users - <%= User.count %> <br>
+			<div  class="project-title-subheading container-expand stats-expand">
+				<div class="header-expand stats-header-expand">
+					<span>Projects Per Year</span>
+				</div>
+				<div class="content-collapse">
+					<div class="project-content-summary">
+						<%= line_chart(StudentProject.group(:year).count) %>
+					</div>
+				</div>
+			</div>
 
-			<!-- Getting clients -->
-			<% clientList = Array.new %>
-			<% for project in StudentProject.all %>
-				<% clientList.push(project.client) %>
-			<% end %>
-			<% clientListUniq = clientList.uniq %>
+			<div  class="project-title-subheading container-expand stats-expand">
+				<div class="header-expand stats-header-expand">
+					<span>Quick Stats</span>
+				</div>
+				<div class="content-collapse">
+					<div class="project-content-summary">
+						<p class="courseContent">
+							Number of:
+							<br>
+							Students - <%= Student.count %>
+							<br>
+							Past Projects - <%= StudentProject.count %>
+							<br>
+							Registered Users - <%= User.count %>
+							<br>
 
-			<!-- Printing client list -->
-			Clients - <br><br>
-			<% for c in clientList.uniq %>
-				<%= c %> <br>
-			<% end %>
+							<!-- Getting clients -->
+							<% clientList = Array.new %>
+							<% for project in StudentProject.all %>
+							<% clientList.push(project.client) %>
+							<% end %>
+							<% clientListUniq = clientList.uniq %>
 
-			</p>
+							<!-- Printing client list -->
+							Clients -
+							<br>
+							<br>
+							<% for c in clientList.uniq %>
+							<%= c %>
+							<br>
+							<% end %>
 
-		    <!-- DEMONSTRATIONAL PURPOSES -->
+						</p>
+					</div>
+				</div>
+			</div>
+			<br />
+			<!-- DEMONSTRATIONAL PURPOSES -->
 			<!--     <h6 style="color:blue" >Projects per Year (DEMO)</h6>
 			<%= line_chart({"2010" => 2, "2011" => 3, "2012" => 3, "2013" => 4, "2014" => 5}) %> -->
 

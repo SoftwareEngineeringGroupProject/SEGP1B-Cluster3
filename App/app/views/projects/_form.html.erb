@@ -4,12 +4,13 @@
 <!-- <div style = "color:red;font-weight:bold;font-size:15px"> -->
 <% if @student_project.errors.present? %>
 <div class= "studentProjectError" >
-<% @student_project.errors.full_messages.each do |msg| %>
-		<li><%= msg %></li>
-<% end %>
+	<% @student_project.errors.full_messages.each do |msg| %>
+	<li>
+		<%= msg %>
+	</li>
+	<% end %>
 </div>
 <% end %>
-
 
 <%= f.label :title %>
 <%= f.text_field :title, "placeholder" => "Title" %></br>
@@ -22,7 +23,7 @@
 
 <%= f.label :client_summary %>
 <%= f.text_area :client_summary , "placeholder" => "Client Summary", "rows" => "4", "columns" => "20" %></br>
-
+<div style="margin 20px auto; height: 50px"></div>
 <%= f.label :client_link %>
 <%= f.text_field :client_link , "placeholder" => "Client Link" %></br></br>
 
@@ -31,20 +32,20 @@
 
 <!-- Student forms -->
 <div class="studentField">
-<%= f.fields_for :students do |builder| %>
-<%= builder.label "Student name" %>
-<%= builder.text_field :name , "placeholder" => "Student Name" %></br>
-<%= builder.label "Student email" %>
-<%= builder.text_field :email , "placeholder" => "Student Email" %></br>
-<%= builder.label "Student ID" %>
-<%= builder.text_field :studentID ,"placeholder" => "Student ID" %></br>
-<%= builder.label :course %>
-<%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<%= builder.text_field :course, "style" => "float:right display:inline" ,"placeholder" => "Course" %></br>
-<%= builder.check_box :_destroy %>
-<%= builder.label :_destroy,'Remove student?'%></br>
-</br>
-<% end %>
+	<%= f.fields_for :students do |builder| %>
+	<%= builder.label "Student name" %>
+	<%= builder.text_field :name , "placeholder" => "Student Name" %></br>
+	<%= builder.label "Student email" %>
+	<%= builder.text_field :email , "placeholder" => "Student Email" %></br>
+	<%= builder.label "Student ID" %>
+	<%= builder.text_field :studentID ,"placeholder" => "Student ID" %></br>
+	<%= builder.label :course %>
+	<%= builder.collection_select :course, Student.all.map { |student| student.course }.uniq, :to_s, :to_s, include_blank: 'Add Course' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<%= builder.text_field :course, "style" => "float:right display:inline" ,"placeholder" => "Course" %></br>
+	<%= builder.check_box :_destroy %>
+	<%= builder.label :_destroy,'Remove student?'%></br>
+	</br>
+	<% end %>
 </div>
 
 <%= f.submit 'Add Student', :name => "add_student" %> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -60,8 +61,14 @@
 <% end %>
 <%= f.label :client_image, "Client Image" %>
 <%= f.file_field :client_image %></br>
-<p>
-		<%= f.submit "Submit" %>
-</p>
+
+<div class="button to_left" style="margin-top:10px">
+	<%= f.submit "Submit" %>
+</div>
+
+<div class="button to_right" style="margin-top:10px">
+	<%= link_to "CANCEL",pastproject_management_path()%>
+</div>
+
 <% end %>
 
