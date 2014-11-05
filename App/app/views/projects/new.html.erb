@@ -4,17 +4,17 @@
 
 <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
+<div id="news" class="flex_height shadow">
+	<p class="justify" style="margin-left:10%, margin-top:10%">
+		<!-- <h1 class="contact-title"><strong>Submit a student's project</strong></h1> -->
 
-    <div id="news" class="flex_height shadow">
-      <p class="justify" style="margin-left:10%, margin-top:10%">
-      <!-- <h1 class="contact-title"><strong>Submit a student's project</strong></h1> -->
-
-      <p text-align: left>
-        <div class = "studentProjectForm">
-        <h2><strong>Submit a student's project</strong></h2>
-        <%= render :partial => "form" %>
-        </div>
-      </p>
-      </p>
-    </div>
-    
+	<p text-align: left>
+		<div class = "studentProjectForm">
+			<div class="project-maintitle" style="margin-bottom:30px;">
+				<strong>Submit A Student's Project</strong>
+			</div>
+			<%= render :partial => "form" %>
+		</div>
+	</p>
+	</p>
+</div>

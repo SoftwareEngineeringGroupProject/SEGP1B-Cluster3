@@ -790,3 +790,16 @@ td.project-manage-tick {
 	height: 50px;
 }
 
+.home-page-slide-image img{
+	height:100%;
+	margin-top:100px;
+}
+.stats-header-expand{
+	font-size:0.4em;
+	margin: 0 auto;
+}
+
+.stats-expand{
+	margin: 30px 8%;
+}
+
