@@ -1,7 +1,11 @@
   <%= render "shared/header" %>
   <%= render "shared/linkbar" %>
 
-  <%= form_tag(:login, class: "forms flex_height", id: "login") do %>
+<div id="container" class="flex_height">
+
+<div id="login" class=" forms flex_height">
+
+  <%= form_tag(:login) do %>
       <div class="titles">
         <h3>Login</h3>
         <!--message flash up-->
@@ -21,3 +25,6 @@
         </ul>
       </div>
   <% end %>
+
+</div>
+</div>

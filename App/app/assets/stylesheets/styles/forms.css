@@ -142,7 +142,6 @@ input[type="file"] {
 /* ---------------------------------------------- Login form------------------------------------*/
 #login {
 	width:300px;
-	margin-top: 170px;
 	}
 
 #login	input[type="submit"], #login .button a {
@@ -189,7 +188,6 @@ input[type="file"] {
 
 /* ---------------------------------------- Registration -------------------------------- */
 #ProfileSetting {
-	margin-top: 170px;
 	width: 400px;
 }
 

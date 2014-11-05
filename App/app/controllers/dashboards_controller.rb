@@ -31,6 +31,7 @@ class DashboardsController < ApplicationController
     if params[:id] != nil
       @project = Project.find(params[:id])
       @show_action = params[:show_action]
+      params[:state] = @project.status
     else
       redirect_to action: 'view'
     end
@@ -47,6 +48,7 @@ class DashboardsController < ApplicationController
 
     if params[:id] != nil
       @project = Project.find(params[:id])
+      params[:state] = @project.status
     else
       redirect_to action: 'view'
     end
@@ -62,6 +64,7 @@ class DashboardsController < ApplicationController
     end
     if params[:id] != nil
       @project = Project.find(params[:id])
+      params[:state] = @project.status
       if (!@project.update_attributes(project_params))
         render :edit_details
       else
@@ -83,6 +86,7 @@ class DashboardsController < ApplicationController
 
     if params[:id] != nil
       @project = Project.find(params[:id])
+      params[:state] = @project.status
       @messages = @project.messages
       project_owner = User.find(@project.user_id)
       @email = "#{project_owner.lname}<#{project_owner.email}>"
@@ -102,6 +106,7 @@ class DashboardsController < ApplicationController
 
     # Identify the user that owns the project
     @project = Project.find(params[:id])
+    params[:state] = @project.status
 
     recipient = User.find(@project.user_id)
     @current_user = User.find(session[:user_id])
@@ -134,6 +139,7 @@ class DashboardsController < ApplicationController
 
       # Find project that has id of :project_id
       @project = Project.find(params[:id])
+      params[:state] = @project.status
 
       # If user wants to change state of project
       if ( actions.include? params[:commit] )
@@ -180,7 +186,9 @@ class DashboardsController < ApplicationController
     def change_state
       # Changed state corressponding to action
       changed = {'Accept' => 'accepted', 'Suspend' => 'pending', 'Reject' => 'rejected'}
+      params[:state] = @project.status
       @project.update_attributes({:status => changed[params[:commit]]})
+
     end
 
     # Update description of a project

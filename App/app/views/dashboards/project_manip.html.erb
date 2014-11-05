@@ -1,4 +1,5 @@
 <%= render "shared/header" %>
+<%= render "shared/linkbar" %>
 <%= render "shared/dashheader" %>
 <!--############################## MAIN BODY ################################-->
 <div class="wrapper content">
@@ -84,6 +85,12 @@
             <div class = "title_item">  
               <h1>Attachments</h1>  
               <hr class="fancy-line">
+              <% if (!(@project.attachment).blank?) %>
+              <strong>Hover mouse to see the link to attachment: </strong>
+              <%= link_to @project.attachment, @project.attachment.url(:original)%>
+              <% else %>
+              <strong>No attachment submitted</strong>
+              <% end %>
             </div> 
           </div>
     </div>

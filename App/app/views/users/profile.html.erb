@@ -1,35 +1,23 @@
 <%= render "shared/header" %>
 <%= render "shared/linkbar" %>
-<%= render "shared/profilesidebar" %>
-    
-<div class="newcontainer to_left shadow">
-	<div class="centerHead">
-		<h2>Welcome Back <%= @current_user.fname %>!</h2>
-	</div>
-	
-	<div id="projstats" class="profilebox">
-		
-	</div>
-	
-	
-	<div class="profileleft profilebox">
-		<h3>Your Details:</h3>
-		<p><strong>Username: <%= @current_user.username %></strong></p> 
-		<p><strong>Full Name: <%= @current_user.fname %> <%= @current_user.lname %></strong></p> 
-		<% if @current_user.acctype == "coordinator" %>
-			<p><strong>Access Level: Course Co-ordinator</strong></p>
-		<% elsif @current_user.acctype == "contributor" %>
-			<p><strong>Access Level: Past Project Contributor</strong></p>
-		<% else %>
-			<p><strong>Access Level: Industry Partner</strong></p>
-		<% end %>
-		<p><strong>Email: <%= @current_user.email %></strong></p>
-	</div>
-	<div class="profileright profilebox">
-		<h3>Organisation Details:</h3>
-		<p><strong>Organisation Name: <%= @current_user.companyname %></strong></p>
-		<p><strong>Address: <%= @current_user.address %></strong></p>
-		<p><strong>Phone: <%= @current_user.phone %></strong></p>
-		<p><strong>Website: <a href="http://<%= @current_user.website %>"><%= @current_user.website %></a></strong></p>
-	</div>
+<%= render "shared/dashheader" %>
+  <%= render "shared/profilesidebar" %>
+<div class="wrapper content">
+  <div id="container">
+    <div id="new_board_showing" class="general_box flex_height shadow">
+      <div class="userinfo_item flex_height">
+        <div class = "title_item">
+          <h1>Welcome Back <%= @current_user.fname %> <%= @current_user.lname %>!</h1>
+          <h3>Your Details:</h3>
+          <hr class ="fancy-line">
+          <strong>Username: </strong><%= @current_user.username %><br><br>
+          <strong>Email: </strong><%= @current_user.email %><br><br>
+          <strong>Organisation: </strong><%= @current_user.companyname %><br><br>
+          <strong>Address: </strong><%= @current_user.address %><br><br>
+          <strong>Phone: </strong><%= @current_user.phone %><br><br>
+          <strong>Website: </strong><a href="http://<%= @current_user.website %>"><%= @current_user.website %></a><br><br>
+        </div> 
+       </div>
+    </div>
+  </div>
 </div>

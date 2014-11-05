@@ -1,6 +1,7 @@
 <!-- right navigation -->
  <div class="aside_cols to_left">
     <div id="cart" class="to_right vertical_list tab">
+      <p align="center"><b><font color="black"><%= @project.title.upcase[0..10]+".." %></font></b></p>
       <ul>
         <li><%=link_to "Edit Details", edit_details_path(id: @project.id )%></li>
         <li><%=link_to "Make Decision", project_manip_path(id: @project.id, show_action: true) %></li>
