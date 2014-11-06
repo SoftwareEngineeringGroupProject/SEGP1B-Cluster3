@@ -24,10 +24,12 @@ class StudentsController < ApplicationController
 			if @user.acctype == "coordinator"
 				#add the new student to pastProjects
 				@theProject= StudentProject.find(params[:id])
+				@theStudent=Student.new(student_params)
 				@save=@theProject.students.new(student_params)
 				if @save.save == false
-					flash[:notice] = "Some input fields are invalid, please check and submit again "
-					redirect_to student_new_path
+					flash[:notice] = "Some input fields are invalid (e.g., a field is blank, email format invalid, the name contains number, or duplicate), 
+					please check and submit again..."
+					 render :new
 				else
 
 				#redirect to multiple edit page if edit array session not empty
@@ -112,8 +114,12 @@ class StudentsController < ApplicationController
 						flash[:notice] ="There is no any change, please edit again"
 						render :edit
 					else
-					#save to DB
-					@theStudent.save
+					   #save to DB
+					   if @theStudent.save!=true
+					       flash[:notice] = "Some input fields are invalid (e.g., a field is blank, email format invalid, the name contains number, or duplicate), 
+                  please check and submit again..."
+                 render :edit
+					   end
 					end
 				end
 			else
