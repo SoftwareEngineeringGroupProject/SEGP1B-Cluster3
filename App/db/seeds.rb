@@ -28,8 +28,8 @@ the lower thermosphere to carry out research on the sections of the atmosphere r
 the Belgian Von Karman Institute for Fluid Dynamics. SuSat is one of those satellites, which is being developed by the University
 of Adelaide and the University of South Australia.", :image=>seed_image("project1Banner.png"), :client_image=>seed_image("project1Client.jpg"), :category=>"Web application", 
 :students_attributes=>[{:name=>"Scott Lamacraft", :email=>"a1607969@student.adelaide.edu.au", :studentID=>"a1607969", :course=>"BEng(Software)"}, 
-{:name=>"Sergei Fadeev", :email=>" a1608693@student.adelaide.edu.au", :studentID=>" a1608693", :course=>"BEng(Software)"},
-{:name=>"Samuel Wong", :email=>" a1607031@student.adelaide.edu.au", :studentID=>" a1607031", :course=>"BEng(Software)"}], 
+{:name=>"Sergei Fadeev", :email=>"a1608693@student.adelaide.edu.au", :studentID=>" a1608693", :course=>"BEng(Software)"},
+{:name=>"Samuel Wong", :email=>"a1607031@student.adelaide.edu.au", :studentID=>" a1607031", :course=>"BEng(Software)"}], 
 :year=>2014, :client_summary=>"The QB50 project involves launching a network of 61 independently developed miniature satellites into
 the lower thermosphere to carry out research on the sections of the atmosphere rarely studied. The project is headed by
 the Belgian Von Karman Institute for Fluid Dynamics." , :client_link=>"http://www.adelaide.edu.au/",  :pastproject_management_id=>0)
